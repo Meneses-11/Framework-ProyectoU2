@@ -1,0 +1,44 @@
+body{
+    background-color: aquamarine;
+    margin: 0px;
+}
+
+header{
+    background-color: rgb(83, 77, 77);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+
+.imgLogo{
+    height: 70px;
+}
+
+nav{
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+nav a{
+    text-decoration: none;
+    color: white;
+    font-size: 20px;
+}
+nav a:hover{
+    color: rgb(226, 207, 98);
+}
+
+.salir{
+    border-radius: 10px;
+    background-color: rgb(83, 77, 77);
+    color: white;
+    font-size: 20px;
+    border: 2px solid rgb(226, 207, 98);
+    padding: 7px 22px;
+    margin-right: 10px;
+}
+.salir:hover{
+    background-color: rgb(226, 207, 98);
+    color: black;
+}
