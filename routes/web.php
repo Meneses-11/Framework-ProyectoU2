@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\clienteController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,5 +15,13 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    //return view('/plantillas/menuCliente');
+    //return view('welcome');
+    return view('/cliente/clntEvent');
 });
+
+
+Route::get('verPaquetes', [clienteController::class, 'verPaquetes'])->name('paquetes');
+Route::get('verEventos', [clienteController::class, 'verEventos'])->name('eventos');
+Route::get('verInformacion', [clienteController::class, 'verInformacion'])->name('informacion');
+
