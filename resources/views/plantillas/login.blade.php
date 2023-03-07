@@ -8,62 +8,53 @@
     <title>Login</title>
 </head>
 <body>
-    <a href="https://front.codes/" class="logo" target="_blank">
-		<img src="https://assets.codepen.io/1462889/fcy.png" alt="">
-	</a>
-	<div class="section">
-		<div class="container">
-			<div class="row full-height justify-content-center">
-				<div class="col-12 text-center align-self-center py-5">
-					<div class="section pb-5 pt-5 pt-sm-2 text-center">
-						<h6 class="mb-0 pb-3"><span>Log In </span><span>Sign Up</span></h6>
-			          	<input class="checkbox" type="checkbox" id="reg-log" name="reg-log"/>
-			          	<label for="reg-log"></label>
-						<div class="card-3d-wrap mx-auto">
-							<div class="card-3d-wrapper">
-								<div class="card-front">
-									<div class="center-wrap">
-										<div class="section text-center">
-											<h4 class="mb-4 pb-3">Log In</h4>
-											<div class="form-group">
-												<input type="email" name="logemail" class="form-style" placeholder="Your Email" id="logemail" autocomplete="off">
-												<i class="input-icon uil uil-at"></i>
-											</div>
-											<div class="form-group mt-2">
-												<input type="password" name="logpass" class="form-style" placeholder="Your Password" id="logpass" autocomplete="off">
-												<i class="input-icon uil uil-lock-alt"></i>
-											</div>
-											<a href="#" class="btn mt-4">submit</a>
-                            				<p class="mb-0 mt-4 text-center"><a href="#0" class="link">Forgot your password?</a></p>
-				      					</div>
-			      					</div>
-			      				</div>
-								<div class="card-back">
-									<div class="center-wrap">
-										<div class="section text-center">
-											<h4 class="mb-4 pb-3">Sign Up</h4>
-											<div class="form-group">
-												<input type="text" name="logname" class="form-style" placeholder="Your Full Name" id="logname" autocomplete="off">
-												<i class="input-icon uil uil-user"></i>
-											</div>
-											<div class="form-group mt-2">
-												<input type="email" name="logemail" class="form-style" placeholder="Your Email" id="logemail" autocomplete="off">
-												<i class="input-icon uil uil-at"></i>
-											</div>
-											<div class="form-group mt-2">
-												<input type="password" name="logpass" class="form-style" placeholder="Your Password" id="logpass" autocomplete="off">
-												<i class="input-icon uil uil-lock-alt"></i>
-											</div>
-											<a href="#" class="btn mt-4">submit</a>
-				      					</div>
-			      					</div>
-			      				</div>
-			      			</div>
-			      		</div>
-			      	</div>
-		      	</div>
-	      	</div>
-	    </div>
-	</div>
+    <script src="https://code.jquery.com/jquery-2.2.0.min.js"></script>
+    <script>
+          $(document).ready(function(){
+            $("#register").click(function(){
+              $("#login").css("background-color", "#ecf0f1");
+              $("#login > span").css("color", "#333");
+              $("#register").css("background-color", "#e74c3c");
+              $("#register > span").css("color", "white");
+              $("#l-f").toggle(500);
+              $("#r-f").toggle(1000);
+            })
+            $("#login").click(function(){
+              $("#register").css("background-color", "#ecf0f1");
+              $("#register > span").css("color", "#333");
+              $("#login").css("background-color", "#e74c3c");
+              $("#login > span").css("color", "white");
+              $("#l-f").toggle(1000);
+              $("#r-f").toggle(500);
+            })
+          });
+    </script>
+    <div class="lr-wrapper" align="center">
+                  <div class="lr-content">
+                    <div class="lr-head">
+                      <div class="lr-l_b" id="login" onClick>
+                        <div></div>
+                        <span>Iniciar Sesión</span>
+                      </div>
+                      <div class="lr-r_b" id="register">
+                        <div></div>
+                        <span>Registrarse</span>
+                      </div>
+                    </div>
+                    <div class="lr-main">
+                      <form method="DELETE" id="l-f" action="javascript:login();">
+                        <input type="text" id="username_login" name="l-username" class="l-username" placeholder="Username"/>
+                        <input type="password" id="password_login" name="l-password" class="l-password" placeholder="Password"/>
+                        <input type="submit" name="l-submit" class="l-submit" value="Login"/>
+                      </form>
+                      <form method="DELETE" id="r-f" action="javascript:login();">
+                        <input type="email" id="r-email" class="r-email" name="r-email" placeholder="Email"/>
+                        <input type="text" id="username_register" name="r-username" class="r-username" placeholder="Username"/>
+                        <input type="password" id="password_register" name="r-password" class="r-password" placeholder="Password"/>
+                        <input type="submit" name="l-submit" class="r-submit" value="Sign Up"/>
+                      </form>
+                    </div>
+                  </div>
+                </div>
 </body>
 </html>
