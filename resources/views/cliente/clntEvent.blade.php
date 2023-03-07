@@ -15,7 +15,7 @@
             <div class="evento"><h1>Evento 6</h1></div>
             <div class="evento"><h1>Evento 7</h1></div>
             <div class="evento"><h1>Evento 8</h1></div>
-        </div>        
+        </div>
     </div>
     <div class="contDesc">
 
