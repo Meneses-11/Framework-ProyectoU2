@@ -42,3 +42,49 @@ nav a:hover{
     background-color: rgb(226, 207, 98);
     color: black;
 }
+
+.contPadre{
+    display: flex;
+    justify-content: space-between;
+}
+
+.contEvent{
+    background-color: brown;
+    display: flex;
+    width: 65%;
+    height: 85vh;
+    border-radius: 15px;
+    margin: 10px 10px 10px 20px;
+    flex-direction: column;
+    align-items: center;
+}
+.titEvent{
+    background-color: bisque;
+    margin: 10px;
+}
+.eventos{
+    background-color: blueviolet;
+    height: 88%;
+    width: 95%;
+    border-radius: 10px;
+    overflow-y: scroll;
+}
+.eventos div{
+    background-color: azure;
+    height: 190px;
+    width: 100%;
+    border-radius: 12px;
+    margin-bottom: 5px
+}
+.eventos div h1{
+    padding: 0;
+    margin: 0;
+}
+
+.contDesc{
+    background-color: blue;
+    width: 30%;
+    height: 85vh;
+    border-radius: 15px;
+    margin: 10px 20px 10px 10px;
+}
