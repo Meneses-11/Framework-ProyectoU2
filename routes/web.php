@@ -19,6 +19,9 @@ Route::get('/', function () {
     //return view('welcome');
     return view('/cliente/clntEvent');
 });
+Route::get('/gerente/usuarios',function(){
+    return view('/gerente/inicio');
+});
 
 
 Route::get('verPaquetes', [clienteController::class, 'verPaquetes'])->name('paquetes');

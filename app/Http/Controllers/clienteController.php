@@ -6,7 +6,6 @@ use Illuminate\Http\Request;
 
 class clienteController extends Controller
 {
-    //
     public function verPaquetes(){
         return view('cliente.clntPaquetes');
     }
