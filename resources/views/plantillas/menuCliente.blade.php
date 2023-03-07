@@ -7,6 +7,8 @@
     <title>@yield('titulo')</title>
     <link rel="stylesheet" href="/css/styleBars.css">
     <link rel="stylesheet" href="/css/styleMenuClnt.css">
+    <link rel="stylesheet" href="/css/stylePaquetes.css">
+
 </head>
 <header role="banner">
     <h1>Admin Panel</h1>
@@ -30,6 +32,3 @@
             @yield('contenido')
         </section>
 </body>
-  </main>
-</html>
-

@@ -1,0 +1,55 @@
+img{
+    max-width: 100%;
+}
+
+.container-items{
+    display: grid;
+    grid-template-columns: repeat(3, 3fr); /*cuantos items quiero*/
+    gap: 20px;
+}
+
+.item{
+    border-radius: 10px; /*borde de abajo*/
+}
+
+.item:hover{
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.20); /*tamaño de sombra*/
+}
+
+.item img{
+    width: 400px;
+    height: 200px;
+    object-fit: cover; /*adapta y centra la imagen*/
+    border-radius: 10px 10px 0 0; /*bordes de las imagenes*/
+    transition: all .5s;
+}
+
+.item figure{
+    overflow: hidden; /*oculta el contenido que salga de la caja*/
+}
+
+.item:hover img{
+    transform: scale(1.2);
+}
+
+.info-producto{
+    padding: 15px 30px;
+    line-height: 2; /*interlineado*/
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.price{
+    font-size: 18px;
+    font-weight: 900;
+}
+
+.info-producto button{
+    border: none;
+    background: none;
+    background-color: darkgray;
+    color: black;
+    padding: 15px 10px;
+    cursor: pointer;
+}
