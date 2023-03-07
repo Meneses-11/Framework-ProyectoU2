@@ -1,17 +1,14 @@
 <?php
-
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\clienteController;
 use App\Http\Controllers\entradaController;
-
-
-
 
 /*Route::get('/', function () {
     //return view('/plantillas/menuCliente');
     //return view('welcome');
     return view('/cliente/clntEvent');
 });*/
+
 Route::get('/gerente/usuarios',function(){
     return view('/gerente/inicio');
 })->name('listaUsuarios');

@@ -3,12 +3,13 @@
 @section('titulo')
 Usuarios
 @endsection
+@section('titulobar')
+Admin Gerente
+@endsection
 @section('menu')
-    <li class="dashboard"><a href="admindashboard">Dashboard</a></li>
-    <li class="navItem"><a href="#">Edit Website</a></li>
-    <li class="write"><a href="#">Write news</a></li>
-    <li class="comments"><a href="#">Ads</a></li>
-    <li class="users"><a href="#">Manage Users</a></li>
+    <li class="dashboard"><a href="/gerente/usuarios">Administrar Usuarios</a></li>
+    <li class="navItem"><a href="#">Lista de Paquetes</a></li>
+    <li class="write"><a href="#">Lista de servicios</a></li>
 @endsection
 
 @section('contenido')
@@ -25,8 +26,8 @@ Lista de Usuarios
     <td>Cliente{{ $i.'@gmail.com'}}</td>
     <td>961333567{{ $i }}</td>
     <td>
-      <a href="#editEmployeeModal" class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
-      <a href="#deleteEmployeeModal" class="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
+      <a href="#editEmployeeModal" class="btn btn-warning" data-toggle="modal">Editar</a>
+      <a href="#deleteEmployeeModal" class="btn btn-danger" data-toggle="modal">Eliminar</a>
     </td>
   </tr>
 

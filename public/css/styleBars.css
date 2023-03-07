@@ -39,12 +39,7 @@ header[role="banner"] h1 {
   font-weight: 300;
   padding: 1rem;
 }
-header[role="banner"] h1:before {
-  content: "\f248";
-  font-family: FontAwesome;
-  padding-right: 0.6em;
-  color: red;
-}
+
 header[role="banner"] .utilities {
   width: 100%;
   background: slategray;
@@ -175,10 +170,7 @@ footer[role="contentinfo"] {
 }
 
 /* typography */
-a {
-  text-decoration: none;
-  color: inherit;
-}
+
 
 h2,
 h3,
@@ -187,13 +179,7 @@ h4 {
   margin: 0;
 }
 
-h2 {
-  color: #ff1a1a;
-}
 
-b {
-  color: lightsalmon;
-}
 
 .hint {
   color: lightslategray;

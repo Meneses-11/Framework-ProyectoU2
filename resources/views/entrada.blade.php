@@ -30,33 +30,33 @@
           });
     </script>
     <div class="lr-wrapper" align="center">
-                  <div class="lr-content">
-                    <div class="lr-head">
-                      <div class="lr-l_b" id="login" onClick>
-                        <div></div>
-                        <span>Iniciar Sesión</span>
-                      </div>
-                      <div class="lr-r_b" id="register">
-                        <div></div>
-                        <span>Registrarse</span>
-                      </div>
-                    </div>
-                    <div class="lr-main">
-                      <form id="l-f" action="{{route('validar')}}" method="post">
-                        @csrf
-                        <input type="text" id="username_login" name="usuario" class="l-username" placeholder="Nombre de Usuario"/>
-                        <input type="password" id="password_login" name="password" class="l-password" placeholder="Contraseña"/>
-                        <input type="submit" class="l-submit" value="Validar"/>
-                      </form>
-                      <form id="r-f" action="">
-                        @csrf
-                        <input type="email" id="r-email" class="r-email" name="r-email" placeholder="Email"/>
-                        <input type="text" id="username_register" name="r-username" class="r-username" placeholder="Nombre de Usuario"/>
-                        <input type="password" id="password_register" name="r-password" class="r-password" placeholder="Contrseña"/>
-                        <input type="submit" name="l-submit" class="r-submit" value="Registrarse"/>
-                      </form>
-                    </div>
-                  </div>
+            <div class="lr-content">
+            <div class="lr-head">
+                <div class="lr-l_b" id="login" onClick>
+                <div></div>
+                <span>Iniciar Sesión</span>
                 </div>
+                <div class="lr-r_b" id="register">
+                <div></div>
+                <span>Registrarse</span>
+                </div>
+            </div>
+            <div class="lr-main">
+                <form id="l-f" action="{{route('validar')}}" method="post">
+                @csrf
+                <input type="text" id="username_login" name="usuario" class="l-username" placeholder="Nombre de Usuario"/>
+                <input type="password" id="password_login" name="password" class="l-password" placeholder="Contraseña"/>
+                <input type="submit" class="l-submit" value="Validar"/>
+                </form>
+                <form id="r-f" action="">
+                @csrf
+                <input type="email" id="r-email" class="r-email" name="r-email" placeholder="Email"/>
+                <input type="text" id="username_register" name="r-username" class="r-username" placeholder="Nombre de Usuario"/>
+                <input type="password" id="password_register" name="r-password" class="r-password" placeholder="Contrseña"/>
+                <input type="submit" name="l-submit" class="r-submit" value="Registrarse"/>
+                </form>
+            </div>
+            </div>
+        </div>
 </body>
 </html>
