@@ -2,9 +2,10 @@
 @section('contenido')
 <div class="contPadre">
     <div class="contEvent">
-        <div>
+        <div class="contTitEvent">
+            <img src="{{ asset('img/copas-icon.png') }}" alt="">
             <h1 class="titEvent">Mis eventos</h1>
-            <button>Crear Evento</button>
+            <button class="custom-btn btn-13">Crear Evento</button>
         </div>
         <div class="eventos">
             <div class="evento"><h1>Evento 1</h1></div>
