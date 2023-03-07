@@ -1,14 +1,24 @@
-@extends('plantillas.tabla')
+@extends('plantillas.menuCliente')
 
 @section('titulo')
 Usuarios
 @endsection
+@section('menu')
+    <li class="dashboard"><a href="admindashboard">Dashboard</a></li>
+    <li class="edit"><a href="#">Edit Website</a></li>
+    <li class="write"><a href="#">Write news</a></li>
+    <li class="comments"><a href="#">Ads</a></li>
+    <li class="users"><a href="#">Manage Users</a></li>
+@endsection
 
+@section('contenido')
+
+@extends('plantillas.tabla')
 @section('tituloTabla')
 Lista de Usuarios
 @endsection
 @section('tablaContenido')
-@for ($i=1; $i <=4; $i++)
+@for ($i=1; $i <=7; $i++)
 
 <tr>
     <td>Cliente{{ $i }}</td>
@@ -22,5 +32,7 @@ Lista de Usuarios
 
 @endfor
 @endsection
+@endsection
+
 
 

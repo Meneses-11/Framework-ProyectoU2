@@ -29,7 +29,9 @@ Route::get('/login',function(){
     return view('/entrada');
 })->name('login');
 Route::post('/validar',[entradaController::class,'validar'])->name('validar');
-Route::post('/error',[entradaController::class,'error'])->name('error');
+Route::get('/error',[entradaController::class,'error'])->name('error');
+
+
 Route::get('verPaquetes', [clienteController::class, 'verPaquetes'])->name('paquetes');
 Route::get('verEventos', [clienteController::class, 'verEventos'])->name('eventos');
 Route::get('verInformacion', [clienteController::class, 'verInformacion'])->name('informacion');

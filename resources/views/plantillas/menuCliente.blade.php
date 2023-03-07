@@ -2,23 +2,35 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cliente</title>
-    <link rel="stylesheet" href="/css/styleMenuClnt.css">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>@yield('titulo')</title>
+    <link rel="stylesheet" href="/css/styleBars.css">
 </head>
+<header role="banner">
+    <h1>Admin Panel</h1>
+    <ul class="utilities">
+      <br>
+      <li class="logout warn"><a href="">Cerrar Sesion</a></li>
+    </ul>
+  </header>
+
+  <nav role='navigation'>
+    <ul class="main">
+        @yield('menu')
+    </ul>
+  </nav>
+
+
 <body>
-    <header>
-        <nav>
-            <a href="" class="opc-menu">
-                <img src="/img/logo.png" alt="Logo" class="imgLogo">
-            </a>
-            <a href="{{route('paquetes')}}" class="opc-menu">Paquetes</a>
-            <a href="{{route('eventos')}}" class="opc-menu">Mis eventos</a>
-            <a href="{{route('informacion')}}" class="opc-menu">Descripcion</a>
-        </nav>
-        <button class="salir">Exit</button>
-    </header>
-    @yield('contenido')
+    <main role="main">
+        <section class="panel important">
+            <br>
+            <br>
+            <br>
+            @yield('contenido')
+        </section>
 </body>
+  </main>
 </html>
+

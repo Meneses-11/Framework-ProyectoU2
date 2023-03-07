@@ -42,12 +42,19 @@
                       </div>
                     </div>
                     <div class="lr-main">
+
+
                       <form id="l-f" action="{{route('validar')}}" method="post">
                         @csrf
                         <input type="text" id="username_login" name="usuario" class="l-username" placeholder="Username"/>
                         <input type="password" id="password_login" name="password" class="l-password" placeholder="Password"/>
                         <input type="submit" class="l-submit" value="Validar"/>
                       </form>
+
+
+
+
+
                       <form id="r-f" action="">
                         @csrf
                         <input type="email" id="r-email" class="r-email" name="r-email" placeholder="Email"/>
