@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>@yield('titulo')</title>
     <link rel="stylesheet" href="/css/styleBars.css">
+    <link rel="stylesheet" href="/css/styleMenuClnt.css">
 </head>
 <header role="banner">
     <h1>Admin Panel</h1>
@@ -25,9 +26,7 @@
 <body>
     <main role="main">
         <section class="panel important">
-            <br>
-            <br>
-            <br>
+
             @yield('contenido')
         </section>
 </body>
