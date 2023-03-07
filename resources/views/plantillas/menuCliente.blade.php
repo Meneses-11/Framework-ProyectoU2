@@ -16,7 +16,7 @@
     </ul>
   </header>
 
-  <nav role='navigation'>
+  <nav  role='navigation'>
     <ul class="main">
         @yield('menu')
     </ul>

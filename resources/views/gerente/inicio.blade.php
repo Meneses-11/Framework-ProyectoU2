@@ -5,7 +5,7 @@ Usuarios
 @endsection
 @section('menu')
     <li class="dashboard"><a href="admindashboard">Dashboard</a></li>
-    <li class="edit"><a href="#">Edit Website</a></li>
+    <li class="navItem"><a href="#">Edit Website</a></li>
     <li class="write"><a href="#">Write news</a></li>
     <li class="comments"><a href="#">Ads</a></li>
     <li class="users"><a href="#">Manage Users</a></li>
@@ -18,7 +18,7 @@ Usuarios
 Lista de Usuarios
 @endsection
 @section('tablaContenido')
-@for ($i=1; $i <=7; $i++)
+@for ($i=1; $i <=8; $i++)
 
 <tr>
     <td>Cliente{{ $i }}</td>
