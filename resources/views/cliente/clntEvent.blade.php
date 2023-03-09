@@ -1,7 +1,6 @@
 @extends('plantillas.menuCliente')
 @section('menu')
-    <li ><a href="admindashboard">Dashboard</a></li>
-    <li class="edit"><a href="#">Paquetes</a></li>
+    <li class="edit"><a href="{{ route('paquetes') }}">Paquetes</a></li>
     <li class="write"><a href="#">Mis eventos</a></li>
     <li class="comments"><a href="#">informacion</a></li>
     <li class="users"><a href="#">Manage Users</a></li>

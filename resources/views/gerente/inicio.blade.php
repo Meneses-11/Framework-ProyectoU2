@@ -1,4 +1,4 @@
-@extends('plantillas.menuCliente')
+@extends('plantillas.menuGerente')
 
 @section('titulo')
 Usuarios
@@ -8,7 +8,7 @@ Admin Gerente
 @endsection
 @section('menu')
     <li class="dashboard"><a href="/gerente/usuarios">Administrar Usuarios</a></li>
-    <li class="navItem"><a href="#">Lista de Paquetes</a></li>
+    <li class="navItem"><a href="">Lista de Paquetes</a></li>
     <li class="write"><a href="#">Lista de servicios</a></li>
 @endsection
 
@@ -26,8 +26,8 @@ Lista de Usuarios
     <td>Cliente{{ $i.'@gmail.com'}}</td>
     <td>961333567{{ $i }}</td>
     <td>
-      <a href="#editEmployeeModal" class="btn btn-warning" data-toggle="modal">Editar</a>
-      <a href="#deleteEmployeeModal" class="btn btn-danger" data-toggle="modal">Eliminar</a>
+      <a href="#editEmployeeModal" class="btn btn-info" data-toggle="modal">Editar</a>
+      <a href="#deleteEmployeeModal" class="btn btn-warning" data-toggle="modal">Eliminar</a>
     </td>
   </tr>
 
