@@ -3,6 +3,9 @@
 @section('titulo')
 Usuarios
 @endsection
+@section('links')
+
+@endsection
 @section('titulobar')
 Admin Gerente
 @endsection
@@ -16,20 +19,38 @@ Admin Gerente
 
 @extends('plantillas.tabla')
 @section('tituloTabla')
-Lista de Usuarios
+<h2>Lista de Usuarios</h2>
+@endsection
+@section('columnas')
+        <th>Nombre</th>
+        <th>Correo</th>
+        <th>Telefono</th>
+        <th>Dirección</th>
+        <th>Fecha de Nacimiento</th>
+        <th>Acciones</th>
 @endsection
 @section('tablaContenido')
-@for ($i=1; $i <=8; $i++)
+@for ($i=1; $i <=5; $i++)
 
 <tr>
+    <td>
+        <span class="custom-checkbox">
+            <input type="checkbox" id="checkbox1" name="options[]" value="1">
+            <label for="checkbox1"></label>
+        </span>
+    </td>
     <td>Cliente{{ $i }}</td>
     <td>Cliente{{ $i.'@gmail.com'}}</td>
     <td>961333567{{ $i }}</td>
+    <td>Dirección{{ $i }}</td>
+    <td>Fecha de nacimiento{{ $i }}</td>
     <td>
-      <a href="#editEmployeeModal" class="btn btn-info" data-toggle="modal">Editar</a>
-      <a href="#deleteEmployeeModal" class="btn btn-warning" data-toggle="modal">Eliminar</a>
+        <div class="d-inline-flex p-n2 align-items-center">
+            <a href="#editEmployeeModal" class="edit" data-toggle="modal"><i class="fas fa-pen" data-toggle="tooltip" title="Editar"></i></a>
+            <a href="#deleteEmployeeModal" class="delete" data-toggle="modal"><i class="fas fa-trash" data-toggle="tooltip" title="Eliminar"></i></a>
+        </div>
     </td>
-  </tr>
+</tr>
 
 @endfor
 @endsection
