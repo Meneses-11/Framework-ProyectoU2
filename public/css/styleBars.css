@@ -31,7 +31,7 @@ body.login {
 
 /* header */
 header[role="banner"] {
-  background: white;
+  background: #60a4ad;
   box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.15);
 }
 header[role="banner"] h1 {
@@ -69,8 +69,8 @@ header[role="banner"] .utilities li a {
 }
 
 nav[role="navigation"] {
-    background-color: #89d8d3;
-    background-image: linear-gradient(315deg, #89d8d3 0%, #03c8a8 74%);
+    background-color: rgb(122, 211, 223);
+/*    background-image: linear-gradient(315deg, #89d8d3 0%, #03c8a8 74%);*/
     border: none;
     z-index: 1;
   /* icons */
