@@ -1,6 +1,7 @@
 .divtabla{
     margin-top: 3cm;
-    margin-right: 10cm;
+    margin-right: 12cm;
+    max-width: 1000px !important;
 }
 .lbl{
     margin-left: 13%;
@@ -16,11 +17,11 @@
 }
 
 .elemento {
-    width: 106%;
+    width: 100%;
   }
 /*CRUD*/
 .table {
-    width: 106% !important;
+    width: 100% !important;
     margin-bottom: 1rem;
     color: #212529;
   }
@@ -32,7 +33,7 @@
 	box-shadow: 0 1px 1px rgba(0,0,0,.05);
 }
 .table-title {
-    width: 106%;
+    width: 100%;
 	padding-bottom: 5px;
 	background: #89d8d3;
 	color: #000000;
