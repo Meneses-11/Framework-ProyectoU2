@@ -21,6 +21,6 @@ class entradaController extends Controller
         }else {return redirect(route('error'));}
     }
     public function error(){
-        return view();
+        return view('error');
     }
 }
