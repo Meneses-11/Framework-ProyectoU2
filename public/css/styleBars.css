@@ -214,7 +214,6 @@ main li:before {
 form input,
 form textarea,
 form select {
-  width: 100%;
   display: block;
   border: solid 1px #dde;
   padding: 0.5em;
@@ -237,13 +236,13 @@ form legend {
   margin: 1em 0 0.5em;
 }
 form input[type="submit"] {
-  background: #ff1a1a;
+  background: #1acaff;
   border: none;
-  border-bottom: solid 4px #e60000;
+  border-bottom: solid 4px #0099e6;
   padding: 0.7em 3em;
   margin: 1em 0;
-  color: white;
-  text-shadow: 0 -1px 0 #e60000;
+  color: rgb(255, 255, 255);
+  text-shadow: 0 -1px 0 #00b4e6;
   font-size: 1.1em;
   font-weight: bold;
   display: inline-block;
@@ -254,13 +253,13 @@ form input[type="submit"] {
   border-radius: 0.5em;
 }
 form input[type="submit"]:hover {
-  background: turquoise;
+  background: rgb(184, 224, 64);
   border: none;
-  border-bottom: solid 4px #21ccbb;
+  border-bottom: solid 4px #93cc21;
   padding: 0.7em 3em;
   margin: 1em 0;
   color: white;
-  text-shadow: 0 -1px 0 #21ccbb;
+  text-shadow: 0 -1px 0 #65cc21;
   font-size: 1.1em;
   font-weight: bold;
   display: inline-block;
@@ -270,7 +269,40 @@ form input[type="submit"]:hover {
   -ms-border-radius: 0.5em;
   border-radius: 0.5em;
 }
-
+form input[type="cancel"] {
+    background: #ff1a1a;
+    border: none;
+    border-bottom: solid 4px #e60000;
+    padding: 0.7em 3em;
+    margin: 1em 0;
+    color: white;
+    text-shadow: 0 -1px 0 #e60000;
+    font-size: 1.1em;
+    font-weight: bold;
+    display: inline-block;
+    width: auto;
+    -webkit-border-radius: 0.5em;
+    -moz-border-radius: 0.5em;
+    -ms-border-radius: 0.5em;
+    border-radius: 0.5em;
+  }
+  form input[type="cancel"]:hover {
+    background: turquoise;
+    border: none;
+    border-bottom: solid 4px #21ccbb;
+    padding: 0.7em 3em;
+    margin: 1em 0;
+    color: white;
+    text-shadow: 0 -1px 0 #21ccbb;
+    font-size: 1.1em;
+    font-weight: bold;
+    display: inline-block;
+    width: auto;
+    -webkit-border-radius: 0.5em;
+    -moz-border-radius: 0.5em;
+    -ms-border-radius: 0.5em;
+    border-radius: 0.5em;
+  }
 /* feedback */
 .error {
   background-color: #ffe9e0;

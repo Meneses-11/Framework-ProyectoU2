@@ -14,32 +14,35 @@
         </div>
         <div class="item">
             <figure>
-                <img src="img\tenis11.jpg" alt="travis1">
+                <img src="img\fiesta-adultos.jpg" alt="travis1">
             </figure>
             <div class="info-producto">
-                <h2>Tenis react Nike x Travis Scott</h2>
-                <p class="precio">$3000</p>
-                <button class ="añade-carrito">Añadir al carrito</button>
+                <h2>Paquete Cumpleaños</h2>
+                <p class="Descripccion">cumpleñoas adultos</p>
+                <!-- <button class="añade-carrito">Añadir al carrito </button>-->
             </div>
         </div>
         <div class="item">
             <figure>
-                <img src="img\tenis333.jpg" alt="pelucheg">
+                <img src="img\fiesta-niños.jpg" alt="pelucheg">
             </figure>
             <div class="info-producto">
-                <h2>Tenis Nike x Grateful Dead Green</h2>
-                <p class="precio">$2300</p>
-                <button class ="añade-carrito">Añadir al carrito</button>
+                <h2>Paquete cumpleaños niños</h2>
+                <p class="Descripcio">El salon se entrega con decoraciones para niño dependiendo
+                    de la tematica seleccionada
+                </p>
+                <!-- <button class="añade-carrito">Añadir al carrito </button>-->
             </div>
         </div>
         <div class="item">
             <figure>
-                <img src="img\tenis444.jpg" alt="travis2">
+                <img src="img\salon-vacio" alt="travis2">
             </figure>
             <div class="info-producto">
-                <h2>Tenis Nike Jordan 6 x Travis Scott olive</h2>
-                <p class="precio">$3000</p>
-                <button class ="añade-carrito">Añadir al carrito</button>
+                <h2>Salon eventos libre</h2>
+                <p class="Descripcion">El salon se renta vacio solo con sillas y mesas
+                     sin ningun tipo de decoracion </p>
+                <!-- <button class="añade-carrito">Añadir al carrito </button>-->
             </div>
         </div>
         <div class="item">
@@ -47,19 +50,21 @@
                 <img src="img\tenis55.jpg" alt="off">
             </figure>
             <div class="info-producto">
-                <h2>Tenis Nike Jordan 4 x Off-White</h2>
-                <p class="precio">$2700</p>
-                <button class ="añade-carrito">Añadir al carrito</button>
+                <h2>Salon eventos Fiestas libre</h2>
+                <p class="Descripcion">El salon se renta con decoraciones libres</p>
+                <!-- <button class="añade-carrito">Añadir al carrito </button>-->
             </div>
         </div>
         <div class="item">
             <figure>
-                <img src="img\tenis331.jpg" alt="peluchey">
+                <img src="img\xv-años.jpg" alt="peluchey">
             </figure>
             <div class="info-producto">
-                <h2>Tenis Nike x Grateful Dead Yellow</h2>
-                <p class="precio">$2500</p>
-                <button class ="añade-carrito">Añadir al carrito</button>
+                <h2>Salon eventos XV años</h2>
+                <p class="Descripccion">El salon se entrega con decoraciones para XV años
+                    dependiendo el color seleccionado
+                </p>
+                <!-- <button class="añade-carrito">Añadir al carrito </button>-->
             </div>
         </div>
     </div>
