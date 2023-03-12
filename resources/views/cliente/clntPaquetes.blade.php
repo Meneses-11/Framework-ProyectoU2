@@ -5,7 +5,7 @@
     <li><a href="{{ route('eventos') }}">Mis eventos</a></li>
     <li><a href="{{route('informacion')}}">informacion</a></li>
     <ul class="utilities">
-        <li class="logout warn"><a href="{{ route('login') }}">Cerrar Sesion</a></li>
+        <li class="logout warn"><a href="{{ route('inicio') }}">Cerrar Sesion</a></li>
     </ul>
 @endsection
 

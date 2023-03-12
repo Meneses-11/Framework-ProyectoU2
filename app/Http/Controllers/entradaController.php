@@ -23,7 +23,9 @@ class entradaController extends Controller
     public function error(){
         return view('error');
     }
-
+    public function inicio(){
+        return view('anonimo.anonimo');
+    }
 
 
 }

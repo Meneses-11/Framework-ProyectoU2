@@ -9,16 +9,15 @@ use App\Http\Controllers\gerenteController;
     //return view('/plantillas/menuCliente');
     //return view('welcome');
     return view('/cliente/clntEvent');
-});
-
-public function verPantallainicio(){
-        return view('cliente.anPinicio');
-    }
-    */
+});*/
 
 
 Route::get('/',function(){
-    return view('/entrada');
+    return redirect(route('inicio'));
+})->name('inicio');
+
+Route::get('/login',function(){
+    return view('entrada');
 })->name('login');
 
 Route::post('/validar',[entradaController::class,'validar'])->name('validar');
@@ -27,6 +26,7 @@ Route::get('/gerente/paquetes',[gerenteController::class,'paquetes'])->name('lis
 Route::get('/gerente/servicios',[gerenteController::class,'servicios'])->name('listaServicios');
 Route::get('/gerente/usuarios',[gerenteController::class,'usuarios'])->name('listaUsuarios');
 
+Route::get('/inicio',[entradaController::class,'inicio'])->name('inicio');
 
 
 Route::get('nuestrosPaquetes', [clienteController::class, 'verPaquetes'])->name('paquetes');
