@@ -1,4 +1,16 @@
 @extends('plantillas.menuCliente')
+
+@section('menu')
+    <li><a href="{{route('paquetes')}}">Paquetes</a></li>
+    <li><a href="{{ route('eventos') }}">Mis eventos</a></li>
+    <li><a href="{{route('informacion')}}">informacion</a></li>
+    <ul class="utilities">
+        <li class="logout warn"><a href="{{ route('login') }}">Cerrar Sesion</a></li>
+    </ul>
+@endsection
+
+
+
 @section('contenido')
 
     <div class="container-items">
