@@ -3,9 +3,14 @@ body{
     background-color: #E0E8FA;
 }
 
-
+.contentEmpresa{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 .imgLogo{
     height: 70px;
+    filter: brightness(0) saturate(100%) invert(0%) sepia(0%) saturate(0%) hue-rotate(268deg) brightness(107%) contrast(107%);
 }
 
 
@@ -120,16 +125,18 @@ button {
     height: 190px;
     width: 100%;
     border-radius: 12px;
-    margin-bottom: 5px
+    margin-bottom: 5px;
+
+    cursor: pointer;
+    transition: all 0.3s ease;
 }
 .eventos div h1{
     padding: 0;
     margin: 0;
 }
 .eventos div:hover{
-    background-color: #7BCDD4;
+    background-color: #89d8d3;
 }
-
 
 /***** Descripción de los eventos *****/
 .contDesc{

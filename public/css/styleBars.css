@@ -31,10 +31,13 @@ body.login {
 
 /* header */
 header[role="banner"] {
-  background: #60a4ad;
+/*  background: #60a4ad;*/
+  background-color: #89d8d3;
   box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.15);
   display: flex;
   align-items: center;
+  justify-content: space-between;
+  padding: 0 10px;
 }
 header[role="banner"] h1 {
   margin: 0;

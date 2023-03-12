@@ -3,6 +3,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\clienteController;
 use App\Http\Controllers\entradaController;
 use App\Http\Controllers\gerenteController;
+use App\Http\Controllers\empleadoController;
 
 
 /*Route::get('/', function () {
@@ -32,4 +33,6 @@ Route::get('/inicio',[entradaController::class,'inicio'])->name('inicio');
 Route::get('nuestrosPaquetes', [clienteController::class, 'verPaquetes'])->name('paquetes');
 Route::get('misEventos', [clienteController::class, 'verEventos'])->name('eventos');
 Route::get('aboutWe', [clienteController::class, 'verInformacion'])->name('informacion');
+
+Route::get('empleado',[empleadoController::class, 'principal'])->name('empleadoPrin');
 
