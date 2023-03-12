@@ -228,6 +228,10 @@ button {
     color: black;
     font-size: 25px;
 }
+.selectPaq{
+    height: 30px;
+    width: 188px;
+}
 
 .desHora{
     display: flex;

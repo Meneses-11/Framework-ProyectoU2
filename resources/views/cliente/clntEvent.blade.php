@@ -55,8 +55,16 @@ Cliente
             <input type="text" name="typeEvnt" id="infor" placeholder="Tipo de Evento">
         </div>
         <div class="desCont">
-            <label for="infor">Paquetes:</label>
-            <input type="text" name="paqEvnt" id="infor" placeholder="Paquetes del Evento">
+            <label for="infor">Paquete:</label>
+          <!--  <input type="text" name="paqEvnt" id="infor" placeholder="Paquetes del Evento"> -->
+            <select class="selectPaq" name="paqEvnt" required placeholder="Elige una opcion">
+                <option value="">Elige un paquete</option>
+                <option>Boda</option>
+                <option>Fiest Infantil</option>
+                <option>Vacío</option>
+                <option>Graduacion</option>
+                <option>XV Años</option>
+            </select>
         </div>
         <div class="desCont">
             <label for="infor">Fecha:</label>
