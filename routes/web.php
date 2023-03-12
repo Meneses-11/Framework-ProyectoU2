@@ -2,6 +2,8 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\clienteController;
 use App\Http\Controllers\entradaController;
+use App\Http\Controllers\gerenteController;
+
 
 /*Route::get('/', function () {
     //return view('/plantillas/menuCliente');
@@ -9,15 +11,17 @@ use App\Http\Controllers\entradaController;
     return view('/cliente/clntEvent');
 });*/
 
-Route::get('/gerente/usuarios',function(){
-    return view('/gerente/inicio');
-})->name('listaUsuarios');
 
 Route::get('/',function(){
     return view('/entrada');
 })->name('login');
+
 Route::post('/validar',[entradaController::class,'validar'])->name('validar');
 Route::get('/error',[entradaController::class,'error'])->name('error');
+Route::get('/gerente/paquetes',[gerenteController::class,'paquetes'])->name('listaPaquetes');
+Route::get('/gerente/servicios',[gerenteController::class,'servicios'])->name('listaServicios');
+Route::get('/gerente/usuarios',[gerenteController::class,'usuarios'])->name('listaUsuarios');
+
 
 
 Route::get('verPaquetes', [clienteController::class, 'verPaquetes'])->name('paquetes');

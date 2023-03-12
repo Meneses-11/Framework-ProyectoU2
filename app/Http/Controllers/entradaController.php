@@ -23,4 +23,7 @@ class entradaController extends Controller
     public function error(){
         return view('error');
     }
+
+
+
 }
