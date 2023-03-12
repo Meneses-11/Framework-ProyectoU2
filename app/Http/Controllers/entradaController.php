@@ -18,6 +18,10 @@ class entradaController extends Controller
             # code...
             return redirect(route('listaUsuarios'));
 
+        }else if ($user=='empleado'&&$pass=='empleado'){
+            # code...
+            return view('/empleado/empldPrincipal');
+            
         }else {return redirect(route('error'));}
     }
     public function error(){
