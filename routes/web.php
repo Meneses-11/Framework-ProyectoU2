@@ -24,7 +24,7 @@ Route::get('/gerente/usuarios',[gerenteController::class,'usuarios'])->name('lis
 
 
 
-Route::get('verPaquetes', [clienteController::class, 'verPaquetes'])->name('paquetes');
-Route::get('verEventos', [clienteController::class, 'verEventos'])->name('eventos');
-Route::get('verInformacion', [clienteController::class, 'verInformacion'])->name('informacion');
+Route::get('nuestrosPaquetes', [clienteController::class, 'verPaquetes'])->name('paquetes');
+Route::get('misEventos', [clienteController::class, 'verEventos'])->name('eventos');
+Route::get('aboutWe', [clienteController::class, 'verInformacion'])->name('informacion');
 

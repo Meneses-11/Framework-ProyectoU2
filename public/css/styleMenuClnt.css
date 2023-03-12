@@ -1,8 +1,7 @@
 body{
-    background-color: rgb(255, 255, 255);
+    background-color: rgb(238, 16, 16);
     margin: 0px;
 }
-
 
 
 .imgLogo{
@@ -13,15 +12,15 @@ body{
 .contPadre{
     display: flex;
     justify-content: space-between;
-}
+    }
 
 .contEvent{
-    background-color: rgb(236, 236, 236);
+/*    background-color: rgb(236, 236, 236);*/
+    background-color: rgb(207, 207, 207);
     display: flex;
     width: 65%;
-    height: 85vh;
+    height: 82vh;
     border-radius: 15px;
-    margin: 10px 10px 10px 20px;
     flex-direction: column;
     align-items: center;
     box-shadow:inset 2px 2px 2px 0px rgba(255,255,255,.5),
@@ -48,11 +47,11 @@ button {
     margin: 20px;
 }
 .custom-btn {
-    width: 130px;
+    width: 120px;
     height: 40px;
     color: #fff;
     border-radius: 5px;
-    padding: 10px 25px;
+    padding: 10px 0;
     font-family: 'Lato', sans-serif;
     font-weight: 500;
     background: transparent;
@@ -72,6 +71,7 @@ button {
     background-image: linear-gradient(315deg, #89d8d3 0%, #03c8a8 74%);
     border: none;
     z-index: 1;
+    margin-right: 10px;
 }
 .btn-13:after {
     position: absolute;
@@ -105,13 +105,16 @@ button {
 
 .eventos{
     /*background-color: rgb(255, 255, 255);
-   */ height: 88%;
+   */ 
+
+    height: 88%;
     width: 95%;
     border-radius: 10px;
     overflow-y: scroll;
 }
 .eventos div{
-    background-color: rgb(207, 207, 207);
+/*    background-color: rgb(207, 207, 207);*/
+    background-color: #ffffff;
     height: 190px;
     width: 100%;
     border-radius: 12px;
@@ -122,13 +125,131 @@ button {
     margin: 0;
 }
 .eventos div:hover{
-    background-color: #fff;
+    background-color: rgb(221, 220, 220);
 }
 
+
+/***** Descripción de los eventos *****/
 .contDesc{
-    background-color: blue;
+    background-color: rgb(122, 211, 223);
     width: 30%;
-    height: 85vh;
+    height: 82vh;
     border-radius: 15px;
-    margin: 10px 20px 10px 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
+/*** Titulo del editor de evento ***/
+.descTitle{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 8px;
+}
+.titlEvent{/*Titulo*/
+    display: flex;
+    align-items: center;
+    padding-top: 8px;
+}
+.titlEvent h2{
+    margin: 0;
+}
+/*Contenedor con los botones*/
+.iconsDesc{
+    display: flex;
+    gap: 15px;
+}
+.btnIcon{/*Todos los botones*/
+    border-radius: 50%;
+    border: none;
+    width: 2rem;
+    height: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    -webkit-user-select: none;
+	   -moz-user-select: none;
+	    -ms-user-select: none;
+	        user-select: none;
+}
+.btnIcon:hover img{/*tomas las imagenes al seleccionar cualquier boton*/
+    color: white;
+    filter: brightness(0) saturate(100%) invert(99%) sepia(22%) saturate(0%) hue-rotate(139deg) brightness(117%) contrast(100%);
+}
+.iconsDesc img{/*Todas las imagenes*/
+    width: 20px;
+    height: 20px;
+    -webkit-transition: all 0.7s;
+	   -moz-transition: all 0.7s;
+	     -o-transition: all 0.7s;
+	        transition: all 0.7s;
+}
+.borr{/*Btn borrar*/
+	-webkit-transition: all 0.7s;
+	   -moz-transition: all 0.7s;
+	     -o-transition: all 0.7s;
+	        transition: all 0.7s;
+}
+.borr:hover{
+    background-color: #ff0000;
+    width: 2rem;
+	height: 2rem;
+	border-radius: 2rem;
+}
+.edit{/*Btn editar*/
+    -webkit-transition: all 0.7s;
+	   -moz-transition: all 0.7s;
+	     -o-transition: all 0.7s;
+	        transition: all 0.7s;
+}
+.edit:hover{
+    background-color: #126adf;
+}
+.mas{/*Btn agregar*/
+    -webkit-transition: all 0.7s;
+	   -moz-transition: all 0.7s;
+	     -o-transition: all 0.7s;
+	        transition: all 0.7s;
+}
+.mas:hover{
+    background-color: #23a24d;
+}
+
+.desCont{
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    align-items: center;
+    padding: 0 10px;
+}
+.desCont label{
+    color: black;
+    font-size: 25px;
+}
+
+.desHora{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+.desHora label{
+    color: black;
+    font-size: 18px;
+    margin: 0;
+    padding: 0;
+}
+
+.descTotal{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+}
+.descTotal label{
+    margin: 0;
+    font-size: 30px;
+    color: black;
+}
+/* */
+
