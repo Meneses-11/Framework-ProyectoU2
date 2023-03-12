@@ -17,7 +17,7 @@
     <h1>@yield('titulobar')</h1>
     <ul class="utilities">
       <br>
-      <li class="logout warn"><a href="{{ route('login') }}">Cerrar Sesion</a></li>
+      <li class="logout warn" style="color: red;"><a href="{{ route('login') }}">Cerrar Sesion</a></li>
     </ul>
   </header>
 
