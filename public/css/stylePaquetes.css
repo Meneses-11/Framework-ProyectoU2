@@ -6,26 +6,33 @@ img{
     display: grid;
     grid-template-columns: repeat(3, 3fr); /*cuantos items quiero*/
     gap: 20px;
+
 }
 
 .item{
+    border-width: thin;
+    border-style: solid;
+    border-color: #000;
     border-radius: 10px; /*borde de abajo*/
 }
 
 .item:hover{
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.20); /*tamaño de sombra*/
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.30); /*tamaño de sombra*/
+    border-radius: 10px; /*borde de abajo*/
+    /*border: solid;*/
 }
 
 .item img{
     width: 400px;
     height: 200px;
     object-fit: cover; /*adapta y centra la imagen*/
-    border-radius: 10px 10px 0 0; /*bordes de las imagenes*/
+    border-radius: 7px 7px 0 0; /*bordes de las imagenes*/
     transition: all .5s;
 }
 
 .item figure{
     overflow: hidden; /*oculta el contenido que salga de la caja*/
+    border-radius: 8px 8px 0 0; /*bordes de las imagenes*/
 }
 
 .item:hover img{
@@ -38,6 +45,7 @@ img{
     display: flex;
     flex-direction: column;
     gap: 10px;
+    border: none;
 }
 
 .price{
@@ -45,11 +53,11 @@ img{
     font-weight: 900;
 }
 
-.info-producto button{
+/*.info-producto button{
     border: none;
     background: none;
     background-color: darkgray;
     color: black;
     padding: 15px 10px;
     cursor: pointer;
-}
+}*/
