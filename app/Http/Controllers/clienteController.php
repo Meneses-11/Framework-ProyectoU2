@@ -15,4 +15,5 @@ class clienteController extends Controller
     public function verInformacion(){
         return view('cliente.clntInfo');
     }
+    
 }

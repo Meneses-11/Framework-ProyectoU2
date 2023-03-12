@@ -9,7 +9,12 @@ use App\Http\Controllers\gerenteController;
     //return view('/plantillas/menuCliente');
     //return view('welcome');
     return view('/cliente/clntEvent');
-});*/
+});
+
+public function verPantallainicio(){
+        return view('cliente.anPinicio');
+    }
+    */
 
 
 Route::get('/',function(){
