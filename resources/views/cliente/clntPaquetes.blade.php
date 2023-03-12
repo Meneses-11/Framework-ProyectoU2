@@ -9,7 +9,9 @@
     </ul>
 @endsection
 
-
+@section('titulobar')
+Paquetes Disponibles
+@endsection
 
 @section('contenido')
 
