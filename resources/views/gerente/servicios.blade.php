@@ -1,10 +1,7 @@
 @extends('plantillas.menuGerente')
 
 @section('titulo')
-Usuarios
-@endsection
-@section('links')
-
+Servicios
 @endsection
 @section('titulobar')
 Admin Gerente
@@ -19,14 +16,13 @@ Admin Gerente
 
 @extends('plantillas.tabla')
 @section('tituloTabla')
-<h2>Lista de Usuarios</h2>
+<h2>Lista de Servicios</h2>
 @endsection
 @section('columnas')
+        <th>ID servicio</th>
         <th>Nombre</th>
-        <th>Correo</th>
-        <th>Telefono</th>
-        <th>Dirección</th>
-        <th>Fecha de Nacimiento</th>
+        <th>Descripción</th>
+        <th>Precio</th>
         <th>Acciones</th>
 @endsection
 @section('tablaContenido')
@@ -39,11 +35,10 @@ Admin Gerente
             <label for="checkbox1"></label>
         </span>
     </td>
-    <td>Cliente{{ $i }}</td>
-    <td>Cliente{{ $i.'@gmail.com'}}</td>
-    <td>961333567{{ $i }}</td>
-    <td>Dirección{{ $i }}</td>
-    <td>Fecha de nacimiento{{ $i }}</td>
+    <td>{{ $i }}</td>
+    <td>Noambre{{ $i}}</td>
+    <td>Descripción{{ $i }}</td>
+    <td>${{ $i }}</td>
     <td>
         <div class="d-inline-flex p-n2 align-items-center">
             <a href="#editEmployeeModal" class="edit" data-toggle="modal"><i class="fas fa-pen" data-toggle="tooltip" title="Editar"></i></a>
