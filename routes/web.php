@@ -12,9 +12,7 @@ use App\Http\Controllers\gerenteController;
 });*/
 
 
-Route::get('/',function(){
-    return redirect(route('inicio'));
-})->name('inicio');
+Route::get('/',function(){return redirect(route('inicio')); })->name('inicio');
 
 Route::get('/login',function(){
     return view('entrada');
