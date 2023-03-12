@@ -12,9 +12,9 @@ html {
 }
 
 body {
-  background: #f1f2f7;
   font-family: "Open Sans", arial, sans-serif;
   color: darkslategray;
+  background-color: #E0E8FA;
 }
 
 body.login {
@@ -33,6 +33,8 @@ body.login {
 header[role="banner"] {
   background: #60a4ad;
   box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.15);
+  display: flex;
+  align-items: center;
 }
 header[role="banner"] h1 {
   margin: 0;
@@ -396,6 +398,7 @@ td {
   html,
   body {
     height: 100%;
+    background-color: #E0E8FA;
   }
 
   header[role="banner"] {
@@ -431,6 +434,7 @@ td {
 
   main[role="main"] {
     margin: 75px 0 40px 200px;
+    background-color: #E0E8FA;
   }
   main[role="main"]:after {
     content: "";

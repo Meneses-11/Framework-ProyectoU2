@@ -15,8 +15,8 @@
   <link rel="stylesheet" href="/css/styletabla.css">
 </head>
 <header role="banner">
-    <h1>@yield('titulobar')</h1>
-  </header>
+  @yield('titulobar')
+</header>
 
   <nav  role='navigation'>
     <ul class="main">

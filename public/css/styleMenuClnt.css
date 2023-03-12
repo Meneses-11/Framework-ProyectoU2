@@ -1,6 +1,6 @@
 body{
-    background-color: rgb(238, 16, 16);
     margin: 0px;
+    background-color: #E0E8FA;
 }
 
 
@@ -12,13 +12,15 @@ body{
 .contPadre{
     display: flex;
     justify-content: space-between;
-    }
+    background-color: #E0E8FA;
+    flex-wrap: wrap;
+}
 
 .contEvent{
 /*    background-color: rgb(236, 236, 236);*/
-    background-color: rgb(207, 207, 207);
+    background-color: #BEF7FC ;
     display: flex;
-    width: 65%;
+    width: 700px;
     height: 82vh;
     border-radius: 15px;
     flex-direction: column;
@@ -125,14 +127,14 @@ button {
     margin: 0;
 }
 .eventos div:hover{
-    background-color: rgb(221, 220, 220);
+    background-color: #7BCDD4;
 }
 
 
 /***** Descripción de los eventos *****/
 .contDesc{
     background-color: rgb(122, 211, 223);
-    width: 30%;
+    width: 325px;
     height: 82vh;
     border-radius: 15px;
     display: flex;

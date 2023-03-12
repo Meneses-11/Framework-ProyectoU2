@@ -3,7 +3,8 @@
 Cliente
 @endsection
 @section('titulobar')
-Cliente
+<img src="img/logo.png" alt="Logo" class="imgLogo">
+<h1>Cliente</h1>
 @endsection
 @section('menu')
     <li class="edit"><a href="{{route('paquetes')}}">Paquetes</a></li>
