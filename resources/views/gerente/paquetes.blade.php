@@ -5,7 +5,7 @@ Paquetes
 @endsection
 @section('titulobar')
 <div class="contentEmpresa">
-    <img src="img/logo.png" alt="Logo" class="imgLogo">
+    <img src="{{ asset('img/logo.png') }}" alt="Logo" class="imgLogo">
     <h1 class="empresah1">Eleganza</h1>
     <div><h1>Admin Gerente Paquetes</h1></div>
 </div>

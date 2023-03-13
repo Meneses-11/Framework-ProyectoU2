@@ -14,7 +14,7 @@
             $("#register").click(function(){
               $("#login").css("background-color", "#ecf0f1");
               $("#login > span").css("color", "#333");
-              $("#register").css("background-color", "#e74c3c");
+              $("#register").css("background-color", "#89d8d3");
               $("#register > span").css("color", "white");
               $("#l-f").toggle(500);
               $("#r-f").toggle(1000);
@@ -22,7 +22,7 @@
             $("#login").click(function(){
               $("#register").css("background-color", "#ecf0f1");
               $("#register > span").css("color", "#333");
-              $("#login").css("background-color", "#e74c3c");
+              $("#login").css("background-color", "#89d8d3");
               $("#login > span").css("color", "white");
               $("#l-f").toggle(1000);
               $("#r-f").toggle(500);

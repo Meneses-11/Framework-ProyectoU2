@@ -30,7 +30,7 @@ body {
     width:49.8%;
     height:50px;
     float:left;
-    background-color:#e74c3c;
+    background-color:#89d8d3;
     transition: background-color 0.8s ease;
     cursor:pointer;
 }
@@ -79,7 +79,7 @@ body {
     transition:border 1.0s ease;
 }
 .l-username:focus {
-    border:1px solid #FF5252;
+    border:1px solid rgb(122, 211, 223);;
 }
 
 .l-password {
@@ -94,7 +94,7 @@ body {
     transition:border 1.0s ease;
 }
 .l-password:focus {
-    border:1px solid #FF5252;
+    border:1px solid #89d8d3;
 }
 .l-submit {
     width:150px;
@@ -104,9 +104,9 @@ body {
     outline:none;
     font-size:25px;
     font-family:Raleway;
-    background-color:#e74c3c;
+    background-color:#89d8d3;
     color:white;
-    border-bottom:5px solid #c0392b;
+    border-bottom:5px solid #89d8d3;
     cursor:pointer;
 }
 #r-f {
@@ -154,22 +154,22 @@ body {
     outline:none;
     font-size:25px;
     font-family:Raleway;
-    background-color:#e74c3c;
+    background-color:#89d8d3;
     color:white;
-    border-bottom:5px solid #c0392b;
+    border-bottom:5px solid #68b1ad;
     cursor:pointer;
 }
 .r  -password:focus {
-    border:1px solid #FF5252;
+    border:1px solid rgb(122, 211, 223);
 }
 .r-username:focus {
-    border:1px solid #FF5252;
+    border:1px solid rgb(122, 211, 223);
 }
 .r-email:focus {
-    border:1px solid #FF5252;
+    border:1px solid rgb(122, 211, 223);
 }
 .accent-text {
-    color: #e74c3c;
+    color: rgb(122, 211, 223);
     transition:color 1s;
 }
 
