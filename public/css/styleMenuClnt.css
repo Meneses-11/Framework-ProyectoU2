@@ -129,6 +129,9 @@ button {
 
     cursor: pointer;
     transition: all 0.3s ease;
+
+    display: flex;
+    justify-content: space-between;
 }
 .eventos div h1{
     padding: 0;
@@ -136,6 +139,14 @@ button {
 }
 .eventos div:hover{
     background-color: #89d8d3;
+}
+.add{
+    height: 50px;
+    margin: 10px 10px 0 0;
+}
+.add:hover{
+    background-color: #D3FFD5 !important;
+    color: black !important;
 }
 
 /***** Descripción de los eventos *****/

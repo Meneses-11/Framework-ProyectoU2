@@ -3,11 +3,12 @@
 @section('titulo')
 Usuarios
 @endsection
-@section('links')
-
-@endsection
 @section('titulobar')
-Admin Gerente
+<div class="contentEmpresa">
+    <img src="img/logo.png"class="imgLogo">
+    <h1 >Eleganza</h1>
+    <div>Admin Gerente</div>
+</div>
 @endsection
 @section('menu')
     <li class="dashboard"><a href="{{ route('listaUsuarios') }}">Administrar Usuarios</a></li>
