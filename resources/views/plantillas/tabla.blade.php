@@ -84,12 +84,12 @@
             <div class="modal-content">
                 <form>
                 <div class="modal-header">
-                    <h4 class="modal-title">Editar usuario</h4>
+                    <h4 class="modal-title">Editar Paquete</h4>
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                 </div>
                 <div class="modal-body">
                     <div class="form-group">
-                    <<label>Nombre del Paquete</label>
+                    <label>Nombre del Paquete</label>
                     <input type="text" class="form-control" required>
                     </div>
                     <div class="form-group">
