@@ -30,32 +30,13 @@ Cliente
             <button class="custom-btn btn-13">Crear Evento</button>
         </div>
         <div class="eventos">
+            @for($i = 1; $i < 18; $i++)
             <div class="evento">
-                <h1>Evento 1</h1>
-                <button type="button" class="btn btn-success add" data-toggle="modal" data-target="#modalImg"> Add
-                </button>
+            <h1>Evento {{ $i }}</h1>
+            <button type="button" class="custom-btn btn-13" data-toggle="modal" data-target="#modalImg" style="margin: 10px;"> Añadir Imagen
+            </button>
             </div>
-            <div class="evento"><h1>Evento 2</h1>
-            <button type="button" class="btn btn-success add" data-toggle="modal" data-target="#modalImg"> Add
-                </button></div>
-            <div class="evento"><h1>Evento 3</h1>
-            <button type="button" class="btn btn-success add" data-toggle="modal" data-target="#modalImg"> Add
-                </button></div>
-            <div class="evento"><h1>Evento 4</h1>
-            <button type="button" class="btn btn-success add" data-toggle="modal" data-target="#modalImg"> Add
-                </button></div>
-            <div class="evento"><h1>Evento 5</h1>
-            <button type="button" class="btn btn-success add" data-toggle="modal" data-target="#modalImg"> Add
-                </button></div>
-            <div class="evento"><h1>Evento 6</h1>
-            <button type="button" class="btn btn-success add" data-toggle="modal" data-target="#modalImg"> Add
-                </button></div>
-            <div class="evento"><h1>Evento 7</h1>
-            <button type="button" class="btn btn-success add" data-toggle="modal" data-target="#modalImg"> Add
-                </button></div>
-            <div class="evento"><h1>Evento 8</h1>
-            <button type="button" class="btn btn-success add" data-toggle="modal" data-target="#modalImg"> Add
-                </button></div>
+            @endfor
         </div>
     </div>
     <div class="contDesc">
@@ -98,13 +79,13 @@ Cliente
             <input type="text" name="dateEvnt" id="infor" placeholder="Fecha del Evento">
 
         </div>
-        <div class="desHora">            
+        <div class="desHora">
             <label for="infor">Hr. Inicio:</label>
             <input type="time" name="hrIniEvnt" id="infor">
             <label for="infor">Hr. Fin:</label>
             <input type="time" name="hrFinEvnt" id="infor">
         </div>
-        <div class="descTotal">            
+        <div class="descTotal">
             <label for="infor">Total:</label>
             <label for="infor">$100</label>
         </div>
