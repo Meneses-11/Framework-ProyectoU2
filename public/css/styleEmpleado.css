@@ -1,0 +1,26 @@
+/*
+body{
+    margin: 0;
+    padding: 0;
+}
+
+.contentEmpresa{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.imgLogo{
+    height: 70px;
+    filter: brightness(0) saturate(100%) invert(0%) sepia(0%) saturate(0%) hue-rotate(268deg) brightness(107%) contrast(107%);
+}
+
+.empleadoPrincipal{
+    background-color: white;
+    width: 85%;
+    height: 100vh;
+    margin: 50px 0 0 200px;
+}
+
+*/
+
+
