@@ -16,7 +16,6 @@ Empleado
 </div>
 @endsection
 @section('menu')
-    <li class="edit"><a href="{{route('paquetes')}}">------</a></li>
 @endsection
 @contend('contenido')
     <div class="empleadoPrincipal">
@@ -142,7 +141,7 @@ Empleado
     }
 </style>
 <h1>Agregar abonos a un evento</h1>
-	<form>
+	<form action="{{ route('empleadoPrin') }}" method="">
 		<label for="evento">Evento:</label>
 		<select id="evento" name="evento">
 			<option value="">Seleccione un evento</option>
@@ -161,4 +160,3 @@ Empleado
 	</form>
 @endcontend
 
-  
