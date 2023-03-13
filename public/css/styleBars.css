@@ -10,7 +10,15 @@ html {
 *:after {
   box-sizing: inherit;
 }
-
+.contentEmpresa{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.imgLogo{
+    height: 70px;
+    filter: brightness(0) saturate(100%) invert(0%) sepia(0%) saturate(0%) hue-rotate(268deg) brightness(107%) contrast(107%);
+}
 body {
   font-family: "Open Sans", arial, sans-serif;
   color: darkslategray;

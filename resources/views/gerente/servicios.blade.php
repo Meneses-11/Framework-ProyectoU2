@@ -4,7 +4,11 @@
 Servicios
 @endsection
 @section('titulobar')
-Admin Gerente
+<div class="contentEmpresa">
+    <img src="img/logo.png" alt="Logo" class="imgLogo">
+    <h1 class="empresah1">Eleganza</h1>
+    <div><h1>Servicios</h1></div>
+</div>
 @endsection
 @section('menu')
     <li class="dashboard"><a href="{{ route('listaUsuarios') }}">Administrar Usuarios</a></li>
