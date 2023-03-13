@@ -14,7 +14,7 @@
   <link rel="stylesheet" href="/css/styletabla.css">
 </head>
 <header role="banner">
-    <h1>Inicio</h1> <h4><div class=irLogin><a href="{{ route('login') }}">Iniciar Sesion</a></h4></div>
+    <h1>Inicio</h1> <h6><div class=irLogin><a href="{{ route('login') }}">Iniciar Sesion</a></h6></div>
 
    </header>
 
