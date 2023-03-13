@@ -5,7 +5,7 @@ Usuarios
 @endsection
 @section('titulobar')
 <div class="contentEmpresa">
-    <img src="img/logo.png"class="imgLogo">
+    <img src="{{ asset('img/logo.png') }}" class="imgLogo">
     <h1 >Eleganza</h1>
     <div>Admin Gerente</div>
 </div>
