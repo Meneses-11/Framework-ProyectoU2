@@ -18,7 +18,6 @@
 
    </header>
 
-
 <body>
     <main role="main">
         <section class="panel important">

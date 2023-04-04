@@ -1,10 +1,11 @@
 <?php
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\clienteController;
+use App\Http\Controllers\ClientesController;
 use App\Http\Controllers\entradaController;
 use App\Http\Controllers\gerenteController;
 use App\Http\Controllers\empleadoController;
-
+use App\Http\Controllers\UsuariosController;
 
 /*Route::get('/', function () {
     //return view('/plantillas/menuCliente');
@@ -23,7 +24,7 @@ Route::post('/validar',[entradaController::class,'validar'])->name('validar');
 Route::get('/error',[entradaController::class,'error'])->name('error');
 Route::get('/gerente/paquetes',[gerenteController::class,'paquetes'])->name('listaPaquetes');
 Route::get('/gerente/servicios',[gerenteController::class,'servicios'])->name('listaServicios');
-Route::get('/gerente/usuarios',[gerenteController::class,'usuarios'])->name('listaUsuarios');
+Route::get('/gerente/usuarios1',[gerenteController::class,'usuarios'])->name('listaUsuarios');
 
 Route::get('/inicio',[entradaController::class,'inicio'])->name('inicio');
 
@@ -33,4 +34,4 @@ Route::get('misEventos', [clienteController::class, 'verEventos'])->name('evento
 Route::get('aboutWe', [clienteController::class, 'verInformacion'])->name('informacion');
 
 Route::get('empleado',[empleadoController::class, 'principal'])->name('empleadoPrin');
-
+Route::resource('/usuarios', UsuariosController::class);
