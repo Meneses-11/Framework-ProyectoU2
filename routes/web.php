@@ -22,7 +22,7 @@ Route::get('/login',function(){
 
 Route::post('/validar',[entradaController::class,'validar'])->name('validar');
 Route::get('/error',[entradaController::class,'error'])->name('error');
-Route::get('/gerente/paquetes',[gerenteController::class,'paquetes'])->name('listaPaquetes');
+Route::get('/gerente/test',[gerenteController::class,'test'])->name('test');
 Route::get('/gerente/servicios',[gerenteController::class,'servicios'])->name('listaServicios');
 Route::get('/gerente/usuarios1',[gerenteController::class,'usuarios'])->name('listaUsuarios');
 
@@ -34,4 +34,15 @@ Route::get('misEventos', [clienteController::class, 'verEventos'])->name('evento
 Route::get('aboutWe', [clienteController::class, 'verInformacion'])->name('informacion');
 
 Route::get('empleado',[empleadoController::class, 'principal'])->name('empleadoPrin');
-Route::resource('/usuarios', UsuariosController::class);
+
+Route::resource('gerente', UsuariosController::class, [
+    'names' => [
+        'index' => 'usuarios.index',
+        'show' => 'usuario.detalle',
+        'create' => 'usuario.create',
+        'store' => 'usuarios.store',
+        'destroy' => 'usuarios.destroy',
+        'edit' => 'usuarios.editar',
+        'update' => 'usuarios.actualizar',
+    ],
+]);

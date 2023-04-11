@@ -16,15 +16,6 @@ class Evento extends Model
         return $this->belongsTo(Usuario::class, 'id_usuario');
     }
 
-    public function gerente()
-    {
-        return $this->belongsTo(Gerente::class, 'id_gerente');
-    }
-
-    public function empleado()
-    {
-        return $this->belongsTo(Empleado::class, 'id_empleado');
-    }
     public function paquete()
     {
         return $this->belongsTo(Paquete::class, 'id_paquete');

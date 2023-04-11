@@ -2,27 +2,27 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Usuario;
 use Illuminate\Http\Request;
 
 class entradaController extends Controller
 {
 
     public function validar(Request $sol){
-        $user = $sol->input('usuario');
-        $pass = $sol->input('password');
-        if ($user=='cliente'&&$pass=='cliente') {
-            # code...
-            return view('/cliente/clntEvent');
-
-        }else if ($user=='admin'&&$pass=='admin') {
-            # code...
-            return redirect(route('listaUsuarios'));
-
-        }else if ($user=='empleado'&&$pass=='empleado'){
-            # code...
-            return view('/empleado/empldPrincipal');
-            
-        }else {return redirect(route('error'));}
+        $user = Usuario::where('nombre_usuario', $sol->input('usuario'))
+                    ->where('contraseña', $sol->input('password'))
+                    ->first();
+        if ($user) {
+            if ($user->rol == 'Cliente') {
+                return view('/cliente/clntEvent');
+            } else if ($user->rol == 'Gerente') {
+                return redirect(route('usuarios.index'));
+            } else if ($user->rol  == 'Empleado') {
+                return view('/empleado/empldPrincipal');
+            }
+        } else {
+            return redirect(route('error'));
+        }
     }
     public function error(){
         return view('error');

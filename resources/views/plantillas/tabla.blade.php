@@ -9,8 +9,8 @@
                             @yield('tituloTabla1')
                         </div>
                         <div class="col-sm-6">
-                            <a href="#addEmployeeModal" class="btn btn-success" data-toggle="modal"><i class="fas fa-plus-circle"></i><span>Añadir Nuevo</span></a>
-                            <a href="#deleteEmployeeModal" class="btn btn-danger" data-toggle="modal"><i class="fas fa-minus-circle"></i><span>Eliminar Seleccionados</span></a>
+                            <a href="{{ route('usuario.create') }}" class="btn btn-success"><i class="fas fa-plus-circle"></i><span>Añadir Nuevo Usuario</span></a>
+                            <a href="#eliminarModal" class="btn btn-danger" data-toggle="modal"><i class="fas fa-minus-circle"></i><span>Eliminar Seleccionados</span></a>
                         </div>
                     </div>
                 </div>
@@ -43,8 +43,8 @@
                         @yield('tituloTabla2')
                     </div>
                     <div class="col-sm-6">
-                        <a href="#addEmployeeModal" class="btn btn-success" data-toggle="modal"><i class="fas fa-plus-circle"></i><span>Añadir Nuevo</span></a>
-                        <a href="#deleteEmployeeModal" class="btn btn-danger" data-toggle="modal"><i class="fas fa-minus-circle"></i><span>Eliminar Seleccionados</span></a>
+                        <a href="{{ route('usuario.create') }}" class="btn btn-success"><i class="fas fa-plus-circle"></i><span>Añadir Nuevo</span></a>
+                        <a href="#eliminarModal" class="btn btn-danger" data-toggle="modal"><i class="fas fa-minus-circle"></i><span>Eliminar Seleccionados</span></a>
                     </div>
                 </div>
             </div>
@@ -77,8 +77,8 @@
                     @yield('tituloTabla3')
                 </div>
                 <div class="col-sm-6">
-                    <a href="#addEmployeeModal" class="btn btn-success" data-toggle="modal"><i class="fas fa-plus-circle"></i><span>Añadir Nuevo</span></a>
-                    <a href="#deleteEmployeeModal" class="btn btn-danger" data-toggle="modal"><i class="fas fa-minus-circle"></i><span>Eliminar Seleccionados</span></a>
+                    <a href="{{ route('usuario.create') }}" class="btn btn-success"><i class="fas fa-plus-circle"></i><span>Añadir Nuevo</span></a>
+                    <a href="#eliminarModal" class="btn btn-danger" data-toggle="modal"><i class="fas fa-minus-circle"></i><span>Eliminar Seleccionados</span></a>
                 </div>
             </div>
         </div>

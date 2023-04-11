@@ -7,8 +7,8 @@ use Illuminate\Http\Request;
 class gerenteController extends Controller
 {
     //
-    public function paquetes(){
-        return view('gerente.paquetes');
+    public function test(){
+        return view('gerente.gtest');
     }
     public function servicios(){
         return view('gerente.servicios');
