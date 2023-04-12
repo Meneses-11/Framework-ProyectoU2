@@ -6,6 +6,7 @@ use App\Http\Controllers\entradaController;
 use App\Http\Controllers\gerenteController;
 use App\Http\Controllers\empleadoController;
 use App\Http\Controllers\UsuariosController;
+use App\Http\Controllers\EventoController;
 
 /*Route::get('/', function () {
     //return view('/plantillas/menuCliente');
@@ -46,3 +47,5 @@ Route::resource('gerente', UsuariosController::class, [
         'update' => 'usuarios.actualizar',
     ],
 ]);
+
+Route::resource('evento', EventoController::class);

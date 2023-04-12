@@ -26,7 +26,7 @@ Cliente
         <div class="contTitEvent">
             <img src="{{ asset('img/copas-icon.png') }}" alt="">
             <h1 class="titEvent">Mis eventos</h1>
-            <button class="custom-btn btn-13">Crear Evento</button>
+            <button class="custom-btn btn-13"><a href="{{route('evento.create')}}">Crear Evento</a></button>
         </div>
         <div class="eventos">
             @for($i = 1; $i < 18; $i++)
@@ -90,4 +90,27 @@ Cliente
         </div>
     </div>
 </div>
+<table border="1">
+    <thead>
+        <th>#</th>
+        <th>Cliente</th>
+        <th>Total</th>
+        <th>Fecha</th>
+        <th>Personas</th>
+    </thead>
+    <tbody>
+        @foreach ($eventos as $event)
+        <tr>
+            <td>{{$event->id_evento}}</td>
+            <td>{{$event->id_usuario}}</td>
+            <td>{{$event->precio}}</td>
+            <td>{{$event->fecha}}</td>
+            <td>{{$event->num_personas}}</td>
+        </tr>
+        
+        @endforeach
+
+    </tbody>
+
+</table>
 @endsection
