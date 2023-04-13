@@ -14,8 +14,10 @@ return new class extends Migration
         Schema::create('paquetes', function (Blueprint $table) {
             $table->increments('id_paquete');
             $table->string('nombre');
+            $table->boolean('activo')->default(false);
             $table->float('precio');
             $table->string('descripcion');
+            $table->string('nombre_foto');
             $table->timestamps();
         });
     }

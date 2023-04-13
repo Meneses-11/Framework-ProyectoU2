@@ -28,15 +28,11 @@
   </nav>
 
 
-<body class="" style="margin-left: 200px;">
-    <main role="main">
-        <section class="panel important">
+<body style="margin-left: 200px;">
         <div >
             @yield('contenido')
 
         </div>
-        </section>
-
 </body>
 <script>
     $(document).ready(function(){

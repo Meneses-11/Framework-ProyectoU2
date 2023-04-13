@@ -18,7 +18,7 @@ Registro de Usuarios
             <h1 class="text-center">Registro de Usuarios</h1>
           </div>
           <div class="card-body">
-            <form action="{{ route('usuarios.store') }}" method="POST">
+            <form action="{{ route('usuario.llenar') }}" method="POST">
                 @csrf
               <div class="mb-3">
                 <label for="name" class="form-label">Nombre:</label>
@@ -74,8 +74,8 @@ Registro de Usuarios
                 <input type="tel" id="numero" name="direccion" class="form-control" placeholder="Ingresa tu direccón" required>
               </div>
               <div class="d-grid gap-2">
-                <button type="submit" class="btn btn-primary btn-block">Registrarse</button>
-                <button type="button" class="btn btn-danger btn-block mt-2" onclick="window.location.href='{{ route('usuarios.index') }}'">Cancelar</button>
+                <button type="submit" class="btn btn-primary btn-block">Registrar Usuario</button>
+                <button type="button" class="btn btn-danger btn-block mt-2" onclick="window.location.href='{{ route('usuario.inicio') }}'">Cancelar</button>
               </div>
             </form>
           </div>

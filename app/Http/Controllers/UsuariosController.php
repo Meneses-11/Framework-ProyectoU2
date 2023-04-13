@@ -11,12 +11,18 @@ class UsuariosController extends Controller
     public function index()
     {
         $clientes = Usuario::all();
-        return view('gerente.inicio', compact('clientes'));
+        return view('gerente.usuarios.inicio', compact('clientes'));
     }
 
     public function create()
     {
-        return view('gerente.agregar');
+        return view('gerente.usuarios.agregar');
+    }
+    public function show(string $id)
+    {
+        //
+        $alguien = Usuario::find($id);
+        return view('gerente.usuarios.detalle', compact('alguien'));
     }
 
     public function store(Request $request)
@@ -33,13 +39,13 @@ class UsuariosController extends Controller
         $usuario->telefono = $request->telefono;
         $usuario->save();
 
-        return redirect()->route('usuarios.index')->with('success', 'Cliente creado correctamente.');
+        return redirect()->route('usuario.inicio')->with('success', 'Cliente creado correctamente.');
     }
 
     public function edit($alguien)
     {
         $alguien = Usuario::find($alguien);
-        return view('gerente.editar', compact('alguien'));
+        return view('gerente.usuarios.editar', compact('alguien'));
     }
 
     public function update(Request $request, $usuario)
@@ -56,7 +62,7 @@ class UsuariosController extends Controller
         $usuario->telefono = $request->telefono;
         $usuario->save();
 
-        return redirect()->route('usuarios.index')->with('success', 'Cliente actualizado correctamente.');
+        return redirect()->route('usuario.inicio')->with('success', 'Cliente actualizado correctamente.');
     }
 
     public function destroy($usuario)
@@ -64,9 +70,9 @@ class UsuariosController extends Controller
         $usuario = Usuario::find($usuario);
         if ($usuario) {
             $usuario->delete();
-            return redirect()->route('usuarios.index')->with('success', 'Usuario eliminado correctamente.');
+            return redirect()->route('usuario.inicio')->with('success', 'Usuario eliminado correctamente.');
         } else {
-            return redirect()->route('usuarios.index')->with('error', 'No se pudo eliminar el usuario.');
+            return redirect()->route('usuario.inicio')->with('error', 'No se pudo eliminar el usuario.');
         }
     }
 }

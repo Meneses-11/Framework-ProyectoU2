@@ -1,0 +1,33 @@
+.user-profile .user-profile-card {
+    position: relative;
+    padding-top: 0;
+    overflow: hidden;
+  }
+
+  .user-profile-card .user-profile-header {
+    background: url("http://lorempixel.com/850/280/nature/4/");
+    background-size: cover;
+    height: 135px;
+  }
+
+  .user-profile-card .user-profile-avatar {
+    position: relative;
+    top: -100px;
+    margin-bottom: -100px;
+    padding: 0 15px;
+  }
+
+  .user-profile-card .user-profile-avatar img {
+    width: 200px;
+    height: 200px;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    border-radius: 50%;
+    border: 2px solid rgba(255,255,255,0.5);
+  }
+
+  .user-profile small {
+    display: block;
+    line-height: 1.428571429;
+    color: #999;
+  }

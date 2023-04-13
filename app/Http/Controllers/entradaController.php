@@ -16,7 +16,7 @@ class entradaController extends Controller
             if ($user->rol == 'Cliente') {
                 return view('/cliente/clntEvent');
             } else if ($user->rol == 'Gerente') {
-                return redirect(route('usuarios.index'));
+                return redirect(route('usuario.inicio'));
             } else if ($user->rol  == 'Empleado') {
                 return view('/empleado/empldPrincipal');
             }
