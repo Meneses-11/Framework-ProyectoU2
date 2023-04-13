@@ -106,6 +106,15 @@ Cliente
             <td>{{$event->precio}}</td>
             <td>{{$event->fecha}}</td>
             <td>{{$event->num_personas}}</td>
+            <td>
+                <a href="{{route('evento.edit',$event->id_evento)}}">ACTUALIZAR</a>
+            </td>
+            <td>
+                <form action="{{route('evento.destroy', $event->id_evento)}}" method="POST">
+                    @method('DELETE')
+                    @csrf
+                    <input type="submit" value="BORRAR">
+                </form></td>
         </tr>
         
         @endforeach

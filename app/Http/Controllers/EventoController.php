@@ -33,7 +33,6 @@ class EventoController extends Controller
      */
     public function store(Request $request)
     {
-        //
         $newEvent = new Evento;
         $newEvent->id_usuario = $request->idUsuario;
         $newEvent->id_paquete = $request->idPaquete;
@@ -47,26 +46,6 @@ class EventoController extends Controller
         $newEvent->save();
 
         return redirect(route('evento.index'));
-        /* 
-        $nuevo = new Estudiante();
-        $nuevo->nombre = $request->input('nombre');
-        $nuevo->save();
-        return redirect(route('estudiantes.index'));
-
-
-
-        $usuario = new Usuario;
-        $usuario->nombre = $request->nombre;
-        $usuario->apellido = $request->apellido;
-        $usuario->nombre_usuario = $request->nusuario;
-        $usuario->contraseña = $request->pass;
-        $usuario->rol = $request->seleccion;
-        $usuario->fecha_nacimiento = date($request->fecha);
-        $usuario->direccion = $request->direccion;
-        $usuario->email = $request->correo;
-        $usuario->telefono = $request->telefono;
-        $usuario->save();
-        */
     }
 
     /**
@@ -80,24 +59,39 @@ class EventoController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Evento $evento)
     {
-        //
+        return view('cliente.editar', compact('evento'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, Evento $evento)
     {
-        //
+        
+        $evento->id_usuario = $request->idUsuario;
+        $evento->id_paquete = $request->idPaquete;
+        $evento->id_servicio = $request->idServicio;
+        $evento->precio = $request-> precio;
+        $evento->fecha = date($request-> fecha);
+        $evento->hora_inicio = Carbon::parse($request->hrIni)->format('H:i:s');
+        $evento->hora_fin = Carbon::parse($request->hrFin)->format('H:i:s');
+        $evento->descripcion = $request-> descripcion;
+        $evento->num_personas = $request-> numPersonas;
+        $evento->save();
+
+        return redirect(route('evento.index'));
+
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Evento $evento)
     {
         //
+        $evento -> delete();
+        return redirect(route('evento.index'));
     }
 }
