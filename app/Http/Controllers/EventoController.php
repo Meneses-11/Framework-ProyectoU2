@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Evento;
+use App\Models\Paquete;
+use App\Models\Servicio;
 use Carbon\Carbon;
 
 class EventoController extends Controller
@@ -15,8 +17,11 @@ class EventoController extends Controller
     {
         //
         $eventos = Evento::all();
+        $usuario = session('id');
+        $paquetes = Paquete::pluck('id_paquete','nombre');
+        $servicios = Servicio::pluck('id_servicio','nombre');
 
-        return view('cliente.clntEvent', compact('eventos'));
+        return view('cliente.clntEvent', compact('eventos','usuario','paquetes','servicios'));
     }
 
     /**
@@ -25,7 +30,9 @@ class EventoController extends Controller
     public function create()
     {
         //
-        return view('cliente.agregar');
+        $paquetes = Paquete::pluck('id_paquete','nombre');
+        $servicios = Servicio::pluck('id_servicio','nombre');
+        return view('cliente.agregar', compact('paquetes','servicios'));
     }
 
     /**
@@ -33,8 +40,11 @@ class EventoController extends Controller
      */
     public function store(Request $request)
     {
+
+        $usuario = session('id');
+
         $newEvent = new Evento;
-        $newEvent->id_usuario = $request->idUsuario;
+        $newEvent->id_usuario = $usuario;
         $newEvent->id_paquete = $request->idPaquete;
         $newEvent->id_servicio = $request->idServicio;
         $newEvent->precio = $request-> precio;
@@ -61,7 +71,9 @@ class EventoController extends Controller
      */
     public function edit(Evento $evento)
     {
-        return view('cliente.editar', compact('evento'));
+        $paquetes = Paquete::pluck('id_paquete','nombre');
+        $servicios = Servicio::pluck('id_servicio','nombre');
+        return view('cliente.editar', compact('evento','paquetes','servicios'));
     }
 
     /**
@@ -69,8 +81,9 @@ class EventoController extends Controller
      */
     public function update(Request $request, Evento $evento)
     {
-        
-        $evento->id_usuario = $request->idUsuario;
+        $usuario = session('id');
+
+        $evento->id_usuario = $usuario;
         $evento->id_paquete = $request->idPaquete;
         $evento->id_servicio = $request->idServicio;
         $evento->precio = $request-> precio;

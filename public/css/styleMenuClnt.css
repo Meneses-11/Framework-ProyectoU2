@@ -14,26 +14,6 @@ body{
 }
 
 
-.contPadre{
-    display: flex;
-    justify-content: space-between;
-    background-color: #E0E8FA;
-    flex-wrap: wrap;
-}
-
-.contEvent{
-/*    background-color: rgb(236, 236, 236);*/
-    background-color: #BEF7FC ;
-    display: flex;
-    width: 700px;
-    height: 82vh;
-    border-radius: 15px;
-    flex-direction: column;
-    align-items: center;
-    box-shadow:inset 2px 2px 2px 0px rgba(255,255,255,.5),
-     7px 7px 20px 0px rgba(0,0,0,.1),
-     4px 4px 5px 0px rgba(0,0,0,.1);
-}
 .contTitEvent{
     display: flex;
     width: 100%;
@@ -70,6 +50,8 @@ button {
      7px 7px 20px 0px rgba(0,0,0,.1),
      4px 4px 5px 0px rgba(0,0,0,.1);
     outline: none;
+
+    text-decoration: none;
 }
 
 /* 13 */
@@ -111,21 +93,22 @@ button {
 
 
 .eventos{
-    /*background-color: rgb(255, 255, 255);
-   */ 
-
-    height: 88%;
-    width: 95%;
     border-radius: 10px;
-    overflow-y: scroll;
+    margin: 15px 15px 0 15px;
 }
-.eventos div{
+.eventos div h1{
+    padding: 0;
+    margin: 0;
+}
+.evento{
 /*    background-color: rgb(207, 207, 207);*/
-    background-color: #ffffff;
-    height: 190px;
+    background-color: #f2fbff;
+    height: 250px;
     width: 100%;
     border-radius: 12px;
-    margin-bottom: 5px;
+    border: 1px solid #000000;
+
+    margin-bottom: 20px;
 
     cursor: pointer;
     transition: all 0.3s ease;
@@ -133,13 +116,56 @@ button {
     display: flex;
     justify-content: space-between;
 }
-.eventos div h1{
+.evento:hover{
+    background-color: #89d8d3;
+}
+.imgEvento{
+    border-radius: 12px;
+
+    width: 40%;
+    overflow: hidden;
+}
+.imgEvento img{
+    width: 100%; /* Ajusta el ancho de la imagen al 100% del div */
+    height: auto; /* Ajusta la altura de la imagen automáticamente para mantener la proporción */
+    display: block;
+}
+.datosEvento{
+    width: 60%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.infEvntTit{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.infEvnt{
+    display: flex;
+    justify-content: space-around;
+}
+.texto{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.texto p{
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 20px;
     padding: 0;
     margin: 0;
 }
-.eventos div:hover{
-    background-color: #89d8d3;
+
+
+/*Contenedor con los botones*/
+.iconsDesc{
+    display: flex;
+    gap: 15px;
+    margin-right: 10px;
 }
+
 .add{
     height: 50px;
     margin: 10px 10px 0 0;
@@ -149,15 +175,36 @@ button {
     color: black !important;
 }
 
+.prinAgregar{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 /***** Descripción de los eventos *****/
 .contDesc{
     background-color: rgb(122, 211, 223);
-    width: 325px;
+    width: 75%;
     height: 82vh;
     border-radius: 15px;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    align-items: center;
+    justify-content: space-around;
+}
+.formu1{
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    gap: 25px;
+}
+.btnGuardar{
+    display: flex;
+    gap: 35px;
+    align-items: center;
+    justify-content: center;
 }
 /*** Titulo del editor de evento ***/
 .descTitle{
@@ -174,11 +221,7 @@ button {
 .titlEvent h2{
     margin: 0;
 }
-/*Contenedor con los botones*/
-.iconsDesc{
-    display: flex;
-    gap: 15px;
-}
+
 .btnIcon{/*Todos los botones*/
     border-radius: 50%;
     border: none;
@@ -240,14 +283,16 @@ button {
     justify-content: space-between;
     gap: 10px;
     align-items: center;
-    padding: 0 10px;
 }
 .desCont label{
     color: black;
     font-size: 25px;
+    align-items: center;
+    margin: 0;
+    padding: 0;
 }
 .selectPaq{
-    height: 30px;
+    height: 40px;
     width: 188px;
 }
 
