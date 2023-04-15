@@ -19,8 +19,10 @@ return new class extends Migration
             $table->unsignedInteger('id_servicio')->nullable();
             $table->float('precio');
             $table->date('fecha');
-            $table->time('hora');
+            $table->time('hora_inicio');
+            $table->time('hora_fin');
             $table->string('descripcion');
+            $table->integer('num_personas');
             $table->boolean('confirmacion')->default(false);
             $table->timestamps();
             $table->foreign('id_usuario')->references('id_usuario')->on('usuarios');

@@ -447,7 +447,6 @@ td {
 
   main[role="main"] {
     margin: 75px 0 40px 200px;
-    background-color: #E0E8FA;
   }
   main[role="main"]:after {
     content: "";

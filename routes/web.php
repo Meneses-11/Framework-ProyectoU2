@@ -7,6 +7,7 @@ use App\Http\Controllers\empleadoController;
 use App\Http\Controllers\PaqueteController;
 use App\Http\Controllers\ServicioController;
 use App\Http\Controllers\UsuariosController;
+use App\Http\Controllers\EventoController;
 
 /*Route::get('/', function () {
     //return view('/plantillas/menuCliente');
@@ -70,3 +71,5 @@ Route::resource('servicio', ServicioController::class, [
         'update' => 'servicio.actualizar',
     ],
 ]);
+
+Route::resource('evento', EventoController::class);
