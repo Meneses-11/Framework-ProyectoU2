@@ -73,3 +73,4 @@ Route::resource('servicio', ServicioController::class, [
 ]);
 
 Route::resource('evento', EventoController::class);
+Route::post('evento/confirmar/{id}', [EventoController::class, 'confirmar'])->name('evento.confirmar');

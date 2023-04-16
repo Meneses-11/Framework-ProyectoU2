@@ -21,7 +21,6 @@
     <li class="comments"><a href="{{route('informacion')}}">informacion</a></li>
 @endsection
 @section('contenido')
-
     
     <div class="contTitEvent">
         <img src="{{ asset('img/copas-icon.png') }}" alt="">
@@ -40,18 +39,30 @@
                     <div class="datosEvento">
                         <div class="infEvntTit">
                             <h1>Evento {{ $event->id_evento }}</h1>
-                            <div class="iconsDesc">
-                                <button class="btnIcon edit" onclick="window.location.href='{{route('evento.edit',$event->id_evento)}}'">
-                                    <img src="img/editar2.png" alt="editar" class="iconoEvento">
-                                </button>
-                                <form action="{{route('evento.destroy', $event->id_evento)}}" method="POST">
-                                    @method('DELETE')
-                                    @csrf
-                                    <button type="submit" class="btnIcon borr">
-                                        <img src="img/borrar.png" alt="borrar" class="iconoEvento">
-                                    </button>                                
-                                </form>
-                            </div>
+
+                            @if ($event->confirmacion == 1)
+                                <div class="titEventConfirm">
+                                    <img src="img/cheque.png" alt="confirmado" class="iconoEvento">
+                                    <h4>Confirmado</h4>
+                                </div>
+                            @else
+                                <div class="titEventConfirm">
+                                    <img src="img/btn-x.png" alt="sin confirmar" class="iconoEvento">
+                                    <h4>Sin Confirmar</h4>
+                                </div>
+                                <div class="iconsDesc">
+                                    <button class="btnIcon edit" onclick="window.location.href='{{route('evento.edit',$event->id_evento)}}'">
+                                        <img src="img/editar2.png" alt="editar" class="iconoEvento">
+                                    </button>
+                                    <form action="{{route('evento.destroy', $event->id_evento)}}" method="POST">
+                                        @method('DELETE')
+                                        @csrf
+                                        <button type="submit" class="btnIcon borr">
+                                            <img src="img/borrar.png" alt="borrar" class="iconoEvento">
+                                        </button>                                
+                                    </form>
+                                </div>
+                            @endif
                         </div>
                         <div class="infEvnt">
                             <div class="texto">
@@ -95,12 +106,44 @@
                         </div>
                         <div class="infEvntTit">
                             <h2> Total: {{$event->precio}} </h2>
-                            <button type="button" class="custom-btn btn-13" data-toggle="modal" data-target="#modalImg" style="margin: 10px;"> Añadir Imagen </button>
+                            @if ($event->confirmacion == 1)
+                                <button type="button" class="custom-btn btn-13" data-toggle="modal" data-target="#modalImg" style="margin: 10px;"> Añadir Imagen </button>
+                            @else
+                                <button class="custom-btn btn-13" data-toggle="modal" data-target="#modalConfirm{{$event->id_evento}}">Confirmar</button>
+                                
+
+                                <!-- Modal -->
+                                <div class="modal fade" id="modalConfirm{{$event->id_evento}}" tabindex="-1" role="dialog" aria-labelledby="modalConfirmLabel{{$event->id_evento}}" aria-hidden="true">
+                                    <div class="modal-dialog" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title fs-5" id="modalConfirmLabel{{$event->id_evento}}">Confirmacion de Evento</h5>
+                                                <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+                                            <div class="modal-body">
+                                                ¿Desea confirmar el evento {{$event->id_evento}}?
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                                                <form action="{{ route('evento.confirmar', $event->id_evento) }}" method="POST">
+                                                    @csrf
+                                                    <input type="hidden" name="confirmacion" value="1">
+                                                    <button type="submit" class="btn btn-primary">Aceptar</button>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            @endif
                         </div>
                     </div>
 
                 </div>
             @endif
+
         @endforeach
     </div>
     

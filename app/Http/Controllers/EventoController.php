@@ -107,4 +107,13 @@ class EventoController extends Controller
         $evento -> delete();
         return redirect(route('evento.index'));
     }
+
+    public function confirmar(Request $request, $id)
+    {
+        $evento = Evento::find($id);
+        $evento->confirmacion = intval($request->input('confirmacion'));
+        $evento->save();
+
+        return redirect()->route('evento.index');
+    }
 }
