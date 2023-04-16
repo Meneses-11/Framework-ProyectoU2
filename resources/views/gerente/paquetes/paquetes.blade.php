@@ -4,35 +4,39 @@
 Paquetes
 @endsection
 @section('titulobar')
-<div class="contentEmpresa">
+<div class="contentEmpresa ">
     <img src="{{ asset('img/logo.png') }}" alt="Logo" class="imgLogo">
-    <h1 class="empresah1">Eleganza</h1>
-    <div><h1>Admin Gerente Paquetes</h1></div>
+    <div style=" font-weight: bold;">Admin Gerente Usuarios</div>
 </div>
 @endsection
-@section('btnTabla')
-<a href="{{ route('paquete.create') }}" class="btn btn-success"><i class="fas fa-plus-circle"></i><span>Añadir Nuevo Paquete</span></a>
-<a href="#eliminarModal" class="btn btn-danger" data-toggle="modal"><i class="fas fa-minus-circle"></i><span>Eliminar Seleccionados</span></a>
-
+@section('estilos')
+<link rel="stylesheet" href="/css/styleTabla.css">
 @endsection
-@section('menu')
-    <li class="dashboard"><a href="{{ route('usuario.inicio') }}">Administrar Usuarios</a></li>
-    <li class="dashboard"><a href="{{ route('paquete.index') }}">Administrar Paquetes</a></li>
-    <li class="dashboard"><a href="{{ route('servicio.inicio') }}">Administrar Servicios</a></li>
+@section('opcionesIzquierda')
+<li class="nav-item"><a class="nav-link active" aria-current="page" href="{{ route('usuario.inicio') }}">Administrar Usuarios</a></li>
+<li class="nav-item"><a class="nav-link active" aria-current="page" href="{{ route('paquete.index') }}">Administrar Paquetes</a></li>
+<li class="nav-item"><a class="nav-link active" aria-current="page" href="{{ route('servicio.inicio') }}">Administrar Servicios</a></li>
+@endsection
+@section('opcionesDerecha')
+<li><a class="dropdown-item" href="{{ route('login') }}">Cerrar Sesión</a></li>
 @endsection
 
 @section('contenido')
 
 @extends('plantillas.tabla')
 @section('tituloTabla')
-<h2>Lista de Paquetes</h2>
+<h2 style="padding-left: 18px; font-size: 1rem !important; font-weight: bold;">Lista de Paquetes</h2>
+@endsection
+@section('btnTabla')
+<a style="margin-right: 2%; text-align: center !important; color: black !important; background: #ffffff;" href="{{ route('paquete.create') }}" class="btn btn-success"><i class="fas fa-plus-circle"></i><span>Añadir Nuevo Servicio</span></a>
 @endsection
 @section('columnas')
-        <th>ID Paquete</th>
+        <th >ID Paquete</th>
         <th>Nombre</th>
         <th>Estatus</th>
         <th>Descripción</th>
         <th>Precio</th>
+        <th >Opciones</th>
 @endsection
 @section('tablaContenido')
 @php
@@ -40,12 +44,6 @@ Paquetes
 @endphp
 @foreach ($paquetes1 as $paquete)
 <tr>
-    <td>
-        <span class="custom-checkbox">
-            <input type="checkbox" id="checkbox1" name="options[]" value="1">
-            <label for="checkbox1"></label>
-        </span>
-    </td>
     <td>{{ $paquete->id_paquete}}</td>
     <td>{{ $paquete->nombre }}</td>
     @if ($paquete->activo == 1)
@@ -70,7 +68,7 @@ Paquetes
             <a href="#" onclick="event.preventDefault(); document.getElementById('form-activo-{{ $paquete->id_paquete }}').submit();">
                 @if($paquete->activo)
                     <i class="fas fa-eye text-success" title="Desactivar Paquete"></i>
-                @else
+                @else>
                     <i class="fas fa-eye-slash text-muted" title="Activar Paquete"></i>
                 @endif
             </a>
@@ -105,6 +103,5 @@ Paquetes
 @endforeach
 @endsection
 @endsection
-
 
 

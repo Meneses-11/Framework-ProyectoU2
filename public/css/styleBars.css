@@ -445,15 +445,7 @@ td {
     left: 0px;
   }
 
-  main[role="main"] {
-    margin: 75px 0 40px 200px;
-    background-color: #E0E8FA;
-  }
-  main[role="main"]:after {
-    content: "";
-    display: table;
-    clear: both;
-  }
+
 
   .panel {
     margin: 2% 0 0 2%;

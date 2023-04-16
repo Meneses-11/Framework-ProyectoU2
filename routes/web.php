@@ -18,10 +18,16 @@ use App\Http\Controllers\UsuariosController;
 Route::get('/',function(){return redirect(route('inicio')); })->name('inicio');
 
 Route::get('/login',function(){
-    return view('entrada');
+    return view('plantillas.login');
 })->name('login');
 
+Route::get('/registrarse',function(){
+    return view('plantillas.registrarse');
+})->name('registrarse');
+
 Route::post('/validar',[entradaController::class,'validar'])->name('validar');
+Route::post('/registrarse/guardar',[entradaController::class,'registrar'])->name('validar');
+
 Route::get('/error',[entradaController::class,'error'])->name('error');
 Route::get('/gerente/test',[gerenteController::class,'test'])->name('test');
 

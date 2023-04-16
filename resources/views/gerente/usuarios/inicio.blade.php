@@ -4,26 +4,31 @@
 Usuarios
 @endsection
 @section('titulobar')
-<div class="contentEmpresa">
-    <img src="{{ asset('img/logo.png') }}" class="imgLogo">
-    <div>Admin Gerente</div>
+<div class="contentEmpresa ">
+    <img src="{{ asset('img/logo.png') }}" alt="Logo" class="imgLogo">
+    <div style=" font-weight: bold;">Admin Gerente Usuarios</div>
 </div>
 @endsection
-@section('btnTabla')
-<a href="{{ route('usuario.crear') }}" class="btn btn-success"><i class="fas fa-plus-circle"></i><span>Añadir Nuevo Usuario</span></a>
-<a href="#eliminarModal" class="btn btn-danger" data-toggle="modal"><i class="fas fa-minus-circle"></i><span>Eliminar Seleccionados</span></a>
-
-@endsection
-@section('menu')
-    <li class="dashboard"><a href="{{ route('usuario.inicio') }}">Administrar Usuarios</a></li>
-    <li class="dashboard"><a href="{{ route('paquete.index') }}">Administrar Paquetes</a></li>
-    <li class="dashboard"><a href="{{ route('servicio.inicio') }}">Administrar Servicios</a></li>
+@section('estilos')
+<link rel="stylesheet" href="/css/styleTabla.css">
 @endsection
 
+@section('opcionesIzquierda')
+<li class="nav-item"><a class="nav-link active" aria-current="page" href="{{ route('usuario.inicio') }}">Administrar Usuarios</a></li>
+<li class="nav-item"><a class="nav-link active" aria-current="page" href="{{ route('paquete.index') }}">Administrar Paquetes</a></li>
+<li class="nav-item"><a class="nav-link active" aria-current="page" href="{{ route('servicio.inicio') }}">Administrar Servicios</a></li>
+@endsection
+@section('opcionesDerecha')
+<li><a class="dropdown-item" href="{{ route('login') }}">Cerrar Sesión</a></li>
+@endsection
 @section('contenido')
+
 @extends('plantillas.tabla')
 @section('tituloTabla')
-<h2>Lista de Clientes</h2>
+<h2 style="padding-left: 18px; font-size: 1rem !important; font-weight: bold;">Lista de Clientes</h2>
+@endsection
+@section('btnTabla')
+<a style="margin-right: 2%; text-align: center !important; color: rgb(33,37,41) !important; background: #ffffff;" href="{{ route('usuario.crear') }}" class="btn btn-success"><i class="fas fa-plus-circle"></i><span>Añadir Nuevo Servicio</span></a>
 @endsection
 @section('columnas')
         <th>ID</th>
@@ -32,7 +37,7 @@ Usuarios
         <th>Apellido</th>
         <th>Correo</th>
         <th>Telefono</th>
-        <th></th>
+        <th>Opciones</th>
 
 @endsection
 @section('tablaContenido')
@@ -41,12 +46,6 @@ Usuarios
 @endphp
 @foreach ($clientest1 as $cliente)
 <tr>
-    <td>
-        <span class="custom-checkbox">
-            <input type="checkbox" id="checkbox1" name="options[]" value="1">
-            <label for="checkbox1"></label>
-        </span>
-    </td>
     <td>{{ $cliente->id_usuario}}</td>
     <td>{{ $cliente->rol }}</td>
     <td>{{ $cliente->nombre }}</td>
@@ -65,27 +64,27 @@ Usuarios
 <!-- Modal de confirmación para eliminar usuario -->
 <div class="modal fade" id="deleteModal{{ $cliente->id_usuario }}" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel{{ $cliente->id_usuario }}" aria-hidden="true">
     <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="deleteModalLabel{{ $cliente->id_usuario }}">Confirmación de eliminación</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                ¿Está seguro que desea eliminar al usuario {{ $cliente->nombre }} {{ $cliente->apellido }}?
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-                <form action="{{ route('usuario.destruir', $cliente->id_usuario) }}" method="post">
-                    @method('DELETE')
-                    @csrf
-                    <button type="submit" class="btn btn-danger">Eliminar</button>
-                </form>
-            </div>
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="deleteModalLabel{{ $cliente->id_usuario }}">Confirmación de eliminación</h5>
+          <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
         </div>
+        <div class="modal-body">
+          ¿Está seguro que desea eliminar al usuario {{ $cliente->nombre }} {{ $cliente->apellido }}?
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+          <form action="{{ route('usuario.destruir', $cliente->id_usuario) }}" method="post">
+            @method('DELETE')
+            @csrf
+            <button type="submit" class="btn btn-danger">Eliminar</button>
+          </form>
+        </div>
+      </div>
     </div>
-</div>
+  </div>
 @endforeach
 
 
@@ -94,12 +93,7 @@ Usuarios
 @endphp
 @foreach ($clientest2 as $cliente)
 <tr>
-    <td>
-        <span class="custom-checkbox">
-            <input type="checkbox" id="checkbox1" name="options[]" value="1">
-            <label for="checkbox1"></label>
-        </span>
-    </td>
+
     <td>{{ $cliente->id_usuario}}</td>
     <td>{{ $cliente->rol }}</td>
     <td>{{ $cliente->nombre }}</td>
@@ -118,9 +112,8 @@ Usuarios
 @endforeach
 @endsection
 @section('lbl1')
-<s="hint-text">Mostrando <b>{{ $clientes->where('rol','Cliente')->count() }}</b> registros</div>
-</div>div class="clearfix elemento">
-    <div clas
+
+<div class="hint-text">Mostrando <b>{{ $clientes->where('rol','Cliente')->count()+$clientes->where('rol','Empleado')->count() }}</b> registros</div>
 @endsection
 @endsection
 

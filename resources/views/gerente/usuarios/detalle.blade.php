@@ -20,6 +20,7 @@
 
                         <div class="navbar-collapse collapse" id="mobile_menu">
                             <ul class="nav navbar-nav">
+                                @yield('opcionesIzquierda')
                                 <li class="active"><a href="#">Home</a></li>
                                 <li><a href="#">Welcome</a></li>
                                 <li><a href="#">Services</a></li>
@@ -32,6 +33,7 @@
                                 <li><a href="#"><span class="glyphicon glyphicon-user"></span> Perfil</a></li>
                                 <li><a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-log-in"></span> Iniciar Sesión / Registrarse <span class="caret"></span></a>
                                     <ul class="dropdown-menu">
+                                        @yield('opcionesDerecha')
                                         <li><a href="#">Iniciar Sesión</a></li>
                                         <li><a href="#">Registrarse</a></li>
                                     </ul>

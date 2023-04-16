@@ -10,6 +10,9 @@ Registro de Usuarios
 </div>
 @endsection
 @section('contenido')
+<div class="">
+
+</div>
   <div class="container">
     <div class="row justify-content-center align-items-center vh-100">
       <div class="col-lg-6 col-md-8 col-sm-10">

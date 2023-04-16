@@ -6,6 +6,7 @@ Login
 @section('titulobar')
 <div class="contentEmpresa ">
     <img src="{{ asset('img/logo.png') }}" alt="Logo" class="imgLogo">
+
 </div>
 @endsection
 
@@ -14,6 +15,7 @@ Login
 @endsection
 @section('contenido')
 <style>
+
 
 body {
 	background-color: rgb(63, 63, 63);
@@ -108,8 +110,7 @@ input[type="password"].showPassword {
 		password.type = "password";
 		togglePassword.innerHTML = '<i class="far fa-eye" title="Ver Contraseña"></i>';
 	}
-	}
-
+}
 </script>
 <div class="centrar">
  <div class="login">
