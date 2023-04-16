@@ -28,22 +28,19 @@ NewEvent
             <div class="formu1">
                 <div class="desCont">
                     <label for="infor">Paquete:</label>
-                    <!--  <input type="text" name="paqEvnt" id="infor" placeholder="Paquetes del Evento"> -->
-                    <select class="selectPaq" name="idPaquete" required placeholder="Elige una opcion">
-                        <option value="">Elige un Paquete</option>
-                        @foreach ($paquetes as $nombre => $id)
-                            <option value="{{ $id }}">{{ $nombre }}</option>
+                    <select id="paqueteSelect" class="selectPaq" name="idPaquete" required>
+                        <option value="">Seleccione un paquete</option>
+                        @foreach ($paquetes as $paq)
+                            <option value="{{ $paq->id_paquete }}">{{ $paq->nombre }}</option>
                         @endforeach
                     </select>
                 </div>
                 <div class="desCont">
                     <label for="infor">Servicio:</label>
-                    <!--  <input type="text" name="paqEvnt" id="infor" placeholder="Paquetes del Evento"> -->
-                    <select class="selectPaq" name="idServicio" required placeholder="Elige una opcion">
-                        <option value="">Elige un Servicio</option>
+                    <select id="servicioSelect" class="selectPaq" name="idServicio">
                         <option value="">Ninguno</option>
-                        @foreach ($servicios as $nombre => $id)
-                            <option value="{{ $id }}">{{ $nombre }}</option>
+                        @foreach ($servicios as $servi)
+                            <option value="{{ $servi->id_servicio }}">{{ $servi->nombre }}</option>
                         @endforeach
                     </select>
                 </div>
@@ -67,8 +64,46 @@ NewEvent
                 </div>
                 <div class="desCont">
                     <label for="infor">Precio:</label>
-                    <input type="number" name="precio" id="infor" placeholder="Precio del Evento">
+                    <label for="infor" name="preci" id="preci"></label>
+                    <input type="hidden" name="precio" id="preciTot" value="">
                 </div>
+
+                <script>
+                    // Obtener los select
+                    var paqueteSelect = document.getElementsByName("idPaquete")[0];
+                    var servicioSelect = document.getElementsByName("idServicio")[0];
+
+                    // Obtener los valores de paquetes y servicios (el método pluck genera un objeto de selección de laravel)
+                    var paquetes = {!! json_encode($paquetes->toArray()) !!};  //por eso lo convertimos a un formato que pueda reconocer JavaScript
+                    var servicios = {!! json_encode($servicios->toArray()) !!};
+
+                    // Asignar un evento a los select para detectar cambios
+                    paqueteSelect.addEventListener("change", actualizarResultado);
+                    servicioSelect.addEventListener("change", actualizarResultado);
+
+                    // Función que actualiza el contenido del label con los valores seleccionados
+                    function actualizarResultado() {
+                        var paqueteSeleccionado = paqueteSelect.value;  //obtenemos el valor del paquete
+                        var servicioSeleccionado = servicioSelect.value;//obtenemos el valor del servicio
+                        var precPaq = 0;
+                        var precServ = 0;
+
+                        paquetes.forEach(function(paquet){ //recorremos los paquetes
+                            if(paquet['id_paquete'] == paqueteSeleccionado){ //comparamos con el id del escogido
+                                precPaq = paquet['precio'];
+                            }
+                        });
+                        servicios.forEach(function(servi){
+                            if(servi['id_servicio'] == servicioSeleccionado){
+                                precServ = servi['precio'];
+                            }
+                        });
+                        var tot = precPaq + precServ;
+                        document.getElementById("preci").innerHTML = tot;
+                        document.getElementById("preciTot").value = tot;
+
+                    }
+                </script>
             </div>
             <div class="btnGuardar">
                 <input class="custom-btn btn-13" type="submit" value="SEND">
