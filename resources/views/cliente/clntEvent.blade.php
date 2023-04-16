@@ -21,7 +21,7 @@
     <li class="comments"><a href="{{route('informacion')}}">informacion</a></li>
 @endsection
 @section('contenido')
-    
+
     <div class="contTitEvent">
         <img src="{{ asset('img/copas-icon.png') }}" alt="">
         <h1 class="titEvent">Mis eventos</h1>
@@ -59,7 +59,7 @@
                                         @csrf
                                         <button type="submit" class="btnIcon borr">
                                             <img src="img/borrar.png" alt="borrar" class="iconoEvento">
-                                        </button>                                
+                                        </button>
                                     </form>
                                 </div>
                             @endif
@@ -73,7 +73,7 @@
                                     @endif
                                 @endforeach
                             </div>
-                            <div class="texto">  
+                            <div class="texto">
                                 <p>Servicio:</p>
                                 @if (empty($event->id_servicio))
                                     <p>-Ninguno</p>
@@ -110,7 +110,7 @@
                                 <button type="button" class="custom-btn btn-13" data-toggle="modal" data-target="#modalImg" style="margin: 10px;"> Añadir Imagen </button>
                             @else
                                 <button class="custom-btn btn-13" data-toggle="modal" data-target="#modalConfirm{{$event->id_evento}}">Confirmar</button>
-                                
+
 
                                 <!-- Modal -->
                                 <div class="modal fade" id="modalConfirm{{$event->id_evento}}" tabindex="-1" role="dialog" aria-labelledby="modalConfirmLabel{{$event->id_evento}}" aria-hidden="true">
@@ -129,6 +129,7 @@
                                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
                                                 <form action="{{ route('evento.confirmar', $event->id_evento) }}" method="POST">
                                                     @csrf
+                                                    @method('PUT')
                                                     <input type="hidden" name="confirmacion" value="1">
                                                     <button type="submit" class="btn btn-primary">Aceptar</button>
                                                 </form>
@@ -146,7 +147,7 @@
 
         @endforeach
     </div>
-    
+
     <!--
     <div class="contDesc">
         <div class="descTitle">

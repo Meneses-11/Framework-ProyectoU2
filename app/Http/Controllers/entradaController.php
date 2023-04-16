@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Paquete;
 use App\Models\Usuario;
 use Illuminate\Http\Request;
 
@@ -29,7 +30,8 @@ class entradaController extends Controller
         return view('error');
     }
     public function inicio(){
-        return view('anonimo.anonimo');
+        $paquetes = Paquete::all();
+        return view('anonimo.anonimo',compact('paquetes'));
     }
 
 

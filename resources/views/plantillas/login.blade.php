@@ -8,9 +8,11 @@ Login
     <img src="{{ asset('img/logo.png') }}" alt="Logo" class="imgLogo">
 </div>
 @endsection
-
+@section('estilos')
+<link rel="stylesheet" href="/css/styleTabla.css">
+@endsection
 @section('opcionesDerecha')
-<li><a class="dropdown-item" href="{{ route('registrarse') }}">Registrarse</a></li>
+<li><a class="dropdown-item" href="#">Registrarse</a></li>
 @endsection
 @section('contenido')
 <style>

@@ -22,12 +22,10 @@ Route::get('/login',function(){
     return view('plantillas.login');
 })->name('login');
 
-Route::get('/registrarse',function(){
-    return view('plantillas.registrarse');
-})->name('registrarse');
+
 
 Route::post('/validar',[entradaController::class,'validar'])->name('validar');
-Route::post('/registrarse/guardar',[entradaController::class,'registrar'])->name('validar');
+
 
 Route::get('/error',[entradaController::class,'error'])->name('error');
 Route::get('/gerente/test',[gerenteController::class,'test'])->name('test');
@@ -35,7 +33,7 @@ Route::get('/gerente/test',[gerenteController::class,'test'])->name('test');
 Route::get('/inicio',[entradaController::class,'inicio'])->name('inicio');
 
 
-Route::get('nuestrosPaquetes', [clienteController::class, 'verPaquetes'])->name('paquetes');
+Route::get('paquetes', [clienteController::class, 'verPaquetes'])->name('paquetes');
 Route::get('misEventos', [clienteController::class, 'verEventos'])->name('eventos');
 Route::get('aboutWe', [clienteController::class, 'verInformacion'])->name('informacion');
 
@@ -79,4 +77,5 @@ Route::resource('servicio', ServicioController::class, [
 ]);
 
 Route::resource('evento', EventoController::class);
-Route::post('evento/confirmar/{id}', [EventoController::class, 'confirmar'])->name('evento.confirmar');
+
+Route::put('evento/confirmar/{id}', [EventoController::class, 'confirmar'])->name('evento.confirmar');

@@ -3,6 +3,7 @@
 @section('titulo')
 Usuarios
 @endsection
+
 @section('titulobar')
 <div class="contentEmpresa ">
     <img src="{{ asset('img/logo.png') }}" alt="Logo" class="imgLogo">

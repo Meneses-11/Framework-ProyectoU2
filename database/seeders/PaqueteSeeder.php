@@ -18,29 +18,29 @@ class PaqueteSeeder extends Seeder
         $paquete->nombre = "Bodas";
         $paquete->precio = 5599.99;
         $paquete->activo = true;
-        $paquete->descripcion = "";
-        $paquete->nombre_foto = "";
+        $paquete->descripcion = "algo";
+        $paquete->nombre_foto = "img\bodas.jpeg";
         $paquete->save();
         $paquete = new Paquete;
         $paquete->nombre = "XV Años";
         $paquete->precio = 4599.99;
         $paquete->activo = true;
-        $paquete->descripcion = "";
-        $paquete->nombre_foto = "";
+        $paquete->descripcion = "algo";
+        $paquete->nombre_foto = "img\xv-años.jpg";
         $paquete->save();
         $paquete = new Paquete;
         $paquete->nombre = "Fiesta infantil";
         $paquete->precio = 4599.99;
         $paquete->activo = true;
-        $paquete->descripcion = "";
-        $paquete->nombre_foto = "";
+        $paquete->descripcion = "algo";
+        $paquete->nombre_foto = 'img\fiesta-niños.jpg';
         $paquete->save();
         $paquete = new Paquete;
         $paquete->nombre = "Bautizos";
         $paquete->precio = 4599.99;
         $paquete->activo = true;
-        $paquete->descripcion = "";
-        $paquete->nombre_foto = "";
+        $paquete->descripcion = "algo";
+        $paquete->nombre_foto = 'img\fiestas-adultos.jpg';
         $paquete->save();
 
 
