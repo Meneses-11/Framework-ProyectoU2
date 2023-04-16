@@ -14,7 +14,8 @@ class entradaController extends Controller
                     ->first();
         if ($user) {
             if ($user->rol == 'Cliente') {
-                return view('/cliente/clntEvent');
+                session()->put('id', $user->id_usuario);
+                return redirect()->route('evento.index');
             } else if ($user->rol == 'Gerente') {
                 return redirect(route('usuario.inicio'));
             } else if ($user->rol  == 'Empleado') {

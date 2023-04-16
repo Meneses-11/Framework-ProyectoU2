@@ -26,4 +26,8 @@ class Evento extends Model
         return $this->belongsToMany(Servicio::class, 'eventos_servicios', 'id_evento', 'id_servicio');
     }
 
+    public function pago(){
+        return $this->hasMany(Pago::class);  //relacion 1 a muchos
+    }
+
 }

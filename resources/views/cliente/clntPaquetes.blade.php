@@ -14,7 +14,7 @@
 @endsection
 @section('menu')
     <li class="edit"><a href="{{route('paquetes')}}">Paquetes</a></li>
-    <li class="write"><a href="{{ route('eventos') }}">Mis eventos</a></li>
+    <li class="write"><a href="{{ route('evento.index') }}">Mis eventos</a></li>
     <li class="comments"><a href="{{route('informacion')}}">informacion</a></li>
 @endsection
 
