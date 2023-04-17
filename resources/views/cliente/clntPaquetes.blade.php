@@ -1,3 +1,4 @@
+
 @extends('plantillas.menuCliente')
 @section('titulobar')
 <div class="contentEmpresa">
