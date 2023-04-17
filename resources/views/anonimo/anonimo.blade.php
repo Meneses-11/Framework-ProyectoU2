@@ -19,23 +19,25 @@ Salón Eventos
 @endsection
 
 @section('contenido')
-<div style="margin-top: 6rem !importan;">
-
+<div>
     <div class="container-items">
         @foreach ($paquetes as $paquete)
-        <a href="{{ route('login') }}">
+        <a href="{{ route('login') }}" style="text-decoration: none; color:black;">
             <div class="item">
                 <figure>
                     <img src={{$paquete->nombre_foto }} alt="bodas">
+                    <div class="capa" style="margin-top: -12.5rem;">
+                        <p class="Descripcion">{{ $paquete->descripcion }} </p>
+                    </div>
                 </figure>
                 <div class="info-producto">
                     <h2>{{ $paquete->nombre }}</h2>
-                    <p class="Descripcion">{{ $paquete->descripcion }} </p>
+                    <!--<p class="Descripcion">{{ $paquete->descripcion }} </p> -->
                    <!-- <button class="añade-carrito">Cotizar</button>-->
+
                 </div>
             </div>
         </a>
-
         @endforeach
 
     </div>

@@ -4,7 +4,7 @@ img{
 
 
 .container-items{
-    margin-top: 15px; /*puede que lo quite*/
+    margin-top: 50px; /*puede que lo quite*/
     display: grid;
     grid-template-columns: repeat(3, 3fr); /*cuantos items quiero*/
     gap: 20px;
