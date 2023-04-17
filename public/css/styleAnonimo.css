@@ -35,10 +35,8 @@ header[role="banner"] {
 }
 
 
-
-
 .container-items{
-    margin-top: 15px;
+    margin-top: 6.5rem;
     margin-left: 20px;
     margin-right: 20px;
     display: grid;
@@ -52,6 +50,7 @@ header[role="banner"] {
     border-style: solid;
     border-color: #000;
     border-radius: 10px; /*borde de abajo*/
+
 }
 
 .item:hover{
@@ -66,11 +65,37 @@ header[role="banner"] {
     object-fit: cover; /*adapta y centra la imagen*/
     border-radius: 7px 7px 0 0; /*bordes de las imagenes*/
     transition: all .5s;
+    /*display: flex;*/
 }
 
 .item figure{
-    overflow: hidden; /*oculta el contenido que salga de la caja*/
-    border-radius: 8px 8px 0 0; /*bordes de las imagenes*/
+   overflow: hidden; /*oculta el contenido que salga de la caja*/
+   border-radius: 8px 8px 0 0; /*bordes de las imagenes*/
+}
+
+.capa{
+    padding: 15px 30px;
+    color: white;
+}
+
+.item figure .capa{
+    margin-top: 6.5rem;
+    position: absolute;
+   /* top: 0;*/
+    width: 423px; /*ancho*/
+    height: 200px;
+    border-radius: 8px 8px 0 0;
+    background: rgba(49, 63, 66, 0.76);
+    transition: all 500ms ease-out;
+    opacity: 0;
+    visibility: hidden;
+    text-align: justify;
+
+}
+
+.item figure:hover > .capa{
+    opacity: 1;
+    visibility: visible;
 }
 
 .item:hover img{

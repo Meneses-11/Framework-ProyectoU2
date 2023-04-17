@@ -63,7 +63,8 @@ class EventoController extends Controller
      */
     public function show(string $id)
     {
-        //
+        //$paquetes = paquete::find($id);
+
     }
 
     /**

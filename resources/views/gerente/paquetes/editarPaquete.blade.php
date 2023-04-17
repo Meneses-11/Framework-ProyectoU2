@@ -4,11 +4,23 @@
 Paquetes
 @endsection
 @section('titulobar')
-<div class="contentEmpresa">
-    <img src="{{ asset('img/logo.png') }}" class="imgLogo">
-     Paquetes
+<div class="contentEmpresa ">
+    <img src="{{ asset('img/logo.png') }}" alt="Logo" class="imgLogo">
+    <div style=" font-weight: bold;">Admin Gerente Usuarios</div>
 </div>
 @endsection
+@section('estilos')
+<link rel="stylesheet" href="/css/styleTabla.css">
+@endsection
+@section('opcionesIzquierda')
+<li class="nav-item"><a class="nav-link active" aria-current="page" href="{{ route('usuario.inicio') }}">Administrar Usuarios</a></li>
+<li class="nav-item"><a class="nav-link active" aria-current="page" href="{{ route('paquete.index') }}">Administrar Paquetes</a></li>
+<li class="nav-item"><a class="nav-link active" aria-current="page" href="{{ route('servicio.inicio') }}">Administrar Servicios</a></li>
+@endsection
+@section('opcionesDerecha')
+<li><a class="dropdown-item" href="{{ route('login') }}">Cerrar Sesión</a></li>
+@endsection
+
 @section('contenido')
   <div class="container">
     <div class="row justify-content-center align-items-center">
