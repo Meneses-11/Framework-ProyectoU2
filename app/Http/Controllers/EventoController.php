@@ -30,8 +30,10 @@ class EventoController extends Controller
     public function create()
     {
         //
-        $paquetes = Paquete::pluck('id_paquete','nombre');
-        $servicios = Servicio::pluck('id_servicio','nombre');
+        /*$paquetes = Paquete::pluck('id_paquete','nombre','precio');
+        $servicios = Servicio::pluck('id_servicio','nombre','precio');*/
+        $paquetes = Paquete::all();
+        $servicios = Servicio::all();
         return view('cliente.agregar', compact('paquetes','servicios'));
     }
 

@@ -1,5 +1,6 @@
 body{
     margin: 0px;
+    padding: 0;
     background-color: #E0E8FA;
 }
 
@@ -15,6 +16,9 @@ body{
     display: block;
 }
 
+.contPrinc{
+    margin: 90px 45px 20px 45px !important;
+}
 
 .contTitEvent{
     display: flex;
