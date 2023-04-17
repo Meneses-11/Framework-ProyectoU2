@@ -28,7 +28,7 @@ Paquetes
 <h2 style="padding-left: 18px; font-size: 1rem !important; font-weight: bold;">Lista de Paquetes</h2>
 @endsection
 @section('btnTabla')
-<a style="margin-right: 2%; text-align: center !important; color: black !important; background: #ffffff;" href="{{ route('paquete.create') }}" class="btn btn-success"><i class="fas fa-plus-circle"></i><span>Añadir Nuevo Servicio</span></a>
+<a style="margin-right: 2%; text-align: center !important; color: black !important; background: #ffffff;" href="{{ route('paquete.create') }}" class="btn btn-success"><i class="fas fa-plus-circle"></i><span>Añadir Nuevo Paquete</span></a>
 @endsection
 @section('columnas')
         <th >ID Paquete</th>
@@ -65,7 +65,7 @@ Paquetes
                 @method('PUT')
                 <input type="hidden" name="activo" value="{{ $paquete->activo }}">
             </form>
-            <a href="#" onclick="event.preventDefault(); document.getElementById('form-activo-{{ $paquete->id_paquete }}').submit();">
+            <a href="#" onclick="event.preventDefault(); document.getElementById('form-activo-{{ $paquete->id_paquete }}').submit();"
                 @if($paquete->activo)
                     <i class="fas fa-eye text-success" title="Desactivar Paquete"></i>
                 @else>

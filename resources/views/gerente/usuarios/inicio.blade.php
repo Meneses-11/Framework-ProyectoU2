@@ -29,7 +29,7 @@ Usuarios
 <h2 style="padding-left: 18px; font-size: 1rem !important; font-weight: bold;">Lista de Clientes</h2>
 @endsection
 @section('btnTabla')
-<a style="margin-right: 2%; text-align: center !important; color: rgb(33,37,41) !important; background: #ffffff;" href="{{ route('usuario.crear') }}" class="btn btn-success"><i class="fas fa-plus-circle"></i><span>Añadir Nuevo Servicio</span></a>
+<a style="margin-right: 2%; text-align: center !important; color: rgb(33,37,41) !important; background: #ffffff;" href="{{ route('usuario.crear') }}" class="btn btn-success"><i class="fas fa-plus-circle"></i><span>Añadir Nuevo Usuario</span></a>
 @endsection
 @section('columnas')
         <th>ID</th>

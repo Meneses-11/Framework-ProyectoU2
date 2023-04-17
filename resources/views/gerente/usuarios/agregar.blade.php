@@ -1,16 +1,30 @@
 @extends('plantillas.menuGerente')
 
 @section('titulo')
-Registro de Usuarios
+Usuarios
 @endsection
+
 @section('titulobar')
-<div class="contentEmpresa">
-    <img src="{{ asset('img/logo.png') }}" class="imgLogo">
-     Registro de Usuarios
+<div class="contentEmpresa ">
+    <img src="{{ asset('img/logo.png') }}" alt="Logo" class="imgLogo">
+    <div style=" font-weight: bold;">Admin Gerente Usuarios</div>
 </div>
 @endsection
+@section('estilos')
+<link rel="stylesheet" href="/css/styleTabla.css">
+@endsection
+
+@section('opcionesIzquierda')
+<li class="nav-item"><a class="nav-link active" aria-current="page" href="{{ route('usuario.inicio') }}">Administrar Usuarios</a></li>
+<li class="nav-item"><a class="nav-link active" aria-current="page" href="{{ route('paquete.index') }}">Administrar Paquetes</a></li>
+<li class="nav-item"><a class="nav-link active" aria-current="page" href="{{ route('servicio.inicio') }}">Administrar Servicios</a></li>
+@endsection
+@section('opcionesDerecha')
+<li><a class="dropdown-item" href="{{ route('login') }}">Cerrar Sesión</a></li>
+@endsection
+
 @section('contenido')
-<div class="">
+<div class="centrar" style="margin-top: 7rem">
 
 </div>
   <div class="container">
@@ -77,8 +91,8 @@ Registro de Usuarios
                 <input type="tel" id="numero" name="direccion" class="form-control" placeholder="Ingresa tu direccón" required>
               </div>
               <div class="d-grid gap-2">
-                <button type="submit" class="btn btn-primary btn-block">Registrar Usuario</button>
-                <button type="button" class="btn btn-danger btn-block mt-2" onclick="window.location.href='{{ route('usuario.inicio') }}'">Cancelar</button>
+                <button type="submit" class="btn btn-dark btn-block">Registrar Usuario</button>
+                <button type="button" class="btn btn-secondary btn-block mt-2" onclick="window.location.href='{{ route('usuario.inicio') }}'">Cancelar</button>
               </div>
             </form>
           </div>
