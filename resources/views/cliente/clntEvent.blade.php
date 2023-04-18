@@ -64,14 +64,37 @@
                                         <button class="btnIcon edit" onclick="window.location.href='{{route('evento.edit',$event->id_evento)}}'">
                                             <img src="img/editar2.png" alt="editar" class="iconoEvento">
                                         </button>
-                                        <form action="{{route('evento.destroy', $event->id_evento)}}" method="POST">
-                                            @method('DELETE')
-                                            @csrf
-                                            <button type="submit" class="btnIcon borr">
-                                                <img src="img/borrar.png" alt="borrar" class="iconoEvento">
-                                            </button>
-                                        </form>
+                                        <button class="btnIcon borr" data-toggle="modal" data-target="#modalDelete{{$event->id_evento}}">
+                                            <img src="img/borrar.png" alt="borrar" class="iconoEvento">
+                                        </button>
                                     </div>
+
+                                    <!-- Modal -->
+                                    <div class="modal fade" id="modalDelete{{$event->id_evento}}" tabindex="-1" role="dialog" aria-labelledby="modalDeleteLabel{{$event->id_evento}}" aria-hidden="true">
+                                        <div class="modal-dialog" role="document">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title fs-5" id="modalDeleteLabel{{$event->id_evento}}">Confirmacion de Accion</h5>
+                                                    <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close">
+                                                        <span aria-hidden="true">&times;</span>
+                                                    </button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    ¿Esta seguro de eliminar el evento {{$event->id_evento}}?
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                                                    <form action="{{ route('evento.destroy', $event->id_evento) }}" method="POST">
+                                                        @csrf
+                                                        @method('DELETE')
+                                                        <input type="hidden" name="confirmacion" value="1">
+                                                        <button type="submit" class="btn btn-primary">Aceptar</button>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
                                 @endif
                             </div>
                             <div class="infEvnt">
