@@ -23,10 +23,7 @@
 @endsection
 
 @section('titulobar')
-    <div class="contentEmpresa ">
-        <img src="{{ asset('img/logo.png') }}" alt="Logo" class="imgLogo">
-        <div style=" font-weight: bold;">Cliente</div>
-    </div>
+   Cliente
 @endsection
 @section('opcionesIzquierda')
     <li class="nav-item"><a class="nav-link active" aria-current="page" href="{{route('paquetes')}}">Paquetes</a></li>

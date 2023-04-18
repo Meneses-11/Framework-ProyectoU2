@@ -19,10 +19,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css">
 @endsection
 @section('titulobar')
-    <div class="contentEmpresa ">
-        <img src="{{ asset('img/logo.png') }}" alt="Logo" class="imgLogo">
-        <div style=" font-weight: bold;">Cliente</div>
-    </div>
+Cliente
 @endsection
 @section('opcionesIzquierda')
     <li class="nav-item active" style="color: white;">Mis eventos</li>
