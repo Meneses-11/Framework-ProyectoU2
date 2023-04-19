@@ -10,4 +10,8 @@ class Usuario extends Model
     use HasFactory;
     protected $table = 'usuarios';
     protected $primaryKey = 'id_usuario';
+    public function eventos()
+    {
+        return $this->hasMany(Evento::class, 'id_usuario');
+    }
 }

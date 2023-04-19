@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Evento;
 use App\Models\Usuario;
 use Illuminate\Http\Request;
 
@@ -11,7 +12,8 @@ class UsuariosController extends Controller
     public function index()
     {
         $clientes = Usuario::all();
-        return view('gerente.usuarios.inicio', compact('clientes'));
+        $eventos = Evento::all();
+        return view('gerente.usuarios.inicio', compact('clientes','eventos'));
     }
 
     public function create()

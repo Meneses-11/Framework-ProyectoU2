@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('nombre');
             $table->boolean('activo')->default(false);
             $table->float('precio');
-            $table->string('descripcion');
+            $table->longText('descripcion')->nullable();
             $table->string('nombre_foto');
             $table->timestamps();
         });

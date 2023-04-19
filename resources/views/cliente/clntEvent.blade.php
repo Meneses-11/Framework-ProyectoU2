@@ -6,6 +6,7 @@
 @endsection
 @section('titulo')
     Cliente
+    
 @endsection
 @section('links')
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -23,6 +24,7 @@
         <img src="{{ asset('img/logo.png') }}" alt="Logo" class="imgLogo">
         <div style=" font-weight: bold;">Cliente</div>
     </div>
+
 @endsection
 @section('opcionesIzquierda')
     <li class="nav-item"><a class="nav-link active" aria-current="page" href="{{route('paquetes')}}">Paquetes</a></li>
