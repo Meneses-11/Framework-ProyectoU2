@@ -82,7 +82,7 @@ header[role="banner"] {
     margin-top: 6.5rem;
     position: absolute;
    /* top: 0;*/
-    width: 423px; /*ancho*/
+    width: 31.2%; /*ancho*/
     height: 200px;
     border-radius: 8px 8px 0 0;
     background: rgba(49, 63, 66, 0.76);

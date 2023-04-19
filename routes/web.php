@@ -79,3 +79,5 @@ Route::resource('servicio', ServicioController::class, [
 Route::resource('evento', EventoController::class);
 
 Route::put('evento/confirmar/{id}', [EventoController::class, 'confirmar'])->name('evento.confirmar');
+
+//Route::get('descripccion-paquetes', [PaqueteController::class, 'verMas'])->name('verMas');
