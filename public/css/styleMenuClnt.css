@@ -1,25 +1,16 @@
 body{
     margin: 0px;
     padding: 0;
-    background-color: #E0E8FA;
 }
 
-.contentEmpresa{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-.imgLogo{
-    height: 65px;
-    filter: brightness(200%) saturate(0%);
-    margin: auto;
-    display: block;
-}
 
+/*// Contenedor Principal //*/
 .contPrinc{
     margin: 90px 45px 20px 45px !important;
 }
 
+/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Página Pricipal Eventos ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/        
+/******************* Sección Titulo de la página *******************/
 .contTitEvent{
     display: flex;
     width: 100%;
@@ -98,7 +89,8 @@ button {
 }
 
 
-.eventos{
+/******************* Sección Eventos de la página *******************/
+.eventos{ /*Contiene todos los eventos*/
     border-radius: 10px;
     margin: 15px 15px 0 15px;
 }
@@ -106,9 +98,9 @@ button {
     padding: 0;
     margin: 0;
 }
-.evento{
-/*    background-color: rgb(207, 207, 207);*/
-    background-color: #f2fbff;
+/*////////// Evento uno x uno //////////*/
+.evento{ /* Contiene un evento */
+    background-color: #e2e2e2;
     height: 250px;
     width: 100%;
     border-radius: 12px;
@@ -123,35 +115,57 @@ button {
     justify-content: space-between;
 }
 .evento:hover{
-    background-color: #89d8d3;
+   background-color: #212529;
+   color: white;
 }
-.imgEvento{
+
+.imgEvento{/*///// Contiene la Imagen del Evento /////*/
     border-radius: 12px;
 
     width: 40%;
     overflow: hidden;
 }
 .imgEvento img{
-    width: 100%; /* Ajusta el ancho de la imagen al 100% del div */
-    height: auto; /* Ajusta la altura de la imagen automáticamente para mantener la proporción */
+    width: 100%;
+    height: auto;
     display: block;
 }
-.datosEvento{
+.datosEvento{/*///// Contiene los Datos del Evento /////*/
     width: 60%;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
 }
-.infEvntTit{
+.infEvntTit{/*Contiene Titulo del evento*/
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
-.infEvnt{
+.titEventConfirm{/*Contiene Confirmacion*/
+    display: flex;
+    gap: 5px;
+    margin-right: 10px;
+    align-items: center;
+}
+.titEventConfirm h4{/*Texto de Confirmacion*/
+    margin: 0;
+    padding: 0;
+}
+.titEventConfirm img{/*Icono de confirmacion*/
+    width: 20px;
+    height: 20px;
+}
+.iconsDesc{/*Contiene los botones edit, borrar*/
+    display: flex;
+    gap: 15px;
+    margin-right: 10px;
+    align-items: center;
+}
+.infEvnt{/*Contienen la información del Evento*/
     display: flex;
     justify-content: space-around;
 }
-.texto{
+.texto{/*Contiene el texto*/
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -163,29 +177,28 @@ button {
     padding: 0;
     margin: 0;
 }
+/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
 
 
-/*Contenedor con los botones*/
-.iconsDesc{
+
+
+
+/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Página Agregar y Editar Evento ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+.prinAgregar{/*Contenedor Principal*/
     display: flex;
-    gap: 15px;
-    margin-right: 10px;
     align-items: center;
+    justify-content: center;
 }
-
-.titEventConfirm{
+/********** Descripción de los eventos **********/
+.contDesc{/*Contiene la información del evento*/
+    background-color: rgb(122, 211, 223);
+    width: 75%;
+    height: 82vh;
+    border-radius: 15px;
     display: flex;
-    gap: 5px;
-    margin-right: 10px;
+    flex-direction: column;
     align-items: center;
-}
-.titEventConfirm h4{
-    margin: 0;
-    padding: 0;
-}
-.titEventConfirm img{
-    width: 20px;
-    height: 20px;
+    justify-content: space-around;
 }
 
 .add{
@@ -197,23 +210,8 @@ button {
     color: black !important;
 }
 
-.prinAgregar{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
 
-/***** Descripción de los eventos *****/
-.contDesc{
-    background-color: rgb(122, 211, 223);
-    width: 75%;
-    height: 82vh;
-    border-radius: 15px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-around;
-}
+
 .formu1{
     display: flex;
     flex-wrap: wrap;
