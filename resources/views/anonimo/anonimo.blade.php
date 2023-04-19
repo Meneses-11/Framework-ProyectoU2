@@ -8,10 +8,7 @@ Salón Eventos
 @endsection
 
 @section('titulobar')
-<div class="contentEmpresa ">
-    <img src="{{ asset('img/logo.png') }}" alt="Logo" class="imgLogo">
-    <div style="font-weight: bold;">Salón de Eventos</div>
-</div>
+Salón de Eventos
 @endsection
 
 @section('opcionesDerecha')

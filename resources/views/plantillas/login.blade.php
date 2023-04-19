@@ -4,100 +4,20 @@
 Login
 @endsection
 @section('titulobar')
-<div class="contentEmpresa ">
-    <img src="{{ asset('img/logo.png') }}" alt="Logo" class="imgLogo">
-</div>
+Bienvenido
 @endsection
 @section('estilos')
 <link rel="stylesheet" href="/css/styleTabla.css">
+<link rel="stylesheet" href="/css/styleLog.css">
+
 @endsection
 @section('opcionesDerecha')
 <li><a class="dropdown-item" href="#">Registrarse</a></li>
+<li><a class="dropdown-item" href="{{ route('inicio') }}">Inicio</a></li>
+
 @endsection
 @section('contenido')
-<style>
 
-body {
-	background-color: rgb(63, 63, 63);
-	font-family: Arial, sans-serif;
-}
-.fa, .fab, .fal, .far, .fas {
-  line-height: 2 !important;
-}
-
-.login {
-	width: 400px;
-	margin: 100px auto;
-	background-color: #fff;
-	padding: 20px;
-	border-radius: 10px;
-	box-shadow: 0 0 10px rgba(0,0,0,0.5);
-}
-
-h1 {
-	text-align: center;
-	margin-bottom: 30px;
-	color: #333;
-}
-
-form {
-	display: flex;
-	flex-direction: column;
-}
-
-label {
-	display: flex;
-	align-items: center;
-	margin-bottom: 10px;
-	color: #333;
-}
-
-input[type="text"],
-input[type="password"] {
-	padding: 10px;
-	border: none;
-	border-bottom: 2px solid #ccc;
-	font-size: 16px;
-}
-
-input[type="submit"] {
-	background-color: #333;
-	color: #fff;
-	padding: 10px;
-	border: none;
-	border-radius: 5px;
-	margin-top: 20px;
-	font-size: 16px;
-	cursor: pointer;
-}
-
-input[type="submit"]:hover {
-	background-color: #555;
-}
-
-#togglePassword {
-	display: flex;
-	align-items: center;
-	margin-left: 0px;
-	color: #333;
-	cursor: pointer;
-}
-
-.fa-user,
-.fa-lock {
-	color: #333;
-}
-
-.fa-eye {
-
-	color: #333;
-}
-
-input[type="password"].showPassword {
-    font-family: sans-serif;
-}
-
-</style>
 <script src="https://code.jquery.com/jquery-2.2.0.min.js"></script>
     <script>
 	function togglePassword() {

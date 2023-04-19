@@ -4,10 +4,7 @@
 Paquetes
 @endsection
 @section('titulobar')
-<div class="contentEmpresa ">
-    <img src="{{ asset('img/logo.png') }}" alt="Logo" class="imgLogo">
-    <div style=" font-weight: bold;">Admin Gerente Usuarios</div>
-</div>
+Admin Gerente Paquetes
 @endsection
 @section('estilos')
 <link rel="stylesheet" href="/css/styleTabla.css">
@@ -21,6 +18,7 @@ Paquetes
 <li><a class="dropdown-item" href="{{ route('login') }}">Cerrar Sesión</a></li>
 @endsection
 
+@endsection
 @section('contenido')
   <div class="container">
     <div class="row justify-content-center align-items-center">
