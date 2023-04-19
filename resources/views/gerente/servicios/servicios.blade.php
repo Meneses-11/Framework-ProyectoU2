@@ -4,10 +4,7 @@
 Servicios
 @endsection
 @section('titulobar')
-<div class="contentEmpresa ">
-    <img src="{{ asset('img/logo.png') }}" alt="Logo" class="imgLogo">
-    <div style=" font-weight: bold;">Admin Gerente Usuarios</div>
-</div>
+Admin Gerente Servicios
 @endsection
 @section('estilos')
 <link rel="stylesheet" href="/css/styleTabla.css">

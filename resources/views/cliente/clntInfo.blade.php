@@ -1,22 +1,35 @@
-@extends('plantillas.menuCliente')
-@section('contenido')
-<h1>Informacion</h1>
+@extends('plantillas.menuGerente')
+@section('titulo')
+Salón Eventos
 @endsection
+@section('estilos')
+<link rel="stylesheet" href="/css/styleMenuClnt.css">
+<link rel="stylesheet" href="/css/styleAnonimo.css">
+<link rel="stylesheet" href="/css/styleInfo.css">
+@endsection
+
 @section('titulobar')
-<div class="contentEmpresa">
-    <img src="img/logo.png" alt="Logo" class="imgLogo">
-    <h1 class="empresah1">Eleganza</h1>
-    <div><h1>Empleado</h1></div>
-</div>
-<div>
-    <ul class="utilities">
-      <br>
-      <li class="logout warn" style="color: red;"><a href="{{ route('login') }}">Cerrar Sesion</a></li>
-    </ul>
+<div class="contentEmpresa ">
+    <img src="{{ asset('img/logo.png') }}" alt="Logo" class="imgLogo">
+    <div style="font-weight: bold;">Salón de Eventos</div>
 </div>
 @endsection
-@section('menu')
-    <li class="edit"><a href="{{route('paquetes')}}">Paquetes</a></li>
-    <li class="write"><a href="{{ route('evento.index') }}">Mis eventos</a></li>
-    <li class="comments"><a href="{{route('informacion')}}">informacion</a></li>
+@section('opcionesDerecha')
+
+<li><a class="dropdown-item" href="{{ route('login') }}">Cerrar Sesion</a></li>
+@endsection
+
+@section('contenido')
+
+    <div class="slider-imagen">
+        <div class="slide">
+            <img src='img\bodas.jpeg' alt="bodas">
+        </div>
+    </div>
+        <div class="info-producto">
+            <h2>{{ $paquete->nombre }}</h2>
+            <p class="Descripcion">{{ $paquete->descripcion }} </p>
+            <!-- <button class="añade-carrito">Cotizar</button>-->
+        </div>
+
 @endsection

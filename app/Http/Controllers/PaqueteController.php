@@ -56,7 +56,7 @@ class PaqueteController extends Controller
     {
         //
         $paquete = Paquete::find($id);
-        return view('gerente.paquete', compact('paquete'));
+        return view('cliente.clntInfo', compact('paquete'));
     }
 
     /**

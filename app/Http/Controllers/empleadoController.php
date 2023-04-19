@@ -10,4 +10,6 @@ class empleadoController extends Controller
     public function principal(){
         return view('empleado.empldPrincipal');
     }
+
+    
 }

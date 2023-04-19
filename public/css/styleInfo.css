@@ -1,0 +1,27 @@
+.slider-imagen {
+    display: flex;
+    overflow: hidden;
+    width: 100%;
+    height: 600px;
+    position: relative;
+  }
+
+  .slide {
+    flex-shrink: 0;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    transition: transform 0.5s ease-in-out;
+  }
+
+  .slide:not(:first-child) {
+    transform: translateX(100%);
+  }
+
+  .slider:hover .slide:not(:hover) {
+    transform: translateX(-100%);
+  }
+
+

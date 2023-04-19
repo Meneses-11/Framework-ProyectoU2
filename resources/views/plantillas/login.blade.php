@@ -4,9 +4,7 @@
 Login
 @endsection
 @section('titulobar')
-<div class="contentEmpresa ">
-    <img src="{{ asset('img/logo.png') }}" alt="Logo" class="imgLogo">
-</div>
+Bienvenido
 @endsection
 @section('estilos')
 <link rel="stylesheet" href="/css/styleTabla.css">
