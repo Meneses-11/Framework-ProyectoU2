@@ -46,7 +46,7 @@
                 @if ($event->id_usuario == $usuario)
                     <div class="evento">
                         <div class="imgEvento">
-                            <img src="img/bodas.jpeg" alt="boda">
+                            <img src="{{ $event->paquete->nombre_foto }}"g alt="boda">
                         </div>
                         <div class="datosEvento">
                             <div class="infEvntTit">
@@ -100,6 +100,11 @@
                                 @endif
                             </div>
                             <div class="infEvnt">
+                                <div>
+                                    <form action="{{ route('evento.show',$event->id_evento) }}" method="GET">
+                                        <button type="submit" class="btn btn-primary">Ver Contrato</button>
+                                    </form>
+                                </div>
                                 <div class="texto">
                                     <p>Paquete: </p>
                                     @foreach ($paquetes as $nombre => $id)
