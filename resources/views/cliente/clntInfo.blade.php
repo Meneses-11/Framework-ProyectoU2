@@ -23,7 +23,7 @@ Salón Eventos
 
     <div class="slider-imagen">
         <div class="slide">
-            <img src='img\bodas.jpeg' alt="bodas">
+            <img src='/{{ $paquete->nombre_foto}}' alt="bodas">
         </div>
     </div>
         <div class="info-producto">

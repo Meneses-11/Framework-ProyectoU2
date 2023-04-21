@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    
+
     <link rel="stylesheet" href="/css/styleNavBar.css">
 
     @yield('estilos')
@@ -23,31 +23,6 @@
         }
     </style>
 </head>
-<<<<<<< HEAD
-=======
-<header>
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
-  <div class="container-fluid">
-    <a class="navbar-brand" href="#">
-      <div class="contentEmpresa ">
-        <img src="{{ asset('img/logo.png') }}" alt="Logo" class="imgLogo">
-        <div style=" font-weight: bold;">@yield('titulobar')</div>
-      </div>
-    </a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mobile_menu" aria-controls="mobile_menu" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="mobile_menu">
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        @yield('opcionesIzquierda')
-      </ul>
-      <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" style="padding-right: 5.5rem!important;padding-left: 1.rem!important;" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            <i class="bi bi-box-arrow-in-right"></i> Opciones </a>
-          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-            @yield('opcionesDerecha')
->>>>>>> 69ffa4290f787c1f825e083c35aac0047a7d18d8
 
 <body>
 <div>

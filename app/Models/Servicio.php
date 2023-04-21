@@ -13,6 +13,6 @@ class Servicio extends Model
 
     public function eventos()
     {
-        return $this->belongsToMany(Evento::class, 'eventos_servicios', 'id_servicio', 'id_evento');
+        return $this->belongsToMany(Evento::class, 'evento_servicio', 'id_servicio', 'id_evento');
     }
 }

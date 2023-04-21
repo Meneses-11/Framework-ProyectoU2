@@ -50,7 +50,6 @@ class EventoSeeder extends Seeder
         $evento = new Evento;
         $evento->id_usuario = 2;
         $evento->id_paquete = 4;
-        $evento->id_servicio = 1;
         $evento->precio = 8000;
         $evento->fecha = "2023-05-17";
         $evento->hora_inicio = "12:00";
@@ -62,7 +61,6 @@ class EventoSeeder extends Seeder
         $evento = new Evento;
         $evento->id_usuario = 3;
         $evento->id_paquete = 2;
-        $evento->id_servicio = 2;
         $evento->precio = 12000;
         $evento->fecha = "2023-06-17";
         $evento->hora_inicio = "22:00";
@@ -71,6 +69,6 @@ class EventoSeeder extends Seeder
         $evento->num_personas = 250;
         $evento->save();
 
-        
+
     }
 }
