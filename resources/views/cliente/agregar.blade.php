@@ -119,4 +119,114 @@
         </form>
     </div>
 
+
+    <div class="contPrinc">
+        <div class="row justify-content-center align-items-center">
+            <div class="col-lg-6" style="width: 60rem">
+                <div class="card" style="border-radius: 15px;">
+                    <div class="card-header" style="border-radius: 15px 15px 0 0;">
+                        <h1 class="text-center">Nuevo Servicio</h1>
+                    </div>
+                    <div class="card-body row g-3">
+                        <form action="{{ route('evento.store') }}" method="POST">
+                            @csrf
+
+                            <div class="row mb-3">
+
+                                <div class="col-sm-4">
+                                    <div class="row mb-3">
+                                        <div class="col">
+                                            <label class="form-label">Paquete:</label>
+                                            <select class="form-select" id="paqueteSelect" name="paqueteSelect" required>
+                                                <option value="">Seleccione un paquete</option>
+                                                @foreach ($paquetes as $paq)
+                                                    <option value="{{ $paq->id_paquete }}">{{ $paq->nombre }}</option>
+                                                @endforeach
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="row mb-3">
+                                        <div class="col">
+                                            <label for="name" class="form-label">Numero de Personas:</label>
+                                            <div class="input-group flex-nowrap">
+                                                <span class="input-group-text" id="addon-wrapping">Num</span>
+                                                <input type="number" id="numPersonas" name="numPersonas" class="form-control" placeholder="Numero de Personas" required>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-sm-4 align-self-center text-center">
+                                    <label class="form-label">Servicios</label>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                                        <label class="form-check-label" for="flexCheckDefault">
+                                            Manteleria
+                                        </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked>
+                                        <label class="form-check-label" for="flexCheckChecked">
+                                            Meseros
+                                        </label>
+                                    </div>
+                                </div>
+
+                                <div class="col-sm-4">
+                                    <div class="row mb-3">
+                                        <div class="col-sm">
+                                            <label class="form-label">Fecha:</label>
+                                            <input type="date" name="fecha" class="form-control" placeholder="Fecha de Evento" aria-label="City">
+                                        </div>
+                                    </div>
+                                    <div class="row mb-3">
+                                        <div class="col-sm">
+                                            <label class="form-label">Hora Inicio:</label>
+                                            <input type="time" class="form-control" name="hrIni">
+                                        </div>
+                                        <div class="col-sm">
+                                            <label class="form-label">Hora Fin:</label>
+                                            <input type="time" class="form-control" name="hrFin">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <div class="row mb-3">
+
+                                <div class="col-sm-8 align-self-center">
+                                    <label class="form-label">Descripción:</label>
+                                    <textarea class="form-control" name="descripcion" rows="3"></textarea>
+                                </div>
+
+                                <div class="col-sm-4 text-center align-self-center">
+                                    <label class="form-label">Total:</label>
+                                    <div class="input-group mb-3">
+                                        <span class="input-group-text">$</span>
+                                        <label class="form-control" name="preci" id="preci"></label>
+                                        <span class="input-group-text">.00</span>
+                                        <input type="hidden" name="precio" id="preciTot" value="">
+                                    </div>
+                                </div>
+
+                            </div>
+
+
+                            <div class="row mb-3">
+                                <div class="col-sm-6 d-grid gap-2">
+                                    <button type="submit" class="btn btn-dark btn-block">Registrar servicio</button>
+                                </div>
+                                <div class="col-sm-6 d-grid gap-2">
+                                    <button type="button" class="btn btn-secondary btn-block mt-2" onclick="window.location.href='{{ route('servicio.inicio') }}'">Cancelar</button>
+                                </div>
+                            </div>
+
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
 @endsection
