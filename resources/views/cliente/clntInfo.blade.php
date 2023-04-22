@@ -10,7 +10,6 @@ Salón Eventos
 
 @section('titulobar')
 <div class="contentEmpresa ">
-    <img src="{{ asset('img/logo.png') }}" alt="Logo" class="imgLogo">
     <div style="font-weight: bold;">Salón de Eventos</div>
 </div>
 @endsection
@@ -23,7 +22,7 @@ Salón Eventos
 
     <div class="slider-imagen">
         <div class="slide">
-            <img src='img\bodas.jpeg' alt="bodas">
+            <img src='{{ $paquete->nombre_foto }}' alt="bodas">
         </div>
     </div>
         <div class="info-producto">
@@ -31,5 +30,7 @@ Salón Eventos
             <p class="Descripcion">{{ $paquete->descripcion }} </p>
             <!-- <button class="añade-carrito">Cotizar</button>-->
         </div>
+
+        <button class="custom-btn btn-13" ><a href="{{route('evento.create')}}" style="color: white !important; text-decoration: none;">Crear este Evento</a></button>
 
 @endsection

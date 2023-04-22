@@ -9,12 +9,12 @@ Salón Eventos
 
 @section('titulobar')
 <div class="contentEmpresa ">
-    <img src="{{ asset('img/logo.png') }}" alt="Logo" class="imgLogo">
+
     <div style="font-weight: bold;">Salón de Eventos</div>
 </div>
 @endsection
 @section('opcionesDerecha')
-<li><a class="dropdown-item" href="{{ route('login') }}">Iniciar Sesion</a></li>
+<li><a class="dropdown-item" href="{{ route('login') }}">Cerrar Sesion</a></li>
 @endsection
 
 @section('contenido')
@@ -26,7 +26,7 @@ Salón Eventos
                 <figure>
                     <img src={{$paquete->nombre_foto }} alt="bodas">
                     <div class="capa" style="margin-top: -12.5rem;">
-                        <p class="Descripcion">Ver mas informacion</p>
+                        <p class="Descripcionn">Ver mas informacion</p>
                     </div>
                 </figure>
                 <div class="info-producto">
