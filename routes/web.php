@@ -22,7 +22,9 @@ Route::get('/login',function(){
     return view('plantillas.login');
 })->name('login');
 
-
+Route::get('/dragandrop',function(){
+    return view('drop');
+})->name('drop');
 
 Route::post('/validar',[entradaController::class,'validar'])->name('validar');
 
@@ -34,6 +36,8 @@ Route::get('/inicio',[entradaController::class,'inicio'])->name('inicio');
 
 
 Route::get('paquetes', [clienteController::class, 'verPaquetes'])->name('paquetes');
+Route::post('/img', [clienteController::class, 'store'])->name('imgStore');
+
 Route::get('misEventos', [clienteController::class, 'verEventos'])->name('eventos');
 Route::get('aboutWe', [clienteController::class, 'verInformacion'])->name('informacion');
 

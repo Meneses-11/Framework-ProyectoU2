@@ -24,5 +24,13 @@ class clienteController extends Controller
     //    return view('cliente.clntInfo')
 
    // }
+   public function store(Request $request){
+
+    $img = $request->file('file');
+    $imgName = time().rand(1,100).$img->extension();
+    $img -> move(public_path('img'),$imgName);
+    return response()->json(['success'=>$imgName]);
+
+}
 
 }

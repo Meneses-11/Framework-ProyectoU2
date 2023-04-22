@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous"></script>
+
     <title>@yield('titulo')</title>
     @yield('links')
     <style>
@@ -61,6 +62,7 @@
     </div>
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.6.4/dist/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.0/js/bootstrap.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 </body>
@@ -98,5 +100,35 @@
             uiLibrary: 'bootstrap4'
         });
     </script>
+ <script>
+    $(function() {
+  // Configuración de Dropzone
+  Dropzone.autoDiscover = false;
+  Dropzone.prototype.defaultOptions.dictDefaultMessage = "Arrastra y suelta aquí tus archivos o haz clic para seleccionarlos";
+  Dropzone.prototype.defaultOptions.dictFallbackMessage = "Tu navegador no soporta la carga de archivos mediante arrastrar y soltar.";
+  Dropzone.prototype.defaultOptions.dictFallbackText = "Por favor utiliza el formulario de reserva a continuación para subir tus archivos, como en los tiempos antiguos.";
+  Dropzone.prototype.defaultOptions.dictInvalidFileType = "No puedes subir archivos de este tipo.";
+  Dropzone.prototype.defaultOptions.dictCancelUpload = "Cancelar carga";
+  Dropzone.prototype.defaultOptions.dictCancelUploadConfirmation = "¿Estás seguro de que quieres cancelar la carga?";
+  Dropzone.prototype.defaultOptions.dictRemoveFile = "Eliminar archivo";
+  Dropzone.prototype.defaultOptions.dictMaxFilesExceeded = "No puedes subir más archivos.";
 
+  // Inicialización de Dropzone
+  var myDropzone = new Dropzone("#my-dropzone", {
+    url: "/upload",
+    paramName: "file",
+    maxFilesize: 10,
+    acceptedFiles: ".jpg,.jpeg,.png,.gif",
+    dictInvalidFileType: "Solo se permiten imágenes de tipo JPG, JPEG, PNG o GIF.",
+    addRemoveLinks: true,
+    dictRemoveFileConfirmation: "¿Estás seguro de que quieres eliminar esta imagen?",
+    init: function() {
+      this.on("success", function(file, response) {
+        console.log(response);
+      });
+    }
+  });
+});
+
+</script>
   </html>

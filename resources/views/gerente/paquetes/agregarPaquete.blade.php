@@ -46,7 +46,7 @@ Paquetes
 
                   <div class="mb-3">
                     <label for="price">Precio:</label>
-                    <input type="number" class="form-control" id="precio" name="precio" placeholder="Ingresa el precio del paquete" step="0.01" min="0.00">
+                    <input type="number" class="form-control" id="precio" name="precio" placeholder="Ingresa el precio del paquete" step="1" min="0.00">
                 </div>
 
                   <div class="mb-3">
