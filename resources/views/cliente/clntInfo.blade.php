@@ -9,9 +9,7 @@ Salón Eventos
 @endsection
 
 @section('titulobar')
-<div class="contentEmpresa ">
-    <div style="font-weight: bold;">Salón de Eventos</div>
-</div>
+Salón de Eventos
 @endsection
 @section('opcionesDerecha')
 
@@ -22,7 +20,7 @@ Salón Eventos
 
     <div class="slider-imagen">
         <div class="slide">
-            <img src='{{ $paquete->nombre_foto }}' alt="bodas">
+            <img src='/{{ $paquete->nombre_foto}}' alt="bodas">
         </div>
     </div>
         <div class="info-producto">

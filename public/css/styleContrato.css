@@ -1,0 +1,42 @@
+
+.card-body{
+    background-color: rgb(33,37,41)!important;
+    border-radius: 5px !important;
+    box-shadow: 0px 2px 5px rgba(54, 54, 54, 1); /* aquí agregamos la sombra */
+}
+  .sombra {
+    font-family: 'Montserrat', sans-serif!important;
+    font-size: large;
+    color: rgb(255,255,255);
+    margin-top: 8%;
+    margin-left: 20%;
+    margin-right: 20%;
+    margin-bottom: 5%;
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 0px 2px 5px rgba(54, 54, 54, 1); /* aquí agregamos la sombra */
+
+  }
+  .bor{
+    background-color: rgb(33,37,41)!important;
+    color: rgb(255,255,255);
+    border-radius: 5px !important;
+    box-shadow: 0px 2px 5px rgba(54, 54, 54, 1); /* aquí agregamos la sombra */
+  }
+  .contenedor2{
+    margin-top: 0%!important;
+    width: 100% !important;
+  }
+  h4 {
+    font-size: 1.5em;
+    color: rgb(255,255,255)!important;
+    margin-top: 0;
+    margin-bottom: 5% !important;
+    color: rgb(33,37,41);
+    text-align: center;
+  }
+  p, ul {
+    margin-left: 20%;
+  }
+

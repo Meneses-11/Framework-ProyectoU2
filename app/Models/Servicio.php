@@ -10,7 +10,9 @@ class Servicio extends Model
     use HasFactory;
     protected $table = 'servicios';
     protected $primaryKey = 'id_servicio';
-    public function eventos() {
-        return $this->belongsToMany(Evento::class);
+
+    public function eventos()
+    {
+        return $this->belongsToMany(Evento::class, 'evento_servicio', 'id_servicio', 'id_evento');
     }
 }

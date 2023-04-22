@@ -30,6 +30,8 @@ Admin Gerente Usuarios
 @endsection
 @section('columnas')
         <th>ID</th>
+        <th>Eventos</th>
+        <th>Activos</th>
         <th>Rol</th>
         <th>Nombre</th>
         <th>Apellido</th>
@@ -45,6 +47,8 @@ Admin Gerente Usuarios
 @foreach ($clientest1 as $cliente)
 <tr>
     <td>{{ $cliente->id_usuario}}</td>
+    <td>{{ $cliente->eventos()->count() }}</td>
+    <td>{{ $cliente->eventos()->where('confirmacion',1)->pluck('id_evento')->count() }}</td>
     <td>{{ $cliente->rol }}</td>
     <td>{{ $cliente->nombre }}</td>
     <td>{{ $cliente->apellido}}</td>
@@ -52,7 +56,7 @@ Admin Gerente Usuarios
     <td>{{ $cliente->telefono}}</td>
     <td>
         <div class="d-inline-flex p-n2 align-items-center">
-            <a href="{{ route('usuario.editar',$cliente->id_usuario) }}" class="edit" ><i class="fas fa-pen" data-toggle="tooltip" title="Editar"></i></a>
+            <a href="{{ route('usuario.editar',$cliente->id_usuario) }}" class="edit" ><i class="fas fa-penny-arcade" data-toggle="tooltip" title="Editar"></i></a>
             <a href="#" class="delete" data-toggle="modal" data-target="#deleteModal{{ $cliente->id_usuario }}"><i class="fas fa-trash" data-toggle="tooltip" title="Eliminar"></i></a>
             <a href="{{ route('usuario.detalle',$cliente->id_usuario) }}"  ><i class="fas fa-info-circle" data-toggle="tooltip" title="Información"></i></a>
         </div>
@@ -93,6 +97,8 @@ Admin Gerente Usuarios
 <tr>
 
     <td>{{ $cliente->id_usuario}}</td>
+    <td>{{ $cliente->eventos()->count() }}</td>
+    <td>{{ $cliente->eventos()->where('confirmacion',1)->pluck('id_evento')->count() }}</td>
     <td>{{ $cliente->rol }}</td>
     <td>{{ $cliente->nombre }}</td>
     <td>{{ $cliente->apellido}}</td>
@@ -100,9 +106,16 @@ Admin Gerente Usuarios
     <td>{{ $cliente->telefono}}</td>
     <td>
         <div class="d-inline-flex p-n2 align-items-center">
-            <a href="{{ route('usuario.inicio') }}" class="edit" data-toggle="modal"><i class="fas fa-pen" data-toggle="tooltip" title="Editar"></i></a>
             <a href="#eliminarModal" class="delete" data-toggle="modal"><i class="fas fa-trash" data-toggle="tooltip" title="Eliminar"></i></a>
-            <a href="{{ route('usuario.editar',$cliente->id_usuario) }}"  ><i class="fas fa-info-circle" data-toggle="tooltip" title="Información"></i></a>
+            <a href="{{ route('usuario.inicio') }}"  ><i class="fas fa-info-circle" data-toggle="tooltip" title="Información"></i></a>
+
+            @if ($cliente->eventos()->count() != 0)
+            <a href="{{ route('usuario.editar',$cliente->id_usuario) }}" class="edit" data-toggle="modal"><i class="fa-sharp fa-solid fa-pen-slash" data-toggle="tooltip" title="Editar"></i></a>
+
+            @else
+            <a href="#" class="edit" data-toggle="modal"><i class="fa-sharp fa-solid fa-pen-slash" data-toggle="tooltip" title="Editar"></i></a>
+
+            @endif
         </div>
     </td>
 </tr>

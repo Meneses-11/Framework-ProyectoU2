@@ -16,7 +16,6 @@ return new class extends Migration
             $table->increments('id_evento');
             $table->unsignedInteger('id_usuario');
             $table->unsignedInteger('id_paquete');
-            $table->unsignedInteger('id_servicio')->nullable();
             $table->float('precio');
             $table->date('fecha');
             $table->time('hora_inicio');
@@ -27,7 +26,6 @@ return new class extends Migration
             $table->timestamps();
             $table->foreign('id_usuario')->references('id_usuario')->on('usuarios');
             $table->foreign('id_paquete')->references('id_paquete')->on('paquetes');
-            $table->foreign('id_servicio')->references('id_servicio')->on('servicios');
 
         });
     }

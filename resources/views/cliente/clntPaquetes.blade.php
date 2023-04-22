@@ -8,10 +8,7 @@ Salón Eventos
 @endsection
 
 @section('titulobar')
-<div class="contentEmpresa ">
-
-    <div style="font-weight: bold;">Salón de Eventos</div>
-</div>
+Salón de Eventos
 @endsection
 @section('opcionesDerecha')
 <li><a class="dropdown-item" href="{{ route('login') }}">Cerrar Sesion</a></li>

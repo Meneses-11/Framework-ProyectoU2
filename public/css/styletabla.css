@@ -2,6 +2,18 @@
 body{
     background-color: #E0E8FA;
 }
+/*
+    //how to make a rectangle with a picture in css?
+
+*/
+.contentEmpresa{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.2rem;
+    white-space: nowrap;
+}
+
 
 .divtabla{
     margin-top: 3cm;

@@ -14,4 +14,5 @@ class Paquete extends Model
     public function eventos() {
         return $this->belongsToMany(Evento::class);
     }
+
 }

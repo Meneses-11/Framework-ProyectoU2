@@ -11,22 +11,22 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('paquetes', function (Blueprint $table) {
-            $table->increments('id_paquete');
-            $table->string('nombre');
-            $table->boolean('activo')->default(false);
-            $table->float('precio');
-            $table->longText('descripcion')->nullable();
-            $table->string('nombre_foto');
+        Schema::create('evento_servicio', function (Blueprint $table) {
+            $table->unsignedInteger('id_evento');
+            $table->unsignedInteger('id_servicio');
             $table->timestamps();
+
+            $table->foreign('id_evento')->references('id_evento')->on('eventos');
+            $table->foreign('id_servicio')->references('id_servicio')->on('servicios');
         });
     }
+
 
     /**
      * Reverse the migrations.
      */
     public function down(): void
     {
-        Schema::dropIfExists('paquetes');
+        //
     }
 };
