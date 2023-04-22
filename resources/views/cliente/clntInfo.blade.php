@@ -29,4 +29,6 @@ Salón de Eventos
             <!-- <button class="añade-carrito">Cotizar</button>-->
         </div>
 
+        <button class="custom-btn btn-13" ><a href="{{route('evento.create')}}" style="color: white !important; text-decoration: none;">Crear este Evento</a></button>
+
 @endsection

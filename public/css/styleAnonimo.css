@@ -102,6 +102,11 @@ header[role="banner"] {
     transform: scale(1.2);
 }
 
+.Descripcionn{
+    text-align: center;
+    line-height: 10rem;
+}
+
 .info-producto{
     padding: 15px 30px;
     line-height: 2; /*interlineado*/
