@@ -70,7 +70,7 @@ Admin Gerente Usuarios
                 @endif
               <div class="mb-3">
                 <label for="confirm_password" class="form-label">Confirmar Contraseña:</label>
-                <input type="password" id="confirm_password" name="c2" class="form-control" placeholder="Confirma el contraseña" required>
+                <input type="password" id="confirm_password" name="p2" class="form-control" placeholder="Confirma el contraseña" required>
               </div>
                 @if($errors->has('password_nueva'))
                 <span class="text-danger">{{ $errors->first('password_nueva') }}</span>

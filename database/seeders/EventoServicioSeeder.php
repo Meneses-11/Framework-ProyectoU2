@@ -13,5 +13,6 @@ class EventoServicioSeeder extends Seeder
     public function run(): void
     {
         //
+        
     }
 }
