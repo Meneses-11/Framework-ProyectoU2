@@ -19,11 +19,13 @@ class ServicioSeeder extends Seeder
         $serv->precio = 599.99;
         $serv->descripcion = "";
         $serv->save();
+
         $serv = new Servicio;
         $serv->nombre = "Meseros";
         $serv->precio = 1599.99;
         $serv->descripcion = "";
         $serv->save();
+        
         $serv = new Servicio;
         $serv->nombre = "Aire acondicionado";
         $serv->precio = 2599.99;

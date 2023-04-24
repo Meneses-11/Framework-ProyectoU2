@@ -65,7 +65,7 @@ class EventoSeeder extends Seeder
         $evento->fecha = "2023-06-17";
         $evento->hora_inicio = "22:00";
         $evento->hora_fin = "03:30";
-        $evento->descripcion = "Mi hija llega a sus xv añosy lo haremos en grande";
+        $evento->descripcion = "Mi hija llega a sus xv años y lo haremos en grande";
         $evento->num_personas = 250;
         $evento->save();
 

@@ -26,6 +26,7 @@ class UsuarioSeeder extends Seeder
         $alguien->email = "hugot@gmail.com";
         $alguien->telefono = "9611506183";
         $alguien->save();
+
         $alguien = new Usuario;
         $alguien->nombre = "Paco";
         $alguien->apellido = "Meneses";
@@ -37,6 +38,7 @@ class UsuarioSeeder extends Seeder
         $alguien->email = "pacom@gmail.com";
         $alguien->telefono = "9611506184";
         $alguien->save();
+        
         $alguien = new Usuario;
         $alguien->nombre = "Luis";
         $alguien->apellido = "Morales";
