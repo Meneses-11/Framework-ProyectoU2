@@ -16,8 +16,8 @@ return new class extends Migration
             $table->unsignedInteger('id_servicio');
             $table->timestamps();
 
-            $table->foreign('id_evento')->references('id_evento')->on('eventos');
-            $table->foreign('id_servicio')->references('id_servicio')->on('servicios');
+            $table->foreign('id_evento')->references('id_evento')->on('eventos')->onDelete('cascade');
+            $table->foreign('id_servicio')->references('id_servicio')->on('servicios')->onDelete('cascade');
         });
     }
 
