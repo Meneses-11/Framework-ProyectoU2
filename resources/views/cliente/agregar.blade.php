@@ -36,7 +36,11 @@
                             <select id="paqueteSelect" class="selectPaq" name="idPaquete" required>
                                 <option value="">Seleccione un paquete</option>
                                 @foreach ($paquetes as $paq)
-                                    <option value="{{ $paq->id_paquete }}">{{ $paq->nombre }}</option>
+                                    <option value="{{ $paq->id_paquete }}"
+                                        @if ($paq->id_paquete == $paquete->id_paquete)
+                                        selected
+                                    @endif>{{ $paq->nombre }}</option>
+
                                 @endforeach
                             </select>
                         </div>
@@ -69,8 +73,16 @@
                         </div>
                         <div class="desCont">
                             <label for="infor">Precio:</label>
-                            <label for="infor" name="preci" id="preci"></label>
-                            <input type="hidden" name="precio" id="preciTot" value="">
+
+                            <label for="infor" name="preci" id="preci">
+                                @if ($paquete->id_paquete!=null)
+                                        {{ $paquete->precio }}
+                                    @endif
+                            </label>
+                            <input type="hidden" name="precio" id="preciTot" @if ($paquete->id_paquete!=null)
+                            value="{{ $paquete->precio }}"
+                        @else value="" @endif>
+
                         </div>
 
                         <script>

@@ -6,7 +6,7 @@
     position: relative;
   }
 
-  .slide img{
+.slide img{
     flex-shrink: 0;
     width: 100%;
     height: 100%;
@@ -16,11 +16,11 @@
     transition: transform 0.5s ease-in-out;
   }
 
-  .slide:not(:first-child) {
+.slide:not(:first-child) {
     transform: translateX(100%);
   }
 
-  .slider:hover .slide:not(:hover) {
+.slider:hover .slide:not(:hover) {
     transform: translateX(-100%);
   }
 

@@ -80,4 +80,4 @@ Route::resource('evento', EventoController::class);
 
 Route::put('evento/confirmar/{id}', [EventoController::class, 'confirmar'])->name('evento.confirmar');
 
-//Route::get('descripccion-paquetes', [PaqueteController::class, 'verMas'])->name('verMas');
+Route::post('paquete/evento', [EventoController::class, 'crearP'])->name('crearP');
