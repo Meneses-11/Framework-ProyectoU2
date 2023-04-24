@@ -77,14 +77,14 @@
                         <div class="desCont">
                             <label for="infor">Precio:</label>
 
-                            <label for="infor" name="preci" id="preci">
+                            <label for="infor" name="" id="">
                                 @if (isset($paquete))
                                     @if ($paquete->id_paquete!=null)
                                         {{ $paquete->precio }}
                                     @endif    
                                 @endif
                             </label>
-                            <input type="hidden" name="precio" id="preciTot" @if (isset($paquete))
+                            <input type="hidden" name="" id="" @if (isset($paquete))
                                 @if ($paquete->id_paquete!=null)
                                     value="{{ $paquete->precio }}"
                                 @else value="" 
@@ -125,9 +125,9 @@
                                         precServ = servi['precio'];
                                     }
                                 });
-                                var tot = precPaq + precServ;
+                                var tot = precPaq + precServ;/*
                                 document.getElementById("preci").innerHTML = tot;
-                                document.getElementById("preciTot").value = tot;
+                                document.getElementById("preciTot").value = tot;*/
 
                             }
                         </script>
@@ -159,7 +159,7 @@
                                     <div class="row mb-3">
                                         <div class="col">
                                             <label class="form-label">Paquete:</label>
-                                            <select class="form-select" id="paqueteSelect" name="paqueteSelect" required>
+                                            <select class="form-select" name="idPaquete" required>
                                                 <option value="">Seleccione un paquete</option>
                                                 @foreach ($paquetes as $paq)
                                                     <option value="{{ $paq->id_paquete }}">{{ $paq->nombre }}</option>
@@ -180,18 +180,14 @@
 
                                 <div class="col-sm-4 align-self-center text-center">
                                     <label class="form-label">Servicios</label>
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                                        <label class="form-check-label" for="flexCheckDefault">
-                                            Manteleria
-                                        </label>
-                                    </div>
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked>
-                                        <label class="form-check-label" for="flexCheckChecked">
-                                            Meseros
-                                        </label>
-                                    </div>
+                                    @foreach ($servicios as $serv)
+                                        <div class="form-check">
+                                            <input class="form-check-input" name="idServicio[]" type="checkbox" value="{{ $serv->id_servicio }}" id="servicio-{{ $serv->id_servicio }}">
+                                            <label class="form-check-label" for="servicio-{{ $serv->id_servicio }}">
+                                                {{ $serv->nombre }}
+                                            </label>
+                                        </div>
+                                    @endforeach
                                 </div>
 
                                 <div class="col-sm-4">
@@ -234,6 +230,63 @@
 
                             </div>
 
+                            <!-- ////////////////////////////// -->
+                            
+                            <script>
+                                // Obtener los select
+                                var paqueteSelect = document.getElementsByName("idPaquete")[0];
+                                var serviChbox = document.querySelectorAll('input[name="idServicio[]"]');
+                            
+                                // Obtener los valores de paquetes y servicios (el método pluck genera un objeto de selección de laravel)
+                                var paquetes = {!! json_encode($paquetes->toArray()) !!};  //por eso lo convertimos a un formato que pueda reconocer JavaScript
+                                var servicios = {!! json_encode($servicios->toArray()) !!};
+                            
+                                // Asignar un evento a los select para detectar cambios y a cada checkbox
+                                paqueteSelect.addEventListener("change", actualizarResultado);
+                                serviChbox.forEach(function (checkbox) {
+                                    checkbox.addEventListener("change", actualizarResultado);
+                                });
+                            
+                                // Función que actualiza el contenido del label con los valores seleccionados
+                                function actualizarResultado() {
+                                    var paqueteSeleccionado = paqueteSelect.value;
+                                    var serviciosSeleccionados = [];
+
+                                    serviChbox.forEach(function(checkbox) {
+                                        if (checkbox.checked) {
+                                            serviciosSeleccionados.push(checkbox.value);
+                                        }
+                                    });
+
+                                    var precPaq = 0;
+                                    var precServ = 0;
+
+                                    paquetes.forEach(function(paquet){
+                                        if(paquet['id_paquete'] == paqueteSeleccionado){
+                                            precPaq = paquet['precio'];
+                                        }
+                                    });
+
+                                    serviciosSeleccionados.forEach(function(idServicio) {
+                                        servicios.forEach(function(servicio) {
+                                            if (servicio['id_servicio'] == idServicio) {
+                                                precServ += servicio['precio'];
+                                            }
+                                        });
+                                    });
+
+                                    var tot = precPaq + precServ;
+                                    document.getElementById("preci").innerHTML = tot;
+                                    document.getElementById("preciTot").value = tot;
+                                }
+
+                                
+                                // Llamar a actualizarResultado al cargar la página
+                                actualizarResultado();
+                            
+                            </script>
+                            
+                            <!-- ////////////////////////////// -->
 
                             <div class="row mb-3">
                                 <div class="col-sm-6 d-grid gap-2">
