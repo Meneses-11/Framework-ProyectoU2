@@ -10,6 +10,9 @@ Salón Eventos
 @section('titulobar')
 Salón de Eventos
 @endsection
+@section('opcionesIzquierda')
+    <li class="nav-item"><a class="nav-link active" aria-current="page" href="{{ route('evento.index') }}">Mis eventos</a></li>
+@endsection
 @section('opcionesDerecha')
 <li><a class="dropdown-item" href="{{ route('cerrar_sesion') }}">Cerrar Sesion</a></li>
 @endsection

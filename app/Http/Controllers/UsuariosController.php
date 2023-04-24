@@ -30,20 +30,24 @@ class UsuariosController extends Controller
 
     public function store(Request $request)
     {
+        $p1 = $request->input('p1');
+        $p2 = $request->input('p2');
+        if($p1 !== $p2){
+            return redirect()->back()->withErrors(['password_nueva' => 'Las contraseñas no coinciden']);
+        }else{
         $usuario = new Usuario;
         $usuario->nombre = $request->nombre;
         $usuario->apellido = $request->apellido;
         $usuario->nombre_usuario = $request->nusuario;
-        $usuario->contraseña = Hash::make($request->input('contraseña'));
-        $usuario->contraseña = $request->pass;
+        $usuario->contraseña = Hash::make($p1);
         $usuario->rol = $request->seleccion;
         $usuario->fecha_nacimiento = date($request->fecha);
         $usuario->direccion = $request->direccion;
         $usuario->email = $request->correo;
         $usuario->telefono = $request->telefono;
         $usuario->save();
-
         return redirect()->route('usuario.inicio')->with('success', 'Cliente creado correctamente.');
+        }
     }
 
     public function edit($alguien)
@@ -54,19 +58,33 @@ class UsuariosController extends Controller
 
     public function update(Request $request, $usuario)
     {
+        $password_actual = $request->input('pa');
+        $password_nueva = $request->input('p1');
+        $password_confirmacion = $request->input('p2');
         $usuario = Usuario::find($usuario);
-        $usuario->nombre = $request->nombre;
-        $usuario->apellido = $request->apellido;
-        $usuario->nombre_usuario = $request->nusuario;
-        $usuario->contraseña = $request->pass;
-        $usuario->rol = $request->seleccion;
-        $usuario->fecha_nacimiento = date($request->fecha) ;
-        $usuario->direccion = $request->direccion;
-        $usuario->email = $request->correo;
-        $usuario->telefono = $request->telefono;
-        $usuario->save();
 
-        return redirect()->route('usuario.inicio')->with('success', 'Cliente actualizado correctamente.');
+        if ($password_nueva !== $password_confirmacion) {
+            // Las contraseñas nuevas no coinciden
+            return redirect()->back()->withErrors(['password_nueva' => 'Las contraseñas nuevas no coinciden']);
+        }
+
+        if (!Hash::check($password_actual, $usuario->contraseña)) {
+            // La contraseña actual no es correcta
+            return redirect()->back()->withErrors(['password_actual' => 'La contraseña actual es incorrecta']);
+        }else {
+            $usuario->nombre = $request->nombre;
+            $usuario->apellido = $request->apellido;
+            $usuario->nombre_usuario = $request->nusuario;
+            $usuario->contraseña = Hash::make($password_nueva);
+            $usuario->rol = $request->seleccion;
+            $usuario->fecha_nacimiento = date($request->fecha);
+            $usuario->direccion = $request->direccion;
+            $usuario->email = $request->correo;
+            $usuario->telefono = $request->telefono;
+            $usuario->save();
+            return redirect()->route('usuario.inicio')->with('success', 'Cliente actualizado correctamente.');
+        }
+
     }
 
     public function destroy($usuario)

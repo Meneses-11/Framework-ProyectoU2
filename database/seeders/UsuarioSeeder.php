@@ -23,7 +23,7 @@ class UsuarioSeeder extends Seeder
         $alguien->rol='Cliente';
         $alguien->fecha_nacimiento = "2001-01-01";
         $alguien->direccion = "Calle de las rosas";
-        $alguien->email = "hugot@gamil.com";
+        $alguien->email = "hugot@gmail.com";
         $alguien->telefono = "9611506183";
         $alguien->save();
         $alguien = new Usuario;
@@ -34,7 +34,7 @@ class UsuarioSeeder extends Seeder
         $alguien->rol='Cliente';
         $alguien->fecha_nacimiento = "2001-05-01";
         $alguien->direccion = "Avenida siempre viva";
-        $alguien->email = "pacom@gamil.com";
+        $alguien->email = "pacom@gmail.com";
         $alguien->telefono = "9611506184";
         $alguien->save();
         $alguien = new Usuario;
@@ -45,7 +45,7 @@ class UsuarioSeeder extends Seeder
         $alguien->rol='Cliente';
         $alguien->fecha_nacimiento = "2001-06-01";
         $alguien->direccion = "Calle de las petunias";
-        $alguien->email = "luism@gamil.com";
+        $alguien->email = "luism@gmail.com";
         $alguien->telefono = "9611506185";
         $alguien->save();
 
@@ -58,7 +58,7 @@ class UsuarioSeeder extends Seeder
         $alguien->rol='Gerente';
         $alguien->fecha_nacimiento = "2001-08-01";
         $alguien->direccion = "Direccion conocida";
-        $alguien->email = "CarlosM@gamil.com";
+        $alguien->email = "CarlosM@gmail.com";
         $alguien->telefono = "9611506180";
         $alguien->save();
     }

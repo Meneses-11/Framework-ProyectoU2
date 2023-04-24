@@ -89,3 +89,4 @@ Route::get('/registrarse',function(){
 })->name('registrarse');
 Route::post('/registrar_usuario', [UsuariosController::class, 'registrarse'])->name('registrar_usuario');
 
+Route::post('paquete/evento', [EventoController::class, 'crearP'])->name('crearP');

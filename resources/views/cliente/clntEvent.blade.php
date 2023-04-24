@@ -6,7 +6,6 @@
 
 @section('titulo')
     Cliente
-
 @endsection
 
 @section('links')
@@ -16,16 +15,10 @@
 @endsection
 
 @section('titulobar')
-    <div class="contentEmpresa ">
-        <img src="{{ asset('img/logo.png') }}" alt="Logo" class="imgLogo">
-        <div style=" font-weight: bold;">Cliente</div>
-    </div>
-
+Cliente
 @endsection
 @section('opcionesIzquierda')
     <li class="nav-item"><a class="nav-link active" aria-current="page" href="{{route('paquetes')}}">Paquetes</a></li>
-    <li class="nav-item"><a class="nav-link active" aria-current="page" href="{{ route('evento.index') }}">Mis eventos</a></li>
-    <li class="nav-item"><a class="nav-link active" aria-current="page" href="{{route('informacion')}}">Informacion</a></li>
 @endsection
 @section('opcionesDerecha')
     <li><a class="dropdown-item" href="{{ route('cerrar_sesion') }}">Cerrar Sesión</a></li>
@@ -43,7 +36,6 @@
 
         <div class="eventos">
             @foreach ($eventos as $event)
-                @if ($event->id_usuario == $usuario)
                     <div class="evento">
                         <div class="imgEvento">
                             <img src="{{ $event->paquete->nombre_foto }}"g alt="boda">
@@ -76,12 +68,12 @@
                                         <div class="modal-dialog" role="document">
                                             <div class="modal-content">
                                                 <div class="modal-header">
-                                                    <h5 class="modal-title fs-5" id="modalDeleteLabel{{$event->id_evento}}">Eliminar Evento</h5>
+                                                    <h5  class="modal-title fs-5" id="modalDeleteLabel{{$event->id_evento}}" style="color: black !important;">Eliminar Evento</h5>
                                                     <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close">
                                                         <span aria-hidden="true">&times;</span>
                                                     </button>
                                                 </div>
-                                                <div class="modal-body">
+                                                <div class="modal-body" style="color: black !important;">
                                                     ¿Esta seguro de eliminar el evento {{$event->id_evento}}?
                                                 </div>
                                                 <div class="modal-footer">
@@ -115,15 +107,14 @@
                                 </div>
                                 <div class="texto">
                                     <p>Servicio:</p>
-                                    @if (empty($event->id_servicio))
-                                        <p>-Ninguno</p>
-                                    @else
-                                        @foreach ($servicios as $nombre => $id)
-                                            @if ($id == $event->id_servicio)
-                                                <p>-{{$nombre}}</p>
-                                            @endif
+                                    @if (($event -> servicios() -> pluck('nombre'))!== null)
+                                        @foreach ($event -> servicios() -> pluck('nombre') as $evnt)
+                                            <p style="font-size: 14px">-{{ $evnt }}</p>
                                         @endforeach
+                                    @else
+                                        <p>-Ninguno</p>
                                     @endif
+
                                 </div>
                                 <div class="texto">
                                     <p>Personas:</p>
@@ -162,7 +153,7 @@
                                                         <span aria-hidden="true">&times;</span>
                                                     </button>
                                                 </div>
-                                                <div class="modal-body">
+                                                <div class="modal-body" style="color: black !important;">
                                                     ¿Desea confirmar el evento {{$event->id_evento}}?
                                                 </div>
                                                 <div class="modal-footer">
@@ -183,7 +174,6 @@
                         </div>
 
                     </div>
-                @endif
 
             @endforeach
         </div>

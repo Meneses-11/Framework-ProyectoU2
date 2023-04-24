@@ -68,15 +68,19 @@ Admin Gerente Usuarios
                 <label for="email" class="form-label">Fecha de nacimiento:</label>
                 <input type="date" id="fecha" name="fecha" class="form-control" placeholder="Ingresa o selecciona el fecha de nacimiento" required>
               </div>
-
+              @if($errors->has('password_nueva'))
+              <span class="text-danger">{{ $errors->first('password_nueva') }}</span>
+              @endif
               <div class="mb-3">
                 <label for="password" class="form-label">Contraseña:</label>
-                <input type="password" id="password" name="pass" class="form-control" placeholder="Ingresa la contraseña" required>
+                <input type="password" id="password" name="p1" class="form-control" placeholder="Ingresa la contraseña" required>
               </div>
-
+              @if($errors->has('password_nueva'))
+              <span class="text-danger">{{ $errors->first('password_nueva') }}</span>
+              @endif
               <div class="mb-3">
                 <label for="confirm_password" class="form-label">Confirmar Contraseña:</label>
-                <input type="password" id="confirm_password" name="confirm_password" class="form-control" placeholder="Confirma el contraseña" required>
+                <input type="password" id="confirm_password" name="p2" class="form-control" placeholder="Confirma el contraseña" required>
               </div>
 
               <div class="mb-3">
