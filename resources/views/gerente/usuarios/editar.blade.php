@@ -17,7 +17,7 @@ Admin Gerente Usuarios
 <li class="nav-item"><a class="nav-link active" aria-current="page" href="{{ route('servicio.inicio') }}">Administrar Servicios</a></li>
 @endsection
 @section('opcionesDerecha')
-<li><a class="dropdown-item" href="{{ route('login') }}">Cerrar Sesión</a></li>
+<li><a class="dropdown-item" href="{{ route('cerrar_sesion') }}">Cerrar Sesión</a></li>
 @endsection
 @section('contenido')
 <div class="centrar" style="margin-top: 7rem">
@@ -66,15 +66,23 @@ Admin Gerente Usuarios
                     <label for="email" class="form-label">Fecha de nacimiento:</label>
                     <input value="{{ $alguien->fecha_nacimiento }}" type="date" id="fecha" name="fecha" class="form-control" placeholder="Ingresa o selecciona tu fecha de nacimiento" required>
                   </div>
-
                   <div class="mb-3">
-                    <label for="password" class="form-label">Contraseña:</label>
-                    <input value="{{ $alguien->contraseña }}" type="password" id="password" name="pass" class="form-control" placeholder="Ingresa tu contraseña" required>
+                    <label for="password" class="form-label">Contraseña Anterior:</label>
+                    <input type="password" id="password" name="pa" class="form-control" placeholder="Ingresa la contraseña anterior" required>
                   </div>
-
+                    @if($errors->has('password_actual'))
+                    <span class="text-danger">{{ $errors->first('password_actual') }}</span>
+                    @endif
                   <div class="mb-3">
-                    <label for="confirm_password" class="form-label">Confirmar Contraseña:</label>
-                    <input value="{{ $alguien->contraseña }}" type="password" id="confirm_password" name="confirm_password" class="form-control" placeholder="Confirma tu contraseña" required>
+                    <label for="password" class="form-label">Nueva Contraseña:</label>
+                    <input  type="password" id="password" name="p1" class="form-control" placeholder="Ingresa la nueva contraseña" required>
+                  </div>
+                    @if($errors->has('password_nueva'))
+                    <span class="text-danger">{{ $errors->first('password_nueva') }}</span>
+                    @endif
+                  <div class="mb-3">
+                    <label for="confirm_password" class="form-label">Confirma tu Nueva Contraseña:</label>
+                    <input type="password" id="confirm_password" name="p2" class="form-control" placeholder="Confirma la nueva contraseña" required>
                   </div>
 
                   <div class="mb-3">

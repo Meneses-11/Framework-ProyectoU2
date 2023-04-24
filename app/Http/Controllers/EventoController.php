@@ -17,7 +17,7 @@ class EventoController extends Controller
     {
         //
         $usuario = session('id');
-        $eventos = Evento::where('id_usuario', $usuario)->get();
+        $eventos = Evento::where('id_usuario',$usuario)->get();
         $paquetes = Paquete::pluck('id_paquete','nombre');
         $servicios = Servicio::pluck('id_servicio','nombre');
         /*$servSelec = [];
@@ -46,7 +46,6 @@ class EventoController extends Controller
     {
 
         $usuario = session('id');
-
         $newEvent = new Evento;
         $newEvent->id_usuario = $usuario;
         $newEvent->id_paquete = $request->idPaquete;
@@ -58,8 +57,9 @@ class EventoController extends Controller
         $newEvent->num_personas = $request-> numPersonas;
         $newEvent->save();
 
-        $evntServ = Evento::find($newEvent->id_evento);
-        $evntServ->servicios()->attach($request->idServicio);
+        $evento = Evento::find($newEvent->id_evento);
+        $serviSelect = $request -> idServicio;
+        $evento -> servicios() -> attach($serviSelect);
 
         return redirect(route('evento.index'));
     }

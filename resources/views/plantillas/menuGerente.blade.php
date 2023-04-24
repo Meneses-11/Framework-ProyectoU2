@@ -9,9 +9,10 @@
 
     @yield('estilos')
 
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous"></script>
+
     <title>@yield('titulo')</title>
     @yield('links')
     <style>
@@ -61,6 +62,7 @@
     </div>
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.6.4/dist/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.0/js/bootstrap.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 </body>
@@ -98,5 +100,35 @@
             uiLibrary: 'bootstrap4'
         });
     </script>
+     <script>
+        Dropzone.autoDiscover = false; // Desactiva la inicialización automática de Dropzone.js
+
+         // Crea una instancia de Dropzone.js
+           var myDropzone = new Dropzone("#my-dropzone", {
+               headers: {
+               'X-CSRF-TOKEN': "{{ csrf_token() }}"
+           },
+           url: "/upload", // Ruta donde se subirán los archivos
+           dictDefaultMessage:"Arrastra una Imagen para subirla o da Click para abrir la ruta la archivo",
+           autoProcessQueue: false, // Deshabilita la subida automática de archivos
+           paramName: "file", // Nombre del archivo a subir al servidor
+           acceptedFiles: "image/*", // Tipos de archivos permitidos
+           addRemoveLinks: true, // Mostrar botón para eliminar archivo
+           dictRemoveFileConfirmation: "¿Estás seguro de que quieres eliminar esta imagen?",
+           dictRemoveFile: "Eliminar archivo", // Texto para el botón de eliminar archivo
+           init: function() {
+               // Se ejecuta cuando se inicializa Dropzone.js
+               this.on("success", function(file, response) {
+               // Se ejecuta cuando se sube un archivo correctamente
+               console.log(response);
+               });
+           }
+           });
+           // Agrega el controlador de eventos en el botón
+           document.querySelector("#submit-all").addEventListener("click", function () {
+               document.getElementById("formulario_agregar").submit();
+               myDropzone.processQueue(); // Inicia la subida de archivos
+           });
+         </script>
 
   </html>

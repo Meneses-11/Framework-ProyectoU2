@@ -15,7 +15,7 @@ Admin Gerente Servicios
 <li class="nav-item"><a class="nav-link active" aria-current="page" href="{{ route('servicio.inicio') }}">Administrar Servicios</a></li>
 @endsection
 @section('opcionesDerecha')
-<li><a class="dropdown-item" href="{{ route('login') }}">Cerrar Sesión</a></li>
+<li><a class="dropdown-item" href="{{ route('cerrar_sesion') }}">Cerrar Sesión</a></li>
 @endsection
 
 
@@ -51,7 +51,7 @@ Admin Gerente Servicios
         <div class="d-inline-flex p-n2 align-items-center">
             <a href="{{ route('servicio.editar',$servi->id_servicio) }}" class="edit" ><i class="fas fa-pen" data-toggle="tooltip" title="Editar"></i></a>
             <a href="#" class="delete" data-toggle="modal" data-target="#deleteModal{{ $servi->id_servicio }}"><i class="fas fa-trash" data-toggle="tooltip" title="Eliminar"></i></a>
-            <a href="{{ route('servicio.detalle',$servi->id_servicio) }}"  ><i class="fas fa-info-circle" data-toggle="tooltip" title="Información"></i></a>
+            {{-- <a href="{{ route('servicio.detalle',$servi->id_servicio) }}"  ><i class="fas fa-info-circle" data-toggle="tooltip" title="Información"></i></a> --}}
         </div>
     </td>
 </tr>

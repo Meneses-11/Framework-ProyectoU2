@@ -9,12 +9,6 @@ use App\Http\Controllers\ServicioController;
 use App\Http\Controllers\UsuariosController;
 use App\Http\Controllers\EventoController;
 
-/*Route::get('/', function () {
-    //return view('/plantillas/menuCliente');
-    //return view('welcome');
-    return view('/cliente/clntEvent');
-});*/
-
 
 Route::get('/',function(){return redirect(route('inicio')); })->name('inicio');
 
@@ -22,10 +16,12 @@ Route::get('/login',function(){
     return view('plantillas.login');
 })->name('login');
 
-
+Route::get('/dragandrop',function(){
+    return view('drop');
+})->name('drop');
 
 Route::post('/validar',[entradaController::class,'validar'])->name('validar');
-
+Route::get('cerrar_sesion', [entradaController::class, 'cerrar_sesion'])->name(("cerrar_sesion"));
 
 Route::get('/error',[entradaController::class,'error'])->name('error');
 Route::get('/gerente/test',[gerenteController::class,'test'])->name('test');
@@ -34,6 +30,8 @@ Route::get('/inicio',[entradaController::class,'inicio'])->name('inicio');
 
 
 Route::get('paquetes', [clienteController::class, 'verPaquetes'])->name('paquetes');
+Route::post('/img', [clienteController::class, 'store'])->name('imgStore');
+
 Route::get('misEventos', [clienteController::class, 'verEventos'])->name('eventos');
 Route::get('aboutWe', [clienteController::class, 'verInformacion'])->name('informacion');
 
@@ -79,5 +77,16 @@ Route::resource('servicio', ServicioController::class, [
 Route::resource('evento', EventoController::class);
 
 Route::put('evento/confirmar/{id}', [EventoController::class, 'confirmar'])->name('evento.confirmar');
+
+//Route::get('descripccion-paquetes', [PaqueteController::class, 'verMas'])->name('verMas');
+Route::post('/upload', [clienteController::class, 'upload'])->name('upload');
+Route::post('/cambiar_contraseña', [UsuariosController::class, 'cambiarContraseña'])->name('cambiar_contraseña');
+Route::get('/recuperar_contraseña',function(){
+    return view('plantillas.cambiarContraseña');
+})->name('recuperar_contraseña');
+Route::get('/registrarse',function(){
+    return view('cliente.registrarse');
+})->name('registrarse');
+Route::post('/registrar_usuario', [UsuariosController::class, 'registrarse'])->name('registrar_usuario');
 
 Route::post('paquete/evento', [EventoController::class, 'crearP'])->name('crearP');

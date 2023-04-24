@@ -17,7 +17,7 @@ Admin Gerente Usuarios
 <li class="nav-item"><a class="nav-link active" aria-current="page" href="{{ route('servicio.inicio') }}">Administrar Servicios</a></li>
 @endsection
 @section('opcionesDerecha')
-<li><a class="dropdown-item" href="{{ route('login') }}">Cerrar Sesión</a></li>
+<li><a class="dropdown-item" href="{{ route('cerrar_sesion') }}">Cerrar Sesión</a></li>
 @endsection
 @section('contenido')
 
@@ -56,9 +56,9 @@ Admin Gerente Usuarios
     <td>{{ $cliente->telefono}}</td>
     <td>
         <div class="d-inline-flex p-n2 align-items-center">
-            <a href="{{ route('usuario.editar',$cliente->id_usuario) }}" class="edit" ><i class="fas fa-penny-arcade" data-toggle="tooltip" title="Editar"></i></a>
+            <a href="{{ route('usuario.editar',$cliente->id_usuario) }}" class="edit" ><i class="fas fa-pen" data-toggle="tooltip" title="Editar"></i></a>
             <a href="#" class="delete" data-toggle="modal" data-target="#deleteModal{{ $cliente->id_usuario }}"><i class="fas fa-trash" data-toggle="tooltip" title="Eliminar"></i></a>
-            <a href="{{ route('usuario.detalle',$cliente->id_usuario) }}"  ><i class="fas fa-info-circle" data-toggle="tooltip" title="Información"></i></a>
+            {{-- <a href="{{ route('usuario.detalle',$cliente->id_usuario) }}"  ><i class="fas fa-info-circle" data-toggle="tooltip" title="Información"></i></a> --}}
         </div>
     </td>
 </tr>
@@ -106,25 +106,83 @@ Admin Gerente Usuarios
     <td>{{ $cliente->telefono}}</td>
     <td>
         <div class="d-inline-flex p-n2 align-items-center">
-            <a href="#eliminarModal" class="delete" data-toggle="modal"><i class="fas fa-trash" data-toggle="tooltip" title="Eliminar"></i></a>
-            <a href="{{ route('usuario.inicio') }}"  ><i class="fas fa-info-circle" data-toggle="tooltip" title="Información"></i></a>
-
-            @if ($cliente->eventos()->count() != 0)
-            <a href="{{ route('usuario.editar',$cliente->id_usuario) }}" class="edit" data-toggle="modal"><i class="fa-sharp fa-solid fa-pen-slash" data-toggle="tooltip" title="Editar"></i></a>
-
-            @else
-            <a href="#" class="edit" data-toggle="modal"><i class="fa-sharp fa-solid fa-pen-slash" data-toggle="tooltip" title="Editar"></i></a>
-
-            @endif
+            <a href="{{ route('usuario.editar',$cliente->id_usuario) }}" class="edit" ><i class="fas fa-pen" data-toggle="tooltip" title="Editar"></i></a>
+            <a href="#" class="delete" data-toggle="modal" data-target="#deleteModal{{ $cliente->id_usuario }}"><i class="fas fa-trash" data-toggle="tooltip" title="Eliminar"></i></a>
         </div>
     </td>
 </tr>
-
+<!-- Modal de confirmación para eliminar usuario -->
+<div class="modal fade" id="deleteModal{{ $cliente->id_usuario }}" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel{{ $cliente->id_usuario }}" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="deleteModalLabel{{ $cliente->id_usuario }}">Confirmación de eliminación</h5>
+          <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          ¿Está seguro que desea eliminar al usuario {{ $cliente->nombre }} {{ $cliente->apellido }}?
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+          <form action="{{ route('usuario.destruir', $cliente->id_usuario) }}" method="post">
+            @method('DELETE')
+            @csrf
+            <button type="submit" class="btn btn-danger">Eliminar</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
 @endforeach
-@endsection
-@section('lbl1')
 
-<div class="hint-text">Mostrando <b>{{ $clientes->where('rol','Cliente')->count()+$clientes->where('rol','Empleado')->count() }}</b> registros</div>
+@php
+    $clientest2 = $clientes->where('rol','Gerente');
+@endphp
+@foreach ($clientest2 as $cliente)
+<tr>
+
+    <td>{{ $cliente->id_usuario}}</td>
+    <td>{{ $cliente->eventos()->count() }}</td>
+    <td>{{ $cliente->eventos()->where('confirmacion',1)->pluck('id_evento')->count() }}</td>
+    <td>{{ $cliente->rol }}</td>
+    <td>{{ $cliente->nombre }}</td>
+    <td>{{ $cliente->apellido}}</td>
+    <td>{{ $cliente->email }}</td>
+    <td>{{ $cliente->telefono}}</td>
+    <td>
+        <div class="d-inline-flex p-n2 align-items-center">
+            <a href="{{ route('usuario.editar',$cliente->id_usuario) }}" class="edit" ><i class="fas fa-pen" data-toggle="tooltip" title="Editar"></i></a>
+            <a href="#" class="delete" data-toggle="modal" data-target="#deleteModal{{ $cliente->id_usuario }}"><i class="fas fa-trash" data-toggle="tooltip" title="Eliminar"></i></a>
+        </div>
+    </td>
+</tr>
+<!-- Modal de confirmación para eliminar usuario -->
+<div class="modal fade" id="deleteModal{{ $cliente->id_usuario }}" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel{{ $cliente->id_usuario }}" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="deleteModalLabel{{ $cliente->id_usuario }}">Confirmación de eliminación</h5>
+          <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          ¿Está seguro que desea eliminar al usuario {{ $cliente->nombre }} {{ $cliente->apellido }}?
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+          <form action="{{ route('usuario.destruir', $cliente->id_usuario) }}" method="post">
+            @method('DELETE')
+            @csrf
+            <button type="submit" class="btn btn-danger">Eliminar</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+@endforeach
 @endsection
 @endsection
 

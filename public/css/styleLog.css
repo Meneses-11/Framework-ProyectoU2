@@ -6,7 +6,14 @@ body {
 .fa, .fab, .fal, .far, .fas {
   line-height: 2 !important;
 }
-
+.fblanco{
+    background: white!important;
+}
+.opciones-login{
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+    margin-top: 2%;
+}
 .login {
 	width: 400px;
 	margin: 100px auto;
