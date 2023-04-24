@@ -42,7 +42,6 @@
 
         <div class="eventos">
             @foreach ($eventos as $event)
-                @if ($event->id_usuario == $usuario)
                     <div class="evento">
                         <div class="imgEvento">
                             <img src="{{ $event->paquete->nombre_foto }}"g alt="boda">
@@ -114,15 +113,14 @@
                                 </div>
                                 <div class="texto">
                                     <p>Servicio:</p>
-                                    @if (empty($event->id_servicio))
-                                        <p>-Ninguno</p>
-                                    @else
-                                        @foreach ($servicios as $nombre => $id)
-                                            @if ($id == $event->id_servicio)
-                                                <p style="font-size: 10px">-{{$nombre}}</p>
-                                            @endif
+                                    @if (($event -> servicios() -> pluck('nombre'))!== null)
+                                        @foreach ($event -> servicios() -> pluck('nombre') as $evnt)
+                                            <p style="font-size: 14px">-{{ $evnt }}</p>
                                         @endforeach
+                                    @else
+                                        <p>-Ninguno</p>
                                     @endif
+                                    
                                 </div>
                                 <div class="texto">
                                     <p>Personas:</p>
@@ -182,7 +180,6 @@
                         </div>
 
                     </div>
-                @endif
 
             @endforeach
         </div>
