@@ -36,10 +36,13 @@
                             <select id="paqueteSelect" class="selectPaq" name="idPaquete" required>
                                 <option value="">Seleccione un paquete</option>
                                 @foreach ($paquetes as $paq)
-                                    <option value="{{ $paq->id_paquete }}"
-                                        @if ($paq->id_paquete == $paquete->id_paquete)
-                                        selected
-                                    @endif>{{ $paq->nombre }}</option>
+                                    <option value="{{ $paq->id_paquete }}" 
+                                        @if (isset($paquete))
+                                            @if ( $paq->id_paquete == $paquete->id_paquete)
+                                                selected
+                                            @endif
+                                        @endif
+                                     >{{ $paq->nombre }}</option>
 
                                 @endforeach
                             </select>
@@ -75,13 +78,20 @@
                             <label for="infor">Precio:</label>
 
                             <label for="infor" name="preci" id="preci">
-                                @if ($paquete->id_paquete!=null)
+                                @if (isset($paquete))
+                                    @if ($paquete->id_paquete!=null)
                                         {{ $paquete->precio }}
-                                    @endif
+                                    @endif    
+                                @endif
                             </label>
-                            <input type="hidden" name="precio" id="preciTot" @if ($paquete->id_paquete!=null)
-                            value="{{ $paquete->precio }}"
-                        @else value="" @endif>
+                            <input type="hidden" name="precio" id="preciTot" @if (isset($paquete))
+                                @if ($paquete->id_paquete!=null)
+                                    value="{{ $paquete->precio }}"
+                                @else value="" 
+                                @endif
+                            @else
+                                value=""
+                            @endif >
 
                         </div>
 

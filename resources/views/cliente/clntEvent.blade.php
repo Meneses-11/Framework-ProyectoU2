@@ -6,8 +6,6 @@
 
 @section('titulo')
     Cliente
-    siefneajikd
-
 @endsection
 
 @section('links')
@@ -121,7 +119,7 @@
                                     @else
                                         @foreach ($servicios as $nombre => $id)
                                             @if ($id == $event->id_servicio)
-                                                <p>-{{$nombre}}</p>
+                                                <p style="font-size: 10px">-{{$nombre}}</p>
                                             @endif
                                         @endforeach
                                     @endif
