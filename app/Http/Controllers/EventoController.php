@@ -20,6 +20,11 @@ class EventoController extends Controller
         $eventos = Evento::where('id_usuario',$usuario)->get();
         $paquetes = Paquete::pluck('id_paquete','nombre');
         $servicios = Servicio::pluck('id_servicio','nombre');
+        /*$servSelec = [];
+        foreach($eventos as $evento){
+            $servSelec[$evento -> servicios() -> pluck('id_evento')] = $evento -> servicios() -> pluck('nombre');
+        }
+        echo $servSelec;*/
 
         return view('cliente.clntEvent', compact('eventos','usuario','paquetes','servicios'));
     }

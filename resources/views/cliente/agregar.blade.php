@@ -81,17 +81,17 @@
                                     <div class="row mb-3">
                                         <div class="col-sm">
                                             <label class="form-label">Fecha:</label>
-                                            <input type="date" name="fecha" class="form-control" placeholder="Fecha de Evento" aria-label="City">
+                                            <input type="date" name="fecha" class="form-control" placeholder="Fecha de Evento" aria-label="City" required>
                                         </div>
                                     </div>
                                     <div class="row mb-3">
                                         <div class="col-sm">
                                             <label class="form-label">Hora Inicio:</label>
-                                            <input type="time" class="form-control" name="hrIni">
+                                            <input type="time" class="form-control" name="hrIni" required>
                                         </div>
                                         <div class="col-sm">
                                             <label class="form-label">Hora Fin:</label>
-                                            <input type="time" class="form-control" name="hrFin">
+                                            <input type="time" class="form-control" name="hrFin" required>
                                         </div>
                                     </div>
                                 </div>
@@ -102,7 +102,7 @@
 
                                 <div class="col-sm-8 align-self-center">
                                     <label class="form-label">Descripción:</label>
-                                    <textarea class="form-control" name="descripcion" rows="3"></textarea>
+                                    <textarea class="form-control" name="descripcion" rows="3" required></textarea>
                                 </div>
 
                                 <div class="col-sm-4 text-center align-self-center">
