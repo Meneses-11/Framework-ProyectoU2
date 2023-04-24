@@ -24,11 +24,11 @@
 
 
     <div class="contPrinc">
-        <div class="row justify-content-center align-items-center">
+        <div class="row justify-content-center align-items-center" style="margin-top: 7rem">
             <div class="col-lg-6" style="width: 60rem">
                 <div class="card" style="border-radius: 15px;">
                     <div class="card-header" style="border-radius: 15px 15px 0 0;">
-                        <h1 class="text-center">Nuevo Servicio</h1>
+                        <h1 class="text-center">Nuevo Evento</h1>
                     </div>
                     <div class="card-body row g-3">
                         <form action="{{ route('evento.store') }}" method="POST">
@@ -193,7 +193,7 @@
 
                             <div class="row mb-3">
                                 <div class="col-sm-6 d-grid gap-2">
-                                    <button type="submit" class="btn btn-dark btn-block">Registrar servicio</button>
+                                    <button type="submit" class="btn btn-dark btn-block">Crear Evento</button>
                                 </div>
                                 <div class="col-sm-6 d-grid gap-2">
                                     <button type="button" class="btn btn-secondary btn-block mt-2" onclick="window.location.href='{{ route('evento.index') }}'">Cancelar</button>
