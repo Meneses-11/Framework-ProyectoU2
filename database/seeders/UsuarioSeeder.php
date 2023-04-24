@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use App\Models\Usuario;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\Hash;
 
 class UsuarioSeeder extends Seeder
 {
@@ -13,24 +14,12 @@ class UsuarioSeeder extends Seeder
      */
     public function run(): void
     {
-        //
-        /*
-        $table->increments('id_cliente'); autoincremento
-            $table->string('nombre');
-            $table->string('apellido');
-            $table->string('nombre_usuario');
-            $table->string('contraseña');
-            $table->dateTime('fecha_nacimiento');
-            $table->string('direccion');
-            $table->string('email');
-            $table->string('telefono');
-            $table->timestamps(); laravel se ocupa
-        */
+        //tres clientes hugo, paco, luis
         $alguien = new Usuario;
         $alguien->nombre = "Hugo";
         $alguien->apellido = "Tovilla";
         $alguien->nombre_usuario = "hugo";
-        $alguien->contraseña = "1234";
+        $alguien->contraseña = Hash::make('1234');
         $alguien->rol='Cliente';
         $alguien->fecha_nacimiento = "2001-01-01";
         $alguien->direccion = "Calle de las rosas";
@@ -41,7 +30,7 @@ class UsuarioSeeder extends Seeder
         $alguien->nombre = "Paco";
         $alguien->apellido = "Meneses";
         $alguien->nombre_usuario = "paco";
-        $alguien->contraseña = "1234";
+        $alguien->contraseña = Hash::make('1234');
         $alguien->rol='Cliente';
         $alguien->fecha_nacimiento = "2001-05-01";
         $alguien->direccion = "Avenida siempre viva";
@@ -52,7 +41,7 @@ class UsuarioSeeder extends Seeder
         $alguien->nombre = "Luis";
         $alguien->apellido = "Morales";
         $alguien->nombre_usuario = "luis";
-        $alguien->contraseña = "1234";
+        $alguien->contraseña = Hash::make('1234');
         $alguien->rol='Cliente';
         $alguien->fecha_nacimiento = "2001-06-01";
         $alguien->direccion = "Calle de las petunias";
@@ -60,46 +49,17 @@ class UsuarioSeeder extends Seeder
         $alguien->telefono = "9611506185";
         $alguien->save();
 
-        $alguien = new Usuario;
-        $alguien->nombre = "José";
-        $alguien->apellido = "Lopez";
-        $alguien->nombre_usuario = "jose";
-        $alguien->contraseña = "1234";
-        $alguien->rol='Empleado';
-        $alguien->fecha_nacimiento = "2001-07-01";
-        $alguien->direccion = "Direccion conocida";
-        $alguien->email = "josel@gamil.com";
-        $alguien->telefono = "9611506100";
-        $alguien->save();
-
+        //un gerente carlos
         $alguien = new Usuario;
         $alguien->nombre = "Carlos";
         $alguien->apellido = "Morales";
         $alguien->nombre_usuario = "carlos";
-        $alguien->contraseña = "1234";
+        $alguien->contraseña = Hash::make('1234');
         $alguien->rol='Gerente';
         $alguien->fecha_nacimiento = "2001-08-01";
         $alguien->direccion = "Direccion conocida";
         $alguien->email = "CarlosM@gamil.com";
         $alguien->telefono = "9611506180";
         $alguien->save();
-        /*
-        empleados
-
-        $alguien = new Empleado;
-        $alguien->nombre = "José";
-        $alguien->apellido = "Lopez";
-        $alguien->email = "josel@gamil.com";
-        $alguien->telefono = "9611506100";
-        $alguien->save();
-
-        gerentes
-        $alguien = new Gerente;
-        $alguien->nombre = "Carlos";
-        $alguien->apellido = "Morales";
-        $alguien->email = "CarlosM@gamil.com";
-        $alguien->telefono = "9611506180";
-        $alguien->save();
-        */
     }
 }

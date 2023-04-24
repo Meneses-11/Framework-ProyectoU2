@@ -11,7 +11,7 @@ Empleado
 <div>
     <ul class="utilities">
       <br>
-      <li class="logout warn" style="color: red;"><a href="{{ route('login') }}">Cerrar Sesion</a></li>
+      <li class="logout warn" style="color: red;"><a href="{{ route('cerrar_sesion') }}">Cerrar Sesion</a></li>
     </ul>
 </div>
 @endsection

@@ -28,7 +28,7 @@
     <li class="nav-item"><a class="nav-link active" aria-current="page" href="{{route('informacion')}}">Informacion</a></li>
 @endsection
 @section('opcionesDerecha')
-    <li><a class="dropdown-item" href="{{ route('login') }}">Cerrar Sesión</a></li>
+    <li><a class="dropdown-item" href="{{ route('cerrar_sesion') }}">Cerrar Sesión</a></li>
 @endsection
 
 @section('contenido')

@@ -11,11 +11,14 @@ Salón Eventos
 Salón de Eventos
 @endsection
 @section('opcionesDerecha')
-<li><a class="dropdown-item" href="{{ route('login') }}">Cerrar Sesion</a></li>
+<li><a class="dropdown-item" href="{{ route('cerrar_sesion') }}">Cerrar Sesion</a></li>
 @endsection
 
 @section('contenido')
 <div>
+    @php
+        $paquetes = $paquetes->where('activo',1);
+    @endphp
     <div class="container-items">
         @foreach ($paquetes as $paquete)
         <a href="{{ route('paquete.detalle', $paquete->id_paquete) }}" style="text-decoration: none; color:black;">

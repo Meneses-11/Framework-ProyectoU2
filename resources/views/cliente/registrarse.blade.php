@@ -17,7 +17,9 @@ Admin Gerente Usuarios
 <li class="nav-item"><a class="nav-link active" aria-current="page" href="{{ route('servicio.inicio') }}">Administrar Servicios</a></li>
 @endsection
 @section('opcionesDerecha')
-<li><a class="dropdown-item" href="{{ route('cerrar_sesion') }}">Cerrar Sesión</a></li>
+
+<li><a class="dropdown-item" href="{{ route('inicio') }}">Inicio</a></li>
+<li><a class="dropdown-item" href="{{ route('login') }}">Iniciar Sesión</a></li>
 @endsection
 
 @section('contenido')
@@ -29,7 +31,7 @@ Admin Gerente Usuarios
       <div class="col-lg-6 col-md-8 col-sm-10">
         <div class="card p-4">
           <div class="card-header">
-            <h1 class="text-center">Registro de Usuarios</h1>
+            <h1 class="text-center">Registro</h1>
           </div>
           <div class="card-body">
             <form action="{{ route('usuario.llenar') }}" method="POST">
@@ -50,16 +52,6 @@ Admin Gerente Usuarios
               </div>
 
               <div class="mb-3">
-                    <label for="name" class="form-label">Rol:</label>
-                    <select class="custom-select" id="inputGroupSelect01" name="seleccion">
-                    <option selected>Selecciona un Rol...</option>
-                    <option value="Gerente">Gerente</option>
-                    <option value="Empleado">Empleado</option>
-                    <option value="Cliente">Cliente</option>
-                  </select>
-              </div>
-
-              <div class="mb-3">
                 <label for="email" class="form-label">Correo electrónico:</label>
                 <input type="email" id="email" name="correo" class="form-control" placeholder="Ingresa el correo electrónico" required>
               </div>
@@ -71,14 +63,18 @@ Admin Gerente Usuarios
 
               <div class="mb-3">
                 <label for="password" class="form-label">Contraseña:</label>
-                <input type="password" id="password" name="pass" class="form-control" placeholder="Ingresa la contraseña" required>
+                <input type="password" id="password" name="p1" class="form-control" placeholder="Ingresa la contraseña" required>
               </div>
-
+                @if($errors->has('password_nueva'))
+                <span class="text-danger">{{ $errors->first('password_nueva') }}</span>
+                @endif
               <div class="mb-3">
                 <label for="confirm_password" class="form-label">Confirmar Contraseña:</label>
-                <input type="password" id="confirm_password" name="confirm_password" class="form-control" placeholder="Confirma el contraseña" required>
+                <input type="password" id="confirm_password" name="c2" class="form-control" placeholder="Confirma el contraseña" required>
               </div>
-
+                @if($errors->has('password_nueva'))
+                <span class="text-danger">{{ $errors->first('password_nueva') }}</span>
+                @endif
               <div class="mb-3">
                 <label for="email" class="form-label">Telefono:</label>
                 <input type="tel" id="numero" name="telefono" class="form-control" placeholder="Ingresa el numero telefonico" required>
@@ -99,4 +95,3 @@ Admin Gerente Usuarios
   </div>
 
   @endsection
-

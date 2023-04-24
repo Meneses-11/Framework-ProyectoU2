@@ -9,7 +9,7 @@
 
     @yield('estilos')
 
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous"></script>
 
@@ -100,35 +100,35 @@
             uiLibrary: 'bootstrap4'
         });
     </script>
- <script>
-    $(function() {
-  // Configuración de Dropzone
-  Dropzone.autoDiscover = false;
-  Dropzone.prototype.defaultOptions.dictDefaultMessage = "Arrastra y suelta aquí tus archivos o haz clic para seleccionarlos";
-  Dropzone.prototype.defaultOptions.dictFallbackMessage = "Tu navegador no soporta la carga de archivos mediante arrastrar y soltar.";
-  Dropzone.prototype.defaultOptions.dictFallbackText = "Por favor utiliza el formulario de reserva a continuación para subir tus archivos, como en los tiempos antiguos.";
-  Dropzone.prototype.defaultOptions.dictInvalidFileType = "No puedes subir archivos de este tipo.";
-  Dropzone.prototype.defaultOptions.dictCancelUpload = "Cancelar carga";
-  Dropzone.prototype.defaultOptions.dictCancelUploadConfirmation = "¿Estás seguro de que quieres cancelar la carga?";
-  Dropzone.prototype.defaultOptions.dictRemoveFile = "Eliminar archivo";
-  Dropzone.prototype.defaultOptions.dictMaxFilesExceeded = "No puedes subir más archivos.";
+     <script>
+        Dropzone.autoDiscover = false; // Desactiva la inicialización automática de Dropzone.js
 
-  // Inicialización de Dropzone
-  var myDropzone = new Dropzone("#my-dropzone", {
-    url: "/upload",
-    paramName: "file",
-    maxFilesize: 10,
-    acceptedFiles: ".jpg,.jpeg,.png,.gif",
-    dictInvalidFileType: "Solo se permiten imágenes de tipo JPG, JPEG, PNG o GIF.",
-    addRemoveLinks: true,
-    dictRemoveFileConfirmation: "¿Estás seguro de que quieres eliminar esta imagen?",
-    init: function() {
-      this.on("success", function(file, response) {
-        console.log(response);
-      });
-    }
-  });
-});
+         // Crea una instancia de Dropzone.js
+           var myDropzone = new Dropzone("#my-dropzone", {
+               headers: {
+               'X-CSRF-TOKEN': "{{ csrf_token() }}"
+           },
+           url: "/upload", // Ruta donde se subirán los archivos
+           dictDefaultMessage:"Arrastra una Imagen para subirla o da Click para abrir la ruta la archivo",
+           autoProcessQueue: false, // Deshabilita la subida automática de archivos
+           paramName: "file", // Nombre del archivo a subir al servidor
+           acceptedFiles: "image/*", // Tipos de archivos permitidos
+           addRemoveLinks: true, // Mostrar botón para eliminar archivo
+           dictRemoveFileConfirmation: "¿Estás seguro de que quieres eliminar esta imagen?",
+           dictRemoveFile: "Eliminar archivo", // Texto para el botón de eliminar archivo
+           init: function() {
+               // Se ejecuta cuando se inicializa Dropzone.js
+               this.on("success", function(file, response) {
+               // Se ejecuta cuando se sube un archivo correctamente
+               console.log(response);
+               });
+           }
+           });
+           // Agrega el controlador de eventos en el botón
+           document.querySelector("#submit-all").addEventListener("click", function () {
+               document.getElementById("formulario_agregar").submit();
+               myDropzone.processQueue(); // Inicia la subida de archivos
+           });
+         </script>
 
-</script>
   </html>

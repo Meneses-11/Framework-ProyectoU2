@@ -13,7 +13,7 @@ Salón de Eventos
 @endsection
 @section('opcionesDerecha')
 
-<li><a class="dropdown-item" href="{{ route('login') }}">Cerrar Sesion</a></li>
+<li><a class="dropdown-item" href="{{ route('cerrar_sesion') }}">Cerrar Sesion</a></li>
 @endsection
 
 @section('contenido')

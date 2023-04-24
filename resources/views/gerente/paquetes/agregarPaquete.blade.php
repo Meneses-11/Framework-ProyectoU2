@@ -8,6 +8,8 @@ Paquetes
 @endsection
 @section('estilos')
 <link rel="stylesheet" href="/css/styleTabla.css">
+<script src="https://unpkg.com/dropzone@6.0.0-beta.1/dist/dropzone-min.js"></script>
+<link href="https://unpkg.com/dropzone@6.0.0-beta.1/dist/dropzone.css" rel="stylesheet" type="text/css" />t>
 @endsection
 @section('opcionesIzquierda')
 <li class="nav-item"><a class="nav-link active" aria-current="page" href="{{ route('usuario.inicio') }}">Administrar Usuarios</a></li>
@@ -15,7 +17,7 @@ Paquetes
 <li class="nav-item"><a class="nav-link active" aria-current="page" href="{{ route('servicio.inicio') }}">Administrar Servicios</a></li>
 @endsection
 @section('opcionesDerecha')
-<li><a class="dropdown-item" href="{{ route('login') }}">Cerrar Sesión</a></li>
+<li><a class="dropdown-item" href="{{ route('cerrar_sesion') }}">Cerrar Sesión</a></li>
 @endsection
 
 @section('contenido')
@@ -28,7 +30,7 @@ Paquetes
                 <h1 class="text-center">Agregar Paquetes</h1>
               </div>
               <div class="card-body">
-                <form action="{{ route('paquete.store') }}" method="POST">
+                <form id="formulario_agregar" action="{{ route('paquete.store') }}" method="POST">
                     @csrf
                   <div class="mb-3">
                     <label for="name" class="form-label">Nombre del paquete:</label>
@@ -46,7 +48,7 @@ Paquetes
 
                   <div class="mb-3">
                     <label for="price">Precio:</label>
-                    <input type="number" class="form-control" id="precio" name="precio" placeholder="Ingresa el precio del paquete" step="1" min="0.00">
+                    <input type="number" class="form-control" id="precio" name="precio" placeholder="Ingresa el precio del paquete" step="1" min="0.00" required>
                 </div>
 
                   <div class="mb-3">
@@ -55,20 +57,24 @@ Paquetes
                   </div>
 
                   <div class="mb-3">
-                    <label for="email" class="form-label">Direccion de la foto:</label>
-                    <input type="tel" id="direccion" name="direccion" class="form-control" placeholder="Ingresa la ruta de tu foto" required>
+                  <label for="imgs" class="form-label">Imagenes:</label>
+                  <form method="POST" action="/upload" enctype="multipart/form-data">
+                    @csrf
+                    <div id="my-dropzone" class="dropzone"></div>
+                    </form>
+                    </div>
+
+                       <div class="d-grid gap-2">
+                        <button type="submit" class="btn btn-dark btn-block" id="submit-all">Registrar Paquete</button>
+                        <button type="button" class="btn btn-secondary btn-block mt-2" onclick="window.location.href='{{ route('paquete.index') }}'">Cancelar</button>
+                      </div>
+                    </form>
                   </div>
-                  <div class="d-grid gap-2">
-                    <button type="submit" class="btn btn-primary btn-block">Registrar Paquete</button>
-                    <button type="button" class="btn btn-danger btn-block mt-2" onclick="window.location.href='{{ route('paquete.index') }}'">Cancelar</button>
-                  </div>
-                </form>
+                </div>
               </div>
             </div>
           </div>
-        </div>
-      </div>
-</div>
+    </div>
 
   @endsection
 

@@ -13,10 +13,14 @@ Salón de Eventos
 
 @section('opcionesDerecha')
 <li><a class="dropdown-item" href="{{ route('login') }}">Iniciar Sesion</a></li>
+<li><a class="dropdown-item" href="{{ route('registrarse') }}">Registrarse</a></li>
 @endsection
 
 @section('contenido')
 <div>
+    @php
+        $paquetes = $paquetes->where('activo',1);
+    @endphp
     <div class="container-items">
         @foreach ($paquetes as $paquete)
         <a href="{{ route('login') }}" style="text-decoration: none; color:black;">

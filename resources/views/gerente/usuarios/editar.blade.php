@@ -17,7 +17,7 @@ Admin Gerente Usuarios
 <li class="nav-item"><a class="nav-link active" aria-current="page" href="{{ route('servicio.inicio') }}">Administrar Servicios</a></li>
 @endsection
 @section('opcionesDerecha')
-<li><a class="dropdown-item" href="{{ route('login') }}">Cerrar Sesión</a></li>
+<li><a class="dropdown-item" href="{{ route('cerrar_sesion') }}">Cerrar Sesión</a></li>
 @endsection
 @section('contenido')
 <div class="centrar" style="margin-top: 7rem">

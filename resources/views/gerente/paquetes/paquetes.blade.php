@@ -15,7 +15,7 @@ Admin Gerente Paquetes
 <li class="nav-item"><a class="nav-link active" aria-current="page" href="{{ route('servicio.inicio') }}">Administrar Servicios</a></li>
 @endsection
 @section('opcionesDerecha')
-<li><a class="dropdown-item" href="{{ route('login') }}">Cerrar Sesión</a></li>
+<li><a class="dropdown-item" href="{{ route('cerrar_sesion') }}">Cerrar Sesión</a></li>
 @endsection
 
 @section('contenido')
@@ -56,7 +56,7 @@ Admin Gerente Paquetes
         <div class="d-inline-flex p-n2 align-items-center">
             <a href="{{ route('paquete.editar',$paquete->id_paquete) }}" class="edit" ><i class="fas fa-pen" data-toggle="tooltip" title="Editar"></i></a>
             <a href="#" class="delete" data-toggle="modal" data-target="#deleteModal{{ $paquete->id_paquete }}"><i class="fas fa-trash" data-toggle="tooltip" title="Eliminar"></i></a>
-            <a href="{{ route('paquete.detalle',$paquete->id_paquete) }}"  ><i class="fas fa-info-circle" data-toggle="tooltip" title="Información"></i></a>
+            {{-- <a href="{{ route('paquete.detalle',$paquete->id_paquete) }}"  ><i class="fas fa-info-circle" data-toggle="tooltip" title="Información"></i></a> --}}
             <form id="form-activo-{{ $paquete->id_paquete }}" action="{{ route('paquete.activo', $paquete->id_paquete) }}" method="post">
                 @csrf
                 @method('PUT')

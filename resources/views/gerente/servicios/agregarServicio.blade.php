@@ -8,6 +8,8 @@ Admin Gerente Servicios
 @endsection
 @section('estilos')
 <link rel="stylesheet" href="/css/styleTabla.css">
+<script src="https://unpkg.com/dropzone@6.0.0-beta.1/dist/dropzone-min.js"></script>
+<link href="https://unpkg.com/dropzone@6.0.0-beta.1/dist/dropzone.css" rel="stylesheet" type="text/css" />t>
 @endsection
 @section('opcionesIzquierda')
 <li class="nav-item"><a class="nav-link active" aria-current="page" href="{{ route('usuario.inicio') }}">Administrar Usuarios</a></li>
@@ -15,7 +17,7 @@ Admin Gerente Servicios
 <li class="nav-item"><a class="nav-link active" aria-current="page" href="{{ route('servicio.inicio') }}">Administrar Servicios</a></li>
 @endsection
 @section('opcionesDerecha')
-<li><a class="dropdown-item" href="{{ route('login') }}">Cerrar Sesión</a></li>
+<li><a class="dropdown-item" href="{{ route('cerrar_sesion') }}">Cerrar Sesión</a></li>
 @endsection
 
 @section('contenido')
@@ -38,13 +40,19 @@ Admin Gerente Servicios
                   <div class="mb-3">
                     <label for="price">Precio:</label>
                     <input type="number" class="form-control" id="precio" placeholder="Ingresa el precio del servicio" name="precio" step="0.01" min="0.00">
-                </div>
+                  </div>
 
                   <div class="mb-3">
                     <label for="email" class="form-label">Descripción:</label>
-                    <input type="text" id="descripcion" name="descripcion" class="form-control" placeholder="IEscribe una descripción del servicio" required>
+                    <input type="text" id="descripcion" name="descripcion" class="form-control" placeholder="Escribe una descripción del servicio" required>
                   </div>
-
+                  <div class="mb-3">
+                    <label for="imgs" class="form-label">Imagenes:</label>
+                    <form method="POST" action="/upload" enctype="multipart/form-data">
+                      @csrf
+                      <div id="my-dropzone" class="dropzone"></div>
+                      </form>
+                 </div>
                   <div class="d-grid gap-2">
                     <button type="submit" class="btn btn-dark btn-block">Registrar servicio</button>
                     <button type="button" class="btn btn-secondary btn-block mt-2" onclick="window.location.href='{{ route('servicio.inicio') }}'">Cancelar</button>

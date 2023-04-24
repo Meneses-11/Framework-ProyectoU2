@@ -15,11 +15,11 @@ Admin Gerente Paquetes
 <li class="nav-item"><a class="nav-link active" aria-current="page" href="{{ route('servicio.inicio') }}">Administrar Servicios</a></li>
 @endsection
 @section('opcionesDerecha')
-<li><a class="dropdown-item" href="{{ route('login') }}">Cerrar Sesión</a></li>
+<li><a class="dropdown-item" href="{{ route('cerrar_sesion') }}">Cerrar Sesión</a></li>
 @endsection
 
-@endsection
 @section('contenido')
+<div class="centrar" style="margin-top: 7rem">
   <div class="container">
     <div class="row justify-content-center align-items-center">
       <div class="col-lg-6">
@@ -60,14 +60,15 @@ Admin Gerente Paquetes
                 <input type="tel" id="direccion" value="{{ $paquete->nombre_foto }}" name="direccion" class="form-control" placeholder="Ingresa tu direccón" required>
               </div>
               <div class="d-grid gap-2">
-                <button type="submit" class="btn btn-primary btn-block">Actualizar Paquete</button>
-                <button type="button" class="btn btn-danger btn-block mt-2" onclick="window.location.href='{{ route('paquete.index') }}'">Cancelar</button>
+                <button type="submit" class="btn btn-dark btn-block">Actualizar Paquete</button>
+                <button type="button" class="btn btn-secondary btn-block mt-2" onclick="window.location.href='{{ route('paquete.index') }}'">Cancelar</button>
               </div>
             </form>
           </div>
         </div>
       </div>
     </div>
+  </div>
   </div>
   @endsection
 
