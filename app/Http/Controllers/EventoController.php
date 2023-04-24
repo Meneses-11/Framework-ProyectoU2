@@ -125,4 +125,13 @@ class EventoController extends Controller
 
         return redirect()->route('evento.index');
     }
+
+
+    public function crearP(Request $request)
+    {
+        $paquete = Paquete::find($request->paquete);
+        $paquetes = Paquete::all();
+        $servicios = Servicio::all();
+        return view('cliente.agregar', compact('paquetes','servicios','paquete'));
+    }
 }
