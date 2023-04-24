@@ -24,11 +24,11 @@
 
 
     <div class="contPrinc">
-        <div class="row justify-content-center align-items-center">
+        <div class="row justify-content-center align-items-center" style="margin-top: 7rem">
             <div class="col-lg-6" style="width: 60rem">
                 <div class="card" style="border-radius: 15px;">
                     <div class="card-header" style="border-radius: 15px 15px 0 0;">
-                        <h1 class="text-center">Nuevo Servicio</h1>
+                        <h1 class="text-center">Nuevo Evento</h1>
                     </div>
                     <div class="card-body row g-3">
                         <form action="{{ route('evento.store') }}" method="POST">
@@ -81,17 +81,17 @@
                                     <div class="row mb-3">
                                         <div class="col-sm">
                                             <label class="form-label">Fecha:</label>
-                                            <input type="date" name="fecha" class="form-control" placeholder="Fecha de Evento" aria-label="City">
+                                            <input type="date" name="fecha" class="form-control" placeholder="Fecha de Evento" aria-label="City" required>
                                         </div>
                                     </div>
                                     <div class="row mb-3">
                                         <div class="col-sm">
                                             <label class="form-label">Hora Inicio:</label>
-                                            <input type="time" class="form-control" name="hrIni">
+                                            <input type="time" class="form-control" name="hrIni" required>
                                         </div>
                                         <div class="col-sm">
                                             <label class="form-label">Hora Fin:</label>
-                                            <input type="time" class="form-control" name="hrFin">
+                                            <input type="time" class="form-control" name="hrFin" required>
                                         </div>
                                     </div>
                                 </div>
@@ -102,7 +102,7 @@
 
                                 <div class="col-sm-8 align-self-center">
                                     <label class="form-label">Descripción:</label>
-                                    <textarea class="form-control" name="descripcion" rows="3"></textarea>
+                                    <textarea class="form-control" name="descripcion" rows="3" required></textarea>
                                 </div>
 
                                 <div class="col-sm-4 text-center align-self-center">
@@ -193,7 +193,7 @@
 
                             <div class="row mb-3">
                                 <div class="col-sm-6 d-grid gap-2">
-                                    <button type="submit" class="btn btn-dark btn-block">Registrar servicio</button>
+                                    <button type="submit" class="btn btn-dark btn-block">Crear Evento</button>
                                 </div>
                                 <div class="col-sm-6 d-grid gap-2">
                                     <button type="button" class="btn btn-secondary btn-block mt-2" onclick="window.location.href='{{ route('evento.index') }}'">Cancelar</button>

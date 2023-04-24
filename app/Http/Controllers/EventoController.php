@@ -20,6 +20,11 @@ class EventoController extends Controller
         $eventos = Evento::where('id_usuario',$usuario)->get();
         $paquetes = Paquete::pluck('id_paquete','nombre');
         $servicios = Servicio::pluck('id_servicio','nombre');
+        /*$servSelec = [];
+        foreach($eventos as $evento){
+            $servSelec[$evento -> servicios() -> pluck('id_evento')] = $evento -> servicios() -> pluck('nombre');
+        }
+        echo $servSelec;*/
 
         return view('cliente.clntEvent', compact('eventos','usuario','paquetes','servicios'));
     }
@@ -89,7 +94,6 @@ class EventoController extends Controller
 
         $evento->id_usuario = $usuario;
         $evento->id_paquete = $request->idPaquete;
-        $evento->id_servicio = $request->idServicio;
         $evento->precio = $request-> precio;
         $evento->fecha = date($request-> fecha);
         $evento->hora_inicio = Carbon::parse($request->hrIni)->format('H:i:s');
@@ -97,6 +101,9 @@ class EventoController extends Controller
         $evento->descripcion = $request-> descripcion;
         $evento->num_personas = $request-> numPersonas;
         $evento->save();
+
+        $serviSelect = $request -> idServicio;
+        $evento -> servicios() -> sync($serviSelect);
 
         return redirect(route('evento.index'));
 

@@ -135,19 +135,17 @@ class UsuariosController extends Controller
         if($p1 !== $p2){
             return redirect()->back()->withErrors(['password_nueva' => 'Las contraseñas no coinciden']);
         }else{
-
         $usuario = new Usuario;
         $usuario->nombre = $request->nombre;
         $usuario->apellido = $request->apellido;
         $usuario->nombre_usuario = $request->nusuario;
         $usuario->contraseña = Hash::make($request->input('contraseña'));
-        $usuario->contraseña = $request->pass;
         $usuario->fecha_nacimiento = date($request->fecha);
         $usuario->direccion = $request->direccion;
         $usuario->email = $request->correo;
         $usuario->telefono = $request->telefono;
         $usuario->save();
-        return redirect()->route('usuario.inicio')->with('success', 'Cliente creado correctamente.');
+        return redirect()->route('evento.index')->with('success', 'Cliente creado correctamente.');
         }
 
     }
