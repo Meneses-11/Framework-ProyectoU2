@@ -34,7 +34,7 @@ Admin Gerente Usuarios
             <h1 class="text-center">Registro</h1>
           </div>
           <div class="card-body">
-            <form action="{{ route('usuario.llenar') }}" method="POST">
+            <form action="{{ route('registrar_usuario') }}" method="POST">
                 @csrf
               <div class="mb-3">
                 <label for="name" class="form-label">Nombre:</label>

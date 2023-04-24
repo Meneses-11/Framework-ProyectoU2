@@ -125,7 +125,7 @@ class EventoSeeder extends Seeder
         $evento->hora_fin = "17:30";
         $evento->descripcion = "Bautizaremos a mi hijo";
         $evento->num_personas = 80;
-        $evento->servicios()->attach([,1,2,3]);
+        $evento->servicios()->attach([1,2,3]);
         $evento->save();
 
         $evento = new Evento;
