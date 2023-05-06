@@ -12,32 +12,33 @@ class entradaController extends Controller
 {
 
     public function validar(Request $sol){
-        $usuario = $sol->input('usuario');
-        $contraseña = $sol->input('password');
+
         $user = Usuario::where('nombre_usuario', $sol->input('usuario'))->first();
-        $contraseña_bd = $user->contraseña;
 
         if ($user) {
+            $usuario = $sol->input('usuario');
+            $contraseña = $sol->input('password');
+            $contraseña_bd = $user->contraseña;
             if ($user->rol == 'Cliente')
             {
                 if (Hash::check($contraseña, $contraseña_bd)) {
                     Auth::login($user);
                     session()->put('id', $user->id_usuario);
                     return redirect()->route('evento.index');
-                }
+                }else return redirect()->route('login')->with('error2','La contraseña ingresada no es la correcta');
             } else if ($user->rol == 'Gerente') {
                 if (Hash::check($contraseña, $contraseña_bd)) {
                     Auth::login($user);
                     return redirect(route('usuario.inicio'));
-                }
+                }else return redirect()->route('login')->with('error2','La contraseña ingresada no es la correcta');
             } else if ($user->rol  == 'Empleado') {
                 if (Hash::check($contraseña, $contraseña_bd)) {
                     Auth::login($user);
                     return view('/empleado/empldPrincipal');
-                }
+                }else return redirect()->route('login')->with('error2','La contraseña ingresada no es la correcta');
             }
         } else {
-            return redirect(route('error'));
+            return redirect()->route('login')->with('error1','El usuario ingresado no es el correcto');
         }
     }
 

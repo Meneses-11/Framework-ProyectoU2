@@ -37,13 +37,28 @@ Bienvenido
 <div class="centrar">
     <div class="login">
       <h1>Inicio de Sesión</h1>
+
       <form id="l-f" action="{{route('validar')}}" method="post">
         @csrf
-
+        @if(session('error1'))
+        <div class="alert alert-danger text-center">
+            <h6>
+                {{ session('error1') }}
+            </h6>
+        </div>
+        @elseif(session('error2'))
+        <div class="alert alert-danger text-center">
+            <h6>
+                {{ session('error2') }}
+            </h6>
+        </div>
+        @endif
         <label class="control-label" for="username"><i class="fas fa-user"></i></label>
+
         <input class="fblanco"type="text" name="usuario" placeholder="Nombre de Usuario" required>
 
         <label for="password"><i class="fas fa-lock"></i></label>
+
         <input class="fblanco" type="password" name="password" id="password" placeholder="Contraseña" required>
 
         <span id="togglePassword" onclick="togglePassword()"><i class="far fa-eye" title="Ver Contraseña" ></i></span>
@@ -55,6 +70,7 @@ Bienvenido
       </div>
     </div>
   </div>
+
 
 
 @endsection
