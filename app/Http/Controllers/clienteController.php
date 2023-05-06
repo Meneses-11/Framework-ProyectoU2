@@ -35,16 +35,8 @@ class clienteController extends Controller
     return response()->json(['success'=>$imgName]);
 
 }
-public function upload(Request $request)
+public function upload(Request $request) // metodo que hace la acción de guardar la imagen en el path public/uploads
 {
-   /* $file = $request->file('file');
-    $filename = time() . '_' . $file->getClientOriginalName();
-    $path = $file->storeAs('public/uploads', $filename);
-
-    return response()->json([
-        'success' => true,
-        'path' => $path,
-    ]);*/
     $image = $request->file('file');
     $imageName = time() . '_' . $image->getClientOriginalName();
     $image->move(public_path('uploads'), $imageName);

@@ -13,7 +13,7 @@
                     </div>
                 </div>
 
-            <table class="table table-striped table-hover">
+            <table class="table table-striped table-hover" id="tabla_users">
                 <thead>
                 <tr>
                     @yield('columnas')
@@ -28,6 +28,11 @@
       </div>
     </div>
     </div>
+    <script>
+        $(document).ready(function () {
+        $('#tabla_users').DataTable();
+        });
+    </script>
 
 
 

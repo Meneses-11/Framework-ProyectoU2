@@ -147,8 +147,9 @@ class UsuariosController extends Controller
         $usuario->save();
         return redirect()->route('evento.index')->with('success', 'Cliente creado correctamente.');
         }
-
+        
     }
+
 
 
 }
