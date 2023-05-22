@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Imagen;
 use App\Models\Paquete;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class PaqueteController extends Controller
 {
@@ -42,11 +44,34 @@ class PaqueteController extends Controller
         $paquete->activo = $activo;
         $paquete->precio = $request->precio;
         $paquete->descripcion = $request->descripcion;
-        $paquete->nombre_foto ="ao";
         $paquete->save();
-        return redirect(route('paquete.index'))->with('dat','todo fue bien');
+        dd('se registro \n',$paquete);
+        /*$archivo = $request->file('imagen');
+        $nombreArchivo = $archivo->getClientOriginalName();
+        $ruta_nombre = Storage::disk('privado')->putFileAs('',$archivo,$nombreArchivo);
 
+        $imagen = new Imagen();
+        $imagen->ruta = $ruta_nombre;
+        $imagen->nombre =$archivo->getClientOriginalName();
+        $paquete->imagenes()->save($imagen);
+        return redirect(route('paquete.index'))->with('dat','todo fue bien');*/
 
+        /*if ($request->hasFile('file')) {
+            $archivos = $request->file('file');
+
+            foreach ($archivos as $archivo) {
+                // Guarda el archivo en el almacenamiento
+                $ruta = Storage::disk('privado')->put('imagenes', $archivo);
+
+                // Crea un nuevo registro de imagen en la base de datos
+                $imagen = new Imagen();
+                $imagen->nombre = $archivo->getClientOriginalName();
+                $imagen->ruta = $ruta;
+                $paquete->imagenes()->save($imagen);
+            }
+        }
+
+        return redirect(route('paquete.index'))->with('dat','todo fue bien');*/
     }
 
     /**

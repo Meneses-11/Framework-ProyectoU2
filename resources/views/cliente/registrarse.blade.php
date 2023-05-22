@@ -24,7 +24,7 @@ Admin Gerente Usuarios
 
 @section('contenido')
 <div class="centrar" style="margin-top: 7rem">
-
+    
 </div>
   <div class="container">
     <div class="row justify-content-center align-items-center vh-100">
@@ -53,11 +53,12 @@ Admin Gerente Usuarios
 
               <div class="mb-3">
                 <label for="email" class="form-label">Correo electrónico:</label>
-                <input type="email" id="email" name="correo" class="form-control" placeholder="Ingresa el correo electrónico" required>
+                <input type="email" name="correo" id="email" class="form-control" required onkeyup="checkEmailAvailability(this.value)" placeholder="Ingresa el correo electrónico" required>
+                <span id="email-validation-message"></span>
               </div>
 
               <div class="mb-3">
-                <label for="email" class="form-label">Fecha de nacimiento:</label>
+                <label for="date" class="form-label">Fecha de nacimiento:</label>
                 <input type="date" id="fecha" name="fecha" class="form-control" placeholder="Ingresa o selecciona el fecha de nacimiento" required>
               </div>
 
@@ -76,11 +77,11 @@ Admin Gerente Usuarios
                 <span class="text-danger">{{ $errors->first('password_nueva') }}</span>
                 @endif
               <div class="mb-3">
-                <label for="email" class="form-label">Telefono:</label>
+                <label for="tel" class="form-label">Telefono:</label>
                 <input type="tel" id="numero" name="telefono" class="form-control" placeholder="Ingresa el numero telefonico" required>
               </div>
               <div class="mb-3">
-                <label for="email" class="form-label">Dirección:</label>
+                <label for="direc" class="form-label">Dirección:</label>
                 <input type="tel" id="numero" name="direccion" class="form-control" placeholder="Ingresa el direccón" required>
               </div>
               <div class="d-grid gap-2">

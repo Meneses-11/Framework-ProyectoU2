@@ -14,5 +14,9 @@ class Paquete extends Model
     public function eventos() {
         return $this->belongsToMany(Evento::class);
     }
+    public function imagenes()
+    {
+        return $this->morphMany(Imagen::class, 'imageable');
+    }
 
 }

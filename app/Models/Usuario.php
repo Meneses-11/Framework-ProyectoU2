@@ -15,4 +15,8 @@ class Usuario extends Authenticatable
     {
         return $this->hasMany(Evento::class, 'id_usuario');
     }
+    public function imagenes()
+    {
+        return $this->morphMany(Imagen::class, 'imageable');
+    }
 }

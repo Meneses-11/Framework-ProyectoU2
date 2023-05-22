@@ -147,9 +147,20 @@ class UsuariosController extends Controller
         $usuario->save();
         return redirect()->route('evento.index')->with('success', 'Cliente creado correctamente.');
         }
-        
+
     }
 
+    public function checkEmailAvailability(Request $request)
+    {
+        $correo = $request->input('correo');
 
+        $user = Usuario::where('correo', $correo)->first();
+
+        if ($user) {
+            return response()->json(['available' => false]);
+        } else {
+            return response()->json(['available' => true]);
+        }
+    }
 
 }

@@ -11,12 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('paquetes', function (Blueprint $table) {
-            $table->increments('id_paquete');
+        Schema::create('imagens', function (Blueprint $table) {
+            $table->id();
             $table->string('nombre');
-            $table->boolean('activo')->default(false);
-            $table->float('precio');
-            $table->longText('descripcion')->nullable();
+            $table->string('ruta');
+            $table->unsignedBigInteger('imageable_id');
+            $table->string('imageable_type');
             $table->timestamps();
         });
     }
@@ -26,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('paquetes');
+        Schema::dropIfExists('imagens');
     }
 };

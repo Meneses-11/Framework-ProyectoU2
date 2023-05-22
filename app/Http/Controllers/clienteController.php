@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Models\Imagen;
 use App\Models\Paquete;
 use Illuminate\Http\Request;
 use Illuminate\Http\Testing\File;
@@ -35,12 +36,14 @@ class clienteController extends Controller
     return response()->json(['success'=>$imgName]);
 
 }
-public function upload(Request $request) // metodo que hace la acción de guardar la imagen en el path public/uploads
+public function upload( Request $request) // metodo que hace la acción de guardar la imagen en el path public/uploads
 {
-    $image = $request->file('file');
+    dd('aqui llega todo xd');
+   /* $image = $request->file('file');
     $imageName = time() . '_' . $image->getClientOriginalName();
     $image->move(public_path('uploads'), $imageName);
-    return response()->json(['success' => true]);
+    return response()->json(['success' => true]);*/
+
 }
 
 }

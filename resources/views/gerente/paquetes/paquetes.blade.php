@@ -8,6 +8,19 @@ Admin Gerente Paquetes
 @endsection
 @section('estilos')
 <link rel="stylesheet" href="/css/styleTabla.css">
+<style>
+.slider-container {
+  display: flex; /* Establece un contenedor flexible para los elementos hijos */
+  width: 100%;
+  height:auto;
+  overflow-x: scroll;
+}
+.slider-container img {
+  flex: 0 0 50px;
+  width: 50px;
+  height: 50px;
+}
+</style>
 @endsection
 @section('opcionesIzquierda')
 <li class="nav-item"><a class="nav-link active" aria-current="page" href="{{ route('usuario.inicio') }}">Administrar Usuarios</a></li>
@@ -28,17 +41,20 @@ Admin Gerente Paquetes
 <a style="margin-right: 2%; text-align: center !important; color: black !important; background: #ffffff;" href="{{ route('paquete.create') }}" class="btn btn-success"><i class="fas fa-plus-circle"></i><span>Añadir Nuevo Paquete</span></a>
 @endsection
 @section('columnas')
-        <th >ID Paquete</th>
+        <th>ID Paquete</th>
         <th>Nombre</th>
         <th>Estatus</th>
         <th>Descripción</th>
         <th>Precio</th>
-        <th >Opciones</th>
+        <th>Opciones</th>
+        <th>Imgs</th>
+        <th>img bootstrap</th>
 @endsection
 @section('tablaContenido')
 @php
     $paquetes1 = $paquetes;
 @endphp
+
 @foreach ($paquetes1 as $paquete)
 <tr>
     <td>{{ $paquete->id_paquete}}</td>
@@ -71,6 +87,32 @@ Admin Gerente Paquetes
             </a>
 
         </div>
+    </td>
+    <td>
+        @if ($paquete->imagenes->count() !=0)
+        <div class="slider-container">
+            @foreach ($paquete->imagenes as $img)
+            <img
+                class="slider-item"
+                src="{{ $img->ruta }}"
+            />
+            @endforeach
+        </div>
+        @endif
+    </td>
+    <td>
+        @if ($paquete->imagenes->count() !=0)
+        <div id="myCarousel" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-inner">
+            @foreach ($paquete->imagenes as $img)
+              <div class="carousel-item active">
+                <img src="{{$img->ruta }}" alt="Imagen 1" class="d-block w-100 h-100">
+              </div>
+            @endforeach
+              <!-- Agrega más imágenes aquí si es necesario -->
+            </div>
+          </div>
+          @endif
     </td>
 </tr>
 <!-- Modal de confirmación para eliminar usuario -->

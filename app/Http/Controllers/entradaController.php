@@ -22,18 +22,24 @@ class entradaController extends Controller
             if ($user->rol == 'Cliente')
             {
                 if (Hash::check($contraseña, $contraseña_bd)) {
-                    Auth::login($user);
+                    Auth::guard('web_usuarios')->login($user);
+                    $_SESSION['AuthGuard']='web_usuarios';
+                    //Auth::login($user);
                     session()->put('id', $user->id_usuario);
                     return redirect()->route('evento.index');
                 }else return redirect()->route('login')->with('error2','La contraseña ingresada no es la correcta');
             } else if ($user->rol == 'Gerente') {
                 if (Hash::check($contraseña, $contraseña_bd)) {
-                    Auth::login($user);
+                    Auth::guard('web_usuarios')->login($user);
+                    $_SESSION['AuthGuard']='web_usuarios';
                     return redirect(route('usuario.inicio'));
                 }else return redirect()->route('login')->with('error2','La contraseña ingresada no es la correcta');
             } else if ($user->rol  == 'Empleado') {
                 if (Hash::check($contraseña, $contraseña_bd)) {
-                    Auth::login($user);
+                    //Auth::login($user);
+                    Auth::guard('web_usuarios')->login($user);
+                    $_SESSION['AuthGuard']='web_usuarios';
+
                     return view('/empleado/empldPrincipal');
                 }else return redirect()->route('login')->with('error2','La contraseña ingresada no es la correcta');
             }
@@ -52,6 +58,10 @@ class entradaController extends Controller
     public function cerrar_sesion()
     {
         Auth::logout();
+        session_destroy();
+        Auth::guard('web_usuarios')->logout(); // Cierra la sesión del usuario
+        $_SESSION['AuthGuard'] = null; // Opcional: limpia la variable de sesión
+        session()->forget('id'); // Opcional: elimina la variable de sesión 'id'
         return redirect('inicio');
     }
 
