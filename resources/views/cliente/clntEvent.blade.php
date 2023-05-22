@@ -25,6 +25,11 @@ Cliente
 @endsection
 
 @section('contenido')
+    @guest
+      <h1>No eres Cliente</h1>  
+    @endguest
+    @auth
+        
     <div class="contPrinc">
 
         <div class="contTitEvent">
@@ -178,6 +183,8 @@ Cliente
             @endforeach
         </div>
     </div>
+    
+    @endauth
     <!--
     <div class="contDesc">
         <div class="descTitle">

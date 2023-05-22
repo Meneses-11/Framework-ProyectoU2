@@ -100,11 +100,13 @@ button {
 }
 /*////////// Evento uno x uno //////////*/
 .evento{ /* Contiene un evento */
-    background-color: #e2e2e2;
+    /*background-color: #e2e2e2;*/
+    background-color: #212529;
+    color: white;
     height: 250px;
     width: 100%;
     border-radius: 12px;
-    border: 1px solid #000000;
+    border: 1px solid #ffffff;
 
     margin-bottom: 20px;
 
@@ -115,14 +117,17 @@ button {
     justify-content: space-between;
 }
 .evento:hover{
-   background-color: #212529;
-   color: white;
+   /*background-color: #212529;
+   color: white;*/
+   background-color: #e2e2e2;
+    color: black;
+    border: 1px solid #000000;
 }
 
 .imgEvento{/*///// Contiene la Imagen del Evento /////*/
-    border-radius: 12px;
+    border-radius: 12px 0 0 12px;
 
-    width: 40%;
+    width: 37%;
     overflow: hidden;
 }
 .imgEvento img{
