@@ -46,7 +46,7 @@ Admin Gerente Servicios
     <td>{{ $servi->id_servicio }}</td>
     <td>{{ $servi->nombre }}</td>
     <td>{{ $servi->descripcion }}</td>
-    <td>{{ $servi->precio }}</td>
+    <td>$ {{ $servi->precio }}</td>
     <td>
         <div class="d-inline-flex p-n2 align-items-center">
             <a href="{{ route('servicio.editar',$servi->id_servicio) }}" class="edit" ><i class="fas fa-pen" data-toggle="tooltip" title="Editar"></i></a>

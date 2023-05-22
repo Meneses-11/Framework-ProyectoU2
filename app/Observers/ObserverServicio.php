@@ -21,7 +21,7 @@ class ObserverServicio
             // Lógica de manejo cuando el usuario no está autenticado
         $bitacora->quien = 'seed o anonimo';
         }
-        $bitacora->accion = 'Se creo el servicio '.$servicio->nombre;
+        $bitacora->accion = 'Se creo el servicio: '.$servicio->nombre;
         $bitacora->save();
     }
 
@@ -33,7 +33,7 @@ class ObserverServicio
         //
         $bitacora = new Bitacora();
         $bitacora->quien = Auth::user()->nombre;
-        $bitacora->accion = 'Se actualizo el servicio '.$servicio->nombre;
+        $bitacora->accion = 'Se actualizo el servicio: '.$servicio->nombre;
         $bitacora->save();
     }
 
@@ -45,7 +45,7 @@ class ObserverServicio
         //
         $bitacora = new Bitacora();
         $bitacora->quien = Auth::user()->nombre;
-        $bitacora->accion = 'Se elimino el servicio '.$servicio->nombre;
+        $bitacora->accion = 'Se elimino el servicio: '.$servicio->nombre;
         $bitacora->save();
     }
 

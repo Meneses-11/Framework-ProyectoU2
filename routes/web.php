@@ -15,9 +15,9 @@ Route::get('/login',function(){
     return view('plantillas.login');
 })->name('login');
 
-Route::get('/dragandrop',function(){
-    return view('drop');
-})->name('drop');
+Route::get('/d',function(){
+    return view('gerente.test2');
+})->name('d');
 
 Route::post('/validar',[entradaController::class,'validar'])->name('validar');
 Route::get('cerrar_sesion', [entradaController::class, 'cerrar_sesion'])->name(("cerrar_sesion"));
@@ -88,5 +88,5 @@ Route::get('/registrarse',function(){
 Route::post('/registrar_usuario', [UsuariosController::class, 'registrarse'])->name('registrar_usuario');
 
 Route::post('paquete/evento', [EventoController::class, 'crearP'])->name('crearP')->middleware('auth');
-Route::get('/check-email-availability', [UsuariosController::class, 'checkEmailAvailability'])->name('check-email-availability');
+Route::get('/check-email-availability', [UsuariosController::class, 'checkEmailAvailability'])->name('correo');
 

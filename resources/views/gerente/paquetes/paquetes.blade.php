@@ -67,7 +67,7 @@ Admin Gerente Paquetes
     @endif
 
     <td>{{ $paquete->descripcion }}</td>
-    <td>{{ $paquete->precio }}</td>
+    <td>$ {{ $paquete->precio }}</td>
     <td>
         <div class="d-inline-flex p-n2 align-items-center">
             <a href="{{ route('paquete.editar',$paquete->id_paquete) }}" class="edit" ><i class="fas fa-pen" data-toggle="tooltip" title="Editar"></i></a>

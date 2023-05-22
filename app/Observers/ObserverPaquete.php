@@ -21,7 +21,7 @@ class ObserverPaquete
             // Lógica de manejo cuando el usuario no está autenticado
         $bitacora->quien = 'seed o anonimo';
         }
-        $bitacora->accion = "Creo el paquete ".$paquete->nombre;
+        $bitacora->accion = "Creo el paquete: ".$paquete->nombre;
         $bitacora->save();
     }
 
@@ -33,7 +33,7 @@ class ObserverPaquete
         //{}
         $bitacora = new Bitacora();
         $bitacora->quien = Auth::user()->nombre;
-        $bitacora->accion = "Edito el paquete ".$paquete->nombre;
+        $bitacora->accion = "Edito el paquete: ".$paquete->nombre;
         $bitacora->save();
     }
 
@@ -45,7 +45,7 @@ class ObserverPaquete
         //
         $bitacora = new Bitacora();
         $bitacora->quien = Auth::user()->nombre;
-        $bitacora->accion = "Elimino el paquete ".$paquete->nombre;
+        $bitacora->accion = "Elimino el paquete: ".$paquete->nombre;
         $bitacora->save();
     }
 

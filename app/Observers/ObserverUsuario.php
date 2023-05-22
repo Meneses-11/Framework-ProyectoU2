@@ -32,7 +32,13 @@ class ObserverUsuario
     {
         //
         $bitacora = new Bitacora();
-        $bitacora->quien = Auth::user()->nombre;
+        $bitacora = new Bitacora();
+        if (Auth::check()) {
+            $bitacora->quien = Auth::user()->nombre;
+        } else {
+            // Lógica de manejo cuando el usuario no está autenticado
+        $bitacora->quien = $usuario->nombre;
+        }
         $bitacora->accion = "Actualizo un usuario: ".$usuario->nombre;
         $bitacora->save();
     }

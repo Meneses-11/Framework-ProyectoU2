@@ -70,8 +70,8 @@ class PaqueteController extends Controller
                 $paquete->imagenes()->save($imagen);
             }
         }
-
-        return redirect(route('paquete.index'))->with('dat','todo fue bien');*/
+*/
+        return redirect(route('paquete.index'))->with('dat','todo fue bien');
     }
 
     /**

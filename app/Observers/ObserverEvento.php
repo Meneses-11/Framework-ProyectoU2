@@ -21,7 +21,7 @@ class ObserverEvento
             // Lógica de manejo cuando el usuario no está autenticado
         $bitacora->quien = 'seed o anonimo';
         }
-        $bitacora->accion = "Se creo el evento ".$evento->id_evento;
+        $bitacora->accion = "Se creo el evento: ".$evento->id_evento;
         $bitacora->save();
 
     }
@@ -34,7 +34,7 @@ class ObserverEvento
         //
         $bitacora = new Bitacora();
         $bitacora-> quien = Auth::user()->nombre;
-        $bitacora->accion = "Se actualizo el evento ".$evento->id_evento;
+        $bitacora->accion = "Se actualizo el evento: ".$evento->id_evento;
         $bitacora->save();
     }
 
@@ -46,7 +46,7 @@ class ObserverEvento
         //
         $bitacora = new Bitacora();
         $bitacora-> quien = Auth::user()->nombre;
-        $bitacora->accion = "Se elimino el evento ".$evento->id_evento;
+        $bitacora->accion = "Se elimino el evento: ".$evento->id_evento;
         $bitacora->save();
     }
 

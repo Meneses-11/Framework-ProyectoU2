@@ -155,11 +155,11 @@ class UsuariosController extends Controller
         $correo = $request->input('correo');
 
         $user = Usuario::where('correo', $correo)->first();
-
         if ($user) {
-            return response()->json(['available' => false]);
+            return response()->json(['existeCorreo' => true]);
         } else {
-            return response()->json(['available' => true]);
+            return response()->json(['existeCorreo' => false]);
+
         }
     }
 
