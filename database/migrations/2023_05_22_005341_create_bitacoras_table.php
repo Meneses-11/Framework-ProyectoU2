@@ -11,12 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('paquetes', function (Blueprint $table) {
-            $table->increments('id_paquete');
-            $table->string('nombre');
-            $table->boolean('activo')->default(false);
-            $table->float('precio');
-            $table->longText('descripcion')->nullable();
+        Schema::create('bitacoras', function (Blueprint $table) {
+            $table->id();
+            $table->string('quien', 45)->nullable();
+            $table->string('accion')->nullable();
             $table->timestamps();
         });
     }
@@ -26,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('paquetes');
+        Schema::dropIfExists('bitacoras');
     }
 };

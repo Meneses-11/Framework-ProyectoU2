@@ -12,7 +12,8 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous"></script>
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.2.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/dataTables.bootstrap5.min.css">
     <title>@yield('titulo')</title>
     @yield('links')
     <style>
@@ -64,13 +65,28 @@
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.4/dist/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.0/js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+<script src="https://cdn.datatables.net/1.13.4/js/dataTables.bootstrap5.min.js"> </script>
+<script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
 </body>
+</html>
+    <script>
+            function checkEmailAvailability(email) {
+            $.get('{{ route("check-email-availability") }}', {email: email}, function(response) {
+                if (response.available) {
+                    $('#email-validation-message').removeClass('text-danger').addClass('text-success').html('Correo electrónico disponible.');
+                } else {
+                    $('#email-validation-message').removeClass('text-success').addClass('text-danger').html('El correo electrónico ya se encuentra registrado.');
+                }
+            });
+        };
+    </script>
     <script>
         $(document).ready(function(){
             // Activate tooltip
             $('[data-toggle="tooltip"]').tooltip();
-
             // Select/Deselect checkboxes
             var checkbox = $('table tbody input[type="checkbox"]');
             $("#selectAll").click(function(){
@@ -100,7 +116,7 @@
             uiLibrary: 'bootstrap4'
         });
     </script>
-     <script>
+    {{--  <script>
         Dropzone.autoDiscover = false; // Desactiva la inicialización automática de Dropzone.js
 
          // Crea una instancia de Dropzone.js
@@ -108,7 +124,7 @@
                headers: {
                'X-CSRF-TOKEN': "{{ csrf_token() }}"
            },
-           url: "/upload", // Ruta donde se subirán los archivos
+           url: "/paquete/store", // Ruta donde se subirán los archivos
            dictDefaultMessage:"Arrastra una Imagen para subirla o da Click para abrir la ruta la archivo",
            autoProcessQueue: false, // Deshabilita la subida automática de archivos
            paramName: "file", // Nombre del archivo a subir al servidor
@@ -125,10 +141,78 @@
            }
            });
            // Agrega el controlador de eventos en el botón
-           document.querySelector("#submit-all").addEventListener("click", function () {
-               document.getElementById("formulario_agregar").submit();
-               myDropzone.processQueue(); // Inicia la subida de archivos
-           });
+           document.querySelector('#formulario_agregar').addEventListener('submit', function (e) {
+            e.preventDefault(); // Evita el envío del formulario por defecto
+            myDropzone.processQueue();// Procesa la cola de archivos de Dropzone
+            });
          </script>
+    <script>
+        $(document).ready(function () {
+            $('#tabla').DataTable();
+            });
+    </script> --}}
+    <script>
+        let dropZone = document.getElementById('drop-zone');
+        let fileInput = document.getElementById('file-input');
+        let filePreviews = document.getElementById('file-previews');
 
-  </html>
+        dropZone.addEventListener('dragover', (e) => {
+            e.preventDefault();
+            dropZone.style.background = '#e2e2e2';
+        });
+
+        dropZone.addEventListener('dragleave', () => {
+            dropZone.style.background = 'white';
+        });
+
+        dropZone.addEventListener('drop', (e) => {
+            e.preventDefault();
+            dropZone.style.background = 'white';
+
+            let files = e.dataTransfer.files;
+            handleFiles(files);
+        });
+
+        dropZone.addEventListener('click', () => {
+            fileInput.click();
+        });
+
+        fileInput.addEventListener('change', () => {
+            let files = fileInput.files;
+            handleFiles(files);
+        });
+
+        function handleFiles(files) {
+            filePreviews.innerHTML = '';
+
+            for (let i = 0; i < files.length; i++) {
+                let file = files[i];
+
+                // Crear elementos para la vista previa y el botón de eliminación
+                let previewDiv = document.createElement('div');
+                previewDiv.classList.add('file-preview');
+
+                let image = document.createElement('img');
+                image.src = URL.createObjectURL(file);
+
+                let removeBtn = document.createElement('span');
+                removeBtn.classList.add('remove-btn');
+                removeBtn.textContent = 'Eliminar';
+                removeBtn.addEventListener('click', () => {
+                    // Eliminar archivo y su vista previa
+                    filePreviews.removeChild(previewDiv);
+                    fileInput.files = Array.from(fileInput.files).filter(f => f !== file);
+                });
+
+                // Agregar elementos a la vista previa
+                previewDiv.appendChild(image);
+                previewDiv.appendChild(removeBtn);
+                filePreviews.appendChild(previewDiv);
+            }
+
+            // Aquí puedes procesar los archivos seleccionados o activar algún evento de formulario para enviarlos al servidor
+            console.log(files);
+        }
+    </script>
+
+</html>

@@ -150,5 +150,17 @@ class UsuariosController extends Controller
 
     }
 
+    public function checkEmailAvailability(Request $request)
+    {
+        $correo = $request->input('correo');
+
+        $user = Usuario::where('correo', $correo)->first();
+        if ($user) {
+            return response()->json(['existeCorreo' => true]);
+        } else {
+            return response()->json(['existeCorreo' => false]);
+
+        }
+    }
 
 }

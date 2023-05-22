@@ -13,7 +13,7 @@
                     </div>
                 </div>
 
-            <table class="table table-striped table-hover">
+            <table class="table table-striped " style="width:100%" id="tabla">
                 <thead>
                 <tr>
                     @yield('columnas')
@@ -28,6 +28,7 @@
       </div>
     </div>
     </div>
+
 
 
 
