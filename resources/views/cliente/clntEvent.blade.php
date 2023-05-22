@@ -35,7 +35,7 @@ Cliente
         <div class="contTitEvent">
             <img src="{{ asset('img/copas-icon.png') }}" alt="">
             <h1 class="titEvent">Mis eventos</h1>
-            <button class="custom-btn btn-13" ><a href="{{route('evento.create')}}" style="color: white !important; text-decoration: none;">Crear Evento</a></button>
+            <button class="custom-btn btn-14" ><a href="{{route('evento.create')}}" style="color: white !important; text-decoration: none;">Crear Evento</a></button>
         </div>
 
 
@@ -99,7 +99,7 @@ Cliente
                             <div class="infEvnt">
                                 <div>
                                     <form action="{{ route('evento.show',$event->id_evento) }}" method="GET">
-                                        <button type="submit" class="btn btn-primary">Ver Contrato</button>
+                                        <button type="submit" class="custom-btn btn-14">Ver Contrato</button>
                                     </form>
                                 </div>
                                 <div class="texto">
@@ -143,9 +143,9 @@ Cliente
                             <div class="infEvntTit">
                                 <h2> Total: {{$event->precio}} </h2>
                                 @if ($event->confirmacion == 1)
-                                    <button type="button" class="custom-btn btn-13" data-toggle="modal" data-target="#modalImg" style="margin: 10px;"> Añadir Imagen </button>
+                                    <button type="button" class="custom-btn btn-14" data-toggle="modal" data-target="#modalImg" style="margin: 10px;"> Añadir Imagen </button>
                                 @else
-                                    <button class="custom-btn btn-13" data-toggle="modal" data-target="#modalConfirm{{$event->id_evento}}">Confirmar</button>
+                                    <button class="custom-btn btn-14" data-toggle="modal" data-target="#modalConfirm{{$event->id_evento}}">Confirmar</button>
 
 
                                     <!-- Modal -->
