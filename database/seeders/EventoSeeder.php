@@ -140,7 +140,5 @@ class EventoSeeder extends Seeder
         $evento->confirmacion = 1;
         $evento->save();
         $evento->servicios()->attach([1,2,3]);
-
-
     }
 }
