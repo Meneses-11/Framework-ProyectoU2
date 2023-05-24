@@ -52,6 +52,16 @@ class EventoPolicy
         //
         if($usuario->rol == "Cliente") {
             if($evento->confirmacion == 0) return true;
+            else return false;
+        }else return false;
+    }
+
+    public function confirm(Usuario $usuario, Evento $evento): bool
+    {
+        //
+        if($usuario->rol == "Cliente") {
+            if($evento->confirmacion == 1) return true;
+            else return false;
         }else return false;
     }
 

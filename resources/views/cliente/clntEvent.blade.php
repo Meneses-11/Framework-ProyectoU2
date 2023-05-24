@@ -144,11 +144,10 @@ Cliente
                             </div>
                             <div class="infEvntTit">
                                 <h2> Total: {{$event->precio}} </h2>
-                                @if ($event->confirmacion == 1)
+                                @can('confirm', $event)
                                     <button type="button" class="custom-btn btn-14" data-toggle="modal" data-target="#modalImg" style="margin: 10px;"> Añadir Imagen </button>
                                 @else
-                                    <button class="custom-btn btn-14" data-toggle="modal" data-target="#modalConfirm{{$event->id_evento}}">Confirmar</button>
-
+                                    <button class="custom-btn btn-14" data-toggle="modal" data-target="#modalConfirm{{$event->id_evento}}" style="margin: 10px">Confirmar</button>
 
                                     <!-- Modal -->
                                     <div class="modal fade" id="modalConfirm{{$event->id_evento}}" tabindex="-1" role="dialog" aria-labelledby="modalConfirmLabel{{$event->id_evento}}" aria-hidden="true">
@@ -176,7 +175,9 @@ Cliente
                                         </div>
                                     </div>
 
-                                @endif
+                                @endcan
+
+                                    
                             </div>
                         </div>
 
@@ -187,56 +188,5 @@ Cliente
     </div>
     
     @endauth
-    <!--
-    <div class="contDesc">
-        <div class="descTitle">
-            <div class="titlEvent"><h2>Evento 1</h2></div>
-            <div class="iconsDesc">
-                <button class="btnIcon mas">
-                    <img src="img/anadir.png" alt="Agregar" class="iconoEvento">
-                </button>
-                <button class="btnIcon edit">
-                    <img src="img/editar2.png" alt="editar" class="iconoEvento">
-                </button>
-                <button class="btnIcon borr">
-                    <img src="img/borrar.png" alt="borrar" class="iconoEvento">
-                </button>
-            </div>
-        </div>
-        <div class="desCont">
-            <label for="infor">Nombre:</label>
-            <input type="text" name="nameEvnt" id="infor" placeholder="Nombre del Evento">
-        </div>
-        <div class="desCont">
-            <label for="infor">Tipo:</label>
-            <input type="text" name="typeEvnt" id="infor" placeholder="Tipo de Evento">
-        </div>
-        <div class="desCont">
-            <label for="infor">Paquete:</label>
-            <select class="selectPaq" name="paqEvnt" required placeholder="Elige una opcion">
-                <option value="">Elige un paquete</option>
-                <option>Boda</option>
-                <option>Fiest Infantil</option>
-                <option>Vacío</option>
-                <option>Graduacion</option>
-                <option>XV Años</option>
-            </select>
-        </div>
-        <div class="desCont">
-            <label for="infor">Fecha:</label>
-            <input type="text" name="dateEvnt" id="infor" placeholder="Fecha del Evento">
-
-        </div>
-        <div class="desHora">
-            <label for="infor">Hr. Inicio:</label>
-            <input type="time" name="hrIniEvnt" id="infor">
-            <label for="infor">Hr. Fin:</label>
-            <input type="time" name="hrFinEvnt" id="infor">
-        </div>
-        <div class="descTotal">
-            <label for="infor">Total:</label>
-            <label for="infor">$100</label>
-        </div>
-    </div>
-    -->
+    
 @endsection
