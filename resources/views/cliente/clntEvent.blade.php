@@ -28,8 +28,12 @@ Cliente
     @guest
       <h1>No eres Cliente</h1>  
     @endguest
+    
+   
+    
+    
     @auth
-        
+    
     <div class="contPrinc">
 
         <div class="contTitEvent">
@@ -48,13 +52,7 @@ Cliente
                         <div class="datosEvento">
                             <div class="infEvntTit">
                                 <h1>Evento {{ $event->id_evento }}</h1>
-
-                                @if ($event->confirmacion == 1)
-                                    <div class="titEventConfirm">
-                                        <img src="img/cheque.png" alt="confirmado" class="iconoEvento">
-                                        <h4>Confirmado</h4>
-                                    </div>
-                                @else
+                                @can('update', $event)
                                     <div class="titEventConfirm">
                                         <img src="img/btn-x.png" alt="sin confirmar" class="iconoEvento">
                                         <h4>Sin Confirmar</h4>
@@ -66,8 +64,7 @@ Cliente
                                         <button class="btnIcon borr" data-toggle="modal" data-target="#modalDelete{{$event->id_evento}}">
                                             <img src="img/borrar.png" alt="borrar" class="iconoEvento">
                                         </button>
-                                    </div>
-
+                                    </div> 
                                     <!-- Modal -->
                                     <div class="modal fade" id="modalDelete{{$event->id_evento}}" tabindex="-1" role="dialog" aria-labelledby="modalDeleteLabel{{$event->id_evento}}" aria-hidden="true">
                                         <div class="modal-dialog" role="document">
@@ -93,8 +90,13 @@ Cliente
                                             </div>
                                         </div>
                                     </div>
-
-                                @endif
+                                @else
+                                    <div class="titEventConfirm">
+                                        <img src="img/cheque.png" alt="confirmado" class="iconoEvento">
+                                        <h4>Confirmado</h4>
+                                    </div>
+                                @endcan
+                                
                             </div>
                             <div class="infEvnt">
                                 <div>
