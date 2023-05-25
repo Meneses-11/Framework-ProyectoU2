@@ -22,6 +22,8 @@ class UsuarioPolicy
     public function view(Usuario $usuario, Usuario $user): bool
     {
         //
+        return true;
+
     }
 
     /**
@@ -30,6 +32,8 @@ class UsuarioPolicy
     public function create(Usuario $usuario): bool
     {
         //
+        return true;
+
     }
 
     /**
@@ -38,6 +42,8 @@ class UsuarioPolicy
     public function update(Usuario $usuario, Usuario $user): bool
     {
         //
+        return true;
+
     }
 
     /**
@@ -46,6 +52,8 @@ class UsuarioPolicy
     public function delete(Usuario $usuario, Usuario $user): bool
     {
         //
+        return true;
+
     }
 
     /**
@@ -54,6 +62,8 @@ class UsuarioPolicy
     public function restore(Usuario $usuario, Usuario $user): bool
     {
         //
+        return true;
+
     }
 
     /**
@@ -62,5 +72,7 @@ class UsuarioPolicy
     public function forceDelete(Usuario $usuario, Usuario $user): bool
     {
         //
+        return true;
+
     }
 }
