@@ -18,7 +18,9 @@
 Cliente
 @endsection
 @section('opcionesIzquierda')
-    <li class="nav-item"><a class="nav-link active" aria-current="page" href="{{route('paquetes')}}">Paquetes</a></li>
+    @can('viewAny', App\Models\Evento::class)
+        <li class="nav-item"><a class="nav-link active" aria-current="page" href="{{route('paquetes')}}">Paquetes</a></li>
+    @endcan
 @endsection
 @section('opcionesDerecha')
     <li><a class="dropdown-item" href="{{ route('cerrar_sesion') }}">Cerrar Sesión</a></li>
@@ -39,7 +41,12 @@ Cliente
         <div class="contTitEvent">
             <img src="{{ asset('img/copas-icon.png') }}" alt="">
             <h1 class="titEvent">Mis eventos</h1>
-            <button class="custom-btn btn-14" ><a href="{{route('evento.create')}}" style="color: white !important; text-decoration: none;">Crear Evento</a></button>
+            @can('viewAny', App\Models\Evento::class)
+                <button class="custom-btn btn-14" ><a href="{{route('evento.create')}}" style="color: white !important; text-decoration: none;">Crear Evento</a></button>
+            @else
+                <button class="custom-btn btn-14" ><a href="{{route('usuario.inicio')}}" style="color: white !important; text-decoration: none;">Regresar</a></button>
+            @endcan
+            
         </div>
 
 
@@ -99,11 +106,14 @@ Cliente
                                 
                             </div>
                             <div class="infEvnt">
-                                <div>
-                                    <form action="{{ route('evento.show',$event->id_evento) }}" method="GET">
-                                        <button type="submit" class="custom-btn btn-14">Ver Contrato</button>
-                                    </form>
-                                </div>
+                                @can('confirm', $event)
+                                    <div>
+                                        <form action="{{ route('evento.show',$event->id_evento) }}" method="GET">
+                                            <button type="submit" class="custom-btn btn-14">Ver Contrato</button>
+                                        </form>
+                                    </div>    
+                                @endcan
+                                
                                 <div class="texto">
                                     <p>Paquete: </p>
                                     @foreach ($paquetes as $nombre => $id)

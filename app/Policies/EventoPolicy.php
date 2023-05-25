@@ -13,7 +13,12 @@ class EventoPolicy
      */
     public function viewAny(Usuario $usuario): bool
     {
-        return true;// Decimos que el usuario actual puede ver cualquier cosa de los eventos
+        //return true;// Decimos que el usuario actual puede ver cualquier cosa de los eventos
+        if ($usuario->rol == "Cliente") { 
+            return true;
+        } else {
+            return false;
+        }
     }
 
     /**

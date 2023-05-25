@@ -14,6 +14,13 @@ class PaquetePolicy
     public function viewAny(Usuario $usuario): bool
     {
         //
+        //$paquete = Paquete::all();
+        //if($paquete->activo == 1) return true;
+
+        return false;
+
+
+
     }
 
     /**

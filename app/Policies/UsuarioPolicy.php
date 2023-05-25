@@ -13,12 +13,13 @@ class UsuarioPolicy
     public function viewAny(Usuario $usuario): bool
     {
         //
+        return true;
     }
 
     /**
      * Determine whether the user can view the model.
      */
-    public function view(Usuario $usuario, Usuario $usuario): bool
+    public function view(Usuario $usuario, Usuario $user): bool
     {
         //
     }
@@ -34,7 +35,7 @@ class UsuarioPolicy
     /**
      * Determine whether the user can update the model.
      */
-    public function update(Usuario $usuario, Usuario $usuario): bool
+    public function update(Usuario $usuario, Usuario $user): bool
     {
         //
     }
@@ -42,7 +43,7 @@ class UsuarioPolicy
     /**
      * Determine whether the user can delete the model.
      */
-    public function delete(Usuario $usuario, Usuario $usuario): bool
+    public function delete(Usuario $usuario, Usuario $user): bool
     {
         //
     }
@@ -50,7 +51,7 @@ class UsuarioPolicy
     /**
      * Determine whether the user can restore the model.
      */
-    public function restore(Usuario $usuario, Usuario $usuario): bool
+    public function restore(Usuario $usuario, Usuario $user): bool
     {
         //
     }
@@ -58,7 +59,7 @@ class UsuarioPolicy
     /**
      * Determine whether the user can permanently delete the model.
      */
-    public function forceDelete(Usuario $usuario, Usuario $usuario): bool
+    public function forceDelete(Usuario $usuario, Usuario $user): bool
     {
         //
     }

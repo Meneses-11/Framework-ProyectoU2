@@ -31,7 +31,6 @@ Route::get('paquetes', [clienteController::class, 'verPaquetes'])->name('paquete
 Route::post('/img', [clienteController::class, 'store'])->name('imgStore');
 
 Route::get('misEventos', [clienteController::class, 'verEventos'])->name('eventos')->middleware('auth');
-Route::get('aboutWe', [clienteController::class, 'verInformacion'])->name('informacion');
 
 Route::get('empleado',[empleadoController::class, 'principal'])->name('empleadoPrin')->middleware('auth');
 
