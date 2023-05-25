@@ -33,7 +33,9 @@ class PaqueteController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
+
+
         if ($request->activo=="Activo"){
             $activo = true;
         }else{
@@ -45,8 +47,29 @@ class PaqueteController extends Controller
         $paquete->precio = $request->precio;
         $paquete->descripcion = $request->descripcion;
         $paquete->save();
-        dd('se registro \n',$paquete);
-        /*$archivo = $request->file('imagen');
+
+        if ($request->hasFile('images')) {
+            $images = $request->file('images');
+
+            // Realiza las operaciones necesarias con las imágenes aquí
+            foreach ($images as $image) {
+                $archivo = $image;
+                /*$nombreArchivo = $archivo->getClientOriginalName();
+                $ruta_nombre = Storage::disk('public')->putFileAs('',$archivo,$nombreArchivo);*/
+                $img = $image;
+                $imgName = time().rand(1,100).'.'.$img->extension();
+                $img -> move(public_path('/img/Paquetes/'),$imgName);
+                $ruta_nombre = '/img/Paquetes/'.$imgName;
+                $imagen = new Imagen();
+                $imagen->ruta = $ruta_nombre;
+                $imagen->nombre = $archivo->getClientOriginalName();
+                $paquete->imagenes()->save($imagen);
+            }
+
+            // ... restante de la lógica
+        }else{dd('no entre');}
+        /*
+        $archivo = $request->file('imagen');
         $nombreArchivo = $archivo->getClientOriginalName();
         $ruta_nombre = Storage::disk('privado')->putFileAs('',$archivo,$nombreArchivo);
 
@@ -71,7 +94,7 @@ class PaqueteController extends Controller
             }
         }
 */
-        return redirect(route('paquete.index'))->with('dat','todo fue bien');
+        //return redirect(route('paquete.index'))->with('dat','todo fue bien');
     }
 
     /**

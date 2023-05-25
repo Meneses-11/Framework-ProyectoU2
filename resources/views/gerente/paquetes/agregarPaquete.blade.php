@@ -59,7 +59,7 @@ Paquetes
                   <div class="mb-3">
                   <label for="imgs" class="form-label">Imagenes:</label>
 
-                    <div id="my-dropzone" class="dropzone"></div>
+                  <input type="file" name="images[]" multiple>
 
                     </div>
 
