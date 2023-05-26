@@ -14,6 +14,8 @@ class ServicioPolicy
     public function viewAny(Usuario $usuario): bool
     {
         //
+        if($usuario->rol == "Gerente") return true;
+        else return false;
     }
 
     /**
