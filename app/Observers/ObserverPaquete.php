@@ -30,7 +30,6 @@ class ObserverPaquete
      */
     public function updated(Paquete $paquete): void
     {
-        //{}
         $bitacora = new Bitacora();
         $bitacora->quien = Auth::user()->nombre;
         $bitacora->accion = "Edito el paquete: ".$paquete->nombre;
