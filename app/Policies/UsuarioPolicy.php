@@ -53,7 +53,8 @@ class UsuarioPolicy
     public function delete(Usuario $usuario, Usuario $user): bool
     {
         //
-        return true;
+        if($user->eventos()->count() == 0) return true;
+        else return false;
 
     }
 

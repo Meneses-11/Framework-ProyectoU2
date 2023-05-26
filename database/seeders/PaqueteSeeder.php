@@ -25,7 +25,7 @@ class PaqueteSeeder extends Seeder
         $imagen = new Imagen();
         $imagen->nombre = "bodas.jpeg";
         $imagen->ruta = "\img\bodas.jpeg";
-        $paquete->imagen()->save($imagen);
+        $paquete->imagenes()->save($imagen);
 
         $paquete = new Paquete;
         $paquete->nombre = "XV Años";
@@ -36,7 +36,7 @@ class PaqueteSeeder extends Seeder
         $imagen = new Imagen();
         $imagen->nombre = "xv-años.jpg";
         $imagen->ruta = "\img\xv-años.jpg";
-        $paquete->imagen()->save($imagen);
+        $paquete->imagenes()->save($imagen);
 
         $paquete = new Paquete;
         $paquete->nombre = "Fiesta infantil";
@@ -47,7 +47,7 @@ class PaqueteSeeder extends Seeder
         $imagen = new Imagen();
         $imagen->nombre = "fiesta-niños.jpg";
         $imagen->ruta = '\img\fiesta-niños.jpg';
-        $paquete->imagen()->save($imagen);
+        $paquete->imagenes()->save($imagen);
 
         $paquete = new Paquete;
         $paquete->nombre = "Bautizos";
@@ -58,7 +58,7 @@ class PaqueteSeeder extends Seeder
         $imagen = new Imagen();
         $imagen->nombre = "fiestas-adultos.jpg";
         $imagen->ruta = '\img\fiestas-adultos.jpg';
-        $paquete->imagen()->save($imagen);
+        $paquete->imagenes()->save($imagen);
 
 
 

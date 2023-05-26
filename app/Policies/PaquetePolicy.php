@@ -25,6 +25,12 @@ class PaquetePolicy
         //
     }
 
+    public function activo(Usuario $usuario, Paquete $paquete): bool
+    {
+        if($paquete->activo == 1) return true;
+        else return false;
+    }
+
     /**
      * Determine whether the user can create models.
      */
@@ -38,7 +44,9 @@ class PaquetePolicy
      */
     public function update(Usuario $usuario, Paquete $paquete): bool
     {
-        //
+        //Existe en un evento no confirmado?????
+        if($paquete->eventos()->where('confirmacion',0)->exists()) return false;
+        else return true;
     }
 
     /**
@@ -46,7 +54,9 @@ class PaquetePolicy
      */
     public function delete(Usuario $usuario, Paquete $paquete): bool
     {
-        //
+        //Existe en un evento no confirmado?????
+        if($paquete->eventos()->where('confirmacion',0)->exists()) return false;
+        else return true;
     }
 
     /**

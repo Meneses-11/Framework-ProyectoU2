@@ -7,7 +7,7 @@ Paquetes
 Admin Gerente Servicios
 @endsection
 @section('estilos')
-  @can('viewAny', pp\Models\Servicio::class)
+  @can('viewAny', App\Models\Servicio::class)
     <link rel="stylesheet" href="/css/styleTabla.css">    
   @else
     <link rel="stylesheet" href="/css/styleMenuClnt.css">

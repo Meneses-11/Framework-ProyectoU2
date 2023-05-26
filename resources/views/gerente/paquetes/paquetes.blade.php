@@ -7,7 +7,7 @@ Paquetes
 Admin Gerente Paquetes
 @endsection
 @section('estilos')
-    @can('viewAny', pp\Models\Servicio::class)
+    @can('viewAny', App\Models\Servicio::class)
         <link rel="stylesheet" href="/css/styleTabla.css">
         <style>
         .slider-container {
@@ -57,11 +57,7 @@ Admin Gerente Paquetes
             <th>img bootstrap</th>
         @endsection
         @section('tablaContenido')
-            @php
-                $paquetes1 = $paquetes;
-            @endphp
-
-            @foreach ($paquetes1 as $paquete)
+            @foreach ($paquetes as $paquete)
                 <tr>
                     <td>{{ $paquete->id_paquete}}</td>
                     <td>{{ $paquete->nombre }}</td>
@@ -76,8 +72,12 @@ Admin Gerente Paquetes
                     <td>$ {{ $paquete->precio }}</td>
                     <td>
                         <div class="d-inline-flex p-n2 align-items-center">
-                            <a href="{{ route('paquete.editar',$paquete->id_paquete) }}" class="edit" ><i class="fas fa-pen" data-toggle="tooltip" title="Editar"></i></a>
-                            <a href="#" class="delete" data-toggle="modal" data-target="#deleteModal{{ $paquete->id_paquete }}"><i class="fas fa-trash" data-toggle="tooltip" title="Eliminar"></i></a>
+                            @can('update', $paquete)
+                                <a href="{{ route('paquete.editar',$paquete->id_paquete) }}" class="edit" ><i class="fas fa-pen" data-toggle="tooltip" title="Editar"></i></a>                            
+                            @endcan
+                            @can('delete', $paquete)
+                                <a href="#" class="delete" data-toggle="modal" data-target="#deleteModal{{ $paquete->id_paquete }}"><i class="fas fa-trash" data-toggle="tooltip" title="Eliminar"></i></a>                                
+                            @endcan
                             {{-- <a href="{{ route('paquete.detalle',$paquete->id_paquete) }}"  ><i class="fas fa-info-circle" data-toggle="tooltip" title="Información"></i></a> --}}
                             <form id="form-activo-{{ $paquete->id_paquete }}" action="{{ route('paquete.activo', $paquete->id_paquete) }}" method="post">
                                 @csrf
