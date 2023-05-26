@@ -26,7 +26,6 @@ Route::get('/error',[entradaController::class,'error'])->name('error');
 
 Route::get('/inicio',[entradaController::class,'inicio'])->name('inicio');
 
-
 Route::get('paquetes', [clienteController::class, 'verPaquetes'])->name('paquetes')->middleware('auth');
 Route::post('/img', [clienteController::class, 'store'])->name('imgStore');
 

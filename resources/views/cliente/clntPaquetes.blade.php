@@ -11,40 +11,47 @@ Salón Eventos
 Salón de Eventos
 @endsection
 @section('opcionesIzquierda')
-    <li class="nav-item"><a class="nav-link active" aria-current="page" href="{{ route('evento.index') }}">Mis eventos</a></li>
+    @can('anyView', App\Models\Evento::class)
+        <li class="nav-item"><a class="nav-link active" aria-current="page" href="{{ route('evento.index') }}">Mis eventos</a></li>
+    @endcan
 @endsection
 @section('opcionesDerecha')
 <li><a class="dropdown-item" href="{{ route('cerrar_sesion') }}">Cerrar Sesion</a></li>
 @endsection
 
 @section('contenido')
-<div>
-    @php
-        $paquetes = $paquetes->where('activo',1);
-    @endphp
-    <div class="container-items">
-        @foreach ($paquetes as $paquete)
-        @can('viewAny', App\Models\Paquete::class)
-            <a href="{{ route('paquete.detalle', $paquete->id_paquete) }}" style="text-decoration: none; color:black;">
-                <div class="item">
-                    <figure>
-                        <img src={{$paquete->nombre_foto }} alt="bodas">
-                        <div class="capa" style="margin-top: -12.5rem;">
-                            <p class="Descripcionn">Ver mas informacion</p>
+    @can('anyView', App\Models\Evento::class)
+        <div>
+            @php
+                $paquetes = $paquetes->where('activo',1);
+            @endphp
+            <div class="container-items">
+                @foreach ($paquetes as $paquete)
+                @can('viewAny', App\Models\Paquete::class)
+                    <a href="{{ route('paquete.detalle', $paquete->id_paquete) }}" style="text-decoration: none; color:black;">
+                        <div class="item">
+                            <figure>
+                                <img src={{$paquete->nombre_foto }} alt="bodas">
+                                <div class="capa" style="margin-top: -12.5rem;">
+                                    <p class="Descripcionn">Ver mas informacion</p>
+                                </div>
+                            </figure>
+                            <div class="info-producto">
+                                <h2>{{ $paquete->nombre }}</h2>
+                                <!--<p class="Descripcion">{{ $paquete->descripcion }} </p> -->
+                            <!-- <button class="añade-carrito">Cotizar</button>-->
+
+                            </div>
                         </div>
-                    </figure>
-                    <div class="info-producto">
-                        <h2>{{ $paquete->nombre }}</h2>
-                        <!--<p class="Descripcion">{{ $paquete->descripcion }} </p> -->
-                    <!-- <button class="añade-carrito">Cotizar</button>-->
+                    </a>    
+                @endcan
+                
+                @endforeach
 
-                    </div>
-                </div>
-            </a>    
-        @endcan
-        
-        @endforeach
+            </div>
+        </div>
+    @else
+        @include('plantillas.error401')
+    @endcan
 
-    </div>
- </div>
 @endsection

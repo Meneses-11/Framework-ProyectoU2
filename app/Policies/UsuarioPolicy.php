@@ -13,7 +13,8 @@ class UsuarioPolicy
     public function viewAny(Usuario $usuario): bool
     {
         //
-        return true;
+        if($usuario->rol == "Gerente") return true;
+        else return false;
     }
 
     /**
