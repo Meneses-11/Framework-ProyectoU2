@@ -15,8 +15,6 @@ return new class extends Migration
             $table->increments('id_pago');
             $table->unsignedInteger('id_evento');
             $table->double('cantidad');
-            $table->date('fecha_pago');
-            $table->time('hora_pago');
             $table->timestamps();
             $table->foreign('id_evento')->references('id_evento')->on('eventos');
         });

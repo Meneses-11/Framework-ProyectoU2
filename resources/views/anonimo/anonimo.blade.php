@@ -26,7 +26,10 @@ Salón de Eventos
         <a href="{{ route('login') }}" style="text-decoration: none; color:black;">
             <div class="item">
                 <figure>
-                    <img src={{$paquete->nombre_foto }} alt="bodas">
+                    @foreach ($paquete->imagenes as $item)
+                    <img src={{$item->ruta }} alt="bodas">
+
+                    @endforeach
                     <div class="capa" style="margin-top: -12.5rem;">
                         <p class="Descripcion">{{ $paquete->descripcion }} </p>
                     </div>

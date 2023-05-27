@@ -15,23 +15,20 @@ Route::get('/login',function(){
     return view('plantillas.login');
 })->name('login');
 
-Route::get('/d',function(){
-    return view('gerente.test2');
+Route::get('/error',function(){
+    return view('plantillas.errorVista');
 })->name('d');
 
 Route::post('/validar',[entradaController::class,'validar'])->name('validar');
 Route::get('cerrar_sesion', [entradaController::class, 'cerrar_sesion'])->name(("cerrar_sesion"));
 
-Route::get('/error',[entradaController::class,'error'])->name('error');
 
 Route::get('/inicio',[entradaController::class,'inicio'])->name('inicio');
-
 
 Route::get('paquetes', [clienteController::class, 'verPaquetes'])->name('paquetes')->middleware('auth');
 Route::post('/img', [clienteController::class, 'store'])->name('imgStore');
 
 Route::get('misEventos', [clienteController::class, 'verEventos'])->name('eventos')->middleware('auth');
-Route::get('aboutWe', [clienteController::class, 'verInformacion'])->name('informacion');
 
 Route::get('empleado',[empleadoController::class, 'principal'])->name('empleadoPrin')->middleware('auth');
 
@@ -75,6 +72,7 @@ Route::resource('servicio', ServicioController::class, [
 Route::resource('evento', EventoController::class)->middleware('auth');
 
 Route::put('evento/confirmar/{id}', [EventoController::class, 'confirmar'])->name('evento.confirmar')->middleware('auth');;
+Route::get('/eventos',[EventoController::class, 'mostrar'])->name('evento.mostrar')->middleware('auth');
 
 //Route::get('descripccion-paquetes', [PaqueteController::class, 'verMas'])->name('verMas');
 Route::post('/upload', [clienteController::class, 'upload'])->name('upload');
@@ -88,5 +86,5 @@ Route::get('/registrarse',function(){
 Route::post('/registrar_usuario', [UsuariosController::class, 'registrarse'])->name('registrar_usuario');
 
 Route::post('paquete/evento', [EventoController::class, 'crearP'])->name('crearP')->middleware('auth');
-Route::get('/check-email-availability', [UsuariosController::class, 'checkEmailAvailability'])->name('correo');
+Route::get('/check-email-availability', [UsuariosController::class, 'checkEmailAvailability'])->name('check-email-availability');
 

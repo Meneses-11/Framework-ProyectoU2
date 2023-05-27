@@ -136,4 +136,11 @@ class EventoController extends Controller
         $servicios = Servicio::all();
         return view('cliente.agregar', compact('paquetes','servicios','paquete'));
     }
+
+    public function mostrar()
+    {
+        $eventos = Evento::all();
+
+        return view('gerente.eventos.index',compact('eventos'));
+    }
 }

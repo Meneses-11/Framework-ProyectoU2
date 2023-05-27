@@ -12,7 +12,7 @@ class Paquete extends Model
     protected $primaryKey = 'id_paquete';
 
     public function eventos() {
-        return $this->belongsToMany(Evento::class);
+        return $this->hasMany(Evento::class, 'id_paquete');
     }
     public function imagenes()
     {
