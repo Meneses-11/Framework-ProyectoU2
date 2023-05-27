@@ -42,7 +42,7 @@ Cliente
                 @foreach ($eventos as $event)
                         <div class="evento">
                             <div class="imgEvento">
-                                <img src="{{ $event->paquete->nombre_foto }}"g alt="boda">
+                                <img src="{{ $event->paquete->imagenes->first()->ruta; }}"g alt="boda">
                             </div>
                             <div class="datosEvento">
                                 <div class="infEvntTit">

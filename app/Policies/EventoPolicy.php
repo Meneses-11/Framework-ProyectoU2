@@ -43,8 +43,9 @@ class EventoPolicy
     public function update(Usuario $usuario, Evento $evento): bool
     {
         if($usuario->rol == "Cliente") {
-            if($evento->confirmacion == 0) return true;
-            else return false;
+            if($evento->confirmacion == 0 && ($evento->id_usuario == $usuario->id_usuario)) {
+                return true;
+            }else return false;
         }else return false;
     }
 

@@ -31,4 +31,10 @@ class Evento extends Model
         return $this->hasMany(Pago::class);  //relacion 1 a muchos
     }
 
+    public function imagenes()
+    {
+        return $this->morphMany(Imagen::class, 'imageable');
+    }
+
+
 }
