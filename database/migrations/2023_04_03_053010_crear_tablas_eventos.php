@@ -23,6 +23,7 @@ return new class extends Migration
             $table->string('descripcion');
             $table->integer('num_personas');
             $table->boolean('confirmacion')->default(false);
+            $table->boolean('realizado')->default(false);
             $table->timestamps();
             $table->foreign('id_usuario')->references('id_usuario')->on('usuarios');
             $table->foreign('id_paquete')->references('id_paquete')->on('paquetes');

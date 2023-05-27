@@ -8,7 +8,33 @@ Admin Gerente Servicios
 @endsection
 @section('estilos')
     @can('viewAny', App\Models\Servicio::class)
-        <link rel="stylesheet" href="/css/styleTabla.css">    
+        <link rel="stylesheet" href="/css/styleTabla.css">
+    @else
+        <link rel="stylesheet" href="/css/styleMenuClnt.css">
+    @endcan
+<style>
+    .slider-container {
+      display: flex; /* Establece un contenedor flexible para los elementos hijos */
+      width: 100%;
+      height:auto;
+      overflow-x: scroll;
+    }
+    .slider-container img {
+      flex: 0 0 50px;
+      width: 50px;
+      height: 50px;
+    }
+    </style>
+@endsection
+@section('opcionesIzquierda')
+@can('viewAny', App\Models\Servicio::class)
+<li class="nav-item"><a class="nav-link active" aria-current="page" href="{{ route('usuario.inicio') }}">Administrar Usuarios</a></li>
+<li class="nav-item"><a class="nav-link active" aria-current="page" href="{{ route('paquete.index') }}">Administrar Paquetes</a></li>
+<li class="nav-item"><a class="nav-link active" aria-current="page" href="{{ route('servicio.inicio') }}">Administrar Servicios</a></li>
+<li class="nav-item"><a class="nav-link active" aria-current="page" href="{{ route('evento.mostrar') }}">Administrar Eventos</a></li>
+@endcan
+    @can('viewAny', App\Models\Servicio::class)
+        <link rel="stylesheet" href="/css/styleTabla.css">
     @else
         <link rel="stylesheet" href="/css/styleMenuClnt.css">
     @endcan
@@ -41,6 +67,7 @@ Admin Gerente Servicios
                 <th>Nombre</th>
                 <th>Descripción</th>
                 <th>Precio</th>
+                <th>Imagenes</th>
                 <th>Opciones</th>
         @endsection
         @section('tablaContenido')
@@ -53,6 +80,18 @@ Admin Gerente Servicios
             <td>{{ $servi->nombre }}</td>
             <td>{{ $servi->descripcion }}</td>
             <td>$ {{ $servi->precio }}</td>
+            <td>
+                @if ($servi->imagenes->count() !=0)
+                <div class="slider-container">
+                    @foreach ($servi->imagenes as $img)
+                    <img
+                        class="slider-item"
+                        src="{{ $img->ruta }}"
+                    />
+                    @endforeach
+                </div>
+                @endif
+            </td>
             <td>
                 <div class="d-inline-flex p-n2 align-items-center">
                     <a href="{{ route('servicio.editar',$servi->id_servicio) }}" class="edit" ><i class="fas fa-pen" data-toggle="tooltip" title="Editar"></i></a>
@@ -87,7 +126,7 @@ Admin Gerente Servicios
         </div>
         @endforeach
         @endsection
-    @endsection    
+    @endsection
 @else
     @include('plantillas.error401')
 @endcan

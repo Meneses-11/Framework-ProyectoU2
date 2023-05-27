@@ -15,4 +15,8 @@ class Servicio extends Model
     {
         return $this->belongsToMany(Evento::class, 'evento_servicio', 'id_servicio', 'id_evento');
     }
+    public function imagenes()
+    {
+        return $this->morphMany(Imagen::class, 'imageable');
+    }
 }

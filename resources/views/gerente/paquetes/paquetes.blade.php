@@ -21,7 +21,7 @@ Admin Gerente Paquetes
         width: 50px;
         height: 50px;
         }
-        </style>    
+        </style>
     @else
         <link rel="stylesheet" href="/css/styleMenuClnt.css">
     @endcan
@@ -73,10 +73,10 @@ Admin Gerente Paquetes
                     <td>
                         <div class="d-inline-flex p-n2 align-items-center">
                             @can('update', $paquete)
-                                <a href="{{ route('paquete.editar',$paquete->id_paquete) }}" class="edit" ><i class="fas fa-pen" data-toggle="tooltip" title="Editar"></i></a>                            
+                                <a href="{{ route('paquete.editar',$paquete->id_paquete) }}" class="edit" ><i class="fas fa-pen" data-toggle="tooltip" title="Editar"></i></a>
                             @endcan
                             @can('delete', $paquete)
-                                <a href="#" class="delete" data-toggle="modal" data-target="#deleteModal{{ $paquete->id_paquete }}"><i class="fas fa-trash" data-toggle="tooltip" title="Eliminar"></i></a>                                
+                                <a href="#" class="delete" data-toggle="modal" data-target="#deleteModal{{ $paquete->id_paquete }}"><i class="fas fa-trash" data-toggle="tooltip" title="Eliminar"></i></a>
                             @endcan
                             {{-- <a href="{{ route('paquete.detalle',$paquete->id_paquete) }}"  ><i class="fas fa-info-circle" data-toggle="tooltip" title="Información"></i></a> --}}
                             <form id="form-activo-{{ $paquete->id_paquete }}" action="{{ route('paquete.activo', $paquete->id_paquete) }}" method="post">
