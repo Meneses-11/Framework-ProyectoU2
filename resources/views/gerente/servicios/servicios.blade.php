@@ -12,38 +12,26 @@ Admin Gerente Servicios
     @else
         <link rel="stylesheet" href="/css/styleMenuClnt.css">
     @endcan
-<style>
-    .slider-container {
-      display: flex; /* Establece un contenedor flexible para los elementos hijos */
-      width: 100%;
-      height:auto;
-      overflow-x: scroll;
-    }
-    .slider-container img {
-      flex: 0 0 50px;
-      width: 50px;
-      height: 50px;
-    }
+    <style>
+        .slider-container {
+        display: flex; /* Establece un contenedor flexible para los elementos hijos */
+        width: 100%;
+        height:auto;
+        overflow-x: scroll;
+        }
+        .slider-container img {
+        flex: 0 0 50px;
+        width: 50px;
+        height: 50px;
+        }
     </style>
-@endsection
-@section('opcionesIzquierda')
-@can('viewAny', App\Models\Servicio::class)
-<li class="nav-item"><a class="nav-link active" aria-current="page" href="{{ route('usuario.inicio') }}">Administrar Usuarios</a></li>
-<li class="nav-item"><a class="nav-link active" aria-current="page" href="{{ route('paquete.index') }}">Administrar Paquetes</a></li>
-<li class="nav-item"><a class="nav-link active" aria-current="page" href="{{ route('servicio.inicio') }}">Administrar Servicios</a></li>
-<li class="nav-item"><a class="nav-link active" aria-current="page" href="{{ route('evento.mostrar') }}">Administrar Eventos</a></li>
-@endcan
-    @can('viewAny', App\Models\Servicio::class)
-        <link rel="stylesheet" href="/css/styleTabla.css">
-    @else
-        <link rel="stylesheet" href="/css/styleMenuClnt.css">
-    @endcan
 @endsection
 @section('opcionesIzquierda')
     @can('viewAny', App\Models\Servicio::class)
         <li class="nav-item"><a class="nav-link active" aria-current="page" href="{{ route('usuario.inicio') }}">Administrar Usuarios</a></li>
         <li class="nav-item"><a class="nav-link active" aria-current="page" href="{{ route('paquete.index') }}">Administrar Paquetes</a></li>
         <li class="nav-item"><a class="nav-link active" aria-current="page" href="{{ route('servicio.inicio') }}">Administrar Servicios</a></li>
+        <li class="nav-item"><a class="nav-link active" aria-current="page" href="{{ route('evento.mostrar') }}">Administrar Eventos</a></li>
     @endcan
 @endsection
 @section('opcionesDerecha')

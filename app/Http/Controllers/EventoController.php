@@ -141,6 +141,6 @@ class EventoController extends Controller
     {
         $eventos = Evento::all();
 
-        return view('gerente.eventos.eventos',compact('eventos'));
+        return view('gerente.eventos.index',compact('eventos'));
     }
 }
