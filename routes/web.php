@@ -3,6 +3,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\clienteController;
 use App\Http\Controllers\entradaController;
 use App\Http\Controllers\empleadoController;
+use App\Http\Controllers\EmpleadoController as ControllersEmpleadoController;
 use App\Http\Controllers\PaqueteController;
 use App\Http\Controllers\ServicioController;
 use App\Http\Controllers\UsuariosController;
@@ -30,7 +31,7 @@ Route::post('/img', [clienteController::class, 'store'])->name('imgStore');
 
 Route::get('misEventos', [clienteController::class, 'verEventos'])->name('eventos')->middleware('auth');
 
-Route::get('empleado',[empleadoController::class, 'principal'])->name('empleadoPrin')->middleware('auth');
+Route::resource('empleado', EmpleadoController::class)->middleware('auth');
 
 Route::resource('usuario', UsuariosController::class, [
     'names' => [

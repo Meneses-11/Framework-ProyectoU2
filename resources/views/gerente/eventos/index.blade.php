@@ -4,7 +4,7 @@
 Eventos
 @endsection
 @section('titulobar')
-Admin Gerente Paquetes
+Empleado {{ Auth::user()->nombre }}
 @endsection
 @section('estilos')
     @can('viewAny', App\Models\Usuario::class)
@@ -39,7 +39,7 @@ Admin Gerente Paquetes
 @endsection
 
 @can('viewAny', App\Models\Usuario::class)
-    
+
     @section('contenido')
 
     @extends('plantillas.tabla')

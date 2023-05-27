@@ -27,7 +27,7 @@ Cliente
 @endsection
 
 @section('contenido')
-    
+
     @can('viewAny', App\Models\Evento::class)
         <div class="contPrinc">
 
@@ -42,7 +42,7 @@ Cliente
                 @foreach ($eventos as $event)
                         <div class="evento">
                             <div class="imgEvento">
-                                <img src="{{ $event->paquete->imagenes->first()->ruta; }}"g alt="boda">
+                                <img src="{{ $event->paquete->imagenes->first()->ruta }}"g alt="boda">
                             </div>
                             <div class="datosEvento">
                                 <div class="infEvntTit">
@@ -59,7 +59,7 @@ Cliente
                                             <button class="btnIcon borr" data-toggle="modal" data-target="#modalDelete{{$event->id_evento}}">
                                                 <img src="img/borrar.png" alt="borrar" class="iconoEvento">
                                             </button>
-                                        </div> 
+                                        </div>
                                         <!-- Modal -->
                                         <div class="modal fade" id="modalDelete{{$event->id_evento}}" tabindex="-1" role="dialog" aria-labelledby="modalDeleteLabel{{$event->id_evento}}" aria-hidden="true">
                                             <div class="modal-dialog" role="document">
@@ -91,7 +91,7 @@ Cliente
                                             <h4>Confirmado</h4>
                                         </div>
                                     @endcan
-                                    
+
                                 </div>
                                 <div class="infEvnt">
                                     @can('confirm', $event)
@@ -99,9 +99,9 @@ Cliente
                                             <form action="{{ route('evento.show',$event->id_evento) }}" method="GET">
                                                 <button type="submit" class="custom-btn btn-14">Ver Contrato</button>
                                             </form>
-                                        </div>    
+                                        </div>
                                     @endcan
-                                    
+
                                     <div class="texto">
                                         <p>Paquete: </p>
                                         @foreach ($paquetes as $nombre => $id)
@@ -175,7 +175,7 @@ Cliente
 
                                     @endcan
 
-                                        
+
                                 </div>
                             </div>
 
@@ -190,7 +190,7 @@ Cliente
         @include('plantillas.error401')
     @endcan
 
-    
-    
-    
+
+
+
 @endsection
