@@ -22,7 +22,7 @@ Cliente
 
 @section('contenido')
     
-    @can('viewAny', App\Models\Evento::class)
+    @can('update', $evento)
     
         <div class="contPrinc">
             <form action="{{ route('evento.update',$evento->id_evento) }}" method="POST">
