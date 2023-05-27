@@ -28,7 +28,6 @@ Salón de Eventos
                 <figure>
                     @foreach ($paquete->imagenes as $item)
                     <img src={{$item->ruta }} alt="bodas">
-
                     @endforeach
                     <div class="capa" style="margin-top: -12.5rem;">
                         <p class="Descripcion">{{ $paquete->descripcion }} </p>
@@ -45,6 +44,7 @@ Salón de Eventos
         @endforeach
 
     </div>
- </div>
+
+
 @endsection
 

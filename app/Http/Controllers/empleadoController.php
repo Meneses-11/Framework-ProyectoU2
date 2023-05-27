@@ -2,7 +2,8 @@
 
 namespace App\Http\Controllers;
 
-
+use App\Models\Evento;
+use App\Models\Pago;
 use App\Models\Usuario;
 
 use Illuminate\Http\Request;
@@ -15,6 +16,8 @@ class EmpleadoController extends Controller
     public function index()
     {
         //
+        $eventos = Evento::all();
+        return view('empleado.inicio', compact('eventos'));
     }
 
     /**
@@ -31,6 +34,12 @@ class EmpleadoController extends Controller
     public function store(Request $request)
     {
         //
+        $pago = new Pago();
+        $pago->evento_id = $request->id_evento;
+        $pago->cantidad = $request->cantidad;
+        $pago->save();
+        return redirect()->route('empleado.index');
+
     }
 
     /**

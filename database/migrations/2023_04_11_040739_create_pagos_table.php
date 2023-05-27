@@ -13,12 +13,10 @@ return new class extends Migration
     {
         Schema::create('pagos', function (Blueprint $table) {
             $table->increments('id_pago');
-            $table->unsignedInteger('id_evento');
+            $table->unsignedInteger('evento_id');
             $table->double('cantidad');
-            $table->date('fecha_pago');
-            $table->time('hora_pago');
             $table->timestamps();
-            $table->foreign('id_evento')->references('id_evento')->on('eventos');
+            $table->foreign('evento_id')->references('id_evento')->on('eventos');
         });
     }
 
