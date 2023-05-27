@@ -143,7 +143,34 @@ Cliente
                                 <div class="infEvntTit">
                                     <h2> Total: {{$event->precio}} </h2>
                                     @can('confirm', $event)
-                                        <button type="button" class="custom-btn btn-14" data-toggle="modal" data-target="#modalImg" style="margin: 10px;"> Añadir Imagen </button>
+                                        
+                                    <!--<button type="button" class="custom-btn btn-14" data-toggle="modal" data-target="#modalImg" style="margin: 10px;"> Añadir Imagen </button>-->
+
+                                        <!-- Button trigger modal -->
+                                        <button type="button" class="custom-btn btn-14" data-bs-toggle="modal" data-bs-target="#staticBackdrop" style="margin: 10px;">
+                                            Añadir Imagen
+                                        </button>
+                                        
+                                        <!-- Modal -->
+                                        <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                                            <div class="modal-dialog modal-dialog-scrollable">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h1 class="modal-title fs-5" id="staticBackdropLabel">Modal title</h1>
+                                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        ... <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br> 
+                                                        <br><br><br><br><br><br><br><br><br><br><br><br><br><br>...
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                                        <button type="button" class="btn btn-primary">Understood</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
                                     @else
                                         <button class="custom-btn btn-14" data-toggle="modal" data-target="#modalConfirm{{$event->id_evento}}" style="margin: 10px">Confirmar</button>
 
