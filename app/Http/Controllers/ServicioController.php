@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Imagen;
 use App\Models\Servicio;
 use Illuminate\Http\Request;
 
@@ -39,6 +40,23 @@ class ServicioController extends Controller
         $servicio->precio = $request->precio;
         $servicio->descripcion = $request->descripcion;
         $servicio->save();
+        if ($request->hasFile('images')) {
+            $images = $request->file('images');
+
+            // Realiza las operaciones necesarias con las imágenes aquí
+            foreach ($images as $image) {
+                $archivo = $image;
+                $img = $image;
+                $imgName = time().rand(1,100).'.'.$img->extension();
+                $img -> move(public_path('/img/Servicios/'),$imgName);
+                $ruta_nombre = '/img/Paquetes/'.$imgName;
+                $imagen = new Imagen();
+                $imagen->ruta = $ruta_nombre;
+                $imagen->nombre = $archivo->getClientOriginalName();
+                $servicio->imagenes()->save($imagen);
+            }
+
+        }else{dd('no entre');}
         return redirect(route('servicio.inicio'))->with('dat','todo fue bien');
 
     }

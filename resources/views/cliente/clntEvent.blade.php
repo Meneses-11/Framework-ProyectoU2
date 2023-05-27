@@ -28,14 +28,14 @@ Cliente
 
 @section('contenido')
     @guest
-      <h1>No eres Cliente</h1>  
+      <h1>No eres Cliente</h1>
     @endguest
-    
-   
-    
-    
+
+
+
+
     @auth
-    
+
     <div class="contPrinc">
 
         <div class="contTitEvent">
@@ -46,7 +46,7 @@ Cliente
             @else
                 <button class="custom-btn btn-14" ><a href="{{route('usuario.inicio')}}" style="color: white !important; text-decoration: none;">Regresar</a></button>
             @endcan
-            
+
         </div>
 
 
@@ -71,7 +71,7 @@ Cliente
                                         <button class="btnIcon borr" data-toggle="modal" data-target="#modalDelete{{$event->id_evento}}">
                                             <img src="img/borrar.png" alt="borrar" class="iconoEvento">
                                         </button>
-                                    </div> 
+                                    </div>
                                     <!-- Modal -->
                                     <div class="modal fade" id="modalDelete{{$event->id_evento}}" tabindex="-1" role="dialog" aria-labelledby="modalDeleteLabel{{$event->id_evento}}" aria-hidden="true">
                                         <div class="modal-dialog" role="document">
@@ -102,8 +102,9 @@ Cliente
                                         <img src="img/cheque.png" alt="confirmado" class="iconoEvento">
                                         <h4>Confirmado</h4>
                                     </div>
+                                    
                                 @endcan
-                                
+
                             </div>
                             <div class="infEvnt">
                                 @can('confirm', $event)
@@ -111,9 +112,9 @@ Cliente
                                         <form action="{{ route('evento.show',$event->id_evento) }}" method="GET">
                                             <button type="submit" class="custom-btn btn-14">Ver Contrato</button>
                                         </form>
-                                    </div>    
+                                    </div>
                                 @endcan
-                                
+
                                 <div class="texto">
                                     <p>Paquete: </p>
                                     @foreach ($paquetes as $nombre => $id)
@@ -187,7 +188,7 @@ Cliente
 
                                 @endcan
 
-                                    
+
                             </div>
                         </div>
 
@@ -196,7 +197,7 @@ Cliente
             @endforeach
         </div>
     </div>
-    
+
     @endauth
-    
+
 @endsection

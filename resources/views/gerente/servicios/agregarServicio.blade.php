@@ -46,14 +46,10 @@ Admin Gerente Servicios
                     <label for="email" class="form-label">Descripción:</label>
                     <input type="text" id="descripcion" name="descripcion" class="form-control" placeholder="Escribe una descripción del servicio" required>
                   </div>
-                  <!--
                   <div class="mb-3">
                     <label for="imgs" class="form-label">Imagenes:</label>
-                    <form method="POST" action="/upload" enctype="multipart/form-data">
-
-                      <div id="my-dropzone" class="dropzone"></div>
-                      </form>
-                 </div> -->
+                    <input class="form-control" type="file" name="images[]" id="archivoPaquete" multiple>
+                  </div>
                   <div class="d-grid gap-2">
                     <button type="submit" class="btn btn-dark btn-block">Registrar servicio</button>
                     <button type="button" class="btn btn-secondary btn-block mt-2" onclick="window.location.href='{{ route('servicio.inicio') }}'">Cancelar</button>
