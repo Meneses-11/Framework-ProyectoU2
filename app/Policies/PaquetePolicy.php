@@ -13,14 +13,8 @@ class PaquetePolicy
      */
     public function viewAny(Usuario $usuario): bool
     {
-        //
-        //$paquete = Paquete::all();
-        //if($paquete->activo == 1) return true;
-
-        return false;
-
-
-
+        if($usuario->rol == "Gerente") return true;
+        else return false;
     }
 
     /**
@@ -29,6 +23,12 @@ class PaquetePolicy
     public function view(Usuario $usuario, Paquete $paquete): bool
     {
         //
+    }
+
+    public function activo(Usuario $usuario, Paquete $paquete): bool
+    {
+        if($paquete->activo == 1) return true;
+        else return false;
     }
 
     /**
@@ -44,7 +44,9 @@ class PaquetePolicy
      */
     public function update(Usuario $usuario, Paquete $paquete): bool
     {
-        //
+        //Existe en un evento no confirmado?????
+        if($paquete->eventos()->where('confirmacion',0)->exists()) return false;
+        else return true;
     }
 
     /**
@@ -52,7 +54,9 @@ class PaquetePolicy
      */
     public function delete(Usuario $usuario, Paquete $paquete): bool
     {
-        //
+        //Existe en un evento no confirmado?????
+        if($paquete->eventos()->where('confirmacion',0)->exists()) return false;
+        else return true;
     }
 
     /**

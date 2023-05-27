@@ -12,9 +12,11 @@ Admin Gerente Servicios
 <link href="https://unpkg.com/dropzone@6.0.0-beta.1/dist/dropzone.css" rel="stylesheet" type="text/css" />t>
 @endsection
 @section('opcionesIzquierda')
-<li class="nav-item"><a class="nav-link active" aria-current="page" href="{{ route('usuario.inicio') }}">Administrar Usuarios</a></li>
-<li class="nav-item"><a class="nav-link active" aria-current="page" href="{{ route('paquete.index') }}">Administrar Paquetes</a></li>
-<li class="nav-item"><a class="nav-link active" aria-current="page" href="{{ route('servicio.inicio') }}">Administrar Servicios</a></li>
+  @can('viewAny', App\Models\Servicio::class)
+    <li class="nav-item"><a class="nav-link active" aria-current="page" href="{{ route('usuario.inicio') }}">Administrar Usuarios</a></li>
+    <li class="nav-item"><a class="nav-link active" aria-current="page" href="{{ route('paquete.index') }}">Administrar Paquetes</a></li>
+    <li class="nav-item"><a class="nav-link active" aria-current="page" href="{{ route('servicio.inicio') }}">Administrar Servicios</a></li>
+  @endcan
 @endsection
 @section('opcionesDerecha')
 <li><a class="dropdown-item" href="{{ route('cerrar_sesion') }}">Cerrar Sesión</a></li>
@@ -37,10 +39,10 @@ Admin Gerente Servicios
                     <input type="text" id="nombre" name="nombre" class="form-control" placeholder="Ingresa el nombre del servicio" required>
                   </div>
 
-                  <div class="mb-3">
-                    <label for="price">Precio:</label>
-                    <input type="number" class="form-control" id="precio" placeholder="Ingresa el precio del servicio" name="precio" step="0.01" min="0.00">
-                  </div>
+                      <div class="mb-3">
+                        <label for="price">Precio:</label>
+                        <input type="number" class="form-control" id="precio" placeholder="Ingresa el precio del servicio" name="precio" step="0.01" min="0.00">
+                      </div>
 
                   <div class="mb-3">
                     <label for="email" class="form-label">Descripción:</label>
@@ -64,3 +66,6 @@ Admin Gerente Servicios
 
   @endsection
 
+@else
+    @include('plantillas.error401')
+@endcan

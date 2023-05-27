@@ -25,7 +25,6 @@ Route::get('cerrar_sesion', [entradaController::class, 'cerrar_sesion'])->name((
 
 Route::get('/inicio',[entradaController::class,'inicio'])->name('inicio');
 
-
 Route::get('paquetes', [clienteController::class, 'verPaquetes'])->name('paquetes')->middleware('auth');
 Route::post('/img', [clienteController::class, 'store'])->name('imgStore');
 
