@@ -15,6 +15,12 @@ Route::get('/login',function(){
     return view('plantillas.login');
 })->name('login');
 
+Route::get('/test1',function(){
+    return view('gerente.test1');
+})->name('test1');
+
+
+
 Route::get('/error',function(){
     return view('plantillas.errorVista');
 })->name('d');
@@ -74,7 +80,8 @@ Route::resource('servicio', ServicioController::class, [
 
 Route::resource('evento', EventoController::class)->middleware('auth');
 
-Route::put('evento/confirmar/{id}', [EventoController::class, 'confirmar'])->name('evento.confirmar')->middleware('auth');;
+Route::put('evento/confirmar/{id}', [EventoController::class, 'confirmar'])->name('evento.confirmar')->middleware('auth');
+Route::put('evento/denegar/{id}', [EventoController::class, 'denegar'])->name('evento.denegar')->middleware('auth');;
 Route::get('/eventos',[EventoController::class, 'mostrar'])->name('evento.mostrar')->middleware('auth');
 
 //Route::get('descripccion-paquetes', [PaqueteController::class, 'verMas'])->name('verMas');
