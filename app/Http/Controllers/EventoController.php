@@ -198,7 +198,9 @@ class EventoController extends Controller
 
 
 
-        }else{dd('no entre');}
+        }else{
+            return redirect()->back()->with('errors','Algo ha salido mal verifica tu entrada de datos');
+        }
 
         return redirect()->route('evento.index');
     }

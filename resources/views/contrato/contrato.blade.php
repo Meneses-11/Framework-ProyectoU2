@@ -57,14 +57,17 @@ Contrato de Servicios
 											</div>
 
 											<div class="input-group mb-3">
-												<input type="text" class="form-control" disabled style="background-color: white">
+                                                @php
+                                                    $fecha = new DateTime($abono->created_at);
+                                                @endphp
+												<input type="text" class="form-control" disabled style="background-color: white" value="{{ $fecha->format('Y-m-d') }}">
 												<span class="input-group-text">@</span>
-												<input type="text" class="form-control" disabled style="background-color: white">
+												<input type="text" class="form-control" disabled style="background-color: white" value="{{ $fecha->format('H:m:s') }}">
 											</div>
 
 											<div class="col-md-12"><h4 style="color: black !important">Cliente</h4></div>
 											<div class="input-group col-md-12 mb-4">
-												<span class="input-group-text">First & Last name</span>
+												<span class="input-group-text">Nombre y Apellido</span>
 												<input type="text" aria-label="First name" class="form-control" value="{{ $evento->usuario->nombre }}" disabled style="background-color: white">
 												<input type="text" aria-label="Last name" class="form-control" value="{{ $evento->usuario->apellido }}" disabled style="background-color: white">
 											</div>
@@ -72,7 +75,7 @@ Contrato de Servicios
 											<div class="input-group col-md-6" style="padding: 0% 20%">
 												<span class="input-group-text"><h4 style="color: black !important">$</h4></span>
 												<label class="form-control" aria-label="Amount (to the nearest dollar)"><h4 style="color: black !important">{{ $abono->cantidad }}</h4></label>
-												<span class="input-group-text"><h4 style="color: black !important">.00</h4></span>	
+												<span class="input-group-text"><h4 style="color: black !important">.00</h4></span>
 											</div>
 
 										</div>
@@ -81,7 +84,7 @@ Contrato de Servicios
 							</div>
 						@endforeach
 					</div>
-					
+
 					<div class="col-md-5 border-start border-1 text-center">
 						<div class="col-md-12  mb-5">
 							<h2>Costo del Evento</h2>
@@ -89,17 +92,17 @@ Contrato de Servicios
 						<div class="input-group col-md-6" style="padding: 0% 5%">
 							<span class="input-group-text"><h3 style="color: black !important">$</h3></span>
 							<label class="form-control" aria-label="Amount (to the nearest dollar)"><h3 style="color: black !important">{{ $evento->precio }}</h3></label>
-							<span class="input-group-text"><h3 style="color: black !important">.00</h3></span>	
+							<span class="input-group-text"><h3 style="color: black !important">.00</h3></span>
 						</div>
 					</div>
 				</div>
 			</div>
-				
+
 			<div class="card-footer text-body-secondary">
 				<h2>${{ $evento->precio - $totAbono}}</h2>
 			</div>
 		</div>
-		
+
 
 		<div class="sombra">
 			<div class="container">
@@ -202,11 +205,11 @@ Contrato de Servicios
 			</div>
 		</div>
 
-		
+
 	@else
 		@include('plantillas.error401')
 	@endcan
-	
+
 
 @endsection
 
