@@ -83,54 +83,41 @@ Empleado {{ Auth::user()->nombre }}
                 <li >{{ $servicio->nombre }}</li>
                 @endforeach
             </ul>
-
-        {{--  <div class="d-inline-flex p-n2 align-items-center">
-                <a href="{{ route('paquete.editar',$paquete->id_paquete) }}" class="edit" ><i class="fas fa-pen" data-toggle="tooltip" title="Editar"></i></a>
-                <a href="#" class="delete" data-toggle="modal" data-target="#deleteModal{{ $paquete->id_paquete }}"><i class="fas fa-trash" data-toggle="tooltip" title="Eliminar"></i></a>
-                {{-- <a href="{{ route('paquete.detalle',$paquete->id_paquete) }}"  ><i class="fas fa-info-circle" data-toggle="tooltip" title="Información"></i></a> --}
-                <form id="form-activo-{{ $paquete->id_paquete }}" action="{{ route('paquete.activo', $paquete->id_paquete) }}" method="post">
-                    @csrf
-                    @method('PUT')
-                    <input type="hidden" name="activo" value="{{ $paquete->activo }}">
-                </form>
-                <a href="#" onclick="event.preventDefault(); document.getElementById('form-activo-{{ $paquete->id_paquete }}').submit();"
-                    @if($paquete->activo)
-                        <i class="fas fa-eye text-success" title="Desactivar Paquete"></i>
-                    @else>
-                        <i class="fas fa-eye-slash text-muted" title="Activar Paquete"></i>
-                    @endif
-                </a>
-
-            </div>
-            --}}
         </td>
         <td>
-            @if ($e->confirmacion == 1)
+            @if ($e->confirmacion == 2)
             <span class="text-success">Confirmado</span>
-            @else
+            @elseif($e->confirmacion == 0)
             <span class="text-danger">Sin confirmar</span>
+            @else
+            <span class="text-warning">Pendiente</span>
             @endif
         </td>
         <td>
-            <form action="{{ route('evento.confirmar', $e->id_evento) }}" method="POST">
-                @csrf
-                @method('PUT')
-                <input type="hidden" name="confirmacion" value="1">
-            </form>
-            <a href="#" onclick="event.preventDefault(); document.getElementById('form-activo-{{ $e->id_evento }}').submit();"
-                @if($e->confirmacion)
-                    <i class="fas fa-eye text-success" title="Desactivar Paquete"></i>
-                @else>
-                    <i class="fas fa-eye-slash text-muted" title="Activar Paquete"></i>
-                @endif
-            </a>
+            @if ($e->confirmacion == 0){{-- El evento no esta confirmado --}}
+
+
+            @elseif($e->confirmacion == 1) {{-- El evento esta pendiente --}}
+                <form action="{{ route('evento.confirmar', $e->id_evento) }}" method="POST">
+                    @csrf
+                    @method('PUT')
+                    <input type="hidden" name="confirmacion" value="1">
+                </form>
+                <a href="#" onclick="event.preventDefault(); document.getElementById('form-activo-{{ $e->id_evento }}').submit();">
+                    <i class="fas fa-thumbs-up text-success" title="Confirmar Evento"></i>
+                </a>
+                <a href="#" data-toggle="modal" data-target="#deleteModal{{ $e->id_evento }}">
+                    <i class="fas fa-times-circle text-danger" title="Denegar Evento"></i>
+                </a>
+
+                @endif {{-- el evento esta confirmado --}}
 
         </td>
 
 
     </tr>
-    <!-- Modal de confirmación para eliminar usuario -->
-    <div class="modal fade" id="deleteModal{{ $e->id_evento}}" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel{{ $e->id_evento }}" aria-hidden="true">
+    {{-- Modal para obtener xq no se puede confirmar el evento --}}
+    <div class="modal fade" id="deleteModal{{ $e->id_evento }}" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel{{ $e->id_evento }}" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -140,19 +127,28 @@ Empleado {{ Auth::user()->nombre }}
                     </button>
                 </div>
                 <div class="modal-body">
-                    ¿Está seguro que desea eliminar este paquete {{ $e->nombre }}?
+                    @if($e->confirmacion)
+                        ¿Está seguro de que desea eliminar este paquete {{ $e->nombre }}?
+                    @else
+                        <p>Este evento no puede ser confirmado. Por favor, ingrese una razón para la denegación:</p>
+                        <form action="{{ route('evento.destroy', $e->id_evento) }}" method="post">
+                            @method('DELETE')
+                            @csrf
+                            <div class="form-group">
+                                <label for="reason">Razón de la denegación:</label>
+                                <textarea class="form-control" id="reason" name="reason" rows="3" required></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-danger">Eliminar</button>
+                        </form>
+                    @endif
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-                    <form action="{{ route('evento.destroy', $e->id_evento) }}" method="post">
-                        @method('DELETE')
-                        @csrf
-                        <button type="submit" class="btn btn-danger">Eliminar</button>
-                    </form>
                 </div>
             </div>
         </div>
     </div>
+
     @endforeach
     @endsection
     @endsection
