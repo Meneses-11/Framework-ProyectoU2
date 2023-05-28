@@ -77,9 +77,7 @@ class EventoPolicy
             // Obtener la fecha y hora actual
             date_default_timezone_set('America/Mexico_City');
             $fechaActual = new DateTime();
-            $fechaActual->modify('-1 hour');
             $horaActual = new DateTime();
-            $horaActual->modify('-1 hour');
 
             // Convertir la fecha y hora del evento en objetos DateTime
             $fechaInicioEvento = new DateTime($evento->fecha);

@@ -20,3 +20,6 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::get('paquete', [ApiController::class, 'paquete']);
+Route::get('evento', [ApiController::class, 'evento']);
+
+

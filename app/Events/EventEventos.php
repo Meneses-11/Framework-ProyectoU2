@@ -22,7 +22,6 @@ class EventEventos
     /**
      * Create a new event instance.
      */
-    public $descripcion;
     public $cliente;
     public $gerente;
     public $evento;

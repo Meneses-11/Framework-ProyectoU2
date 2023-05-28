@@ -127,7 +127,7 @@ class EventoController extends Controller
 
         /*$evento->confirmacion = intval($request->input('confirmacion'));
         $evento->save();*/
-        Event::dispatch(new EventEventos($evento-> usuario, $evento));
+        Event::dispatch(new EventEventos($evento -> usuario, $evento));
 
         return redirect()->route('evento.index');
     }
