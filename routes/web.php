@@ -15,6 +15,12 @@ Route::get('/login',function(){
     return view('plantillas.login');
 })->name('login');
 
+Route::get('/test1',function(){
+    return view('gerente.test1');
+})->name('test1');
+
+
+
 Route::get('/error',function(){
     return view('plantillas.errorVista');
 })->name('d');
