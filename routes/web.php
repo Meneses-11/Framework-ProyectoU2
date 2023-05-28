@@ -31,7 +31,7 @@ Route::post('/img', [clienteController::class, 'store'])->name('imgStore');
 Route::get('misEventos', [clienteController::class, 'verEventos'])->name('eventos')->middleware('auth');
 
 Route::resource('empleado', EmpleadoController::class)->middleware('auth');
-Route::get('/evento/imagenes', [EventoController::class, 'imagenes'])->name('evento.imagenes')->middleware('auth');
+Route::put('/evento/imagenes/{id}', [EventoController::class, 'imagenes'])->name('evento.imagenes')->middleware('auth');
 
 Route::resource('imagen',ImagenController::class)->middleware('auth');
 

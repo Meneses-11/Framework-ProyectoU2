@@ -60,7 +60,7 @@ $(document).ready(function(){
 
     // Eliminar previsualizaciones
     
-    $(document).on("click", "#Images .image-container", function(e){
+    $(document).one("click", "#Images .image-container", function(e){
         $(this).parent().remove();
     });
     
