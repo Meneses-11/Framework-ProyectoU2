@@ -12,6 +12,11 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat&family=Space+Grotesk&display=swap" rel="stylesheet">
+    
+    <script src="https://code.jquery.com/jquery-3.4.0.min.js" integrity="sha256-BJeo0qm959uMBGb65z40ejJYGSgR7REI4+CW1fNKwOg=" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+
 @endsection
 
 @section('titulobar')
@@ -153,13 +158,22 @@ Cliente
                                         
                                         <!-- Modal -->
                                         <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                                            <div class="modal-dialog modal-dialog-scrollable">
+                                            <div class="modal-dialog modal-dialog-scrollable modal-lg">
                                                 <div class="modal-content">
                                                     <div class="modal-header">
                                                         <h1 class="modal-title fs-5" id="staticBackdropLabel">Modal title</h1>
                                                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                     </div>
                                                     <div class="modal-body">
+                                                        <section class="images-cards" id="Images">
+                                                            <div id="add-photo-container">
+                                                                <div class="add-new-photo first" id="add-photo">
+                                                                    <span><i class="icon-camera"></i></span>
+                                                                </div>
+                                                                <input type="file" multiple id="add-new-photo" name="images[]">
+                                                            </div>
+                                                        </section>
+                                                        
                                                         ... <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br> 
                                                         <br><br><br><br><br><br><br><br><br><br><br><br><br><br>...
                                                     </div>
@@ -170,6 +184,11 @@ Cliente
                                                 </div>
                                             </div>
                                         </div>
+
+
+                                        
+
+                                        <script src="js/imgCliente.js"></script>
 
                                     @else
                                         <button class="custom-btn btn-14" data-toggle="modal" data-target="#modalConfirm{{$event->id_evento}}" style="margin: 10px">Confirmar</button>
