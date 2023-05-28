@@ -8,13 +8,13 @@ function createPreview(file) {
 $(document).ready(function(){
 
     // Modal
-
+/*
     $(".modal").on("click", function (e) {
         console.log(e);
         if (($(e.target).hasClass("modal-main") || $(e.target).hasClass("close-modal")) && $("#loading").css("display") == "none") {
             closeModal();
         }
-    });
+    });*/
 
     // -> Modal
 

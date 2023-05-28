@@ -2,6 +2,8 @@
 
 namespace App\Mail;
 
+use App\Models\Evento;
+use App\Models\Usuario;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
@@ -16,9 +18,16 @@ class MailDenegarE extends Mailable
     /**
      * Create a new message instance.
      */
-    public function __construct()
+    public $descripcion;
+    public $gerente;
+    public $evento;
+
+    public function __construct($evento, $gerente, $descripcion)
     {
         //
+        $this->descripcion = $descripcion;
+        $this->gerente = $gerente;
+        $this->evento = $evento;
     }
 
     /**
@@ -27,7 +36,7 @@ class MailDenegarE extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
-            subject: 'Mail Denegar E',
+            subject: 'Se denego el evento',
         );
     }
 
@@ -37,7 +46,7 @@ class MailDenegarE extends Mailable
     public function content(): Content
     {
         return new Content(
-            view: 'view.name',
+            view: 'Correos.denegacion',
         );
     }
 

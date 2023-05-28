@@ -25,7 +25,6 @@ return new class extends Migration
             $table->integer('id_gerente')->nullable();
             $table->integer('num_personas');
             $table->enum('confirmacion',['0','1','2'])->default('0'); // SinConfirmar  || espera || Confirmado
-           
             $table->boolean('realizado')->default(false);
             $table->timestamps();
             $table->foreign('id_usuario')->references('id_usuario')->on('usuarios');
