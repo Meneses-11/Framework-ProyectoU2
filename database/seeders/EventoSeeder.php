@@ -17,6 +17,7 @@ class EventoSeeder extends Seeder
         //uno de los paquetes no se usará en el ejemplo sería el de las bodas, de los eventos algunos se contrataran
         //con algunos servicios, no todos los eventos usan todos los servicios)
         $evento = new Evento;
+        $evento->nombre = "Evento AE1";
         $evento->id_usuario = 1;
         $evento->id_paquete = 3;
         $evento->precio = 10000;
@@ -30,6 +31,7 @@ class EventoSeeder extends Seeder
         $evento->servicios()->attach([2,3]);
 
         $evento = new Evento;
+        $evento->nombre = "Evento AE2";
         $evento->id_usuario = 2;
         $evento->id_paquete = 2;
         $evento->precio = 15000;
@@ -42,6 +44,7 @@ class EventoSeeder extends Seeder
         $evento->servicios()->attach([1,3]);
 
         $evento = new Evento;
+        $evento->nombre = "Evento AE3";
         $evento->id_usuario = 2;
         $evento->id_paquete = 3;
         $evento->precio = 5000;
@@ -54,6 +57,7 @@ class EventoSeeder extends Seeder
         $evento->servicios()->attach([2]);
 
         $evento = new Evento;
+        $evento->nombre = "Evento AE4";
         $evento->id_usuario = 2;
         $evento->id_paquete = 4;
         $evento->precio = 8000;
@@ -67,6 +71,7 @@ class EventoSeeder extends Seeder
         $evento->servicios()->attach([3]);
 
         $evento = new Evento;
+        $evento->nombre = "Evento AE5";
         $evento->id_usuario = 3;
         $evento->id_paquete = 2;
         $evento->precio = 12000;
@@ -80,6 +85,7 @@ class EventoSeeder extends Seeder
         $evento->servicios()->attach([1,2,3]);
 
         $evento = new Evento;
+        $evento->nombre = "Evento AE6";
         $evento->id_usuario = 1;
         $evento->id_paquete = 3;
         $evento->precio = 10000;
@@ -92,6 +98,7 @@ class EventoSeeder extends Seeder
         $evento->servicios()->attach([3]);
 
         $evento = new Evento;
+        $evento->nombre = "Evento AE7";
         $evento->id_usuario = 2;
         $evento->id_paquete = 2;
         $evento->precio = 15000;
@@ -104,6 +111,7 @@ class EventoSeeder extends Seeder
         $evento->servicios()->attach([1,2]);
 
         $evento = new Evento;
+        $evento->nombre = "Evento AE8";
         $evento->id_usuario = 2;
         $evento->id_paquete = 3;
         $evento->precio = 5000;
@@ -117,6 +125,7 @@ class EventoSeeder extends Seeder
         $evento->servicios()->attach([1,2,3]);
 
         $evento = new Evento;
+        $evento->nombre = "Evento AE9";
         $evento->id_usuario = 2;
         $evento->id_paquete = 4;
         $evento->precio = 8000;
@@ -129,6 +138,7 @@ class EventoSeeder extends Seeder
         $evento->servicios()->attach([1,2,3]);
 
         $evento = new Evento;
+        $evento->nombre = "Evento AE10";
         $evento->id_usuario = 3;
         $evento->id_paquete = 2;
         $evento->precio = 12000;
