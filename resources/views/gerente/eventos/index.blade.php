@@ -106,7 +106,7 @@ Empleado {{ Auth::user()->nombre }}
                 <a href="#" onclick="event.preventDefault(); document.getElementById('form-activo-{{ $e->id_evento }}').submit();">
                     <i class="fas fa-thumbs-up text-success" title="Confirmar Evento"></i>
                 </a>
-                <a href="#" data-toggle="modal" data-target="#deleteModal{{ $e->id_evento }}">
+                <a href="#" data-toggle="modal" data-target="#descriptionModal{{ $e->id_evento }}">
                     <i class="fas fa-times-circle text-danger" title="Denegar Evento"></i>
                 </a>
 
@@ -117,40 +117,45 @@ Empleado {{ Auth::user()->nombre }}
 
     </tr>
     {{-- Modal para obtener xq no se puede confirmar el evento --}}
-    <div class="modal fade" id="deleteModal{{ $e->id_evento }}" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel{{ $e->id_evento }}" aria-hidden="true">
+    <div class="modal fade" id="descriptionModal{{ $e->id_evento }}" tabindex="-1" role="dialog" aria-labelledby="descriptionModalLabel{{ $e->id_evento }}" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="deleteModalLabel{{ $e->id_evento }}">Confirmación de eliminación</h5>
+                    <h5 class="modal-title" id="descriptionModalLabel{{ $e->id_evento }}">Agregar descripción</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
                 <div class="modal-body">
-                    @if($e->confirmacion)
-                        ¿Está seguro de que desea eliminar este paquete {{ $e->nombre }}?
-                    @else
-                        <p>Este evento no puede ser confirmado. Por favor, ingrese una razón para la denegación:</p>
-                        <form action="{{ route('evento.destroy', $e->id_evento) }}" method="post">
-                            @method('DELETE')
-                            @csrf
-                            <div class="form-group">
-                                <label for="reason">Razón de la denegación:</label>
-                                <textarea class="form-control" id="reason" name="reason" rows="3" required></textarea>
-                            </div>
-                            <button type="submit" class="btn btn-danger">Eliminar</button>
-                        </form>
-                    @endif
+                    <form id="form" action="{{ route('evento.denegar',$e->id_evento) }}" method="post">
+                        @csrf
+                        @method('PUT')
+                        <div class="form-group">
+                            <label for="description">Descripción:</label>
+                            <textarea class="form-control" id="description" name="description" rows="3" required></textarea>
+                        </div>
+                    </form>
                 </div>
                 <div class="modal-footer">
+                    <button type="button" class="btn btn-dark" onclick="submitForm()">Guardar</button>
+
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
                 </div>
             </div>
         </div>
     </div>
 
+
     @endforeach
     @endsection
+    @endsection
+    @section('scripts')
+    <script>
+        function submitForm() {
+          document.getElementById('form').submit();
+          //alert('done');
+        }
+    </script>
     @endsection
 @else
     @include('plantillas.error401')

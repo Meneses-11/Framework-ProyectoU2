@@ -74,7 +74,8 @@ Route::resource('servicio', ServicioController::class, [
 
 Route::resource('evento', EventoController::class)->middleware('auth');
 
-Route::put('evento/confirmar/{id}', [EventoController::class, 'confirmar'])->name('evento.confirmar')->middleware('auth');;
+Route::put('evento/confirmar/{id}', [EventoController::class, 'confirmar'])->name('evento.confirmar')->middleware('auth');
+Route::put('evento/denegar/{id}', [EventoController::class, 'denegar'])->name('evento.denegar')->middleware('auth');;
 Route::get('/eventos',[EventoController::class, 'mostrar'])->name('evento.mostrar')->middleware('auth');
 
 //Route::get('descripccion-paquetes', [PaqueteController::class, 'verMas'])->name('verMas');

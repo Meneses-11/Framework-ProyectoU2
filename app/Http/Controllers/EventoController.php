@@ -2,12 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\EventDenegar;
 use App\Events\EventEventos;
 use Illuminate\Http\Request;
 use App\Models\Evento;
 use App\Models\Paquete;
 use App\Models\Servicio;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Event;
 
 class EventoController extends Controller
@@ -132,6 +134,19 @@ class EventoController extends Controller
         return redirect()->route('evento.index');
     }
 
+    public function denegar(Request $request, $id)
+    {
+        $evento = Evento::find($id);
+
+        /*$evento->confirmacion = intval($request->input('confirmacion'));
+        $evento->save();*/
+        $desc = $request->description;
+        Event::dispatch(new EventDenegar($evento, Auth::user(), $desc));
+        $evento->confirmacion = "0";
+        $evento->id_gerente = Auth::user()->id_usuario;
+        $evento->save();
+        return redirect()->back();
+    }
 
     public function crearP(Request $request)
     {
