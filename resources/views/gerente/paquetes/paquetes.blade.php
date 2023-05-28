@@ -148,6 +148,7 @@ Admin Gerente Paquetes
                 </div>
             @endforeach
         @endsection
+        
     @endsection
 @else
     @include('plantillas.error401')

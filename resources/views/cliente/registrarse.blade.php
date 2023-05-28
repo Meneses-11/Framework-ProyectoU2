@@ -5,17 +5,13 @@ Usuarios
 @endsection
 
 @section('tiellobar')
-Admin Gerente Usuarios
+Registrarse
 @endsection
 @section('estilos')
 <link rel="stylesheet" href="/css/styleTabla.css">
 @endsection
 
-@section('opcionesIzquierda')
-<li class="nav-item"><a class="nav-link active" aria-current="page" href="{{ route('usuario.inicio') }}">Administrar Usuarios</a></li>
-<li class="nav-item"><a class="nav-link active" aria-current="page" href="{{ route('paquete.index') }}">Administrar Paquetes</a></li>
-<li class="nav-item"><a class="nav-link active" aria-current="page" href="{{ route('servicio.inicio') }}">Administrar Servicios</a></li>
-@endsection
+
 @section('opcionesDerecha')
 
 <li><a class="dropdown-item" href="{{ route('inicio') }}">Inicio</a></li>
@@ -24,7 +20,7 @@ Admin Gerente Usuarios
 
 @section('contenido')
 <div class="centrar" style="margin-top: 7rem">
-    
+
 </div>
   <div class="container">
     <div class="row justify-content-center align-items-center vh-100">

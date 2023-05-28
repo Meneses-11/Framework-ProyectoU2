@@ -10,7 +10,7 @@ Admin Gerente Servicios
   @can('viewAny', App\Models\Servicio::class)
     <link rel="stylesheet" href="/css/styleTabla.css">
     <script src="https://unpkg.com/dropzone@6.0.0-beta.1/dist/dropzone-min.js"></script>
-    <link href="https://unpkg.com/dropzone@6.0.0-beta.1/dist/dropzone.css" rel="stylesheet" type="text/css" />t>      
+    <link href="https://unpkg.com/dropzone@6.0.0-beta.1/dist/dropzone.css" rel="stylesheet" type="text/css" />t>
   @else
     <link rel="stylesheet" href="/css/styleMenuClnt.css">
   @endcan
@@ -28,7 +28,7 @@ Admin Gerente Servicios
 @endsection
 
 @can('viewAny', App\Models\Servicio::class)
-      
+
   @section('contenido')
     <div class="centrar" style="margin-top: 7rem;">
         <div class="container">
@@ -57,8 +57,13 @@ Admin Gerente Servicios
                       </div>
                       <div class="mb-3">
                         <label for="imgs" class="form-label">Imagenes:</label>
-                        <input class="form-control" type="file" name="images[]" id="archivoPaquete" multiple>
-                      </div>
+                        <input class="form-control" type="file" name="images" id="archivoPaquete" accept="image/*" multiple>
+                        @error('images')
+                        <div class="alert alert-danger" role="alert">
+                            {{ $message }}
+                        </div>
+                        @enderror
+                    </div>
                       <div class="d-grid gap-2">
                         <button type="submit" class="btn btn-dark btn-block">Registrar servicio</button>
                         <button type="button" class="btn btn-secondary btn-block mt-2" onclick="window.location.href='{{ route('servicio.inicio') }}'">Cancelar</button>
