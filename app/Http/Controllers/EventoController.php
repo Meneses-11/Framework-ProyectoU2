@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\EventEventos;
 use Illuminate\Http\Request;
 use App\Models\Evento;
 use App\Models\Paquete;
 use App\Models\Servicio;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Event;
 
 class EventoController extends Controller
 {
@@ -122,8 +124,10 @@ class EventoController extends Controller
     public function confirmar(Request $request, $id)
     {
         $evento = Evento::find($id);
-        $evento->confirmacion = intval($request->input('confirmacion'));
-        $evento->save();
+
+        /*$evento->confirmacion = intval($request->input('confirmacion'));
+        $evento->save();*/
+        Event::dispatch(new EventEventos($evento -> usuario, $evento));
 
         return redirect()->route('evento.index');
     }
@@ -142,5 +146,11 @@ class EventoController extends Controller
         $eventos = Evento::all();
 
         return view('gerente.eventos.index',compact('eventos'));
+    }
+
+    public function imagenes(){
+        $evento = Evento::find(1);
+        $imagenes = $evento -> imagenes;
+        return view('imagenes.index', compact('imagenes','evento'));
     }
 }

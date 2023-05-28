@@ -2,13 +2,12 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\clienteController;
 use App\Http\Controllers\entradaController;
-use App\Http\Controllers\empleadoController;
-use App\Http\Controllers\EmpleadoController as ControllersEmpleadoController;
+use App\Http\Controllers\EmpleadoController;
 use App\Http\Controllers\PaqueteController;
 use App\Http\Controllers\ServicioController;
 use App\Http\Controllers\UsuariosController;
 use App\Http\Controllers\EventoController;
-
+use App\Http\Controllers\ImagenController;
 
 Route::get('/',function(){return redirect(route('inicio')); })->name('inicio');
 
@@ -32,6 +31,9 @@ Route::post('/img', [clienteController::class, 'store'])->name('imgStore');
 Route::get('misEventos', [clienteController::class, 'verEventos'])->name('eventos')->middleware('auth');
 
 Route::resource('empleado', EmpleadoController::class)->middleware('auth');
+Route::get('/evento/imagenes', [EventoController::class, 'imagenes'])->name('evento.imagenes')->middleware('auth');
+
+Route::resource('imagen',ImagenController::class)->middleware('auth');
 
 Route::resource('usuario', UsuariosController::class, [
     'names' => [
