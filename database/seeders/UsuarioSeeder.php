@@ -63,5 +63,18 @@ class UsuarioSeeder extends Seeder
         $alguien->email = "CarlosM@gmail.com";
         $alguien->telefono = "9611506180";
         $alguien->save();
+
+        //un empleado empleado 1234
+        $alguien = new Usuario;
+        $alguien->nombre = "Empleadito";
+        $alguien->apellido = "Morales";
+        $alguien->nombre_usuario = "empleao";
+        $alguien->contraseña = Hash::make('1234');
+        $alguien->rol='Empleado';
+        $alguien->fecha_nacimiento = "2001-08-01";
+        $alguien->direccion = "Direccion conocida";
+        $alguien->email = "CarlosM@gmail.com";
+        $alguien->telefono = "9611506180";
+        $alguien->save();
     }
 }

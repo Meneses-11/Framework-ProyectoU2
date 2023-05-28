@@ -2,13 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Evento;
-use App\Models\Pago;
-use App\Models\Usuario;
-
+use App\Models\Imagen;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\File;
 
-class EmpleadoController extends Controller
+class ImagenController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,8 +14,8 @@ class EmpleadoController extends Controller
     public function index()
     {
         //
-        $eventos = Evento::all();
-        return view('empleado.inicio', compact('eventos'));
+        $imagenes = Imagen::all();
+        return view('imagenes.index', compact('imagenes'));
     }
 
     /**
@@ -34,18 +32,12 @@ class EmpleadoController extends Controller
     public function store(Request $request)
     {
         //
-        $pago = new Pago();
-        $pago->evento_id = $request->id_evento;
-        $pago->cantidad = $request->cantidad;
-        $pago->save();
-        return redirect()->route('empleado.index');
-
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(Usuario $empleado)
+    public function show(Imagen $imagen)
     {
         //
     }
@@ -53,7 +45,7 @@ class EmpleadoController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Usuario $empleado)
+    public function edit(Imagen $imagen)
     {
         //
     }
@@ -61,7 +53,7 @@ class EmpleadoController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Usuario $empleado)
+    public function update(Request $request, Imagen $imagen)
     {
         //
     }
@@ -69,8 +61,19 @@ class EmpleadoController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Usuario $empleado)
+    public function destroy(Imagen $imagen)
     {
         //
+        $rutaImagen = public_path($imagen->ruta);
+        if (File::exists($rutaImagen)) {
+            //File::delete('public'.$imagen->ruta);
+            File::delete($rutaImagen);
+            $imagen->delete();
+
+            return redirect()->back()->with('eliminado','si');
+
+        }else{
+            return redirect()->back()->with('error',"No se encontro el recurso");
+        }
     }
 }

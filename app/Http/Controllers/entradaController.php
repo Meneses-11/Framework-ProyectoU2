@@ -40,7 +40,7 @@ class entradaController extends Controller
                     Auth::guard('web_usuarios')->login($user);
                     $_SESSION['AuthGuard']='web_usuarios';
 
-                    return view('/empleado/empldPrincipal');
+                    return redirect(route('empleado.index'));
                 }else return redirect()->route('login')->with('error2','La contraseña ingresada no es la correcta');
             }
         } else {

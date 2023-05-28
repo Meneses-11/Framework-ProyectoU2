@@ -380,3 +380,114 @@ button {
 }
 /* */
 
+
+
+
+
+
+
+
+/* Imágenes */
+
+.images-cards figure {
+    position: relative;
+}
+
+.images-cards img {
+    height: 240px;
+}
+
+.images-cards figure figcaption {
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: flex;
+    width: 100%;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0, 0, 0, 0.4);
+    color: #494949;
+    font-size: 44px;
+    cursor: pointer;
+    opacity: 0;
+    transition: 0.3s all ease;
+    -webkit-transition: 0.3s all ease;
+    -moz-transition: 0.3s all ease;
+    -ms-transition: 0.3s all ease;
+    -o-transition: 0.3s all ease;
+}
+
+.images-cards figure figcaption:hover {
+    opacity: 1;
+}
+
+
+/* ->Imágenes */
+
+/* Selector de imágenes */
+
+#Images .add-new-photo{  /*Contenedor de la imagen*/
+    display: flex;
+    border: 4px dashed #747272;
+    height: 100%;
+    min-height: 240px;
+    width: 27%;
+    justify-content: center;
+    align-items: center;
+    font-size: 50px;
+    color: #5f5f5f;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: 0.3s all ease;
+    -webkit-transition: 0.3s all ease;
+    -moz-transition: 0.3s all ease;
+    -ms-transition: 0.3s all ease;
+    -o-transition: 0.3s all ease;
+}
+
+#Images .add-new-photo.first:hover {
+    background: rgba(255, 255, 255, 0.17);
+}
+
+#add-photo-container input {
+    display: none;
+}
+
+
+
+
+/* ----------------- */
+@font-face {
+    font-family: 'icomoon';
+    src:  url('../fonts/icomoon.eot?qr9hxx');
+    src:  url('../fonts/icomoon.eot?qr9hxx#iefix') format('embedded-opentype'),
+      url('../fonts/icomoon.ttf?qr9hxx') format('truetype'),
+      url('../fonts/icomoon.woff?qr9hxx') format('woff'),
+      url('../fonts/icomoon.svg?qr9hxx#icomoon') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+  
+[class^="icon-"], [class*=" icon-"] {
+    /* use !important to prevent issues with browser extensions that change fonts */
+    font-family: 'icomoon' !important;
+    speak: none;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+  
+    /* Better Font Rendering =========== */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+  
+.icon-camera:before {
+    content: "\e90f";
+}
+.icon-cross:before {
+    content: "\ea0f";
+}
+

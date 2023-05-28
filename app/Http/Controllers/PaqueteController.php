@@ -33,7 +33,7 @@ class PaqueteController extends Controller
      */
     public function store(Request $request)
     {
-
+        $request -> validate(['images'=>'required | image']);
         if ($request->activo=="Activo"){
             $activo = true;
         }else{
@@ -51,6 +51,7 @@ class PaqueteController extends Controller
 
             // Realiza las operaciones necesarias con las imágenes aquí
             foreach ($images as $image) {
+
                 $archivo = $image;
                 $img = $image;
                 $imgName = time().rand(1,100).'.'.$img->extension();
@@ -62,33 +63,10 @@ class PaqueteController extends Controller
                 $paquete->imagenes()->save($imagen);
             }
 
+
+
         }else{dd('no entre');}
-        /*
-        $archivo = $request->file('imagen');
-        $nombreArchivo = $archivo->getClientOriginalName();
-        $ruta_nombre = Storage::disk('privado')->putFileAs('',$archivo,$nombreArchivo);
 
-        $imagen = new Imagen();
-        $imagen->ruta = $ruta_nombre;
-        $imagen->nombre =$archivo->getClientOriginalName();
-        $paquete->imagenes()->save($imagen);
-        return redirect(route('paquete.index'))->with('dat','todo fue bien');*/
-
-        /*if ($request->hasFile('file')) {
-            $archivos = $request->file('file');
-
-            foreach ($archivos as $archivo) {
-                // Guarda el archivo en el almacenamiento
-                $ruta = Storage::disk('privado')->put('imagenes', $archivo);
-
-                // Crea un nuevo registro de imagen en la base de datos
-                $imagen = new Imagen();
-                $imagen->nombre = $archivo->getClientOriginalName();
-                $imagen->ruta = $ruta;
-                $paquete->imagenes()->save($imagen);
-            }
-        }
-*/
         return redirect(route('paquete.index'))->with('dat','todo fue bien');
     }
 

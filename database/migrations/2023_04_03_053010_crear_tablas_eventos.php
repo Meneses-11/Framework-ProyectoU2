@@ -16,12 +16,15 @@ return new class extends Migration
             $table->increments('id_evento');
             $table->unsignedInteger('id_usuario');
             $table->unsignedInteger('id_paquete');
+            $table->string('nombre');
             $table->float('precio');
             $table->date('fecha');
             $table->time('hora_inicio');
             $table->time('hora_fin');
             $table->string('descripcion');
+            $table->integer('id_gerente')->nullable();
             $table->integer('num_personas');
+            $table->enum('confirmacion',['0','1','2'])->default('0'); // SinConfirmar  || espera || Confirmado
             $table->boolean('confirmacion')->default(false);
             $table->boolean('realizado')->default(false);
             $table->timestamps();

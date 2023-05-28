@@ -4,7 +4,7 @@
 Eventos
 @endsection
 @section('titulobar')
-Admin Gerente Paquetes
+Empleado {{ Auth::user()->nombre }}
 @endsection
 @section('estilos')
     @can('viewAny', App\Models\Usuario::class)
@@ -39,7 +39,7 @@ Admin Gerente Paquetes
 @endsection
 
 @can('viewAny', App\Models\Usuario::class)
-    
+
     @section('contenido')
 
     @extends('plantillas.tabla')
@@ -60,6 +60,7 @@ Admin Gerente Paquetes
             <th>Cantidad de personas</th>
             <th>Servicios</th>
             <th>Estatus</th>
+            <th>Acciones</th>
     @endsection
     @section('tablaContenido')
     @php
@@ -110,6 +111,22 @@ Admin Gerente Paquetes
             <span class="text-danger">Sin confirmar</span>
             @endif
         </td>
+        <td>
+            <form action="{{ route('evento.confirmar', $e->id_evento) }}" method="POST">
+                @csrf
+                @method('PUT')
+                <input type="hidden" name="confirmacion" value="1">
+            </form>
+            <a href="#" onclick="event.preventDefault(); document.getElementById('form-activo-{{ $e->id_evento }}').submit();"
+                @if($e->confirmacion)
+                    <i class="fas fa-eye text-success" title="Desactivar Paquete"></i>
+                @else>
+                    <i class="fas fa-eye-slash text-muted" title="Activar Paquete"></i>
+                @endif
+            </a>
+
+        </td>
+
 
     </tr>
     <!-- Modal de confirmación para eliminar usuario -->

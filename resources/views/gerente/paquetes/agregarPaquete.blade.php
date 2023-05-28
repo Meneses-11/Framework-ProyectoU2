@@ -65,10 +65,7 @@ Paquetes
 
                   <div class="mb-3">
                     <label for="imgs" class="form-label">Imagenes:</label>
-
-
-                  <input class="form-control" type="file" name="images[]" id="archivoPaquete" multiple>
-
+                    <input class="form-control" type="file" name="images[]" id="archivoPaquete" accept="image/*" multiple>
                   </div>
 
                   <div class="d-grid gap-2">
