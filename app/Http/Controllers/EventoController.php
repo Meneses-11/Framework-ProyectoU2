@@ -125,6 +125,15 @@ class EventoController extends Controller
 
     public function confirmar(Request $request, $id)
     {
+        if(Auth::user()->rol==="Gerente"){
+        $evento = Evento::find($id);
+
+        $evento->confirmacion = "2";
+        $evento->save();
+        Event::dispatch(new EventEventos($evento -> usuario, $evento));
+
+        return redirect()->back();
+        }else if(Auth::user()->rol==="Cliente"){
         $evento = Evento::find($id);
 
         $evento->confirmacion = "".intval($request->input('confirmacion'));
@@ -132,6 +141,7 @@ class EventoController extends Controller
         Event::dispatch(new EventEventos($evento -> usuario, $evento));
 
         return redirect()->route('evento.index');
+        }
     }
 
     public function denegar(Request $request, $id)

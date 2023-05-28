@@ -73,7 +73,7 @@ class EventoPolicy
 
     public function confirmacion(Usuario $usuario, Evento $evento): bool
     {
-        if ($evento->confirmacion == 1) {
+        if ($evento->confirmacion == 2) {
             // Obtener la fecha y hora actual
             date_default_timezone_set('America/Mexico_City');
             $fechaActual = new DateTime();

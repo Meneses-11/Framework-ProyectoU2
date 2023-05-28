@@ -7,6 +7,7 @@ use App\Models\Pago;
 use App\Models\Usuario;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class EmpleadoController extends Controller
 {
@@ -34,11 +35,19 @@ class EmpleadoController extends Controller
     public function store(Request $request)
     {
         //
+        if(Auth::user()->rol==='Gerente'){
+            $pago = new Pago();
+            $pago->evento_id = $request->id_evento;
+            $pago->cantidad = $request->cantidad;
+            $pago->save();
+            return redirect()->back();
+        }else{
         $pago = new Pago();
         $pago->evento_id = $request->id_evento;
         $pago->cantidad = $request->cantidad;
         $pago->save();
         return redirect()->route('empleado.index');
+        }
 
     }
 

@@ -93,12 +93,12 @@ Empleado {{ Auth::user()->nombre }}
             <span class="text-warning">Pendiente</span>
             @endif
         </td>
-        <td>
+        <td>{{-- Acciones --}}
             @if ($e->confirmacion == 0){{-- El evento no esta confirmado --}}
 
 
             @elseif($e->confirmacion == 1) {{-- El evento esta pendiente --}}
-                <form action="{{ route('evento.confirmar', $e->id_evento) }}" method="POST">
+                <form id="form-activo-{{ $e->id_evento }}" action="{{ route('evento.confirmar', $e->id_evento) }}" method="POST">
                     @csrf
                     @method('PUT')
                     <input type="hidden" name="confirmacion" value="1">
@@ -109,41 +109,114 @@ Empleado {{ Auth::user()->nombre }}
                 <a href="#" data-toggle="modal" data-target="#descriptionModal{{ $e->id_evento }}">
                     <i class="fas fa-times-circle text-danger" title="Denegar Evento"></i>
                 </a>
+                {{-- Modal para obtener xq no se puede confirmar el evento --}}
+                    <div class="modal fade" id="descriptionModal{{ $e->id_evento }}" tabindex="-1" role="dialog" aria-labelledby="descriptionModalLabel{{ $e->id_evento }}" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="descriptionModalLabel{{ $e->id_evento }}">Agregar descripción</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <form id="form" action="{{ route('evento.denegar',$e->id_evento) }}" method="post">
+                                        @csrf
+                                        @method('PUT')
+                                        <div class="form-group">
+                                            <label for="description">Descripción:</label>
+                                            <textarea class="form-control" id="description" name="description" rows="3" required></textarea>
+                                        </div>
+                                    </form>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-dark" onclick="submitForm()">Guardar</button>
 
-                @endif {{-- el evento esta confirmado --}}
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                @else {{-- el evento esta confirmado --}}
+
+                    <a href="#" style="color: rgb(90, 200, 90) !important; " data-toggle="modal" data-target="#paymentModal{{ $e->id_evento }}" data-tooltip="Agregar abono" title="Agregar Abono">
+                        <i class="fas fa-money-bill-wave"></i>
+                    </a>
+                    @if ($e->pagos->count()!=0)
+
+
+                    <a href="#" class="" data-toggle="modal" data-target="#paymentsModal{{ $e->id_evento }}" data-tooltip="Ver historial de abonos" title="Historial de abonos">
+                        <i class="fas fa-list"></i>
+                    </a>
+                    @endif
+                    <!-- Modal de creación de abonos -->
+                    <div class="modal fade" id="paymentModal{{ $e->id_evento }}" tabindex="-1" role="dialog" aria-labelledby="paymentModalLabel{{ $e->id_evento }}" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="paymentModalLabel{{ $e->id_evento }}">Confirmación de pago</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <p>Evento: {{ $e->nombre }}</p>
+                                    <p>Cliente: {{ $e->usuario->nombre }}</p>
+                                    <form action="{{ route('empleado.store') }}" method="post">
+                                        @csrf
+                                        <div class="form-group">
+                                            <label for="cantidad">Cantidad:</label>
+                                            <input type="text" class="form-control" id="cantidad" name="cantidad" required>
+                                            <input type="hidden" value="{{ $e->id_evento }}" name="id_evento" >
+                                        </div>
+                                        <p>Descripción del evento: <br><br>{{ $e->descripcion }}</p>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                                        <button type="submit" class="btn btn-primary">Realizar Abono</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Modal de visualizacón de abonos -->
+                    <div class="modal fade" id="paymentsModal{{ $e->id_evento }}" tabindex="-1" role="dialog" aria-labelledby="paymentsModalLabel{{ $e->id_evento }}" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="paymentsModalLabel{{ $e->id_evento }}">Historial de Abonos</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+
+                                @foreach ($e->pagos as $pago)
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Detalle de abono</h5>
+                                        <ul>
+                                            <li>Fecha: {{ $pago->created_at->format('Y-m-d  H:m:s')}}</li>
+                                            <li>Cantidad: ${{ $pago->cantidad }}</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <br>
+                                @endforeach
+                                </div>
+                                <div class="modal-footer text-cente">
+                                    <button type="button" class="btn btn-dark" data-dismiss="modal">Aceptar</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                @endif
 
         </td>
 
 
     </tr>
-    {{-- Modal para obtener xq no se puede confirmar el evento --}}
-    <div class="modal fade" id="descriptionModal{{ $e->id_evento }}" tabindex="-1" role="dialog" aria-labelledby="descriptionModalLabel{{ $e->id_evento }}" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="descriptionModalLabel{{ $e->id_evento }}">Agregar descripción</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <form id="form" action="{{ route('evento.denegar',$e->id_evento) }}" method="post">
-                        @csrf
-                        @method('PUT')
-                        <div class="form-group">
-                            <label for="description">Descripción:</label>
-                            <textarea class="form-control" id="description" name="description" rows="3" required></textarea>
-                        </div>
-                    </form>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-dark" onclick="submitForm()">Guardar</button>
 
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-                </div>
-            </div>
-        </div>
-    </div>
 
 
     @endforeach
