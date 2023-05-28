@@ -30,7 +30,7 @@ Salón de Eventos
                     <figure>
                         <div class="slider">
                             @foreach ($paquete->imagenes as $item)
-                                <div class="slide" >
+                                <div class="slide" style="background: red">
                                     <img src={{$item->ruta }} alt="bodas" style= "margin: 0">
                                 </div>
                             @endforeach
