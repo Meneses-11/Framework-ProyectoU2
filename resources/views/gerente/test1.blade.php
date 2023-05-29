@@ -30,6 +30,7 @@ Salón de Eventos
 
 
                     <figure>
+                        <img src=\img\bodas.jpeg alt="bodas" style= "margin: 0">
                         {{--<div class="slider">
                               @foreach ($paquete->imagenes as $item)
                                 <div class="slide" style="background: red">
