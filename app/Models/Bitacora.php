@@ -9,3 +9,4 @@ class Bitacora extends Model
 {
     use HasFactory;
 }
+

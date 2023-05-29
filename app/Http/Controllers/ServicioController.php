@@ -35,6 +35,9 @@ class ServicioController extends Controller
     public function store(Request $request)
     {
         //
+        $request->validate([
+            'images.*' => 'required|file|mimes:jpeg,jpg,png,gif'
+        ]);
         $servicio = new Servicio();
         $servicio->nombre = $request->nombre;
         $servicio->precio = $request->precio;

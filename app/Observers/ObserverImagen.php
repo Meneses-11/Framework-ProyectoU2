@@ -14,6 +14,7 @@ class ObserverImagen
     public function created(Imagen $imagen): void
     {
         //
+        
         $bitacoraImg = new BitacoraImg();
         if (Auth::check()) {
             $bitacoraImg->id_usuario = Auth::user()->id_usuario;

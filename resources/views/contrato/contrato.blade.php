@@ -14,10 +14,10 @@ Contrato de Servicios
 @endsection
 
 @section('opcionesIzquierda')
-@can('viewAny', App\Models\Evento::class)
-<li class="nav-item"><a class="nav-link active" aria-current="page" href="{{route('paquetes')}}">Paquetes</a></li>
-<li class="nav-item"><a class="nav-link active" aria-current="page" href="{{route('evento.index')}}">Eventos</a></li>
-@endcan
+	@can('viewAny', App\Models\Evento::class)
+		<li class="nav-item"><a class="nav-link active" aria-current="page" href="{{route('paquetes')}}">Paquetes</a></li>
+		<li class="nav-item"><a class="nav-link active" aria-current="page" href="{{route('evento.index')}}">Eventos</a></li>
+	@endcan
 @endsection
 
 @section('opcionesDerecha')
@@ -26,6 +26,14 @@ Contrato de Servicios
 @section('contenido')
 
 	@can('viewAny', App\Models\Evento::class)
+
+		<button class="fixed-button custom-btn" onclick="goBack()" style="color: black">Regresar</button>
+		<script>
+			function goBack() {
+				window.history.back();
+			}
+		</script>
+
 
 		<div class="card text-center" style="margin: 8% 18% 0 18%">
 			<h2 class="card-header">Estado de cuenta</h2>
