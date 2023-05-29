@@ -34,9 +34,13 @@
                         <div class="card-body row g-3">
                             <form action="{{ route('evento.store') }}" method="POST">
                                 @csrf
-
                                 <div class="row mb-3">
-
+                                    <label for="colFormLabelLg" class="col-sm-3 col-form-label col-form-label-lg">Nombre del Evento:</label>
+                                    <div class="col-sm-8">
+                                        <input type="text" class="form-control form-control-lg" id="colFormLabelLg" placeholder="Ingrese el Nombre de su evento..." name="nombre" required>
+                                    </div>
+                                </div>
+                                <div class="row mb-3">
                                     <div class="col-sm-4">
                                         <div class="row mb-3">
                                             <div class="col">

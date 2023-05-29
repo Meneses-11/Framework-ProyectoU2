@@ -32,7 +32,22 @@
           <div class="container-fluid">
             <a class="navbar-brand" ><div class="contentEmpresa ">
                 <img src="{{ asset('img/logo.png') }}" alt="Logo" class="imgLogo">
-                <div style="font-weight: bold;"> @yield('titulobar')</div>
+                @if (Auth::user())
+                    
+                  @switch(Auth::user()->rol)
+                    @case("Gerente")
+                      <div style="font-weight: bold;"> Salon de Eventos | <p style="color: rgb(4, 248, 4); display: inline;">{{ Auth::user()->nombre }}</p> </div>
+                      @break
+                    @case("Cliente")
+                      <div style="font-weight: bold;"> Salon de Eventos | <p style="color: yellow; display: inline;">{{ Auth::user()->nombre }}</p> </div>
+                      @break
+                    @case("Empleado")
+                      <div style="font-weight: bold;"> Salon de Eventos | <p style="color: orange; display: inline;">{{ Auth::user()->nombre }}</p> </div>
+                    @break
+                  @endswitch
+                @else
+                  <div style="font-weight: bold;"> Salon de Eventos</div>
+                @endif
             </div></a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mobile_menu" aria-controls="mobile_menu" aria-expanded="false" aria-label="Toggle navigation">
               <span class="navbar-toggler-icon"></span>

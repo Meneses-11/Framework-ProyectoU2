@@ -55,6 +55,7 @@ class EventoController extends Controller
 
         $usuario = session('id');
         $newEvent = new Evento;
+        $newEvent->nombre = $request->nombre;
         $newEvent->id_usuario = $usuario;
         $newEvent->id_paquete = $request->idPaquete;
         $newEvent->precio = $request-> precio;
@@ -100,6 +101,7 @@ class EventoController extends Controller
     {
         $usuario = session('id');
 
+        $evento->nombre = $request->nombre;
         $evento->id_usuario = $usuario;
         $evento->id_paquete = $request->idPaquete;
         $evento->precio = $request-> precio;
