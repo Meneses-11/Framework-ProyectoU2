@@ -86,7 +86,7 @@ class EventoController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Evento $evento)
+    public function edit(Evento $evento) //carga la vista que contiene el formulario
     {
         $paquetes = Paquete::all();
         $servicios = Servicio::all();
@@ -132,7 +132,7 @@ class EventoController extends Controller
         if(Auth::user()->rol==="Gerente"){
         $evento = Evento::find($id);
 
-        $evento->confirmacion = "2";
+        $evento->confirmacion = "2"; 
         $evento->save();
         Event::dispatch(new EventEventos($evento -> usuario, $evento));
 
@@ -224,5 +224,7 @@ class EventoController extends Controller
         return view('gerente.eventos.imagenes',compact('evento'));
     }
 
-
+    public function galeria(Evento $evento){//lleva a la vista donde se puede hacer el crud de imagenes
+        return view('cliente.galeria',compact('evento'));
+    }
 }

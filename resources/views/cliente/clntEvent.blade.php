@@ -154,11 +154,13 @@ Cliente
                                         {{--@can('confirmacion', $event)--}}
                                             
                                             
-                                            <!-- Button trigger modal -->
+                                            <!-- Button trigger modal --><!--
                                             <button type="button" class="custom-btn btn-14" data-bs-toggle="modal" data-bs-target="#staticBackdrop" style="margin: 10px;">
                                                 Añadir Imagen
-                                            </button>
-                                            
+                                            </button>-->
+                                            <a href="{{ route('evento.galeria', ['evento' => $event]) }}">
+                                                <button class="custom-btn btn-14" style="margin: 10px;">Img</button>
+                                            </a>
                                             <!-- Modal -->
                                             <form action="{{ route('evento.imagenes', $event->id_evento) }}" method="POST" enctype="multipart/form-data">
                                                 @csrf

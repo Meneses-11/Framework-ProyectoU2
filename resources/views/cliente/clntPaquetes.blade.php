@@ -11,8 +11,8 @@
     Salón de Eventos
 @endsection
 @section('opcionesIzquierda')
-    @can('anyView', App\Models\Evento::class)
-        <li class="nav-item"><a class="nav-link active" aria-current="page" href="{{ route('evento.index') }}">Mis eventos</a></li>
+    @can('viewAny', App\Models\Evento::class)
+        <li class="nav-item"><a class="nav-link active" aria-current="page" href="{{ route('evento.index') }}">Mis eventos </a></li>
     @endcan
 @endsection
 @section('opcionesDerecha')
