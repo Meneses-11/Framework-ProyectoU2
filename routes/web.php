@@ -38,6 +38,8 @@ Route::get('misEventos', [clienteController::class, 'verEventos'])->name('evento
 
 Route::resource('empleado', EmpleadoController::class)->middleware('auth');
 Route::put('/evento/imagenes/{id}', [EventoController::class, 'imagenes'])->name('evento.imagenes')->middleware('auth');
+Route::get('/imagenes/{evento}', [EventoController::class, 'crudimg'])->name('evento.images')->middleware('auth');
+Route::put('/imagenes/edit/{imagen}', [EventoController::class, 'editDescripcion'])->name('evento.editDescripcion')->middleware('auth');
 
 Route::resource('imagen',ImagenController::class)->middleware('auth');
 

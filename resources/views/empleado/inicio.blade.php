@@ -23,7 +23,9 @@ Empleado <b style="color: gold">{{ Auth::user()->nombre }} </b>
 .btn-abono {
         background-color: rgb(90, 200, 90) !important; /* Cambia el color de fondo a verde */
     }
-
+.btn-img {
+        background-color: rgb(255, 0, 85) !important; /* Cambia el color de fondo a rosa xd */
+    }
 .btn-abono i {
     color: rgb(0, 0, 0); /* Cambia el color del icono a gris */
 }
@@ -81,48 +83,29 @@ Empleado <b style="color: gold">{{ Auth::user()->nombre }} </b>
             <li >{{ $servicio->nombre }}</li>
             @endforeach
         </ul>
-
-       {{--  <div class="d-inline-flex p-n2 align-items-center">
-            <a href="{{ route('paquete.editar',$paquete->id_paquete) }}" class="edit" ><i class="fas fa-pen" data-toggle="tooltip" title="Editar"></i></a>
-            <a href="#" class="delete" data-toggle="modal" data-target="#deleteModal{{ $paquete->id_paquete }}"><i class="fas fa-trash" data-toggle="tooltip" title="Eliminar"></i></a>
-            {{-- <a href="{{ route('paquete.detalle',$paquete->id_paquete) }}"  ><i class="fas fa-info-circle" data-toggle="tooltip" title="Información"></i></a> --}
-            <form id="form-activo-{{ $paquete->id_paquete }}" action="{{ route('paquete.activo', $paquete->id_paquete) }}" method="post">
-                @csrf
-                @method('PUT')
-                <input type="hidden" name="activo" value="{{ $paquete->activo }}">
-            </form>
-            <a href="#" onclick="event.preventDefault(); document.getElementById('form-activo-{{ $paquete->id_paquete }}').submit();"
-                @if($paquete->activo)
-                    <i class="fas fa-eye text-success" title="Desactivar Paquete"></i>
-                @else>
-                    <i class="fas fa-eye-slash text-muted" title="Activar Paquete"></i>
-                @endif
-            </a>
-
-        </div>
-        --}}
     </td>
     <td>
-        @if ($e->confirmacion == 1)
-          <span class="text-success">Confirmado</span>
-        @else
-          <span class="text-danger">Sin confirmar</span>
+        @if ($e->confirmacion == 2)
+            <span class="text-success">Confirmado</span>
+            @elseif($e->confirmacion == 0)
+            <span class="text-danger">Sin confirmar</span>
+            @else
+            <span class="text-warning">Pendiente</span>
         @endif
-      </td>
+    </td>
     <td>
         <a href="#" style="color: rgb(90, 200, 90) !important; " data-toggle="modal" data-target="#paymentModal{{ $e->id_evento }}" data-tooltip="Agregar abono" title="Agregar Abono">
             <i class="fas fa-money-bill-wave"></i>
         </a>
         @if ($e->pagos->count()!=0)
-
-
         <a href="#" class="" data-toggle="modal" data-target="#paymentsModal{{ $e->id_evento }}" data-tooltip="Ver historial de abonos" title="Historial de abonos">
             <i class="fas fa-list"></i>
         </a>
+        <a href="{{ route('evento.images', ['evento' => $e]) }}" style="color: rgb(255, 0, 85) !important;" title="Imagenes del Evento">
+            <i class="fas fa-images"></i>
+        </a>
         @endif
     </td>
-
-
 <!-- Modal de creación de abonos -->
 <div class="modal fade" id="paymentModal{{ $e->id_evento }}" tabindex="-1" role="dialog" aria-labelledby="paymentModalLabel{{ $e->id_evento }}" aria-hidden="true">
     <div class="modal-dialog" role="document">
@@ -140,7 +123,7 @@ Empleado <b style="color: gold">{{ Auth::user()->nombre }} </b>
                     @csrf
                     <div class="form-group">
                         <label for="cantidad">Cantidad:</label>
-                        <input type="text" class="form-control" id="cantidad" name="cantidad" required>
+                        <input type="number" class="form-control" id="cantidad" name="cantidad" required>
                         <input type="hidden" value="{{ $e->id_evento }}" name="id_evento" >
                     </div>
                     <p>Descripción del evento: <br><br>{{ $e->descripcion }}</p>

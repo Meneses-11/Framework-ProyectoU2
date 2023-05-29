@@ -14,8 +14,12 @@ Contrato de Servicios
 @endsection
 
 @section('opcionesIzquierda')
-
+@can('viewAny', App\Models\Evento::class)
+<li class="nav-item"><a class="nav-link active" aria-current="page" href="{{route('paquetes')}}">Paquetes</a></li>
+<li class="nav-item"><a class="nav-link active" aria-current="page" href="{{route('evento.index')}}">Eventos</a></li>
+@endcan
 @endsection
+
 @section('opcionesDerecha')
 	<li><a class="dropdown-item" href="{{ route('cerrar_sesion') }}">Cerrar Sesión</a></li>
 @endsection
@@ -61,7 +65,7 @@ Contrato de Servicios
                                                     $fecha = new DateTime($abono->created_at);
                                                 @endphp
 												<input type="text" class="form-control" disabled style="background-color: white" value="{{ $fecha->format('Y-m-d') }}">
-												<span class="input-group-text">@</span>
+												<span class="input-group-text"><img src="{{ asset('img/programar.png') }}" alt="img" style="width: 20px; height: 20px;"></span>
 												<input type="text" class="form-control" disabled style="background-color: white" value="{{ $fecha->format('H:m:s') }}">
 											</div>
 
