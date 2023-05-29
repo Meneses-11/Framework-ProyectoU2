@@ -99,7 +99,8 @@ Cliente
 
                                 </div>
                                 <div class="infEvnt">
-                                    @can('confirm', $event)
+                                    @can('sinConfirmar', $event)
+                                    @else
                                         <div>
                                             <form action="{{ route('evento.show',$event->id_evento) }}" method="GET">
                                                 <button type="submit" class="custom-btn btn-14">Ver Contrato</button>
@@ -147,10 +148,10 @@ Cliente
                                 </div>
                                 <div class="infEvntTit">
                                     <h2> Total: {{$event->precio}} </h2>
-                                    @can('confirm', $event)
+                                    @can('confirmacion', $event)
                                         
                                         <!--<button type="button" class="custom-btn btn-14" data-toggle="modal" data-target="#modalImg" style="margin: 10px;"> Añadir Imagen </button>-->
-                                        @can('confirmacion', $event)
+                                        {{--@can('confirmacion', $event)--}}
                                             
                                             
                                             <!-- Button trigger modal -->
@@ -183,14 +184,16 @@ Cliente
                                                     </div>
                                                 </div>
                                             </form>
-                                        @endcan    
+                                        {{-- @endcan --}}    
 
 
                                         
 
                                         <!--<script src="js/imgCliente.js"></script>-->
 
-                                    @else
+                                    @endcan
+
+                                    @can('sinConfirmar', $event)
                                         <button class="custom-btn btn-14" data-toggle="modal" data-target="#modalConfirm{{$event->id_evento}}" style="margin: 10px">Confirmar</button>
 
                                         <!-- Modal -->

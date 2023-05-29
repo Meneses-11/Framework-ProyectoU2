@@ -63,14 +63,29 @@ class EventoPolicy
         }else return false;
     }
 
-    public function confirm(Usuario $usuario, Evento $evento): bool
+    public function sinConfirmar(Usuario $usuario, Evento $evento): bool
+    {
+
+        if($evento->confirmacion == 0) return true;
+        else return false;
+
+    }
+    public function pendiente(Usuario $usuario, Evento $evento): bool
     {
 
             if($evento->confirmacion == 1) return true;
             else return false;
 
     }
+    public function confirmado(Usuario $usuario, Evento $evento): bool
+    {
 
+            if($evento->confirmacion == 2) return true;
+            else return false;
+
+    }
+
+    //Se puede subir una foto al evento solo en el periodo de tiempo en que se lleva a cabo el evento y 4 horas de prorroga
     public function confirmacion(Usuario $usuario, Evento $evento): bool
     {
         if ($evento->confirmacion == 2) {
