@@ -149,46 +149,46 @@ Cliente
                                     <h2> Total: {{$event->precio}} </h2>
                                     @can('confirm', $event)
                                         
-                                    <!--<button type="button" class="custom-btn btn-14" data-toggle="modal" data-target="#modalImg" style="margin: 10px;"> Añadir Imagen </button>-->
-
-                                        <!-- Button trigger modal -->
-                                        <button type="button" class="custom-btn btn-14" data-bs-toggle="modal" data-bs-target="#staticBackdrop" style="margin: 10px;">
-                                            Añadir Imagen
-                                        </button>
-                                        
-                                        <!-- Modal -->
-                                        <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                                            <div class="modal-dialog modal-dialog-scrollable modal-lg">
-                                                <div class="modal-content">
-                                                    <div class="modal-header">
-                                                        <h1 class="modal-title fs-5" id="staticBackdropLabel">Modal title</h1>
-                                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                                    </div>
-                                                    <div class="modal-body">
-                                                        <section class="images-cards" id="Images">
-                                                            <div id="add-photo-container">
-                                                                <div class="add-new-photo first" id="add-photo">
-                                                                    <span><i class="icon-camera"></i></span>
-                                                                </div>
-                                                                <input type="file" multiple id="add-new-photo" name="images[]">
+                                        <!--<button type="button" class="custom-btn btn-14" data-toggle="modal" data-target="#modalImg" style="margin: 10px;"> Añadir Imagen </button>-->
+                                        @can('confirmacion', $event)
+                                            
+                                            
+                                            <!-- Button trigger modal -->
+                                            <button type="button" class="custom-btn btn-14" data-bs-toggle="modal" data-bs-target="#staticBackdrop" style="margin: 10px;">
+                                                Añadir Imagen
+                                            </button>
+                                            
+                                            <!-- Modal -->
+                                            <form action="{{ route('evento.imagenes', $event->id_evento) }}" method="POST" enctype="multipart/form-data">
+                                                @csrf
+                                                @method('PUT')
+                                                <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                                                    <div class="modal-dialog">
+                                                        <div class="modal-content">
+                                                            <div class="modal-header">
+                                                                <h1 class="modal-title fs-5" id="staticBackdropLabel">Agregar Imagenes</h1>
+                                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                             </div>
-                                                        </section>
-                                                        
-                                                        ... <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br> 
-                                                        <br><br><br><br><br><br><br><br><br><br><br><br><br><br>...
-                                                    </div>
-                                                    <div class="modal-footer">
-                                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                                        <button type="button" class="btn btn-primary">Understood</button>
+                                                            <div class="modal-body">
+                                                                <div class="mb-3">
+                                                                    <label for="imgs" class="form-label">Imagenes:</label>
+                                                                    <input class="form-control" type="file" name="images[]" id="archivoPaquete" accept="image/*" multiple>
+                                                                </div>
+                                                            </div>
+                                                            <div class="modal-footer">
+                                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                                                                <button type="submit" class="btn btn-primary">Aceptar</button>
+                                                            </div>
+                                                        </div>
                                                     </div>
                                                 </div>
-                                            </div>
-                                        </div>
+                                            </form>
+                                        @endcan    
 
 
                                         
 
-                                        <script src="js/imgCliente.js"></script>
+                                        <!--<script src="js/imgCliente.js"></script>-->
 
                                     @else
                                         <button class="custom-btn btn-14" data-toggle="modal" data-target="#modalConfirm{{$event->id_evento}}" style="margin: 10px">Confirmar</button>

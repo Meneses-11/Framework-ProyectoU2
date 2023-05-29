@@ -17,20 +17,102 @@ Contrato de Servicios
 
 @endsection
 @section('opcionesDerecha')
-<li><a class="dropdown-item" href="{{ route('cerrar_sesion') }}">Cerrar Sesión</a></li>
+	<li><a class="dropdown-item" href="{{ route('cerrar_sesion') }}">Cerrar Sesión</a></li>
 @endsection
 @section('contenido')
 
 	@can('viewAny', App\Models\Evento::class)
+
+		<div class="card text-center" style="margin: 8% 18% 0 18%">
+			<h2 class="card-header">Estado de cuenta</h2>
+			<div class="card-body">
+				<div class="row">
+					<div class="accordion col-md-6" id="accordionExample">
+						@php
+							$indice = 0;
+							$totAbono = 0;
+						@endphp
+						@foreach ($evento->pagos as $abono)
+							@php
+								$totAbono += $abono->cantidad;
+							@endphp
+							<div class="accordion-item">
+								<h2 class="accordion-header">
+									<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse{{$abono->id_pago}}" aria-expanded="false" aria-controls="collapse{{$abono->id_pago}}">
+										Abono {{$indice += 1}}
+									</button>
+								</h2>
+								<div id="collapse{{$abono->id_pago}}" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+									<div class="accordion-body">
+										<div class="row">
+											<div class="col-md-12">
+												<strong><h2>Id Abono: {{ $abono->id_pago }}</h2></strong>
+											</div>
+
+											<div class="col-md-6">
+												<label class="form-label">Fecha de Pago:</label>
+											</div>
+											<div class="col-md-6">
+												<label class="form-label">Hora de Pago:</label>
+											</div>
+
+											<div class="input-group mb-3">
+                                                @php
+                                                    $fecha = new DateTime($abono->created_at);
+                                                @endphp
+												<input type="text" class="form-control" disabled style="background-color: white" value="{{ $fecha->format('Y-m-d') }}">
+												<span class="input-group-text">@</span>
+												<input type="text" class="form-control" disabled style="background-color: white" value="{{ $fecha->format('H:m:s') }}">
+											</div>
+
+											<div class="col-md-12"><h4 style="color: black !important">Cliente</h4></div>
+											<div class="input-group col-md-12 mb-4">
+												<span class="input-group-text">Nombre y Apellido</span>
+												<input type="text" aria-label="First name" class="form-control" value="{{ $evento->usuario->nombre }}" disabled style="background-color: white">
+												<input type="text" aria-label="Last name" class="form-control" value="{{ $evento->usuario->apellido }}" disabled style="background-color: white">
+											</div>
+
+											<div class="input-group col-md-6" style="padding: 0% 20%">
+												<span class="input-group-text"><h4 style="color: black !important">$</h4></span>
+												<label class="form-control" aria-label="Amount (to the nearest dollar)"><h4 style="color: black !important">{{ $abono->cantidad }}</h4></label>
+												<span class="input-group-text"><h4 style="color: black !important">.00</h4></span>
+											</div>
+
+										</div>
+									</div>
+								</div>
+							</div>
+						@endforeach
+					</div>
+
+					<div class="col-md-5 border-start border-1 text-center">
+						<div class="col-md-12  mb-5">
+							<h2>Costo del Evento</h2>
+						</div>
+						<div class="input-group col-md-6" style="padding: 0% 5%">
+							<span class="input-group-text"><h3 style="color: black !important">$</h3></span>
+							<label class="form-control" aria-label="Amount (to the nearest dollar)"><h3 style="color: black !important">{{ $evento->precio }}</h3></label>
+							<span class="input-group-text"><h3 style="color: black !important">.00</h3></span>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="card-footer text-body-secondary">
+				<h2>${{ $evento->precio - $totAbono}}</h2>
+			</div>
+		</div>
+
+
 		<div class="sombra">
 			<div class="container">
 				<div class="row justify-content-center">
 					<div class="col-lg-8 contenedor2">
 						<div class="card-header bor">
-						<h1 class="text-center">Contrato de Evento</h1>
+							<h1 class="text-center">Contrato de Evento</h1>
 						</div>
 						<div class="card" style="box-shadow: 0px 2px 5px rgba(54, 54, 54, 1); margin-top: 1%;">
-							<div class="card-body">
+							<div class="card-body-carlos">
 								<h4 class="card-title">Detalles del Evento</h4>
 
 								<div class="row mb-3">
@@ -122,10 +204,12 @@ Contrato de Servicios
 				</div>
 			</div>
 		</div>
+
+
 	@else
 		@include('plantillas.error401')
 	@endcan
-	
+
 
 @endsection
 

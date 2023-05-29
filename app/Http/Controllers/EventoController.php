@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use App\Models\Evento;
 use App\Models\Paquete;
 use App\Models\Servicio;
+use App\Models\Imagen;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Event;
@@ -125,6 +126,15 @@ class EventoController extends Controller
 
     public function confirmar(Request $request, $id)
     {
+        if(Auth::user()->rol==="Gerente"){
+        $evento = Evento::find($id);
+
+        $evento->confirmacion = "2";
+        $evento->save();
+        Event::dispatch(new EventEventos($evento -> usuario, $evento));
+
+        return redirect()->back();
+        }else if(Auth::user()->rol==="Cliente"){
         $evento = Evento::find($id);
 
         $evento->confirmacion = "".intval($request->input('confirmacion'));
@@ -132,6 +142,7 @@ class EventoController extends Controller
         Event::dispatch(new EventEventos($evento -> usuario, $evento));
 
         return redirect()->route('evento.index');
+        }
     }
 
     public function denegar(Request $request, $id)
@@ -163,9 +174,34 @@ class EventoController extends Controller
         return view('gerente.eventos.index',compact('eventos'));
     }
 
-    public function imagenes(){
-        $evento = Evento::find(1);
-        $imagenes = $evento -> imagenes;
-        return view('imagenes.index', compact('imagenes','evento'));
+    public function imagenes(Request $request, $id){
+        $evento = Evento::find($id);
+
+        //$request -> validate(['images'=>'required | image']);
+
+        if ($request->hasFile('images')) {
+            $images = $request->file('images');
+
+            // Realiza las operaciones necesarias con las imágenes aquí
+            foreach ($images as $image) {
+
+                $archivo = $image;
+                $img = $image;
+                $imgName = time().rand(1,100).'.'.$img->extension();
+                $img -> move(public_path('/img/Eventos/'),$imgName);
+                $ruta_nombre = '/img/Eventos/'.$imgName;
+                $imagen = new Imagen();
+                $imagen->ruta = $ruta_nombre;
+                $imagen->nombre = $archivo->getClientOriginalName();
+                $evento->imagenes()->save($imagen);
+            }
+
+
+
+        }else{
+            return redirect()->back()->with('errors','Algo ha salido mal verifica tu entrada de datos');
+        }
+
+        return redirect()->route('evento.index');
     }
 }

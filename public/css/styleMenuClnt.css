@@ -388,7 +388,7 @@ button {
 
 
 /* Imágenes */
-
+/*
 .images-cards figure {
     position: relative;
 }
@@ -421,13 +421,14 @@ button {
 .images-cards figure figcaption:hover {
     opacity: 1;
 }
-
+*/
 
 /* ->Imágenes */
 
 /* Selector de imágenes */
-
-#Images .add-new-photo{  /*Contenedor de la imagen*/
+ /*Contenedor de la imagen*/
+/*
+ #Images .add-new-photo{ 
     display: flex;
     border: 4px dashed #747272;
     height: 100%;
@@ -457,7 +458,6 @@ button {
 
 
 
-/* ----------------- */
 @font-face {
     font-family: 'icomoon';
     src:  url('../fonts/icomoon.eot?qr9hxx');
@@ -470,7 +470,7 @@ button {
 }
   
 [class^="icon-"], [class*=" icon-"] {
-    /* use !important to prevent issues with browser extensions that change fonts */
+    
     font-family: 'icomoon' !important;
     speak: none;
     font-style: normal;
@@ -479,7 +479,7 @@ button {
     text-transform: none;
     line-height: 1;
   
-    /* Better Font Rendering =========== */
+    
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 }
@@ -490,4 +490,4 @@ button {
 .icon-cross:before {
     content: "\ea0f";
 }
-
+*/
