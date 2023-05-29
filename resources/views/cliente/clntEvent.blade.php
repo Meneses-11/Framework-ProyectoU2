@@ -150,8 +150,6 @@ Cliente
                                     <h2> Total: {{$event->precio}} </h2>
                                     @can('confirmacion', $event)
                                         
-                                        <!--<button type="button" class="custom-btn btn-14" data-toggle="modal" data-target="#modalImg" style="margin: 10px;"> Añadir Imagen </button>-->
-                                        {{--@can('confirmacion', $event)--}}
                                             
                                             
                                             <!-- Button trigger modal --><!--
@@ -162,7 +160,7 @@ Cliente
                                                 <button class="custom-btn btn-14" style="margin: 10px;">Img</button>
                                             </a>
                                             <!-- Modal -->
-                                            <form action="{{ route('evento.imagenes', $event->id_evento) }}" method="POST" enctype="multipart/form-data">
+                                           <!-- <form action="{{ route('evento.imagenes', $event->id_evento) }}" method="POST" enctype="multipart/form-data">
                                                 @csrf
                                                 @method('PUT')
                                                 <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
@@ -186,12 +184,7 @@ Cliente
                                                     </div>
                                                 </div>
                                             </form>
-                                        {{-- @endcan --}}    
-
-
-                                        
-
-                                        <!--<script src="js/imgCliente.js"></script>-->
+                                        -->
 
                                     @endcan
 
