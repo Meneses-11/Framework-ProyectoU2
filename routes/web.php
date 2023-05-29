@@ -33,8 +33,9 @@ Route::get('/inicio',[entradaController::class,'inicio'])->name('inicio');
 
 Route::get('paquetes', [clienteController::class, 'verPaquetes'])->name('paquetes')->middleware('auth');
 Route::post('gasto/create', [EventoController::class, 'gasto'])->name('gasto.create')->middleware('auth');
-
 Route::get('misEventos', [clienteController::class, 'verEventos'])->name('eventos')->middleware('auth');
+Route::get('/evento/{evento}/galeria', [EventoController::class, 'galeria'])->name('evento.galeria')->middleware('auth');
+
 
 Route::resource('empleado', EmpleadoController::class)->middleware('auth');
 Route::put('/evento/imagenes/{id}', [EventoController::class, 'imagenes'])->name('evento.imagenes')->middleware('auth');
