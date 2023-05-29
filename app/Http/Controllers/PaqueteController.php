@@ -109,8 +109,9 @@ class PaqueteController extends Controller
                 $paquete->activo = false;
             }
             $paquete->descripcion = $request->descripcion;
-            $paquete->nombre_foto = "algo";
             $paquete->save();
+
+
             return redirect(route('paquete.index'))->with('dat','todo fue bien');
 
 
