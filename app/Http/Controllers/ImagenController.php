@@ -56,6 +56,10 @@ class ImagenController extends Controller
     public function update(Request $request, Imagen $imagen)
     {
         //
+        $evento = $imagen;
+        $evento->descripcion = $request->descripcion;
+        $evento->save();
+        return redirect()->back();
     }
 
     /**
@@ -69,7 +73,7 @@ class ImagenController extends Controller
             //File::delete('public'.$imagen->ruta);
             File::delete($rutaImagen);
             $imagen->delete();
-            
+
             return redirect()->back()->with('eliminado','si');
 
         }else{

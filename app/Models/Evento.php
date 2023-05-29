@@ -28,9 +28,9 @@ class Evento extends Model
 
 
     public function pagos()
-{
+    {
     return $this->hasMany(Pago::class, 'evento_id'); // Asegúrate de que la columna sea 'evento_id'
-}
+    }
 
 
     public function imagenes()

@@ -10,7 +10,7 @@ class Gasto extends Model
     use HasFactory;
     protected $table = 'gastos';
 
-    public function eventos()
+    public function eventos() //solo un registro
     {
         return $this->belongsTo(Evento::class, 'id_evento'); // Asegúrate de que la columna sea 'evento_id'
     }
