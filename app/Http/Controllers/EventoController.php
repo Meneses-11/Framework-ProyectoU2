@@ -181,7 +181,9 @@ class EventoController extends Controller
         Imagen::observe(ObserverImagen::class);
         $evento = Evento::find($id);
         //$request -> validate(['images'=>'required | image']);
-
+        $request->validate([
+            'images.*' => 'required|file|mimes:jpeg,jpg,png,gif'
+        ]);
         if ($request->hasFile('images')) {
             $images = $request->file('images');
 

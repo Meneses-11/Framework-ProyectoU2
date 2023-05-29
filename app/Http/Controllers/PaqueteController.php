@@ -33,7 +33,10 @@ class PaqueteController extends Controller
      */
     public function store(Request $request)
     {
-        $request -> validate(['images'=>'required | image']);
+        $request->validate([
+            'images.*' => 'required|file|mimes:jpeg,jpg,png,gif'
+        ]);
+
         if ($request->activo=="Activo"){
             $activo = true;
         }else{

@@ -8,9 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class Evento extends Model
 {
     use HasFactory;
-    protected $table = 'eventos';
-    protected $primaryKey = 'id_evento';
-
+    protected $table = 'eventos';//nombre de la tabla
+    protected $primaryKey = 'id_evento';//id personalizado o primary_key personalizada
+    //los metodos indican relaciones con los otros modelos
     public function usuario()
     {
         return $this->belongsTo(Usuario::class, 'id_usuario');
@@ -33,9 +33,9 @@ class Evento extends Model
     }
 
 
-    public function imagenes()
+    public function imagenes()//es una relacion muchos a muchos polimorfica para tener multimpes relaciones con multiples modelos
     {
-        return $this->morphMany(Imagen::class, 'imageable');
+        return $this->morphMany(Imagen::class, 'imageable');//no se necesita una tabla para cada tipo de modelo.
     }
 
     public function gastos(){
