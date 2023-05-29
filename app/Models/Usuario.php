@@ -16,9 +16,9 @@ class Usuario extends Authenticatable
         return $this->hasMany(Evento::class, 'id_usuario');
     }
 
-    public function bitacoraImg(){
+    public function bitacoraImg(){ //varios registros
         return $this->hasMany(BitacoraImg::class, 'id_usuario');
     }
-    
-    
+
+
 }

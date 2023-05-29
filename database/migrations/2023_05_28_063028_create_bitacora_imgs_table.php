@@ -11,9 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('bitacoraImg', function (Blueprint $table) {
+        Schema::create('bitacoraimg', function (Blueprint $table) {
             $table->id();
             $table->unsignedInteger('id_usuario');
+            $table->integer('id_imagen');
             $table->string('accion')->nullable();
             $table->timestamps();
             $table->foreign('id_usuario')->references('id_usuario')->on('usuarios');
@@ -25,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('bitacora_imgs');
+        Schema::dropIfExists('bitacoraimg');
     }
 };

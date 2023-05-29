@@ -52,7 +52,7 @@ Salón de Eventos  {{ Auth::user()->nombre }}
                     </button>
                 </div>
                 <div class="modal-body">
-                    <form action="{{route('evento.editDescripcion',$i->id)}}" method="post">
+                    <form action="{{route('imagen.update',$i->id)}}" method="post">
                         @csrf
                         @method('PUT')
                         <label for="descripcion">Nueva descripción:</label>

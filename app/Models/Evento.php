@@ -28,9 +28,9 @@ class Evento extends Model
 
 
     public function pagos()
-{
+    {
     return $this->hasMany(Pago::class, 'evento_id'); // Asegúrate de que la columna sea 'evento_id'
-}
+    }
 
 
     public function imagenes()
@@ -38,5 +38,8 @@ class Evento extends Model
         return $this->morphMany(Imagen::class, 'imageable');
     }
 
+    public function gastos(){
+        return $this->hasMany(Gasto::class, 'id_evento');
+    }
 
 }

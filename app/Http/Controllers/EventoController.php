@@ -13,6 +13,7 @@ use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Event;
 use App\Models\Gasto;
+use App\Observers\ObserverImagen;
 
 class EventoController extends Controller
 {
@@ -161,7 +162,7 @@ class EventoController extends Controller
         return redirect()->back();
     }
 
-    public function crearP(Request $request)
+    public function crearP(Request $request) //metodo en conflicto no sirve
     {
         $paquete = Paquete::find($request->paquete);
         $paquetes = Paquete::all();
@@ -176,7 +177,8 @@ class EventoController extends Controller
         return view('gerente.eventos.index',compact('eventos'));
     }
 
-    public function imagenes(Request $request, $id){
+    public function imagenes(Request $request, $id){ //guarda imagenes en storage y bd
+        Imagen::observe(ObserverImagen::class);
         $evento = Evento::find($id);
         //$request -> validate(['images'=>'required | image']);
 
@@ -218,14 +220,9 @@ class EventoController extends Controller
 
         return redirect()->back();
     }
-    public function crudimg(Evento $evento){
+    public function crudimg(Evento $evento){//lleva a la vista donde se puede hacer el crud de imagenes
         return view('gerente.eventos.imagenes',compact('evento'));
     }
-    public function editDescripcion(Request $request, $id){
-        $evento = Imagen::find($id);
-        $evento->descripcion = $request->descripcion;
-        $evento->save();
-        return redirect()->back();
-    }
+
 
 }
