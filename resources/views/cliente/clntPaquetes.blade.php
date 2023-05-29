@@ -11,7 +11,7 @@
     Salón de Eventos
 @endsection
 @section('opcionesIzquierda')
-    @can('anyView', App\Models\Evento::class)
+    @can('viewAny', App\Models\Evento::class)
         <li class="nav-item"><a class="nav-link active" aria-current="page" href="{{ route('evento.index') }}">Mis eventos</a></li>
     @endcan
 @endsection
@@ -21,56 +21,83 @@
 
 @section('contenido')
     @can('viewAny', App\Models\Evento::class)
-        <div>
-            <div class="container-items">
-                @foreach ($paquetes as $paquete)
-                    @can('activo', $paquete)
-                        <a href="{{ route('paquete.detalle', $paquete->id_paquete) }}" style="text-decoration: none; color:black;">
-                            <div class="item">
-                                <figure>
-                                    <div class="slider">
-                                        <ul class="slider-list">
-                                            @foreach ($paquete->imagenes as $item)
-                                                <li><img src={{ $item->ruta }} alt={{ $item->nombre }}></li>
-                                            @endforeach
-                                        </ul>
+    <div>
+        @php
+            $paquetes = $paquetes->where('activo',1);
+        @endphp
+        <div class="container-items">
+            @foreach ($paquetes as $paquete)
+            <a href="#" style="text-decoration: none; color:black;">
+                <div class="item">
+
+
+                        <figure>
+                            <div class="slider">
+                                @foreach ($paquete->imagenes as $item)
+                                    <div class="slide" style="background: red">
+                                        <img src={{$item->ruta }} alt="bodas" style= "margin: 0">
                                     </div>
-
-                                    <script>
-                                        // Obtener el número de imágenes
-                                        const imageCount = document.querySelectorAll('.slider-list li').length;
-
-                                        // Establecer la variable CSS --image-count en el elemento .slider-list si hay más de una imagen
-                                        if (imageCount > 1) {
-                                            document.documentElement.style.setProperty('--image-count', imageCount);
-                                        } else {
-                                            document.documentElement.style.setProperty('--image-count', 2); // Establecer un mínimo de 2 para que se mueva aunque solo haya una imagen
-                                            //document.documentElement.style.setProperty('--image-count', 1);
-                                            const sliderList = document.querySelector('.slider-list');
-                                            sliderList.style.animation = 'none'; // Desactivar la animación si solo hay una imagen
-                                        }
-                                    </script>
-
-                                    <div class="capa" style="margin-top: -12.5rem;">
-                                        <p class="Descripcion">{{ $paquete->descripcion }}</p>
-                                    </div>
-                                </figure>
-                                <div class="info-producto">
-                                    <h2>{{ $paquete->nombre }}</h2>
-                                    <!--<p class="Descripcion">{{ $paquete->descripcion }} </p> -->
-                                <!-- <button class="añade-carrito">Cotizar</button>-->
-
-                                </div>
+                                @endforeach
                             </div>
-                        </a>    
-                    @endcan
-                
-                @endforeach
 
-            </div>
+                            <div class="capa" style="margin-top: -12.5rem;">
+                                <p class="Descripcion">{{ $paquete->descripcion }} </p>
+                            </div>
+                        </figure>
+
+
+                    <div class="info-producto">
+                        <h2>{{ $paquete->nombre }}</h2>
+                        <!--<p class="Descripcion">{{ $paquete->descripcion }} </p> -->
+                       <!-- <button class="añade-carrito">Cotizar</button>-->
+                    </div>
+                </div>
+            </a>
+            @endforeach
+
         </div>
+     </div>
     @else
         @include('plantillas.error401')
     @endcan
 
+@endsection
+@section('scripts')
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+  var sliders = document.querySelectorAll('.slider');
+
+  sliders.forEach(function(slider) {
+    var slides = slider.querySelectorAll('.slide');
+    var slideIndex = 0;
+
+    function showSlide() {
+      slides[slideIndex].classList.add('active');
+    }
+
+    function hideSlide() {
+      slides[slideIndex].classList.remove('active');
+    }
+
+    function nextSlide() {
+      hideSlide();
+      slideIndex++;
+      if (slideIndex >= slides.length) {
+        slideIndex = 0;
+      }
+      showSlide();
+    }
+
+    function resetSlider() {
+      hideSlide();
+      slideIndex = 0;
+      showSlide();
+    }
+
+    showSlide();
+    setInterval(nextSlide, 2500);
+    setInterval(resetSlider, slides.length * 2500);
+  });
+});
+</script>
 @endsection
