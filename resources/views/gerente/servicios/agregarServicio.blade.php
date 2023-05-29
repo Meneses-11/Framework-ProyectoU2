@@ -39,7 +39,7 @@ Admin Gerente Servicios
                     <h1 class="text-center">Agregar Servicios</h1>
                   </div>
                   <div class="card-body">
-                    <form action="{{ route('servicio.llenar') }}" method="POST">
+                    <form action="{{ route('servicio.llenar') }}" method="POST" enctype="multipart/form-data">
                         @csrf
                       <div class="mb-3">
                         <label for="name" class="form-label">Nombre del servicio:</label>
@@ -57,13 +57,8 @@ Admin Gerente Servicios
                       </div>
                       <div class="mb-3">
                         <label for="imgs" class="form-label">Imagenes:</label>
-                        <input class="form-control" type="file" name="images" id="archivoPaquete" accept="image/*" multiple>
-                        @error('images')
-                        <div class="alert alert-danger" role="alert">
-                            {{ $message }}
-                        </div>
-                        @enderror
-                    </div>
+                        <input class="form-control" type="file" name="images[]" id="archivoPaquete" accept="image/*" multiple>
+                      </div>
                       <div class="d-grid gap-2">
                         <button type="submit" class="btn btn-dark btn-block">Registrar servicio</button>
                         <button type="button" class="btn btn-secondary btn-block mt-2" onclick="window.location.href='{{ route('servicio.inicio') }}'">Cancelar</button>

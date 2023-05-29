@@ -74,10 +74,6 @@ Admin Gerente Usuarios
                         <label for="email" class="form-label">Fecha de nacimiento:</label>
                         <input value="{{ $alguien->fecha_nacimiento }}" type="date" id="fecha" name="fecha" class="form-control" placeholder="Ingresa o selecciona tu fecha de nacimiento" required>
                       </div>
-                      <div class="mb-3">
-                        <label for="password" class="form-label">Contraseña Anterior:</label>
-                        <input type="password" id="password" name="pa" class="form-control" placeholder="Ingresa la contraseña anterior" required>
-                      </div>
                         @if($errors->has('password_actual'))
                         <span class="text-danger">{{ $errors->first('password_actual') }}</span>
                         @endif

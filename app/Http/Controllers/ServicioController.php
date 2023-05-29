@@ -35,23 +35,25 @@ class ServicioController extends Controller
     public function store(Request $request)
     {
         //
-        $request->validate([
+        /*$request->validate([
             'images.*' => 'required|file|mimes:jpeg,jpg,png,gif'
-        ]);
-        $servicio = new Servicio();
-        $servicio->nombre = $request->nombre;
-        $servicio->precio = $request->precio;
-        $servicio->descripcion = $request->descripcion;
-        $servicio->save();
+        ]);*/
         if ($request->hasFile('images')) {
-            $images = $request->file('images');
 
+            $servicio = new Servicio();
+            $servicio->nombre = $request->nombre;
+            $servicio->precio = $request->precio;
+            $servicio->descripcion = $request->descripcion;
+            $servicio->save();
+
+            $images = $request->file('images');
             // Realiza las operaciones necesarias con las imágenes aquí
             foreach ($images as $image) {
+
                 $archivo = $image;
                 $img = $image;
                 $imgName = time().rand(1,100).'.'.$img->extension();
-                $img -> move(public_path('/img/Servicios/'),$imgName);
+                $img -> move(public_path('/img/Paquetes/'),$imgName);
                 $ruta_nombre = '/img/Paquetes/'.$imgName;
                 $imagen = new Imagen();
                 $imagen->ruta = $ruta_nombre;
@@ -59,7 +61,7 @@ class ServicioController extends Controller
                 $servicio->imagenes()->save($imagen);
             }
 
-        }else{dd('no entre');}
+        }else{return redirect()->back()->with('error','No se ha detectado ningun archivo');}
         return redirect(route('servicio.inicio'))->with('dat','todo fue bien');
 
     }

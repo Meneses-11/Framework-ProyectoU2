@@ -40,7 +40,9 @@ class UsuariosController extends Controller
         $usuario->apellido = $request->apellido;
         $usuario->nombre_usuario = $request->nusuario;
         $usuario->contraseña = Hash::make($p1);
-        $usuario->rol = $request->seleccion;
+        if($request->seleccion != 'Cliente'||$request->seleccion != 'Gerente') {
+            $usuario->rol = 'Cliente';
+        }else {$usuario->rol = $request->seleccion;}
         $usuario->fecha_nacimiento = date($request->fecha);
         $usuario->direccion = $request->direccion;
         $usuario->email = $request->correo;
@@ -66,17 +68,14 @@ class UsuariosController extends Controller
         if ($password_nueva !== $password_confirmacion) {
             // Las contraseñas nuevas no coinciden
             return redirect()->back()->withErrors(['password_nueva' => 'Las contraseñas nuevas no coinciden']);
-        }
-
-        if (!Hash::check($password_actual, $usuario->contraseña)) {
-            // La contraseña actual no es correcta
-            return redirect()->back()->withErrors(['password_actual' => 'La contraseña actual es incorrecta']);
         }else {
             $usuario->nombre = $request->nombre;
             $usuario->apellido = $request->apellido;
             $usuario->nombre_usuario = $request->nusuario;
             $usuario->contraseña = Hash::make($password_nueva);
-            $usuario->rol = $request->seleccion;
+            if($request->seleccion != 'Cliente'||$request->seleccion != 'Gerente') {
+                $usuario->rol = 'Cliente';
+            }else {$usuario->rol = $request->seleccion;}
             $usuario->fecha_nacimiento = date($request->fecha);
             $usuario->direccion = $request->direccion;
             $usuario->email = $request->correo;
