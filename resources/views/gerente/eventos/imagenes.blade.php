@@ -36,7 +36,9 @@ Salón de Eventos  {{ Auth::user()->nombre }}
                     <h5 class="card-title">Nombre de la imagen: {{ $i->nombre }}</h5>
                     <p class="card-text">Descripción de la imagen: {{ $i->descripcion }}</p>
                     <a href="#" data-toggle="modal" data-target="#editModal{{$i->id }}" data-tooltip="Editar" title="Editar" class="btn btn-sm btn-success">Editar descripción</a>
+                    @can('delete',$i)
                     <a href="#" data-toggle="modal" data-target="#deleteModal{{$i->id }}" data-tooltip="Eliminar" title="Eliminar" class="btn btn-sm btn-danger">Eliminar imagen</a>
+                    @endcan
                 </div>
             </div>
         </div>
