@@ -14,8 +14,12 @@ Contrato de Servicios
 @endsection
 
 @section('opcionesIzquierda')
-
+@can('viewAny', App\Models\Evento::class)
+<li class="nav-item"><a class="nav-link active" aria-current="page" href="{{route('paquetes')}}">Paquetes</a></li>
+<li class="nav-item"><a class="nav-link active" aria-current="page" href="{{route('evento.index')}}">Eventos</a></li>
+@endcan
 @endsection
+
 @section('opcionesDerecha')
 	<li><a class="dropdown-item" href="{{ route('cerrar_sesion') }}">Cerrar Sesión</a></li>
 @endsection

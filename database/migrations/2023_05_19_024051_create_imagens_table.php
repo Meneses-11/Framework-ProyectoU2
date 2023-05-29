@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('nombre');
             $table->string('ruta');
+            $table->string('descripcion')->nullable();
             $table->unsignedBigInteger('imageable_id');
             $table->string('imageable_type');
             $table->timestamps();

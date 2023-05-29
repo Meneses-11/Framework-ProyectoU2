@@ -69,7 +69,7 @@ class ImagenController extends Controller
             //File::delete('public'.$imagen->ruta);
             File::delete($rutaImagen);
             $imagen->delete();
-
+            
             return redirect()->back()->with('eliminado','si');
 
         }else{

@@ -39,7 +39,8 @@
 <body>
     <h1>Evento autorizado</h1>
     <p>Estimado/a {{ $cliente->nombre }},</p>
-    <p>Se ha confirmado el evento con nombre: "{{ $evento->descripcion }}".</p>
+    <p>Se ha confirmado el evento con nombre: "{{ $evento->nombre }}".</p>
+    <p>El cual es un/a: "{{ $evento->descripcion }}".</p>
     <p>Para un total de: {{ $evento->num_personas }} personas.</p>
 
     @if ($evento->servicios->count()!=0)

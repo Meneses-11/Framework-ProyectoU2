@@ -148,6 +148,9 @@ Empleado {{ Auth::user()->nombre }}
                     <a href="#" class="" data-toggle="modal" data-target="#paymentsModal{{ $e->id_evento }}" data-tooltip="Ver historial de abonos" title="Historial de abonos">
                         <i class="fas fa-list"></i>
                     </a>
+                    <a href="{{ route('evento.images', ['evento' => $e]) }}" style="color: rgb(255, 0, 85) !important;" title="Imagenes del Evento">
+                        <i class="fas fa-images"></i>
+                    </a>
                     @endif
                     <!-- Modal de creación de abonos -->
                     <div class="modal fade" id="paymentModal{{ $e->id_evento }}" tabindex="-1" role="dialog" aria-labelledby="paymentModalLabel{{ $e->id_evento }}" aria-hidden="true">
@@ -166,7 +169,7 @@ Empleado {{ Auth::user()->nombre }}
                                         @csrf
                                         <div class="form-group">
                                             <label for="cantidad">Cantidad:</label>
-                                            <input type="text" class="form-control" id="cantidad" name="cantidad" required>
+                                            <input type="number" class="form-control" id="cantidad" name="cantidad" required>
                                             <input type="hidden" value="{{ $e->id_evento }}" name="id_evento" >
                                         </div>
                                         <p>Descripción del evento: <br><br>{{ $e->descripcion }}</p>
@@ -210,6 +213,8 @@ Empleado {{ Auth::user()->nombre }}
                             </div>
                         </div>
                     </div>
+
+
                 @endif
 
         </td>

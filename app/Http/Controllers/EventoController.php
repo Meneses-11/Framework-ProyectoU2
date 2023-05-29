@@ -176,7 +176,6 @@ class EventoController extends Controller
 
     public function imagenes(Request $request, $id){
         $evento = Evento::find($id);
-
         //$request -> validate(['images'=>'required | image']);
 
         if ($request->hasFile('images')) {
@@ -193,15 +192,24 @@ class EventoController extends Controller
                 $imagen = new Imagen();
                 $imagen->ruta = $ruta_nombre;
                 $imagen->nombre = $archivo->getClientOriginalName();
+                $imagen->descripcion = $request->input('descripcion');
                 $evento->imagenes()->save($imagen);
             }
-
-
 
         }else{
             return redirect()->back()->with('errors','Algo ha salido mal verifica tu entrada de datos');
         }
 
-        return redirect()->route('evento.index');
+       return redirect()->back();
     }
+    public function crudimg(Evento $evento){
+        return view('gerente.eventos.imagenes',compact('evento'));
+    }
+    public function editDescripcion(Request $request, $id){
+        $evento = Imagen::find($id);
+        $evento->descripcion = $request->descripcion;
+        $evento->save();
+        return redirect()->back();
+    }
+
 }

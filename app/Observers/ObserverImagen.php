@@ -4,6 +4,7 @@ namespace App\Observers;
 
 use App\Models\Imagen;
 use App\Models\BitacoraImg;
+use Illuminate\Support\Facades\Auth;
 
 class ObserverImagen
 {
@@ -19,7 +20,7 @@ class ObserverImagen
             $bitacoraImg->accion = Auth::user()->rol." ".Auth::user()->nombre." agregó la imagen: ".$imagen->nombre;
             $bitacoraImg->save();
         }
-        
+
     }
 
     /**
@@ -28,7 +29,7 @@ class ObserverImagen
     public function updated(Imagen $imagen): void
     {
         //
-        
+
     }
 
     /**
@@ -37,6 +38,13 @@ class ObserverImagen
     public function deleted(Imagen $imagen): void
     {
         //
+        $bitacoraImg = new BitacoraImg();
+
+        if (Auth::check()) {
+            $bitacoraImg->quien = Auth::user()->id_usuario;
+            $bitacoraImg->accion = Auth::user()->rol." ".Auth::user()->nombre." eliminó la imagen: ".$imagen->nombre;
+            $bitacoraImg->save();
+        }
     }
 
     /**
@@ -53,5 +61,6 @@ class ObserverImagen
     public function forceDeleted(Imagen $imagen): void
     {
         //
+
     }
 }
