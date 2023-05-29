@@ -13,6 +13,7 @@ use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Event;
 use App\Models\Gasto;
+use App\Observers\ObserverImagen;
 
 class EventoController extends Controller
 {
@@ -177,6 +178,7 @@ class EventoController extends Controller
     }
 
     public function imagenes(Request $request, $id){ //guarda imagenes en storage y bd
+        Imagen::observe(ObserverImagen::class);
         $evento = Evento::find($id);
         //$request -> validate(['images'=>'required | image']);
 

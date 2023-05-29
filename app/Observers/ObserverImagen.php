@@ -16,7 +16,8 @@ class ObserverImagen
         //
         $bitacoraImg = new BitacoraImg();
         if (Auth::check()) {
-            $bitacoraImg->quien = Auth::user()->id_usuario;
+            $bitacoraImg->id_usuario = Auth::user()->id_usuario;
+            $bitacoraImg->id_imagen = $imagen->id;
             $bitacoraImg->accion = Auth::user()->rol." ".Auth::user()->nombre." agregó la imagen: ".$imagen->nombre;
             $bitacoraImg->save();
         }
@@ -38,13 +39,6 @@ class ObserverImagen
     public function deleted(Imagen $imagen): void
     {
         //
-        $bitacoraImg = new BitacoraImg();
-
-        if (Auth::check()) {
-            $bitacoraImg->quien = Auth::user()->id_usuario;
-            $bitacoraImg->accion = Auth::user()->rol." ".Auth::user()->nombre." eliminó la imagen: ".$imagen->nombre;
-            $bitacoraImg->save();
-        }
     }
 
     /**

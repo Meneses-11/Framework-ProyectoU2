@@ -4,7 +4,7 @@
 Eventos
 @endsection
 @section('titulobar')
-Empleado {{ Auth::user()->nombre }}
+Gerente Admin {{ Auth::user()->nombre }}
 @endsection
 @section('estilos')
     @can('viewAny', App\Models\Usuario::class)
@@ -143,7 +143,7 @@ Empleado {{ Auth::user()->nombre }}
                         <i class="fas fa-money-bill-wave"></i>
                     </a>
                     <a href="#" style="color: rgb(90, 200, 176) !important; " data-toggle="modal" data-target="#gastoModal{{ $e->id_evento }}" data-tooltip="Agregar gasto" title="Agregar gasto">
-                        <i class="fa fa-plus"></i>
+                        <i class="fas fa-dollar-sign"></i>
                     </a>
 
                     @if ($e->pagos->count()!=0)
@@ -156,12 +156,17 @@ Empleado {{ Auth::user()->nombre }}
                         <i class="fas fa-images"></i>
                     </a>
                     @endif
+                    @if ($e->gastos->count()!=0)
+                    <a href="#" class="" data-toggle="modal" data-target="#viewModal{{ $e->id_evento }}" data-tooltip="Ver gastos" title="Gastos">
+                        <i class="fas fa-receipt"></i>
+                    </a>
+                    @endif
                     <!-- Modal de creación de abonos -->
                     <div class="modal fade" id="paymentModal{{ $e->id_evento }}" tabindex="-1" role="dialog" aria-labelledby="paymentModalLabel{{ $e->id_evento }}" aria-hidden="true">
                         <div class="modal-dialog" role="document">
                             <div class="modal-content">
                                 <div class="modal-header">
-                                    <h5 class="modal-title" id="paymentModalLabel{{ $e->id_evento }}">Confirmación de pago</h5>
+                                    <h5 class="modal-title" id="paymentModalLabel{{ $e->id_evento }}">Confirmación de gasto</h5>
                                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                         <span aria-hidden="true">&times;</span>
                                     </button>
@@ -198,13 +203,13 @@ Empleado {{ Auth::user()->nombre }}
                                 </div>
                                 <div class="modal-body">
 
-                                @foreach ($e->pagos as $pago)
+                                @foreach ($e->pagos as $p)
                                 <div class="card">
                                     <div class="card-body">
                                         <h5 class="card-title">Detalle de abono</h5>
                                         <ul>
-                                            <li>Fecha: {{ $pago->created_at->format('Y-m-d  H:m:s')}}</li>
-                                            <li>Cantidad: ${{ $pago->cantidad }}</li>
+                                            <li>Fecha: {{ $p->created_at->format('Y-m-d  H:m:s')}}</li>
+                                            <li>Cantidad: ${{ $p->cantidad }}</li>
                                         </ul>
                                     </div>
                                 </div>
@@ -222,7 +227,7 @@ Empleado {{ Auth::user()->nombre }}
                         <div class="modal-dialog" role="document">
                             <div class="modal-content">
                                 <div class="modal-header">
-                                    <h5 class="modal-title" id="gastoModalLabel{{ $e->id_evento }}">Confirmación de pago</h5>
+                                    <h5 class="modal-title" id="gastoModalLabel{{ $e->id_evento }}">Edición de gasto</h5>
                                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                         <span aria-hidden="true">&times;</span>
                                     </button>
@@ -244,7 +249,7 @@ Empleado {{ Auth::user()->nombre }}
                                         </div>
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-                                        <button type="submit" class="btn btn-primary">Guardar gasto</button>
+                                        <button type="submit" class="btn btn-dark">Guardar gasto</button>
                                     </div>
                                     </form>
 
@@ -252,7 +257,72 @@ Empleado {{ Auth::user()->nombre }}
                             </div>
                         </div>
                     </div>
+                    <!-- Modal de visualizacón de gastos -->
+                    <div class="modal fade" id="viewModal{{ $e->id_evento }}" tabindex="-1" role="dialog" aria-labelledby="viewModalLabel{{ $e->id_evento }}" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="viewModalLabel{{ $e->id_evento }}">Historial de Abonos</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <h5 class="card-title">Gastos</h5>
 
+                                @foreach ($e->gastos as $gasto)
+                                <div class="card">
+                                    <div class="card-body">
+                                        <ul>
+                                            <li>Fecha: {{ $gasto->created_at->format('Y-m-d  H:m:s')}}</li>
+                                            <li>Cantidad: ${{ $gasto->cantidad }}</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <br>
+                                    <!-- Modal de edicion de gastos -->
+                                    <div class="modal fade" id="editModal{{ $e->id_evento }}" tabindex="-1" role="dialog" aria-labelledby="editModalLabel{{ $e->id_evento }}" aria-hidden="true">
+                                        <div class="modal-dialog" role="document">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title" id="editModalLabel{{ $e->id_evento }}">Confirmación de gasto</h5>
+                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                        <span aria-hidden="true">&times;</span>
+                                                    </button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <p>Evento: {{ $e->nombre }}</p>
+                                                    <p>Cliente: {{ $e->usuario->nombre }}</p>
+                                                    <form action="{{ route('gasto.create') }}" method="post">
+                                                        @csrf
+                                                        <div class="form-group">
+                                                            <label for="cantidad">Cantidad:</label>
+                                                            <input type="number" class="form-control" id="cantidad" name="cantidad" required>
+                                                            <input type="hidden" value="{{ $e->id_evento }}" name="id_evento" >
+                                                        </div>
+                                                        {{-- <p>Descripción del evento: <br><br>{{ $e->descripcion }}</p> --}}
+                                                        <div>
+                                                        <label for="descripcion">Descripcion:</label>
+                                                        <input type="text" class="form-control" id="descgasto" name="descgasto" required>
+                                                        </div>
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                                                        <button type="submit" class="btn btn-dark">Guardar gasto</button>
+                                                    </div>
+                                                    </form>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                @endforeach
+                                </div>
+                                <div class="modal-footer text-cente">
+                                    <button type="button" class="btn btn-dark" data-dismiss="modal">Aceptar</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
 
 
                 @endif
