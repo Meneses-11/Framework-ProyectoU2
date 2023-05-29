@@ -142,6 +142,10 @@ Empleado {{ Auth::user()->nombre }}
                     <a href="#" style="color: rgb(90, 200, 90) !important; " data-toggle="modal" data-target="#paymentModal{{ $e->id_evento }}" data-tooltip="Agregar abono" title="Agregar Abono">
                         <i class="fas fa-money-bill-wave"></i>
                     </a>
+                    <a href="#" style="color: rgb(90, 200, 176) !important; " data-toggle="modal" data-target="#gastoModal{{ $e->id_evento }}" data-tooltip="Agregar gasto" title="Agregar gasto">
+                        <i class="fa fa-plus"></i>
+                    </a>
+
                     @if ($e->pagos->count()!=0)
 
 
@@ -213,6 +217,42 @@ Empleado {{ Auth::user()->nombre }}
                             </div>
                         </div>
                     </div>
+                    <!-- Modal de creacion de gastos -->
+                    <div class="modal fade" id="gastoModal{{ $e->id_evento }}" tabindex="-1" role="dialog" aria-labelledby="gastoModalLabel{{ $e->id_evento }}" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="gastoModalLabel{{ $e->id_evento }}">Confirmación de pago</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <p>Evento: {{ $e->nombre }}</p>
+                                    <p>Cliente: {{ $e->usuario->nombre }}</p>
+                                    <form action="{{ route('gasto.create') }}" method="post">
+                                        @csrf
+                                        <div class="form-group">
+                                            <label for="cantidad">Cantidad:</label>
+                                            <input type="number" class="form-control" id="cantidad" name="cantidad" required>
+                                            <input type="hidden" value="{{ $e->id_evento }}" name="id_evento" >
+                                        </div>
+                                        {{-- <p>Descripción del evento: <br><br>{{ $e->descripcion }}</p> --}}
+                                        <div>
+                                        <label for="descripcion">Descripcion:</label>
+                                        <input type="text" class="form-control" id="descgasto" name="descgasto" required>
+                                        </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                                        <button type="submit" class="btn btn-primary">Guardar gasto</button>
+                                    </div>
+                                    </form>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
 
 
                 @endif
