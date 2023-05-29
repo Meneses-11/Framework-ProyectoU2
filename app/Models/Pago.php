@@ -12,7 +12,7 @@ class Pago extends Model
     protected $table = 'pagos';
     protected $primaryKey = 'id_pago';
 
-    public function evento()
+    public function eventos()
     {
         return $this->belongsTo(Evento::class, 'evento_id'); // Asegúrate de que la columna sea 'evento_id'
     }

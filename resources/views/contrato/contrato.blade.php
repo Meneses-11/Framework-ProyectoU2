@@ -65,7 +65,7 @@ Contrato de Servicios
                                                     $fecha = new DateTime($abono->created_at);
                                                 @endphp
 												<input type="text" class="form-control" disabled style="background-color: white" value="{{ $fecha->format('Y-m-d') }}">
-												<span class="input-group-text">@</span>
+												<span class="input-group-text"><img src="{{ asset('img/programar.png') }}" alt="img" style="width: 20px; height: 20px;"></span>
 												<input type="text" class="form-control" disabled style="background-color: white" value="{{ $fecha->format('H:m:s') }}">
 											</div>
 
