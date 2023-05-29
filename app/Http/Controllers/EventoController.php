@@ -12,6 +12,7 @@ use App\Models\Imagen;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Event;
+use App\Models\Gasto;
 
 class EventoController extends Controller
 {
@@ -25,6 +26,7 @@ class EventoController extends Controller
         $eventos = Evento::where('id_usuario',$usuario)->get();
         $paquetes = Paquete::pluck('id_paquete','nombre');
         $servicios = Servicio::pluck('id_servicio','nombre');
+
         /*$servSelec = [];
         foreach($eventos as $evento){
             $servSelec[$evento -> servicios() -> pluck('id_evento')] = $evento -> servicios() -> pluck('nombre');
@@ -191,6 +193,7 @@ class EventoController extends Controller
                 $img -> move(public_path('/img/Eventos/'),$imgName);
                 $ruta_nombre = '/img/Eventos/'.$imgName;
                 $imagen = new Imagen();
+
                 $imagen->ruta = $ruta_nombre;
                 $imagen->nombre = $archivo->getClientOriginalName();
                 $evento->imagenes()->save($imagen);
@@ -203,5 +206,18 @@ class EventoController extends Controller
         }
 
         return redirect()->route('evento.index');
+    }
+
+    public function gasto(Request $request)
+    {
+       // $evento = Evento::find($request->input('id_evento'));
+        $gasto = new Gasto();
+        //$gasto->id_gasto = $request->input('id_gasto');
+        $gasto->id_evento = $request->input('id_evento');
+        $gasto->cantidad = $request->input('cantidad');
+        $gasto->descripcion = $request->input('descgasto');
+        $gasto->save();
+
+        return redirect()->back();
     }
 }
