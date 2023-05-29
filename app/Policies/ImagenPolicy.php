@@ -47,9 +47,10 @@ class ImagenPolicy
      */
     public function delete(Usuario $usuario, Imagen $imagen): bool
     {
-        $registro = BitacoraImg :: where('id_imagen',$imagen->id);
+        $registro = BitacoraImg :: where('id_imagen',$imagen->id) -> first();
         //$regEmpleado =
-        //if ($registro->id_usuario == $usuario -> id_usuraio || )
+        if ($registro->id_usuario == $usuario -> id_usuario || $registro->usuario->rol == 'Empleado') return true;
+        else return false;
     }
 
     /**
