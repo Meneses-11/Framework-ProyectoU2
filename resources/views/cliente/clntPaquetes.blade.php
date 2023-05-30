@@ -27,9 +27,8 @@
         @endphp
         <div class="container-items">
             @foreach ($paquetes as $paquete)
-            <a href="#" style="text-decoration: none; color:black;">
-                <div class="item">
-
+                <a href="{{ route('paquete.crear.evento', $paquete->id_paquete) }}" style="text-decoration: none; color:black;">
+                    <div class="item">
 
                         <figure>
                             <div class="slider">
@@ -45,14 +44,11 @@
                             </div>
                         </figure>
 
-
-                    <div class="info-producto">
-                        <h2>{{ $paquete->nombre }}</h2>
-                        <!--<p class="Descripcion">{{ $paquete->descripcion }} </p> -->
-                       <!-- <button class="añade-carrito">Cotizar</button>-->
+                        <div class="info-producto">
+                            <h2>{{ $paquete->nombre }}</h2>
+                        </div>
                     </div>
-                </div>
-            </a>
+                </a>
             @endforeach
 
         </div>

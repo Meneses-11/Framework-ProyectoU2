@@ -164,9 +164,9 @@ class EventoController extends Controller
         return redirect()->back();
     }
 
-    public function crearP(Request $request) //metodo en conflicto no sirve
+    public function crearP($idPaq) //metodo en conflicto no sirve
     {
-        $paquete = Paquete::find($request->paquete);
+        $paquete = Paquete::find($idPaq);
         $paquetes = Paquete::all();
         $servicios = Servicio::all();
         return view('cliente.agregar', compact('paquetes','servicios','paquete'));

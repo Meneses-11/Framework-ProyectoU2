@@ -14,7 +14,9 @@
     Cliente
 @endsection
 @section('opcionesIzquierda')
-    <li class="nav-item active" style="color: white;">Mis eventos</li>
+    @can('viewAny', App\Models\Evento::class)
+        <li class="nav-item"><a class="nav-link active" aria-current="page" href="{{route('evento.index')}}">Mis eventos</a></li>        
+    @endcan
 @endsection
 @section('opcionesDerecha')
     <li><a class="dropdown-item" href="{{ route('cerrar_sesion') }}">Cerrar Sesión</a></li>
