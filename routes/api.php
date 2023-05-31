@@ -18,8 +18,8 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+Route::get('paquetes',[ApiController::class,'paquetes']);
+Route::post('login',[ApiController::class, 'login']);
 
-Route::get('paquete', [ApiController::class, 'paquete']);
-Route::get('evento', [ApiController::class, 'evento']);
 
 

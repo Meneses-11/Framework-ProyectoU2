@@ -27,9 +27,8 @@
         @endphp
         <div class="container-items">
             @foreach ($paquetes as $paquete)
-            <a href="#" style="text-decoration: none; color:black;">
+            <a href="#{{ route('evento.create') }} style="text-decoration: none; color:black;">
                 <div class="item">
-
 
                         <figure>
                             <div class="slider">
